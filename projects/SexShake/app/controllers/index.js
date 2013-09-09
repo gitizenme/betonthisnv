@@ -83,6 +83,7 @@ function init() {
 		Ti.App.Properties.setString('version_preference', prodVersion);
 	}
 	Ti.API.debug('prodVersion = ' + prodVersion);
+	$.reels.init();
 }
 
 function open() {
@@ -92,4 +93,3 @@ function open() {
 
 $.index.open();
 
-Alloy.Globals.tabGroup = $.index; 

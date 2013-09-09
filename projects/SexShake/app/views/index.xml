@@ -3,7 +3,7 @@
 		<Tab title="Shake It" id="shakeItTab">
 			<Window id="sex_shake" title="Sex Shake">
 				<Widget class="infoWidget" id="sex_shake_web" src="com.orthlieb.info"/>
-				<Label>VIEW: Shake It</Label>
+				<Require type="widget" src="me.izen.Reels" id="reels"/>
 			</Window>
 		</Tab>
 		<Tab title="Info" id="infoTab">

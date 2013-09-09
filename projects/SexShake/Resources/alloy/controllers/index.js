@@ -48,6 +48,7 @@ function Controller() {
             Ti.App.Properties.setString("version_preference", prodVersion);
         }
         Ti.API.debug("prodVersion = " + prodVersion);
+        $.reels.init();
     }
     function open() {
         Ti.API.trace("index." + arguments.callee.name);
@@ -76,19 +77,11 @@ function Controller() {
         __parentSymbol: $.__views.sex_shake
     });
     $.__views.sex_shake_web.setParent($.__views.sex_shake);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        font: {
-            fontSize: 20,
-            fontFamily: "Helvetica Neue"
-        },
-        textAlign: "center",
-        text: "VIEW: Shake It",
-        id: "__alloyId4"
+    $.__views.reels = Alloy.createWidget("me.izen.Reels", "widget", {
+        id: "reels",
+        __parentSymbol: $.__views.sex_shake
     });
-    $.__views.sex_shake.add($.__views.__alloyId4);
+    $.__views.reels.setParent($.__views.sex_shake);
     $.__views.shakeItTab = Ti.UI.createTab({
         icon: "images/airplane.png",
         window: $.__views.sex_shake,
@@ -117,57 +110,57 @@ function Controller() {
         width: "80%"
     });
     $.__views.info.add($.__views.scrollView);
-    $.__views.__alloyId5 = Ti.UI.createView({
+    $.__views.__alloyId1926 = Ti.UI.createView({
         borderRadius: "7dp",
         borderColor: "black",
         backgroundColor: "darkgray",
         top: "5dp",
         height: "30%",
         width: "auto",
-        id: "__alloyId5"
+        id: "__alloyId1926"
     });
-    $.__views.scrollView.add($.__views.__alloyId5);
-    $.__views.__alloyId6 = Ti.UI.createButton({
+    $.__views.scrollView.add($.__views.__alloyId1926);
+    $.__views.__alloyId1927 = Ti.UI.createButton({
         width: "200dp",
         title: "Get Tested",
-        id: "__alloyId6"
+        id: "__alloyId1927"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId6);
-    getTestedClicked ? $.__views.__alloyId6.addEventListener("click", getTestedClicked) : __defers["$.__views.__alloyId6!click!getTestedClicked"] = true;
-    $.__views.__alloyId7 = Ti.UI.createView({
+    $.__views.__alloyId1926.add($.__views.__alloyId1927);
+    getTestedClicked ? $.__views.__alloyId1927.addEventListener("click", getTestedClicked) : __defers["$.__views.__alloyId1927!click!getTestedClicked"] = true;
+    $.__views.__alloyId1928 = Ti.UI.createView({
         borderRadius: "7dp",
         borderColor: "black",
         backgroundColor: "darkgray",
         top: "5dp",
         height: "30%",
         width: "auto",
-        id: "__alloyId7"
+        id: "__alloyId1928"
     });
-    $.__views.scrollView.add($.__views.__alloyId7);
-    $.__views.__alloyId8 = Ti.UI.createButton({
+    $.__views.scrollView.add($.__views.__alloyId1928);
+    $.__views.__alloyId1929 = Ti.UI.createButton({
         width: "200dp",
         title: "Find Condoms",
-        id: "__alloyId8"
+        id: "__alloyId1929"
     });
-    $.__views.__alloyId7.add($.__views.__alloyId8);
-    findCondomsClicked ? $.__views.__alloyId8.addEventListener("click", findCondomsClicked) : __defers["$.__views.__alloyId8!click!findCondomsClicked"] = true;
-    $.__views.__alloyId9 = Ti.UI.createView({
+    $.__views.__alloyId1928.add($.__views.__alloyId1929);
+    findCondomsClicked ? $.__views.__alloyId1929.addEventListener("click", findCondomsClicked) : __defers["$.__views.__alloyId1929!click!findCondomsClicked"] = true;
+    $.__views.__alloyId1930 = Ti.UI.createView({
         borderRadius: "7dp",
         borderColor: "black",
         backgroundColor: "darkgray",
         top: "5dp",
         height: "30%",
         width: "auto",
-        id: "__alloyId9"
+        id: "__alloyId1930"
     });
-    $.__views.scrollView.add($.__views.__alloyId9);
-    $.__views.__alloyId10 = Ti.UI.createButton({
+    $.__views.scrollView.add($.__views.__alloyId1930);
+    $.__views.__alloyId1931 = Ti.UI.createButton({
         width: "200dp",
         title: "Get Help",
-        id: "__alloyId10"
+        id: "__alloyId1931"
     });
-    $.__views.__alloyId9.add($.__views.__alloyId10);
-    getHelpClicked ? $.__views.__alloyId10.addEventListener("click", getHelpClicked) : __defers["$.__views.__alloyId10!click!getHelpClicked"] = true;
+    $.__views.__alloyId1930.add($.__views.__alloyId1931);
+    getHelpClicked ? $.__views.__alloyId1931.addEventListener("click", getHelpClicked) : __defers["$.__views.__alloyId1931!click!getHelpClicked"] = true;
     $.__views.infoTab = Ti.UI.createTab({
         icon: "images/airplane.png",
         window: $.__views.info,
@@ -197,10 +190,9 @@ function Controller() {
     });
     var prodVersion = Ti.App.Properties.getString("version_preference", "0.0.0-DEV");
     $.index.open();
-    Alloy.Globals.tabGroup = $.index;
-    __defers["$.__views.__alloyId6!click!getTestedClicked"] && $.__views.__alloyId6.addEventListener("click", getTestedClicked);
-    __defers["$.__views.__alloyId8!click!findCondomsClicked"] && $.__views.__alloyId8.addEventListener("click", findCondomsClicked);
-    __defers["$.__views.__alloyId10!click!getHelpClicked"] && $.__views.__alloyId10.addEventListener("click", getHelpClicked);
+    __defers["$.__views.__alloyId1927!click!getTestedClicked"] && $.__views.__alloyId1927.addEventListener("click", getTestedClicked);
+    __defers["$.__views.__alloyId1929!click!findCondomsClicked"] && $.__views.__alloyId1929.addEventListener("click", findCondomsClicked);
+    __defers["$.__views.__alloyId1931!click!getHelpClicked"] && $.__views.__alloyId1931.addEventListener("click", getHelpClicked);
     __defers["$.__views.index!open!open"] && $.__views.index.addEventListener("open", open);
     _.extend($, exports);
 }

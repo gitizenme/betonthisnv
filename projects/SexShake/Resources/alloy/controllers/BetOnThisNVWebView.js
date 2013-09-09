@@ -14,11 +14,11 @@ function Controller() {
         id: "BetOnThisNVWebView"
     });
     $.__views.BetOnThisNVWebView && $.addTopLevelView($.__views.BetOnThisNVWebView);
-    $.__views.__alloyId1 = Ti.UI.createView({
+    $.__views.__alloyId1923 = Ti.UI.createView({
         backgroundColor: "gray",
-        id: "__alloyId1"
+        id: "__alloyId1923"
     });
-    $.__views.BetOnThisNVWebView.add($.__views.__alloyId1);
+    $.__views.BetOnThisNVWebView.add($.__views.__alloyId1923);
     $.__views.swv = Alloy.createWidget("com.orthlieb.scrollablewebview", "widget", {
         top: 0,
         left: 0,
@@ -32,23 +32,23 @@ function Controller() {
             enableZoomControls: false
         },
         id: "swv",
-        __parentSymbol: $.__views.__alloyId1
+        __parentSymbol: $.__views.__alloyId1923
     });
-    $.__views.swv.setParent($.__views.__alloyId1);
-    $.__views.__alloyId2 = Ti.UI.createButton({
+    $.__views.swv.setParent($.__views.__alloyId1923);
+    $.__views.__alloyId1924 = Ti.UI.createButton({
         title: "Close",
         bottom: "2",
-        id: "__alloyId2"
+        id: "__alloyId1924"
     });
-    $.__views.__alloyId1.add($.__views.__alloyId2);
-    doneClicked ? $.__views.__alloyId2.addEventListener("click", doneClicked) : __defers["$.__views.__alloyId2!click!doneClicked"] = true;
+    $.__views.__alloyId1923.add($.__views.__alloyId1924);
+    doneClicked ? $.__views.__alloyId1924.addEventListener("click", doneClicked) : __defers["$.__views.__alloyId1924!click!doneClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.swv.urlArray = [ "http://betonthisnv.org/", "http://betonthisnv.org/gettested/", "http://betonthisnv.org/findcondoms/" ];
     $.swv.currentPage = null !== args.targetPage ? args.targetPage : 0;
     $.BetOnThisNVWebView.open();
-    __defers["$.__views.__alloyId2!click!doneClicked"] && $.__views.__alloyId2.addEventListener("click", doneClicked);
+    __defers["$.__views.__alloyId1924!click!doneClicked"] && $.__views.__alloyId1924.addEventListener("click", doneClicked);
     _.extend($, exports);
 }
 
