@@ -1,0 +1,27 @@
+<Alloy>
+	<TabGroup onOpen="open">
+		<Tab title="Shake It" id="shakeItTab">
+			<Window id="sex_shake" title="Sex Shake">
+				<Widget class="infoWidget" id="sex_shake_web" src="com.orthlieb.info"/>
+				<Label>VIEW: Shake It</Label>
+			</Window>
+		</Tab>
+		<Tab title="Info" id="infoTab">
+			<Window id="info" title="Info">
+				<Widget class="infoWidget" id="info_web" src="com.orthlieb.info"/>
+				<ScrollView layout="vertical" id="scrollView" showVerticalScrollIndicator="true" 
+					showHorizontalScrollIndicator="false" height="100%" width="80%">
+					<View class="infoButtonView">
+						<Button class="infoButton" title="Get Tested" onClick="getTestedClicked"></Button>
+					</View>
+					<View class="infoButtonView">
+						<Button class="infoButton" title="Find Condoms" onClick="findCondomsClicked"></Button>
+					</View>
+					<View class="infoButtonView">
+						<Button class="infoButton" title="Get Help" onClick="getHelpClicked"></Button>
+					</View>
+				</ScrollView>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>

@@ -1,0 +1,36 @@
+
+
+
+"#shakeItTab": {
+	    icon: "images/airplane.png" 
+}
+
+"#infoTab": {
+	    icon: "images/airplane.png" 
+}
+
+".getHelpView": {
+		width:"100%",
+	height:"auto",
+	backgroundColor:"darkgrey"
+}
+
+
+".infoButtonView": {
+		borderRadius:"7dp",
+		borderColor:"black",
+		backgroundColor:"darkgray",
+		top: "5dp",
+		height:"30%",
+		width:"auto"
+}
+
+".infoButton": {
+				width: "200dp"
+}
+
+
+".infoWidget": {
+    icon: "images/airplane.png",
+    text: "BetOnThisNV"
+}
