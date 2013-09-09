@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "com.orthlieb.navigationgroup/" + s : s.substring(0, index) + "/com.orthlieb.navigationgroup/" + s.substring(index + 1);
-    return true && 0 !== path.indexOf("/") ? "/" + path : path;
+    return path;
 }
 
 function Controller() {
@@ -23,31 +23,36 @@ function Controller() {
             $.top === e.source && $.windowStack.pop();
             $.trigger("close", e);
         });
-        windowToOpen.addEventListener("android:back", function() {
-            $.close();
-        });
         windowToOpen.addEventListener("open", function(e) {
             $.trigger("open", e);
         });
-        windowToOpen.navBarHidden = windowToOpen.navBarHidden || false;
-        1 === $.windowStack.length && (windowToOpen.exitOnClose = true);
-        windowToOpen.open(options);
+        if (1 === $.windowStack.length) {
+            $.navGroup = Ti.UI.iPhone.createNavigationGroup({
+                window: windowToOpen,
+                options: options
+            });
+            if ($.parent) $.parent.add($.navGroup); else {
+                var containerWindow = Ti.UI.createWindow();
+                containerWindow.add($.navGroup);
+                containerWindow.open();
+            }
+        } else $.navGroup.open(windowToOpen, options);
     };
     exports.back = function(options) {
         if ($.windowStack.length > 1) {
-            $.top.close(options);
+            $.navGroup.close($.top, options);
             return true;
         }
         return false;
     };
-    exports.close = function(options) {
+    exports.close = function() {
         $.back();
-        $.top.close(options);
+        $.navGroup.getWindow().close();
     };
     exports.home = function(options) {
         if ($.windowStack.length > 1) {
             var stack = $.windowStack.slice(0);
-            for (var i = stack.length - 1; i > 0; i--) stack[i].close(options);
+            for (var i = stack.length - 1; i > 0; i--) $.navGroup.close(stack[i], options);
         }
     };
     Object.defineProperty($, "top", {

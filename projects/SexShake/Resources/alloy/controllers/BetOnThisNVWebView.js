@@ -23,13 +23,21 @@ function Controller() {
         top: 0,
         left: 0,
         right: 0,
-        bottom: 50,
-        backgroundColor: "black",
-        pagingControlStyle: "native",
-        showPagingControl: "auto",
+        bottom: "50 dp",
+        backgroundColor: "#fff",
+        pagingControlStyle: "toolbar",
+        showPagingControl: "off",
         webView: {
             scalesPageToFit: false,
             enableZoomControls: false
+        },
+        prevButton: {
+            backgroundImage: "images/airplane.png",
+            backgroundDisabledImage: "images/airplane.png"
+        },
+        nextButton: {
+            backgroundImage: "images/airplane.png",
+            backgroundDisabledImage: "images/airplane.png"
         },
         id: "swv",
         __parentSymbol: $.__views.__alloyId1923
@@ -37,7 +45,7 @@ function Controller() {
     $.__views.swv.setParent($.__views.__alloyId1923);
     $.__views.__alloyId1924 = Ti.UI.createButton({
         title: "Close",
-        bottom: "2",
+        bottom: "2 dp",
         id: "__alloyId1924"
     });
     $.__views.__alloyId1923.add($.__views.__alloyId1924);

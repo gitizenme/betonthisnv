@@ -1,5 +1,0 @@
-<Alloy>
-	<Window class="container">
-		<Widget src="com.orthlieb.scrollablewebview" id="swv"/>
-	</Window>
-</Alloy>

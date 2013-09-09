@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "com.orthlieb.info/" + s : s.substring(0, index) + "/com.orthlieb.info/" + s.substring(index + 1);
-    return true && 0 !== path.indexOf("/") ? "/" + path : path;
+    return path;
 }
 
 module.exports = [ {
@@ -18,10 +18,10 @@ module.exports = [ {
     priority: 10000.0004,
     key: "infoButtonView",
     style: {
-        borderRadius: "7dp",
+        borderRadius: "7 dp",
         borderColor: "black",
         backgroundColor: "darkgray",
-        top: "5dp",
+        top: "5 dp",
         height: "30%",
         width: "auto"
     }

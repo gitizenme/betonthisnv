@@ -17,10 +17,10 @@
 
 
 ".infoButtonView": {
-		borderRadius:"7dp",
+		borderRadius:"7 dp",
 		borderColor:"black",
 		backgroundColor:"darkgray",
-		top: "5dp",
+		top: "5 dp",
 		height:"30%",
 		width:"auto"
 }

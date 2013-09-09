@@ -44,7 +44,7 @@ function Controller() {
         Ti.API.trace("index." + arguments.callee.name);
         checkForAppReset();
         if ("" == Ti.App.Properties.getString("version_preference", "")) {
-            prodVersion = Ti.App.version + "-DEV";
+            prodVersion = Ti.App.version + "-GA";
             Ti.App.Properties.setString("version_preference", prodVersion);
         }
         Ti.API.debug("prodVersion = " + prodVersion);
@@ -111,10 +111,10 @@ function Controller() {
     });
     $.__views.info.add($.__views.scrollView);
     $.__views.__alloyId1926 = Ti.UI.createView({
-        borderRadius: "7dp",
+        borderRadius: "7 dp",
         borderColor: "black",
         backgroundColor: "darkgray",
-        top: "5dp",
+        top: "5 dp",
         height: "30%",
         width: "auto",
         id: "__alloyId1926"
@@ -128,10 +128,10 @@ function Controller() {
     $.__views.__alloyId1926.add($.__views.__alloyId1927);
     getTestedClicked ? $.__views.__alloyId1927.addEventListener("click", getTestedClicked) : __defers["$.__views.__alloyId1927!click!getTestedClicked"] = true;
     $.__views.__alloyId1928 = Ti.UI.createView({
-        borderRadius: "7dp",
+        borderRadius: "7 dp",
         borderColor: "black",
         backgroundColor: "darkgray",
-        top: "5dp",
+        top: "5 dp",
         height: "30%",
         width: "auto",
         id: "__alloyId1928"
@@ -145,10 +145,10 @@ function Controller() {
     $.__views.__alloyId1928.add($.__views.__alloyId1929);
     findCondomsClicked ? $.__views.__alloyId1929.addEventListener("click", findCondomsClicked) : __defers["$.__views.__alloyId1929!click!findCondomsClicked"] = true;
     $.__views.__alloyId1930 = Ti.UI.createView({
-        borderRadius: "7dp",
+        borderRadius: "7 dp",
         borderColor: "black",
         backgroundColor: "darkgray",
-        top: "5dp",
+        top: "5 dp",
         height: "30%",
         width: "auto",
         id: "__alloyId1930"

@@ -1,7 +1,0 @@
-".container": {
-	backgroundColor:"white"
-},
-
-"#button": {
-    center: { x: "50%", y: "50%" }
-} 

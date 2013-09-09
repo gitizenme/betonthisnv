@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "com.orthlieb.scrollablewebview/" + s : s.substring(0, index) + "/com.orthlieb.scrollablewebview/" + s.substring(index + 1);
-    return true && 0 !== path.indexOf("/") ? "/" + path : path;
+    return path;
 }
 
 function Controller() {
@@ -23,7 +23,11 @@ function Controller() {
     }
     function UpdateToolbar() {
         var pagingControlIsOn = "on" == $.showPagingControl || "auto" == $.showPagingControl && $.urlArray.length > 1;
-        if (pagingControlIsOn) {
+        if (pagingControlIsOn) if (true && "native" == $.pagingControlStyle) {
+            $.scrollableView.bottom = 0;
+            $.toolbar.visible = false;
+            $.scrollableView.showPagingControl = true;
+        } else {
             $.scrollableView.pagingControl = false;
             $.scrollableView.bottom = Alloy.isTablet ? "60 dp" : "30 dp";
             UpdateLabel($.currentPage);
@@ -55,7 +59,7 @@ function Controller() {
         right: 0,
         bottom: 0,
         currentPage: 0,
-        pagingControlColor: "gray",
+        pagingControlColor: "#fff",
         backgroundColor: "white",
         views: __alloyId0,
         id: "scrollableView"
