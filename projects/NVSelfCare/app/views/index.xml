@@ -3,8 +3,9 @@
 		<Tab id="calendarTab" title="Calendar" icon="images/airplane.png">
 			<Window id="calendarWin" title="My Calendar" layout="vertical">
 				<View class="control">
-					<Button id="prevMonth" title="<" class="left" onClick="doPrevMonth" />
-					<Button id="nextMonth" title=">" class="right" onClick="doNextMonth" />
+					<Button id="prevMonth" title=" < " onClick="doPrevMonth" />
+					<Label id="calendarHeading"/>
+					<Button id="nextMonth" title=" > " onClick="doNextMonth" />
 				</View>
 				<View id="calendar">
 					<Widget id="current" src="jp.co.mountposition.calendar" />

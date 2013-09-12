@@ -33,16 +33,26 @@ function doNextMonth() {
 }
 
 // You can select tile
-// $.current.select(18);
+$.current.select(currentMonth.date());
+
+$.calendarHeading.text = currentMonth.format("MMM YYYY");
 
 // You can add image
-// $.current.setImage(16, 'images/plane.png');
+// $.current.setImage(16, 'images/airplane.png');
 
 // To handle the click event, set the listener to the parent View.
 $.calendar.addEventListener('click', function(e) {
     // You can get selectedDate. (moment object)
     var selectedDate = $.current.selectedDate();
-    Ti.API.info(selectedDate.format("MMM"));
+    var currentDate = moment();
+    var monthYearSelected = selectedDate.format("MMM YYYY");
+    
+    if(selectedDate.isSame(currentDate, 'month') && selectedDate.isSame(currentDate, 'year')) {
+    	$.current.select(currentDate.date());
+    }
+    
+    Ti.API.info(monthYearSelected);
+    $.calendarHeading.text = monthYearSelected;
 });
 
 $.index.open(); 
