@@ -44,7 +44,7 @@ function Controller() {
         Ti.API.trace("index." + arguments.callee.name);
         checkForAppReset();
         if ("" == Ti.App.Properties.getString("version_preference", "")) {
-            prodVersion = Ti.App.version + "-GA";
+            prodVersion = Ti.App.version + "-DEV";
             Ti.App.Properties.setString("version_preference", prodVersion);
         }
         Ti.API.debug("prodVersion = " + prodVersion);
