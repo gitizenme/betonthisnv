@@ -1,0 +1,25 @@
+".container": {
+    layout: 'vertical',
+	backgroundColor:"white"
+},
+'.control': {
+    backgroundColor: 'darkgrey',
+	    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+},
+'#prevMonth': {
+    left: 0 //,
+    // backgroundSelectedImage: "images/airplane.png",
+    // backgroundImage: "images/airplane.png", 
+    // image: "images/airplane.png" 
+},
+'#nextMonth': {
+    right: 0 //,
+    // backgroundSelectedImage: "images/airplane.png",
+    // backgroundImage: "images/airplane.png", 
+    // image: "images/airplane.png" 
+},
+'#calendarHeading': {
+    color: '#000',
+	    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}

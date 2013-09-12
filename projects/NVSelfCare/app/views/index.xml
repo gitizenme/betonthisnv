@@ -1,31 +1,8 @@
 <Alloy>
 	<TabGroup>
-		<Tab id="calendarTab" title="Calendar" icon="images/airplane.png">
-			<Window id="calendarWin" title="My Calendar" layout="vertical">
-				<View class="control">
-					<Button id="prevMonth" title=" < " onClick="doPrevMonth" />
-					<Label id="calendarHeading"/>
-					<Button id="nextMonth" title=" > " onClick="doNextMonth" />
-				</View>
-				<View id="calendar">
-					<Widget id="current" src="jp.co.mountposition.calendar" />
-				</View>
-			</Window>
-		</Tab>
-		<Tab title="Diary" icon="images/airplane.png">
-			<Window title="Care Diary">
-				<Label>Diary View</Label>
-			</Window>
-		</Tab>
-		<Tab title="Eligibilty" icon="images/airplane.png">
-			<Window title="Eligibility Album">
-				<Label>Eligibility View</Label>
-			</Window>
-		</Tab>
-		<Tab title="Help" icon="images/airplane.png">
-			<Window title="Get Help">
-				<Label>Help View</Label>
-			</Window>
-		</Tab>
+		<Require src="calendar"/>
+		<Require src="diary"/>
+		<Require src="eligibilty"/>
+		<Require src="help"/>
 	</TabGroup>
 </Alloy>

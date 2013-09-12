@@ -1,0 +1,7 @@
+<Alloy>
+	<Tab title="Diary" icon="images/airplane.png">
+		<Window title="Care Diary">
+			<Label>Diary View</Label>
+		</Window>
+	</Tab>
+</Alloy>
