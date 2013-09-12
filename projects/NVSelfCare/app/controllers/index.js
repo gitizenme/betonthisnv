@@ -47,9 +47,9 @@ $.calendar.addEventListener('click', function(e) {
     var currentDate = moment();
     var monthYearSelected = selectedDate.format("MMM YYYY");
     
-    if(selectedDate.isSame(currentDate, 'month') && selectedDate.isSame(currentDate, 'year')) {
-    	$.current.select(currentDate.date());
-    }
+    // if(selectedDate.isSame(currentDate, 'month') && selectedDate.isSame(currentDate, 'year')) {
+    	// $.current.select(currentDate.date());
+    // }
     
     Ti.API.info(monthYearSelected);
     $.calendarHeading.text = monthYearSelected;
