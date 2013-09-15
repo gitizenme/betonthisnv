@@ -1,6 +1,22 @@
 "Window": {
 	backgroundColor: "#fff"
 },
+".container": {
+	backgroundColor: "#fff"
+},
+".ScrollWindow": {
+	height: 'fill',
+	width: 'fill',
+	backgroundColor: "#fff",
+	// backgroundImage: 'background.jpg',
+	backgroundRepeat: true
+},
+"ScrollView": {
+	contentWidth: 'auto',
+	contentHeight: 'auto',
+	showVerticalScrollIndicator: true,
+	showHorizontalScrollIndicator: true,
+},
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,

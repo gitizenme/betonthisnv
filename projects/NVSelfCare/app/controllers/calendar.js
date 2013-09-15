@@ -1,4 +1,7 @@
 var moment = require('alloy/moment');
+
+
+
 var currentMonth = moment();
 
 function updateCalendarHeading(current) {
@@ -42,9 +45,10 @@ function doNextMonth() {
 }
 
 // You can select tile
-$.current.select(currentMonth.date());
+// $.current.select(currentMonth.date());
+$.current.setDate(currentMonth.date());
 
-$.calendarHeading.text = currentMonth.format("MMM YYYY");
+$.calendarHeading.text = currentMonth.format("MMMM YYYY");
 
 // You can add image
 // $.current.setImage(16, 'images/airplane.png');
@@ -53,6 +57,14 @@ $.calendarHeading.text = currentMonth.format("MMM YYYY");
 $.calendar.addEventListener('click', function(e) {
     // You can get selectedDate. (moment object)
     var selectedDate = $.current.selectedDate();
+
+	var args = {
+		day: selectedDate
+	};
+
+	var dayViewController = Alloy.createController('day_view', args);
+
+	dayViewController.getView().open();
     
 });
 

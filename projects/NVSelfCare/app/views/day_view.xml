@@ -1,0 +1,13 @@
+<Alloy>
+	<Window fullscreen="false" class="container" onOpen="openWindow" title="Day">
+        <NavigationGroup id="nav" platform="ios">
+            <Window id="navGroupWin" class="container" title="Day">
+				<ScrollView id="scroll">
+					<Window id="dayEntry" layout="vertical" class="ScrollWindow">
+						<Label top="0" width="95%" height="40" id="hintLabel"/>
+					</Window>
+				</ScrollView>	
+			</Window>
+		</NavigationGroup>
+	</Window>
+</Alloy>

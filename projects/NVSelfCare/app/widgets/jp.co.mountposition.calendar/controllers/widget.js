@@ -20,6 +20,8 @@ $.days.width = $.dates.width = CALENDAR_WIDTH;
 
 $.selected = null;
 
+
+
 doClick = function(e) {
   var _ref, _ref1, _ref2;
   if ((e.source.date != null) && !e.source._isEntry) {
@@ -214,6 +216,17 @@ exports.select = function(day) {
     source: tile
   }) : void 0;
 };
+
+exports.setDate = function() {
+  if (moment.isMoment(day)) {
+    day = day.date();
+  }
+};
+
+exports.getDate = function() {
+	return day;
+};
+
 
 exports.selectedDate = function() {
   if ($.selected != null) {

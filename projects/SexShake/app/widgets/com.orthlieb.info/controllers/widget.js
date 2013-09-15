@@ -39,6 +39,7 @@ _.extend($, args);
 exports.init = function(parentWindow) {
     if (!parentWindow) {
         Ti.API.error("InfoButton: missing required parameter \'parent\'.");
+        return;
     }
 
     if (OS_IOS) {   
@@ -72,6 +73,6 @@ exports.init = function(parentWindow) {
             });
             if (temp) 
                 temp(e);    // Chain the parent, if it exists.
-        }
+        };
     }
 };

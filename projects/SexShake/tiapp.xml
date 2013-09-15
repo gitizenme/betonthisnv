@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>org.betonthisnv.nvsexshake</id>
-    <name>NV Sex Shake</name>
+    <name>NV SexSafe</name>
     <version>0.0.1</version>
-    <publisher>Bet On This NV</publisher>
+    <publisher>BetOnThisNV</publisher>
     <url>http://betonthisnv.org</url>
-    <description>Sex Shake awareness mobile app</description>
-    <copyright>2013 by Bet On This NV</copyright>
+    <description>Nevada safe sex awareness app</description>
+    <copyright>2013 by BetOnThisNV</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
