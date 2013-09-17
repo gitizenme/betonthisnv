@@ -26,4 +26,9 @@
 		fontFamily: 'Helvetica Neue'
 	},
 	textAlign: 'center'
-} 
+},
+"TextField": {
+		top: 5,
+	left: 5,
+	borderStyle: "Ti.UI.INPUT_BORDERSTYLE_ROUNDED"
+		}

@@ -7,6 +7,21 @@ function updateHintLabel(msg, duration) {
     $.hintLabel.text = msg;
 }
 
+function clickSend(e) {
+    var emailDialog = Ti.UI.createEmailDialog();
+    emailDialog.subject = "[BetOnThisNV - NVSexSafe] Get Help";
+    emailDialog.bccRecipients = ['info@izen.me']; // TODO change this
+    emailDialog.html = true;
+    emailDialog.messageBody = 'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;
+    emailDialog.open();
+    if(OS_ANDROID) {
+    	$.contactNavGroup.close();
+    }
+    else {
+    	$.contact.close();
+    }
+}
+
 function clickBack(e) {
     $.contact.close();
 }
@@ -18,8 +33,12 @@ function clickBackAndroid(e) {
 var leftNavButton = Ti.UI.createButton({
     title : 'Back'
 });
-leftNavButton.title = 'Back';
 leftNavButton.addEventListener('click', clickBack);
+
+var rightNavButton = Ti.UI.createButton({
+    title : 'Send'
+});
+rightNavButton.addEventListener('click', clickSend);
 
 function open() {
     Ti.API.trace('contact.' + arguments.callee.name);
@@ -27,7 +46,7 @@ function open() {
     // $.navGroupWin.tabBarHidden = false;
 
     // $.navGroupWin.rightNavButton = rightNavButton;
-    updateHintLabel('Contact View', 750);
+    updateHintLabel('Fill out the information below and touch the Send button.', 750);
 }
 
 if (OS_ANDROID) {
@@ -36,6 +55,7 @@ if (OS_ANDROID) {
 
 if (OS_IOS) {
     $.contactWin.leftNavButton = leftNavButton;
+    $.contactWin.rightNavButton = rightNavButton;
     $.contactNavGroup.init($.navGroup, {});
     $.contactNavGroup.open($.contactWin, {});
 }

@@ -48,18 +48,4 @@ function getHelpClicked(e) {
 	if(OS_IOS) {
 		contactController.getView().open();
 	}
-
-
-    // var emailDialog = Ti.UI.createEmailDialog();
-    // if (emailDialog.isSupported()) {
-        // emailDialog.subject = "Bet On This NV: Get Help";
-        // emailDialog.toRecipients = ['info@izen.me'];
-        // emailDialog.html = true;
-        // emailDialog.messageBody = "<ul><li>Your Name:</li><li>Phone number:</li><li>Message:</li></ul>";
-        // emailDialog.addEventListener('comnplete', emailSendComplete);
-        // emailDialog.open({animated:true});
-    // }
-    // else {
-        // alert("E-mail not available. Please create an e-mail account on your mobile device.");
-    // }
 }

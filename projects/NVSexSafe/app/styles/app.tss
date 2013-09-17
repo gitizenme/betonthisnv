@@ -23,28 +23,46 @@
 	height: Ti.UI.SIZE,
 	color: "#000",
 	font: {
-		fontSize: 20,
+		fontSize: 12,
 		fontFamily: 'Helvetica Neue'
 	},
 	textAlign: 'center'
-} 
-
-
-"#shakeItTab": {
+},
+"Label[platform=android]": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000",
+	font: {
+		fontSize: '12dp',
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: 'center'
+},
+"TextField": {
+		top: 1,
+	left: 5,
+	width: '80%',
+	height: 'size',
+	borderColor: '#eee',
+	borderWidth: 2,
+	borderRadius: 3
+		},
+	".dataEntry": {
+		layout: 'horizontal',
+			top: 2,
+			left: 2
+		},
+		"#shakeItTab": {
 	    icon: "images/airplane.png" 
-}
-
+},
 "#infoTab": {
 	    icon: "images/airplane.png" 
-}
-
+},
 ".getHelpView": {
 		width:"100%",
 	height:"auto",
 	backgroundColor:"darkgrey"
-}
-
-
+},
 ".infoButtonView": {
 		borderRadius:"7 dp",
 		borderColor:"black",
@@ -52,13 +70,10 @@
 		top: "5 dp",
 		height:"30%",
 		width:"auto"
-}
-
+},
 ".infoButton": {
 				width: "200dp"
-}
-
-
+},
 ".infoWidget": {
     icon: "images/airplane.png",
     text: "BetOnThisNV"
