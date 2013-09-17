@@ -1,8 +1,0 @@
-<Alloy>
-	<Window class="container">
-		<View backgroundColor="gray">
-			<Widget src="com.orthlieb.scrollablewebview" id="swv"/>
-			<Button title="Close" bottom="2 dp" onClick="doneClicked"/>
-		</View>
-	</Window>
-</Alloy>
