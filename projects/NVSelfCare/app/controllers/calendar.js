@@ -64,7 +64,8 @@ $.calendar.addEventListener('click', function(e) {
 
 	var dayViewController = Alloy.createController('day_view', args);
 
-	dayViewController.getView().open();
-    
+	if(OS_IOS) {
+		dayViewController.getView().open();
+	}
 });
 

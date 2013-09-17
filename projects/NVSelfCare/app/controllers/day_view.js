@@ -9,6 +9,13 @@ function updateHintLabel(msg, duration) {
 	$.hintLabel.text = msg;
 }
 
+function clickBack(e) {
+    $.contact.close();
+}
+
+function clickBackAndroid(e) {
+    $.navGroupWidget.close();
+}
 
 function clickCalendar(e) {
 	Ti.API.debug('behavior.' + arguments.callee.name + ': ' + JSON.stringify(e));
@@ -25,12 +32,20 @@ leftNavButton.addEventListener('click', clickCalendar);
 // rightNavButton.addEventListener('click', clickSave);
 
 
-function openWindow (args) {
+function open (args) {
 	Ti.API.trace('day_view.' + arguments.callee.name);
-
-	$.navGroupWin.leftNavButton = leftNavButton;
-	// $.navGroupWin.rightNavButton = rightNavButton;
 
 	updateHintLabel('Day View', 750);
 
+}
+
+
+if (OS_ANDROID) {
+    $.navGroupWidget.open($.navGroupWin, {});
+}
+
+if (OS_IOS) {
+    $.navGroupWin.leftNavButton = leftNavButton;
+    $.navGroupWidget.init($.navGroup, {});
+    $.navGroupWidget.open($.navGroupWin, {});
 }

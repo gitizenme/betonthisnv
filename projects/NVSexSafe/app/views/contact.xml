@@ -1,0 +1,14 @@
+<Alloy>
+	<Window fullscreen="false" class="container" onOpen="open" title="Contact">
+		<NavigationGroup id="navGroup" platform="ios">
+			<Window id="contactWin" class="container" title="Contact">
+				<ScrollView id="scroll">
+					<Window id="contactEntry" layout="vertical" class="ScrollWindow">
+						<Label top="0" width="95%" height="40" id="hintLabel"/>
+					</Window>
+				</ScrollView>
+			</Window>
+		</NavigationGroup>
+	</Window>
+	<Widget src="com.orthlieb.navigationgroup" id="contactNavGroup"/>
+</Alloy>

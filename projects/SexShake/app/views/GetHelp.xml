@@ -1,5 +1,0 @@
-<Alloy>
-	<Window layout="vertical" backgroundColor="#fff" title="Get Help">
-		<EmailDialog id="emailDialog"/>
-	</Window>
-</Alloy>

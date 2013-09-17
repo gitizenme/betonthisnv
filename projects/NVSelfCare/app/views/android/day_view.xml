@@ -1,0 +1,13 @@
+<Alloy>
+	<View fullscreen="false" class="container" id="contactView">
+		<Window id="navGroupWin" fullscreen="false" layout="vertical" class="container" onOpen="open" title="Day View">
+			<Button title="Back" onClick="clickBackAndroid"></Button>
+			<ScrollView id="scroll">
+				<View id="entry" layout="vertical" class="ScrollWindow">
+					<Label top="0" width="95%" height="40" id="hintLabel"/>
+				</View>
+			</ScrollView>
+		</Window>
+	</View>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
+</Alloy>

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=NVSelfCare
+iosLaunchConfigurationAttributes/appid=org.betonthisnv.nvselfcare
+iosLaunchConfigurationAttributes/certificate=izen.me
+iosLaunchConfigurationAttributes/distribute_path=/Users/joe/Projects/izenme/NVHealth/github/betonthisnv/dist/iOS
+iosLaunchConfigurationAttributes/keychain=/Users/joe/Library/Keychains/IGT_iOS_Enterprise.keychain
+iosLaunchConfigurationAttributes/output_format=ipa
+iosLaunchConfigurationAttributes/sdk_version=6.1
+iosLaunchConfigurationAttributes/uuid=A9943C4A-9642-4A7D-B0C5-5C3A1227E67B

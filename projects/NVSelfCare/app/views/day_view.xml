@@ -1,6 +1,6 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="openWindow" title="Day">
-        <NavigationGroup id="nav" platform="ios">
+	<Window fullscreen="false" class="container" onOpen="open" title="Day">
+        <NavigationGroup id="navGroup" platform="ios">
             <Window id="navGroupWin" class="container" title="Day">
 				<ScrollView id="scroll">
 					<Window id="dayEntry" layout="vertical" class="ScrollWindow">
@@ -10,4 +10,5 @@
 			</Window>
 		</NavigationGroup>
 	</Window>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>

@@ -1,0 +1,6 @@
+<Alloy>
+	<TabGroup onOpen="open">
+		<Require src="ShakeIt"/>
+		<Require src="info"/>
+	</TabGroup>
+</Alloy>
