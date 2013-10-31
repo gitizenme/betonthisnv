@@ -77,11 +77,13 @@ function initReels() {
         lockCount++;
     }
 
+/*
     if (!col4locked) {
         col4Idx = $.column4.rowCount - 10;
         $.picker.setSelectedRow(3, col4Idx, false);
         lockCount++;
-    }
+    }*/
+
 }
 
 function lockClicked(e) {
@@ -113,6 +115,7 @@ function lockClicked(e) {
             $.lock3.image = '/images/unlock.png';
         }
     }
+/*
     if (e.source == $.lock4) {
         col4locked = !col4locked;
         if (col4locked == true) {
@@ -122,12 +125,13 @@ function lockClicked(e) {
             $.lock4.image = '/images/unlock.png';
         }
     }
+*/
 }
 
 function spinClicked(e) {
     Ti.API.trace('reels.' + arguments.callee.name + ', e=' + JSON.stringify(e));
 
-	if(col1locked && col2locked && col3locked && col4locked) {
+	if(col1locked && col2locked && col3locked) {
 		// TODO handle the stops
 		return;
 	}
@@ -136,7 +140,7 @@ function spinClicked(e) {
     $.lock1.enabled = false;
     $.lock2.enabled = false;
     $.lock3.enabled = false;
-    $.lock4.enabled = false;
+    // $.lock4.enabled = false;
     initReels();
 
 	if(lockCount == 1) {
@@ -182,6 +186,7 @@ function spinClicked(e) {
                 }
             }
 
+/*
             if (!col4locked) {
                 col4Idx--;
                 if (col4Idx <= 0) {
@@ -192,6 +197,7 @@ function spinClicked(e) {
                     $.picker.setSelectedRow(3, col4Idx, true);
                 }
             }
+*/
 
             sleep(spinCycleDelay);
         }
@@ -207,9 +213,11 @@ function spinClicked(e) {
     if (!col3locked) {
         col3Stop = Math.floor((Math.random() * col3Idx) + 4);
     }
+/*
     if (!col4locked) {
         col4Stop = Math.floor((Math.random() * col4Idx) + 4);
     }
+*/
 
     if (!col1locked) {
         sleep(75);
@@ -226,16 +234,18 @@ function spinClicked(e) {
         $.picker.setSelectedRow(2, col3Stop, true);
     }
 
+/*
     if (!col4locked) {
         sleep(150);
         $.picker.setSelectedRow(3, col4Stop, true);
     }
+*/
 
     $.spin.enabled = true;
     $.lock1.enabled = true;
     $.lock2.enabled = true;
     $.lock3.enabled = true;
-    $.lock4.enabled = true;
+    // $.lock4.enabled = true;
 
 }
 
@@ -243,11 +253,14 @@ function open() {
     Ti.API.trace('reels.' + arguments.callee.name);
 
 
+/*
     if (OS_ANDROID) {
         var screenWidth = Ti.Platform.displayCaps.platformWidth;
-        $.picker.width = screenWidth;
-        $.picker.height = '300';
+        $.picker.width = Ti.UI.FILL;
     }
+*/
+    $.picker.width = Ti.UI.FILL;
+    $.picker.height = Ti.UI.SIZE;
 
 
     initReels();

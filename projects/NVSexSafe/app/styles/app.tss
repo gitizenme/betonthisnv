@@ -53,10 +53,10 @@
 			left: 2
 		},
 		"#shakeItTab": {
-	    icon: "images/airplane.png" 
+	    icon: "images/SexSafeIcon.png" 
 },
 "#infoTab": {
-	    icon: "images/airplane.png" 
+	    icon: "images/GetHelpIcon.png" 
 },
 ".getHelpView": {
 		width:"100%",
@@ -75,6 +75,6 @@
 				width: "200dp"
 },
 ".infoWidget": {
-    icon: "images/airplane.png",
+    icon: "images/BetOnThisIcon.png",
     text: "BetOnThisNV"
 }

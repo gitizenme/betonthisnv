@@ -5,13 +5,13 @@
 			<ScrollView layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
 			showHorizontalScrollIndicator="false" height="100%" width="80%">
 				<View class="infoButtonView">
-					<Button class="infoButton" title="Get Tested" onClick="getTestedClicked"></Button>
+					<Button class="infoButton" image="images/GetTestedIcon.png" title="Get Tested" onClick="getTestedClicked"></Button>
 				</View>
 				<View class="infoButtonView">
-					<Button class="infoButton" title="Find Condoms" onClick="findCondomsClicked"></Button>
+					<Button class="infoButton" image="images/FindCondomsIcon.png" title="Find Condoms" onClick="findCondomsClicked"></Button>
 				</View>
 				<View class="infoButtonView">
-					<Button class="infoButton" title="Get Help" onClick="getHelpClicked"></Button>
+					<Button class="infoButton" image="images/GetHelpIcon.png" title="Get Help" onClick="getHelpClicked"></Button>
 				</View>
 			</ScrollView>
 		</Window>

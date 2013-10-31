@@ -1,5 +1,5 @@
 <Alloy>
-	<TabGroup onOpen="open">
+	<TabGroup onOpen="open" tabsBackgroundColor="#fff">
 		<Require src="ShakeIt"/>
 		<Require src="info"/>
 	</TabGroup>
