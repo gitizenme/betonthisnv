@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This atlas was generated using SpriteHelper 2 -->
+<!-- http://www.gamedevhelper.com -->
+<Imageset Name="UntitledSheet" Imagefile="Untitled_UntitledSheet.png" NativeHorzRes="61" NativeVertRes="291" AutoScaled="false">
+	<Image Name="Gender_Reels-TSTV.png" XPos="1" YPos="1" Width="58" Height="56"/>
+	<Image Name="Gender_Reels-TMTF.png" XPos="1" YPos="59" Width="58" Height="56"/>
+	<Image Name="Gender_Reels-TFTM.png" XPos="1" YPos="117" Width="58" Height="56"/>
+	<Image Name="Gender_Reels-Male.png" XPos="1" YPos="175" Width="58" Height="56"/>
+	<Image Name="Gender_Reels-Female.png" XPos="1" YPos="233" Width="58" Height="56"/>
+</Imageset>

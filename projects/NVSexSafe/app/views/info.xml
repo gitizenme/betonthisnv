@@ -1,6 +1,6 @@
 <Alloy>
-	<Tab title="Info" id="infoTab">
-		<Window id="info" title="Info">
+	<Tab title="Get Help" id="infoTab" icon="images/GetHelpIcon.png">
+		<Window id="info" title="Get Help">
 			<Widget class="infoWidget" id="info_web" src="com.orthlieb.info"/>
 			<ScrollView layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
 			showHorizontalScrollIndicator="false" height="100%" width="80%">

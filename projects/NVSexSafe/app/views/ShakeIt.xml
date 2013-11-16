@@ -1,8 +1,12 @@
 <Alloy>
-	<Tab id="shakeItTab" title="SexSafe" backgroundColor="#ccc">
-		<Window id="shakeItWin" title="Shake It" layout="vertical" onOpen="open">
+	<Tab id="shakeItTab" title="Sex Safe" icon="images/SexSafeIcon.png">
+		<Window id="shakeItWin" title="Sex Safe" onOpen="open">
 			<Widget class="infoWidget" id="sex_shake_web" src="com.orthlieb.info"/>
-			<Require type="widget" src="me.izen.Reels" id="reels"/>
+	        <View top="0" height="Ti.UI.SIZE" layout="horizontal" horizontalWrap="false">
+		        <Button image="/images/unlock.png" left="25" id='lock1' onClick="lockClicked">
+		        <Button image="/images/unlock.png" left="30" id='lock2' onClick="lockClicked">
+		        <Button image="/images/unlock.png" left="30" id='lock3' onClick="lockClicked">
+	        </View>
 		</Window>
 	</Tab>
 </Alloy>
