@@ -184,13 +184,10 @@ function onLeverTouch(e) {
 function initGameScene() {
 	Ti.API.debug("BEGIN - initGameScene");
 
-	var suffix = "";
+	var suffix = "-hd";
 
 	if (game.screen.width == 320 || game.screen.width == 480) {//iphone 2G,3G 3GS
 		suffix = "";
-	} else if (game.screen.width >= 640 || game.screen.width >= 960) {//iphone 4,
-		// 4S, 5, 5S (retina)
-		suffix = "-hd";
 	}
 
 	// set screen size for your game (TARGET_SCREEN size)
@@ -336,26 +333,24 @@ function initGameScene() {
 	toWhomLockLabel.addEventListener('touchend', onToWhomIconTouch);
 
 	for (var i = 0, j = reels.reel1.numberOfSprites; i < j; i++) {
-		reels.reel1.spriteNames[i] = "Reel1Frame" + String.format("%0d", i) + "@2X.png";
+		reels.reel1.spriteNames[i] = "Reel1Frame" + String.format("%02d", i) + "@2X.png";
 	};
 
 	for (var i = 0, j = reels.reel2.numberOfSprites; i < j; i++) {
-		reels.reel2.spriteNames[i] = "Reel2Frame" + String.format("%0d", i) + "@2X.png";
+		reels.reel2.spriteNames[i] = "Reel2Frame" + String.format("%02d", i) + "@2X.png";
 	};
 
 	for (var i = 0, j = reels.reel3.numberOfSprites; i < j; i++) {
-		reels.reel3.spriteNames[i] = "Reel3Frame" + String.format("%0d", i) + "@2X.png";
+		reels.reel3.spriteNames[i] = "Reel3Frame" + String.format("%02d", i) + "@2X.png";
 	};
+
 
 	// Reel spritesheets
 	reel1 = platino.createSpriteSheet({
 		// image : "graphics/Reels_Reel1.png",
 		asset : 'graphics/Reels_Reel1' + suffix + '.xml',
 		x : 25,
-		y : 100,
-		scaleX : 1
-		// height : 338,
-		// width : 116
+		y : 100
 	});
 	reel1.selectFrame(reels.reel1.spriteNames[0]);
 	scene.add(reel1);
@@ -363,10 +358,7 @@ function initGameScene() {
 		// image : "graphics/Reels_Reel2.png",
 		asset : 'graphics/Reels_Reel2' + suffix + '.xml',
 		x : 225,
-		y : 100,
-		scaleX : 1
-		// height : 338,
-		// width : 116
+		y : 100
 	});
 	reel2.selectFrame(reels.reel2.spriteNames[0]);
 	scene.add(reel2);
@@ -374,10 +366,7 @@ function initGameScene() {
 		// image : "graphics/Reels_Reel3.png",
 		asset : 'graphics/Reels_Reel3' + suffix + '.xml',
 		x : 425,
-		y : 100,
-		scaleX : 1
-		// height : 338,
-		// width : 116
+		y : 100
 	});
 	reel3.selectFrame(reels.reel3.spriteNames[0]);
 	scene.add(reel3);
@@ -557,9 +546,41 @@ game.addEventListener("touchend", function(e) {
 
 game.addEventListener("onload", function(e) {
 	Ti.API.debug("BEGIN - onload");
-	Ti.API.info("game size equals " + game.screen.width + "x" + game.screen.height);
+	Ti.API.info("game.screen = " + game.screen.width + " x " + game.screen.height);
+	Ti.API.info("game.size = " + game.size.width + " x " + game.size.height);
 
 	TOUCH_SCALE = game.screen.width / game.size.width;
+
+	
+	/*
+	if (screenHeight >= 568) {
+		screenHeight = 568;
+	} 
+	 game.touchScaleX = 1;
+	 game.touchScaleY = 1;
+	 game.touchScaleX = game.screen.width / game.size.width;
+	 game.touchScaleY = game.screen.height / game.size.height;
+	 */
+
+	// if (OS_ANDROID) {
+		var screenHeight =  game.size.height;
+		game.TARGET_SCREEN = {
+			width : Ti.Platform.displayCaps.platformWidth,
+			height : screenHeight
+		};
+		Ti.API.info("game.TARGET_SCREEN = " + game.TARGET_SCREEN.width + " x " + game.TARGET_SCREEN.height);
+		var screenScale = game.size.height / game.TARGET_SCREEN.height;
+		game.screen = {
+			width : game.size.width / screenScale,
+			height : game.size.height / screenScale
+		};
+		Ti.API.info("game.screen = " + game.screen.width + " x " + game.screen.height);
+		game.screenScale = 480 / game.TARGET_SCREEN.height;
+		Ti.API.info("screenScale = " + screenScale + ", game.screenScale = " + game.screenScale);
+	// }
+	// else {
+		// game.screenScale = 1;
+	// }
 
 	initGameScene();
 

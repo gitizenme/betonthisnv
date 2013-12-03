@@ -5,8 +5,10 @@
   textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
   backgroundColor: 'transparent',
 	  color: "#fff",
+	  right: 0,
+	  top: 0,
   font:{
-		    fontSize:10,
+		    fontSize:8,
 		    fontWeight: 'bold'
 		  }
 		}
@@ -16,6 +18,8 @@
   height: Ti.UI.SIZE,
   backgroundColor: 'transparent',
 	  color: '#CC0920',
+	  top: 10,
+	  right: 10,
 	  tintColor: '#fff'
 }
 
