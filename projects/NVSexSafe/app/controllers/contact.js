@@ -43,9 +43,6 @@ rightNavButton.addEventListener('click', clickSend);
 function open() {
     Ti.API.trace('contact.' + arguments.callee.name);
 
-    // $.navGroupWin.tabBarHidden = false;
-
-    // $.navGroupWin.rightNavButton = rightNavButton;
     updateHintLabel('Fill out the information below and touch the Send button.', 750);
 }
 

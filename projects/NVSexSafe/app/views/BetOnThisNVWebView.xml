@@ -1,8 +1,10 @@
 <Alloy>
-	<Window>
-		<View>
-			<Widget src="com.orthlieb.scrollablewebview" id="swv"/>
-			<Button title="Close" bottom="2 dp" onClick="doneClicked"/>
-		</View>
+	<Window fullscreen="false" class="container" onOpen="open" title="BetOnThisNV">
+		<NavigationGroup id="navGroup" platform="ios">
+			<Window id="navWin" class="container" title="BetOnThisNV">
+				<WebView url="http://betonthisnv.org"/>
+			</Window>
+		</NavigationGroup>
 	</Window>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>

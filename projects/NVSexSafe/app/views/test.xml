@@ -1,0 +1,9 @@
+<Alloy>
+	<Tab title="Test" id="testTab" icon="images/airplane.png">
+		<Window id="test" title="Test">
+			<View width="FILL" height="FILL" backgroundColor="black">
+				<ImageView image="images/Reel1Frame01.png" width="SIZE" height="SIZE"></ImageView>
+			</View>
+		</Window>
+	</Tab>
+</Alloy>

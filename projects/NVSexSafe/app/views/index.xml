@@ -1,6 +1,12 @@
 <Alloy>
 	<TabGroup onOpen="open">
 		<Require src="ShakeIt"/>
+		<Require src="FindCondoms"/>
+		<Require src="GetTested"/>
+		<Require src="GetHelp"/>
+<!--
 		<Require src="info"/>
+		<Require src="test"/>
+-->
 	</TabGroup>
 </Alloy>

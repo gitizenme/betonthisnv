@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This atlas was generated using SpriteHelper 2 -->
+<!-- http://www.gamedevhelper.com -->
+<Imageset Name="Reel1" Imagefile="Reels_Reel1.png" NativeHorzRes="95" NativeVertRes="454" AutoScaled="false">
+	<Image Name="Reel1Frame01.png" XPos="48" YPos="363" Width="45" Height="89"/>
+	<Image Name="Reel1Frame02.png" XPos="48" YPos="273" Width="45" Height="89"/>
+	<Image Name="Reel1Frame03.png" XPos="1" YPos="363" Width="45" Height="89"/>
+	<Image Name="Reel1Frame04.png" XPos="1" YPos="273" Width="45" Height="89"/>
+	<Image Name="Reel1Frame05.png" XPos="48" YPos="182" Width="45" Height="89"/>
+	<Image Name="Reel1Frame06.png" XPos="1" YPos="182" Width="45" Height="89"/>
+	<Image Name="Reel1Frame07.png" XPos="48" YPos="92" Width="45" Height="89"/>
+	<Image Name="Reel1Frame08.png" XPos="1" YPos="92" Width="45" Height="89"/>
+	<Image Name="Reel1Frame09.png" XPos="48" YPos="1" Width="45" Height="89"/>
+	<Image Name="Reel1Frame10.png" XPos="1" YPos="1" Width="45" Height="89"/>
+</Imageset>

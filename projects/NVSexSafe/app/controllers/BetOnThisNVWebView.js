@@ -1,11 +1,35 @@
 
-var args = arguments[0] || {};
-
-
-function doneClicked(e) {
+function clickBack(e) {
     $.BetOnThisNVWebView.close();
 }
 
-$.swv.urlArray = ["http://betonthisnv.org/", "http://betonthisnv.org/Protect/NV_Testing_Locations/", "http://betonthisnv.org/Protect/Get_Free_Condoms/"];
-$.swv.currentPage = (args.targetPage !== null) ? args.targetPage : 0;
-$.BetOnThisNVWebView.open();
+function clickBackAndroid(e) {
+    $.navGroupWidget.close();
+}
+
+var leftNavButton = Ti.UI.createButton({
+    title : 'Back'
+});
+leftNavButton.addEventListener('click', clickBack);
+
+/*
+var rightNavButton = Ti.UI.createButton({
+    title : 'Send'
+});
+rightNavButton.addEventListener('click', clickSend);
+*/
+
+function open() {
+    Ti.API.trace('BetOnThisNVWebView.' + arguments.callee.name);
+}
+
+if (OS_ANDROID) {
+    $.navGroupWidget.open($.navWin, {});
+}
+
+if (OS_IOS) {
+    $.navWin.leftNavButton = leftNavButton;
+    // $.contactWin.rightNavButton = rightNavButton;
+    $.navGroupWidget.init($.navGroup, {});
+    $.navGroupWidget.open($.navWin, {});
+}

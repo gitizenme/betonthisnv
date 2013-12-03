@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This atlas was generated using SpriteHelper 2 -->
+<!-- http://www.gamedevhelper.com -->
+<Imageset Name="Reel2" Imagefile="Reels_Reel2.png" NativeHorzRes="95" NativeVertRes="1631" AutoScaled="false">
+	<Image Name="Reel2Frame01.png" XPos="48" YPos="1540" Width="45" Height="89"/>
+	<Image Name="Reel2Frame02.png" XPos="1" YPos="1540" Width="45" Height="89"/>
+	<Image Name="Reel2Frame03.png" XPos="48" YPos="1449" Width="45" Height="89"/>
+	<Image Name="Reel2Frame04.png" XPos="1" YPos="1449" Width="45" Height="89"/>
+	<Image Name="Reel2Frame05.png" XPos="48" YPos="1359" Width="45" Height="89"/>
+	<Image Name="Reel2Frame06.png" XPos="1" YPos="1359" Width="45" Height="89"/>
+	<Image Name="Reel2Frame07.png" XPos="48" YPos="1268" Width="45" Height="89"/>
+	<Image Name="Reel2Frame08.png" XPos="1" YPos="1268" Width="45" Height="89"/>
+	<Image Name="Reel2Frame09.png" XPos="48" YPos="1178" Width="45" Height="89"/>
+	<Image Name="Reel2Frame10.png" XPos="1" YPos="1178" Width="45" Height="89"/>
+	<Image Name="Reel2Frame11.png" XPos="48" YPos="1087" Width="45" Height="89"/>
+	<Image Name="Reel2Frame12.png" XPos="1" YPos="1087" Width="45" Height="89"/>
+	<Image Name="Reel2Frame13.png" XPos="48" YPos="997" Width="45" Height="89"/>
+	<Image Name="Reel2Frame14.png" XPos="1" YPos="997" Width="45" Height="89"/>
+	<Image Name="Reel2Frame15.png" XPos="48" YPos="906" Width="45" Height="89"/>
+	<Image Name="Reel2Frame16.png" XPos="1" YPos="906" Width="45" Height="89"/>
+	<Image Name="Reel2Frame17.png" XPos="48" YPos="816" Width="45" Height="89"/>
+	<Image Name="Reel2Frame18.png" XPos="1" YPos="816" Width="45" Height="89"/>
+	<Image Name="Reel2Frame19.png" XPos="48" YPos="725" Width="45" Height="89"/>
+	<Image Name="Reel2Frame20.png" XPos="1" YPos="725" Width="45" Height="89"/>
+	<Image Name="Reel2Frame21.png" XPos="48" YPos="635" Width="45" Height="89"/>
+	<Image Name="Reel2Frame22.png" XPos="1" YPos="635" Width="45" Height="89"/>
+	<Image Name="Reel2Frame23.png" XPos="48" YPos="544" Width="45" Height="89"/>
+	<Image Name="Reel2Frame24.png" XPos="1" YPos="544" Width="45" Height="89"/>
+	<Image Name="Reel2Frame25.png" XPos="48" YPos="454" Width="45" Height="89"/>
+	<Image Name="Reel2Frame26.png" XPos="1" YPos="454" Width="45" Height="89"/>
+	<Image Name="Reel2Frame27.png" XPos="48" YPos="363" Width="45" Height="89"/>
+	<Image Name="Reel2Frame28.png" XPos="1" YPos="363" Width="45" Height="89"/>
+	<Image Name="Reel2Frame29.png" XPos="48" YPos="273" Width="45" Height="89"/>
+	<Image Name="Reel2Frame30.png" XPos="1" YPos="273" Width="45" Height="89"/>
+	<Image Name="Reel2Frame31.png" XPos="48" YPos="182" Width="45" Height="89"/>
+	<Image Name="Reel2Frame32.png" XPos="1" YPos="182" Width="45" Height="89"/>
+	<Image Name="Reel2Frame33.png" XPos="48" YPos="92" Width="45" Height="89"/>
+	<Image Name="Reel2Frame34.png" XPos="1" YPos="92" Width="45" Height="89"/>
+	<Image Name="Reel2Frame35.png" XPos="48" YPos="1" Width="45" Height="89"/>
+	<Image Name="Reel2Frame36.png" XPos="1" YPos="1" Width="45" Height="89"/>
+</Imageset>

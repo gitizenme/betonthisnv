@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="navLeftView">
+		<ImageView id="navLeftImage" left="0" top="0" image="images/appicon-Small-40.png" onClick="leftNavClicked"/>
+	</View>
+</Alloy>

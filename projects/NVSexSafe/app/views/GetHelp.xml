@@ -1,0 +1,13 @@
+<Alloy>
+	<Tab title="Get Help" id="getHelpTab" icon="images/GetHelpIcon.png">
+		<Window id="getHelp" title="Get Help">
+			<ScrollView layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
+			showHorizontalScrollIndicator="false" height="100%" width="80%">
+				<View class="infoButtonView">
+					<Button class="infoButton" image="images/GetHelpIcon.png" title="Get Help" onClick="getHelpClicked"></Button>
+				</View>
+			</ScrollView>
+		</Window>
+	</Tab>
+</Alloy>
+

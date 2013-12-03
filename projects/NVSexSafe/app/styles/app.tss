@@ -17,7 +17,7 @@
 	color: "#fff"
 },
 ".container": {
-	backgroundColor: "#2399A3",
+	backgroundColor: "transparent",
 	tintColor: "#fff",
 	color: "#fff"
 },
@@ -27,21 +27,22 @@
 	backgroundColor: "#2399A3"
 	},
 "NavigationGroup": {
-	backgroundColor: "#CC0920",
-	barColor: "#CC0920",
+	backgroundColor: "#2399A3",
+	barColor: "#2399A3",
 	tintColor: '#fff',
 	color: "#fff"
 },
 "TabGroup": {
 	// backgroundImage: "images/TabBar-Background.png"
-	// backgroundColor: "#0A0A0A",
+	top: 20,
+	backgroundColor: "#2399A3",
 	barColor: "#CC0920",
 tabsBackgroundColor: "#0A0A0A"
 // tintColor: '#2399A3',
 // tabsTintColor: '#2399A3'
 },
 "TabGroup[platform=android]": {
-	tabsBackgroundColor: "#CC0920"
+	tabsBackgroundColor: "#0A0A0A"
 },
 "ScrollView": {
 	contentWidth: 'auto',
