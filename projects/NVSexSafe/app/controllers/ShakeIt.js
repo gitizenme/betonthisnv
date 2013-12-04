@@ -186,33 +186,19 @@ function initGameScene() {
 
 	var suffix = "-hd";
 
-	if (game.screen.width == 320 || game.screen.width == 480) {//iphone 2G,3G 3GS
-		suffix = "";
+	// if (game.screen.width == 320 || game.screen.width == 480) {//iphone 2G,3G 3GS
+	// suffix = "";
+	// }
+
+	var scaleFactor = 1;
+	if (OS_ANDROID) {
+		if (game.size.width == 360) {
+			scaleFactor = 1.75;
+		} else if (game.size.width == 320) {
+			scaleFactor = 2;
+		}
 	}
-
-	// set screen size for your game (TARGET_SCREEN size)
-	// var screenScale = game.size.height / game.TARGET_SCREEN.height;
-	/*
-	 game.screen = {
-	 width : game.TARGET_SCREEN.width,
-	 height : game.size.height / screenScale
-	 };
-	 game.screen = {
-	 width : 640,
-	 height : 960
-	 };
-	 Ti.API.info("game size equals " + game.screen.width + "x" + game.screen.height);
-	 */
-
-	/*
-	 if (game.screen.width == 768 || game.screen.width == 1024) {//ipad 1, 2, mini
-	 suffix = "-ipad";
-	 }
-	 else if (game.screen.width == 1536 || game.screen.width == 2048) {//ipad 3, 4
-	 // (retina)
-	 suffix = "-ipadhd";
-	 }
-	 */
+	Ti.API.debug("BEGIN - scaleFactor = " + scaleFactor);
 
 	topBorder = platino.createCanvasSprite({
 		x : 0,
@@ -226,10 +212,10 @@ function initGameScene() {
 
 	genderLockIcon = platino.createSprite({
 		image : 'images/lock@2x.png',
-		width : 30,
-		height : 30,
-		x : 30,
-		y : 50,
+		width : 30 / scaleFactor,
+		height : 30 / scaleFactor,
+		x : 30 / scaleFactor,
+		y : 50 / scaleFactor,
 		alpha : 0
 	});
 	scene.add(genderLockIcon);
@@ -238,10 +224,10 @@ function initGameScene() {
 
 	genderUnLockIcon = platino.createSprite({
 		image : 'images/unlock@2x.png',
-		width : 30,
-		height : 30,
-		x : 30,
-		y : 50,
+		width : 30 / scaleFactor,
+		height : 30 / scaleFactor,
+		x : 30 / scaleFactor,
+		y : 50 / scaleFactor,
 		alpha : 1
 	});
 	scene.add(genderUnLockIcon);
@@ -251,9 +237,9 @@ function initGameScene() {
 
 	genderLockLabel = platino.createTextSprite({
 		text : 'Your Gender',
-		fontSize : 18,
-		x : 65,
-		y : 55
+		fontSize : 18 / scaleFactor,
+		x : 65 / scaleFactor,
+		y : 55 / scaleFactor
 	});
 	genderLockLabel.width += 60;
 	scene.add(genderLockLabel);
@@ -262,10 +248,10 @@ function initGameScene() {
 
 	activityLockIcon = platino.createSprite({
 		image : 'images/lock@2x.png',
-		width : 30,
-		height : 30,
-		x : 230,
-		y : 50,
+		width : 30 / scaleFactor,
+		height : 30 / scaleFactor,
+		x : 230 / scaleFactor,
+		y : 50 / scaleFactor,
 		alpha : 0
 	});
 	scene.add(activityLockIcon);
@@ -275,10 +261,10 @@ function initGameScene() {
 
 	activityUnLockIcon = platino.createSprite({
 		image : 'images/unlock@2x.png',
-		width : 30,
-		height : 30,
-		x : 230,
-		y : 50,
+		width : 30 / scaleFactor,
+		height : 30 / scaleFactor,
+		x : 230 / scaleFactor,
+		y : 50 / scaleFactor,
 		alpha : 1
 	});
 	scene.add(activityUnLockIcon);
@@ -287,9 +273,9 @@ function initGameScene() {
 
 	activityLockLabel = platino.createTextSprite({
 		text : 'Activity',
-		fontSize : 18,
-		x : 266,
-		y : 55
+		fontSize : 18 / scaleFactor,
+		x : 266 / scaleFactor,
+		y : 55 / scaleFactor
 	});
 	activityLockLabel.width += 60;
 	scene.add(activityLockLabel);
@@ -298,10 +284,10 @@ function initGameScene() {
 
 	toWhomLockIcon = platino.createSprite({
 		image : 'images/lock@2x.png',
-		width : 30,
-		height : 30,
-		x : 430,
-		y : 50,
+		width : 30 / scaleFactor,
+		height : 30 / scaleFactor,
+		x : 430 / scaleFactor,
+		y : 50 / scaleFactor,
 		alpha : 0
 	});
 	scene.add(toWhomLockIcon);
@@ -310,10 +296,10 @@ function initGameScene() {
 
 	toWhomUnLockIcon = platino.createSprite({
 		image : 'images/unlock@2x.png',
-		width : 30,
-		height : 30,
-		x : 430,
-		y : 50,
+		width : 30 / scaleFactor,
+		height : 30 / scaleFactor,
+		x : 430 / scaleFactor,
+		y : 50 / scaleFactor,
 		alpha : 1
 	});
 	scene.add(toWhomUnLockIcon);
@@ -323,9 +309,9 @@ function initGameScene() {
 
 	toWhomLockLabel = platino.createTextSprite({
 		text : 'To Whom',
-		fontSize : 18,
-		x : 465,
-		y : 55
+		fontSize : 18 / scaleFactor,
+		x : 465 / scaleFactor,
+		y : 55 / scaleFactor
 	});
 	toWhomLockLabel.width += 60;
 	scene.add(toWhomLockLabel);
@@ -344,29 +330,31 @@ function initGameScene() {
 		reels.reel3.spriteNames[i] = "Reel3Frame" + String.format("%02d", i) + "@2X.png";
 	};
 
-
 	// Reel spritesheets
 	reel1 = platino.createSpriteSheet({
-		// image : "graphics/Reels_Reel1.png",
 		asset : 'graphics/Reels_Reel1' + suffix + '.xml',
-		x : 25,
-		y : 100
+		x : 25 / scaleFactor,
+		y : 100 / scaleFactor,
+		scaleX : 1 / scaleFactor,
+		scaleY : 1 / scaleFactor
 	});
 	reel1.selectFrame(reels.reel1.spriteNames[0]);
 	scene.add(reel1);
 	reel2 = platino.createSpriteSheet({
-		// image : "graphics/Reels_Reel2.png",
 		asset : 'graphics/Reels_Reel2' + suffix + '.xml',
-		x : 225,
-		y : 100
+		x : 225 / scaleFactor,
+		y : 100 / scaleFactor,
+		scaleX : 1 / scaleFactor,
+		scaleY : 1 / scaleFactor
 	});
 	reel2.selectFrame(reels.reel2.spriteNames[0]);
 	scene.add(reel2);
 	reel3 = platino.createSpriteSheet({
-		// image : "graphics/Reels_Reel3.png",
 		asset : 'graphics/Reels_Reel3' + suffix + '.xml',
-		x : 425,
-		y : 100
+		x : 425 / scaleFactor,
+		y : 100 / scaleFactor,
+		scaleX : 1 / scaleFactor,
+		scaleY : 1 / scaleFactor
 	});
 	reel3.selectFrame(reels.reel3.spriteNames[0]);
 	scene.add(reel3);
@@ -378,8 +366,10 @@ function initGameScene() {
 	// Add the lever
 	lever = platino.createSprite({
 		image : "graphics/ball.png",
-		x : 500,
-		y : 600
+		x : 500 / scaleFactor,
+		y : 600 / scaleFactor,
+		width : 58 / scaleFactor,
+		height : 58 / scaleFactor
 	});
 	scene.add(lever);
 	touchable.push(lever);
@@ -454,8 +444,11 @@ var endRoll = function() {
 			reel3.pauseAt(reel3Random);
 		}, 1000);
 	}
-
-	setTimeout(checkWin, 1250);
+	if (isGenderLocked && isActivityLocked && isToWhomLocked) {
+		checkWin();
+	} else {
+		setTimeout(checkWin, 1250);
+	}
 };
 
 // Spin function
@@ -478,7 +471,11 @@ spin = function() {
 
 		// Stop the reels randomly between .8 and 2.5 seconds
 		var ranVal = Math.floor((Math.random() * 4000) + 800);
-		setTimeout(endRoll, ranVal);
+		if (isGenderLocked && isActivityLocked && isToWhomLocked) {
+			endRoll();
+		} else {
+			setTimeout(endRoll, ranVal);
+		}
 
 	}
 };
@@ -499,11 +496,12 @@ var onScreenTouch = function(e) {
 	// receive touch events first
 	for ( i = touchable.length - 1; i >= 0; i--) {
 		sprite = touchable[i];
-		Ti.API.debug('Checking sprite: x=' + sprite.x + ", y=" + sprite.y);
+		// Ti.API.debug('Checking sprite: x=' + sprite.x + ", y=" + sprite.y);
 
 		// if sprite contains the touch coordinates, fire the event
+		// if (sprite.containsWithPadding(_event.x, _event.y, 20, 10)) {
 		if (sprite.contains(_event.x, _event.y)) {
-			Ti.API.debug('Sprite found!');
+			// Ti.API.debug('Sprite found!');
 			sprite.fireEvent(e.type, _event);
 			break;
 		}
@@ -551,51 +549,52 @@ game.addEventListener("onload", function(e) {
 
 	TOUCH_SCALE = game.screen.width / game.size.width;
 
-	
 	/*
 	if (screenHeight >= 568) {
-		screenHeight = 568;
-	} 
-	 game.touchScaleX = 1;
-	 game.touchScaleY = 1;
-	 game.touchScaleX = game.screen.width / game.size.width;
-	 game.touchScaleY = game.screen.height / game.size.height;
-	 */
+	screenHeight = 568;
+	}
+	game.touchScaleX = 1;
+	game.touchScaleY = 1;
+	game.touchScaleX = game.screen.width / game.size.width;
+	game.touchScaleY = game.screen.height / game.size.height;
+	*/
 
 	// if (OS_ANDROID) {
-		var screenHeight =  game.size.height;
-		game.TARGET_SCREEN = {
-			width : Ti.Platform.displayCaps.platformWidth,
-			height : screenHeight
-		};
-		Ti.API.info("game.TARGET_SCREEN = " + game.TARGET_SCREEN.width + " x " + game.TARGET_SCREEN.height);
-		var screenScale = game.size.height / game.TARGET_SCREEN.height;
-		game.screen = {
-			width : game.size.width / screenScale,
-			height : game.size.height / screenScale
-		};
-		Ti.API.info("game.screen = " + game.screen.width + " x " + game.screen.height);
-		game.screenScale = 480 / game.TARGET_SCREEN.height;
-		Ti.API.info("screenScale = " + screenScale + ", game.screenScale = " + game.screenScale);
+	// var screenHeight =  game.size.height;
+	// game.TARGET_SCREEN = {
+	// width : Ti.Platform.displayCaps.platformWidth,
+	// height : screenHeight
+	// };
+	// Ti.API.info("game.TARGET_SCREEN = " + game.TARGET_SCREEN.width + " x " + game.TARGET_SCREEN.height);
+	// var screenScale = game.size.height / game.TARGET_SCREEN.height;
+	// game.screen = {
+	// width : game.size.width / screenScale,
+	// height : game.size.height / screenScale
+	// };
+	// Ti.API.info("game.screen = " + game.screen.width + " x " + game.screen.height);
+	// game.screenScale = 480 / game.TARGET_SCREEN.height;
+	// Ti.API.info("screenScale = " + screenScale + ", game.screenScale = " + game.screenScale);
 	// }
 	// else {
-		// game.screenScale = 1;
+	// game.screenScale = 1;
 	// }
 
 	initGameScene();
 
 	// Start the game
 	game.start();
-});
 
-function lockClicked(e) {
-}
+	Ti.Gesture.addEventListener('shake', function(e) {
+		spin();
+	});
+
+});
 
 function init() {
 	Ti.API.trace('ShakeIt.' + arguments.callee.name);
 	// Add objects and open game window
 	$.shakeItWin.add(game);
-	// $.reels.init();
+
 }
 
 function open() {
