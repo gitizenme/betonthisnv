@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>org.betonthisnv.nvsexsafe</id>
     <name>NV SexSafe</name>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <publisher>BetOnThisNV</publisher>
     <url>http://betonthisnv.org</url>
     <description>Sex Safe</description>
@@ -17,13 +17,14 @@
     <analytics>true</analytics>
     <guid>1721fe33-c4ce-4aed-b339-12a5282882eb</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
-	<ios>
-	    <plist>
-	        <dict>
-	            <key>UIStatusBarStyle</key><string>UIStatusBarStyleLightContent</string>
-	        </dict>
-	    </plist>
-	</ios>
+    <ios>
+        <plist>
+            <dict>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleLightContent</string>
+            </dict>
+        </plist>
+    </ios>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -38,7 +39,7 @@
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <tool-api-level>11</tool-api-level>
         <manifest android:versionCode="1" android:versionName="0.1.0">
-            <uses-sdk android:targetSdkVersion="14"/>
+            <uses-sdk android:targetSdkVersion="11"/>
             <supports-screens android:anyDensity="false"/>
         </manifest>
     </android>

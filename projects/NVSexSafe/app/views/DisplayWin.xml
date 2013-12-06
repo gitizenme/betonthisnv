@@ -1,0 +1,17 @@
+<Alloy>
+	<Window fullscreen="false" class="container" onOpen="open" title="Risk Factor">
+		<NavigationGroup id="navGroup" platform="ios">
+			<Window id="navWin" class="container" title="Risk Factor">
+				<ScrollView id="scrollView" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="true" height="95%" width="95%">
+					<View id="view" backgroundColor="#fff" color="#000" borderRadius="10" height="FILL" width="FILL" layout="vertical">
+						<Label id="riskTitle" top="5" color="#CC0920" text="Risk Factor" />
+						<Label id="riskBody" color="#000" textAlign="left" />
+						<Label id="safetyTitle" top="20" color="#CC0920" text="Safety" />
+						<Label id="safetyBody" color="#000" textAlign="left" />
+					</View>
+				</ScrollView>
+			</Window>
+		</NavigationGroup>
+	</Window>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
+</Alloy>

@@ -1,13 +1,10 @@
-
 // Colors
 // Black: #0A0A0A
 // Green: #C8D624
 // Cyan: #2399A3
 // Red: #CC0920
 
-
 Titanium.UI.setBackgroundColor('#000');
-
 
 var prodVersion = Ti.App.Properties.getString('version_preference', '0.0.0-DEV');
 
@@ -22,23 +19,19 @@ function checkForAppReset() {
 }
 
 // Function to test if device is iOS 7 or later
-function isIOS7Plus()
-{
+function isIOS7Plus() {
 	// iOS-specific test
-	if (Titanium.Platform.name == 'iPhone OS')
-	{
+	if (Titanium.Platform.name == 'iPhone OS') {
 		var version = Titanium.Platform.version.split(".");
-		var major = parseInt(version[0],10);
+		var major = parseInt(version[0], 10);
 
 		// Can only test this support on a 3.2+ device
-		if (major >= 7)
-		{
+		if (major >= 7) {
 			return true;
 		}
 	}
 	return false;
 }
-
 
 function init() {
 	Ti.API.trace('index.' + arguments.callee.name);
@@ -52,8 +45,7 @@ function init() {
 		Ti.App.Properties.setString('version_preference', prodVersion);
 	}
 	Ti.API.debug('prodVersion = ' + prodVersion);
-	
-	
+
 }
 
 function open() {
@@ -66,6 +58,20 @@ Ti.API.info("Ti.Platform.displayCaps.platformHeight = " + Ti.Platform.displayCap
 
 var iOS7 = isIOS7Plus();
 $.index.top = iOS7 ? 20 : 0;
+
+if (OS_ANDROID) {
+	$.index.activity.onCreateOptionsMenu = function(e) {
+		var menu = e.menu;
+		var menuItem = menu.add({
+			title : "BetOnThisNV",
+			icon : "images/BetOnThisIcon.png",
+			showAsAction : Ti.Android.SHOW_AS_ACTION_IF_ROOM
+		});
+		menuItem.addEventListener("click", function(e) {
+			Ti.API.info("Action Item Clicked!");
+		});
+	};
+}
 
 $.index.open();
 

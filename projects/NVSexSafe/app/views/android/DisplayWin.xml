@@ -1,0 +1,16 @@
+<Alloy>
+	<View fullscreen="false" class="container" id="navView">
+		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="Risk Factor">
+			<Button top="5" height="35dp" left="5" title="Back" onClick="clickBackAndroid"/>
+			<ScrollView id="scroll" top="50dp">
+				<View id="riskView" top="5" layout="vertical" class="ScrollWindow">
+					<Label id="riskTitle" top="5" color="#CC0920" text="Risk Factor" />
+					<Label id="riskBody" color="#000" textAlign="left" />
+					<Label id="safetyTitle" top="20" color="#CC0920" text="Safety" />
+					<Label id="safetyBody" color="#000" textAlign="left" />
+				</View>
+			</ScrollView>
+		</Window>
+	</View>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
+</Alloy>
