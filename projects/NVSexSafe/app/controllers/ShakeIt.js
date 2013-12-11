@@ -983,7 +983,7 @@ game.getTiScale = function(x, y) {
 
 // create a game scene
 var scene = platino.createScene();
-scene.color(20.0 / 255.0, 163.0 / 255.0, 178.0 / 255.0);
+scene.color(0, 0, 0);
 
 var touchable = [];
 
@@ -1010,6 +1010,8 @@ var genderUnLockIcon, genderLockIcon, genderLockLabel, isGenderLocked;
 var activityUnLockIcon, activityLockIcon, activityLockLabel, isActivityLocked;
 var protectionUnLockIcon, protectionLockIcon, protectionLockLabel, isProtectionLocked;
 var riskLabel, safetyLabel;
+var armFrame;
+var touchToSpinButton, resultsButton, resultsNewButton, tryAgainButton;
 
 var reels = {
 	reel1 : {
@@ -1123,6 +1125,115 @@ function onProtectionIconTouch(e) {
 
 }
 
+function displayWin() {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
+
+	var args = {
+		win : win
+	};
+
+	var contactController = Alloy.createController('DisplayWin', args);
+
+	if (OS_IOS) {
+		contactController.getView().open();
+	}
+};
+
+function onResultsButtonTouch(e) {
+	Ti.API.debug("BEGIN - onResultsButtonTouch: " + JSON.stringify(e));
+	var type, sprite;
+
+	type = e.type;
+	sprite = e.source;
+
+	if (type === 'touchstart') {
+		Ti.API.info('Touch started on Protection sprite.');
+
+	} else if (type === 'touchmove') {
+		Ti.API.info('Touch moved on Protection sprite.');
+		armFrame.animate(0, 5, 250, 0);
+	} else if (type === 'touchend') {
+		Ti.API.info('Touch ended on Protection sprite.');
+		if(e.tag == 'resultsButton') {
+			resultsNewButton.alpha = 0;
+			resultsButton.alpha = 0;
+			tryAgainButton.alpha = 0;
+			touchToSpinButton.alpha = 0;
+			displayWin();
+		}
+		else if(e.tag == 'resultsNewButton') {
+			resultsNewButton.alpha = 0;
+			resultsButton.alpha = 0;
+			tryAgainButton.alpha = 0;
+			touchToSpinButton.alpha = 0;
+			displayWin();
+		}
+		else if(e.tag == 'tryAgainButton') {
+			resultsNewButton.alpha = 0;
+			resultsButton.alpha = 0;
+			tryAgainButton.alpha = 0;
+			touchToSpinButton.alpha = 0;
+			spin();
+		}
+		else if(e.tag == 'touchToSpinButton') {
+			resultsNewButton.alpha = 0;
+			resultsButton.alpha = 0;
+			tryAgainButton.alpha = 0;
+			touchToSpinButton.alpha = 0;
+			spin();
+		}
+	}
+
+}
+
+function onResultsNewButtonTouch(e) {
+	Ti.API.debug("BEGIN - onResultsNewButtonTouch: " + JSON.stringify(e));
+	var type, sprite;
+
+	type = e.type;
+	sprite = e.source;
+
+	if (type === 'touchstart') {
+		Ti.API.info('Touch started on Protection sprite.');
+
+	} else if (type === 'touchmove') {
+		Ti.API.info('Touch moved on Protection sprite.');
+
+	} else if (type === 'touchend') {
+		Ti.API.info('Touch ended on Protection sprite.');
+		resultsNewButton.alpha = 0;
+		resultsButton.alpha = 0;
+		tryAgainButton.alpha = 0;
+		touchToSpinButton.alpha = 1;
+		displayWin();
+	}
+
+}
+
+function onTryAgainButtonTouch(e) {
+	Ti.API.debug("BEGIN - onTryAgainButtonTouch: " + JSON.stringify(e));
+	var type, sprite;
+
+	type = e.type;
+	sprite = e.source;
+
+	if (type === 'touchstart') {
+		Ti.API.info('Touch started on Protection sprite.');
+
+	} else if (type === 'touchmove') {
+		Ti.API.info('Touch moved on Protection sprite.');
+		armFrame.animate(0, 5, 250, 0);
+	} else if (type === 'touchend') {
+		Ti.API.info('Touch ended on Protection sprite.');
+		resultsNewButton.alpha = 0;
+		resultsButton.alpha = 0;
+		tryAgainButton.alpha = 0;
+		touchToSpinButton.alpha = 1;
+		spin();
+	}
+
+}
+
 function onLeverTouch(e) {
 	Ti.API.debug("BEGIN - onLeverTouch: " + JSON.stringify(e));
 	var type, sprite;
@@ -1135,7 +1246,10 @@ function onLeverTouch(e) {
 
 	} else if (type === 'touchmove') {
 		Ti.API.info('Touch moved on first sprite.');
-
+		resultsNewButton.alpha = 0;
+		resultsButton.alpha = 0;
+		tryAgainButton.alpha = 0;
+		armFrame.animate(0, 5, 250, 0);
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on first sprite.');
 		spin();
@@ -1189,6 +1303,14 @@ function initGameScene() {
 	Ti.API.debug("BEGIN - positionFactor = " + positionFactor);
 	Ti.API.debug("BEGIN - suffix = " + suffix);
 
+	var reelFrame = platino.createSprite({
+		image : "images/ReelFrame.png",
+		x : 0 / positionFactor,
+		y : 0 / positionFactor,
+		width : 640 / imageScaleFactor,
+		height : 476 / imageScaleFactor
+	});
+
 	topBorder = platino.createCanvasSprite({
 		x : 0,
 		y : 0,
@@ -1197,17 +1319,15 @@ function initGameScene() {
 	});
 	topBorder.color(0, 0, 0);
 	topBorder.fillRect(0, 0, topBorder.width, topBorder.height);
-	scene.add(topBorder);
 
 	genderLockIcon = platino.createSprite({
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 30 / positionFactor,
+		x : 50 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
-	scene.add(genderLockIcon);
 	touchable.push(genderLockIcon);
 	genderLockIcon.addEventListener('touchend', onGenderLockTouch);
 
@@ -1215,23 +1335,22 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 30 / positionFactor,
+		x : 50 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
-	scene.add(genderUnLockIcon);
 	touchable.push(genderUnLockIcon);
 	genderUnLockIcon.addEventListener('touchend', onGenderLockTouch);
 	isGenderLocked = false;
 
 	genderLockLabel = platino.createTextSprite({
 		text : 'Your Gender',
-		fontSize : 18 / fontFactor,
-		x : 65 / positionFactor,
+		fontSize : 20 / fontFactor,
+		x : 85 / positionFactor,
 		y : 55 / positionFactor
 	});
 	genderLockLabel.width += 60;
-	scene.add(genderLockLabel);
+	genderLockLabel.height += 15;
 	touchable.push(genderLockLabel);
 	genderLockLabel.addEventListener('touchend', onGenderLockTouch);
 
@@ -1239,11 +1358,10 @@ function initGameScene() {
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 230 / positionFactor,
+		x : 260 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
-	scene.add(activityLockIcon);
 	touchable.push(activityLockIcon);
 	activityLockIcon.addEventListener('touchend', onActivityLockTouch);
 	isActivityLocked = false;
@@ -1252,22 +1370,21 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 230 / positionFactor,
+		x : 260 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
-	scene.add(activityUnLockIcon);
 	touchable.push(activityUnLockIcon);
 	activityUnLockIcon.addEventListener('touchend', onActivityLockTouch);
 
 	activityLockLabel = platino.createTextSprite({
 		text : 'Activity',
-		fontSize : 18 / fontFactor,
-		x : 266 / positionFactor,
+		fontSize : 20 / fontFactor,
+		x : 295 / positionFactor,
 		y : 55 / positionFactor
 	});
 	activityLockLabel.width += 60;
-	scene.add(activityLockLabel);
+	activityLockLabel.height += 15;
 	touchable.push(activityLockLabel);
 	activityLockLabel.addEventListener('touchend', onActivityLockTouch);
 
@@ -1275,11 +1392,10 @@ function initGameScene() {
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 430 / positionFactor,
+		x : 450 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
-	scene.add(protectionLockIcon);
 	touchable.push(protectionLockIcon);
 	protectionLockIcon.addEventListener('touchend', onProtectionIconTouch);
 
@@ -1287,23 +1403,22 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 430 / positionFactor,
+		x : 450 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
-	scene.add(protectionUnLockIcon);
 	touchable.push(protectionUnLockIcon);
 	protectionUnLockIcon.addEventListener('touchend', onProtectionIconTouch);
 	isProtectionLocked = false;
 
 	protectionLockLabel = platino.createTextSprite({
 		text : 'Protection',
-		fontSize : 18 / fontFactor,
-		x : 465 / positionFactor,
+		fontSize : 20 / fontFactor,
+		x : 485 / positionFactor,
 		y : 55 / positionFactor
 	});
 	protectionLockLabel.width += 60;
-	scene.add(protectionLockLabel);
+	protectionLockLabel.height += 15;
 	touchable.push(protectionLockLabel);
 	protectionLockLabel.addEventListener('touchend', onProtectionIconTouch);
 
@@ -1334,74 +1449,189 @@ function initGameScene() {
 		}
 	};
 
+	armFrame = platino.createSpriteSheet({
+		asset : 'graphics/Reels_ArmFrame' + suffix + '.xml',
+		x : 580 / positionFactor,
+		y : 480 / positionFactor,
+		scaleX : 1 / scaleFactor,
+		scaleY : 1 / scaleFactor
+	});
+	touchable.push(armFrame);
+	armFrame.addEventListener('touchmove', onLeverTouch);
+	armFrame.addEventListener('touchend', onLeverTouch);
+
 	// Reel spritesheets
 	reel1 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel1' + suffix + '.xml',
-		x : 25 / positionFactor,
+		x : 40 / positionFactor,
 		y : 100 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
 	reel1.selectFrame(reels.reel1.spriteNames[0]);
-	scene.add(reel1);
 	reel2 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel2' + suffix + '.xml',
-		x : 225 / positionFactor,
+		x : 230 / positionFactor,
 		y : 100 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
 	reel2.selectFrame(reels.reel2.spriteNames[0]);
-	scene.add(reel2);
 	reel3 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel3' + suffix + '.xml',
-		x : 425 / positionFactor,
+		x : 420 / positionFactor,
 		y : 100 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
 	reel3.selectFrame(reels.reel3.spriteNames[0]);
-	scene.add(reel3);
 
 	// Dimmers at top and bottom of screen
 	// var borders = platino.createSprite({image:"graphics/mask.png"});
 	// scene.add(borders);
 
+	var winLine = platino.createSprite({
+		image : "images/WinningLine.png",
+		x : 0 / positionFactor,
+		y : 200 / positionFactor,
+		width : 640 / imageScaleFactor,
+		height : 154 / imageScaleFactor
+	});
+
+	var slotMachine = platino.createSprite({
+		image : "images/SlotMachine.png",
+		x : 0 / positionFactor,
+		y : 476 / positionFactor,
+		width : 640 / imageScaleFactor,
+		height : 444 / imageScaleFactor
+	});
+
+	touchToSpinButton = platino.createTextSprite({
+		text : 'Pull Handle to Spin >',
+		tag: "touchToSpinButton",
+		fontFamily : 'Old Press',
+		fontSize : 60 / fontFactor,
+		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+		width : 400 / imageScaleFactor,
+		height : 76 / imageScaleFactor,
+		x : 120 / positionFactor,
+		y : 540 / positionFactor
+	});
+	touchToSpinButton.color(1, 1, 1);
+	touchable.push(touchToSpinButton);
+	touchToSpinButton.addEventListener('touchend', onResultsButtonTouch);
+
+	resultsButton = platino.createSprite({
+		image : "images/ResultsButton.png",
+		tag: "resultsButton",
+		x : 120 / positionFactor,
+		y : 540 / positionFactor,
+		width : 400 / imageScaleFactor,
+		height : 76 / imageScaleFactor,
+		alpha : 0
+	});
+	touchable.push(resultsButton);
+	resultsButton.addEventListener('touchend', onResultsButtonTouch);
+
+	resultsNewButton = platino.createSprite({
+		image : "images/ResultsNewButton.png",
+		tag: "resultsNewButton",
+		x : 120 / positionFactor,
+		y : 540 / positionFactor,
+		width : 400 / imageScaleFactor,
+		height : 76 / imageScaleFactor,
+		alpha : 0
+	});
+	touchable.push(resultsNewButton);
+	resultsNewButton.addEventListener('touchend', onResultsButtonTouch);
+
+	tryAgainButton = platino.createSprite({
+		image : "images/TryAgainButton.png",
+		tag: "tryAgainButton",
+		x : 120 / positionFactor,
+		y : 540 / positionFactor,
+		width : 400 / imageScaleFactor,
+		height : 76 / imageScaleFactor,
+		alpha : 0
+	});
+	touchable.push(tryAgainButton);
+	tryAgainButton.addEventListener('touchend', onResultsButtonTouch);
+
+	var divider1 = platino.createSprite({
+		image : "images/ReelLabelDivider.png",
+		x : 224 / positionFactor,
+		y : 40 / positionFactor,
+		width : 4 / imageScaleFactor,
+		height : 48 / imageScaleFactor
+	});
+
+	var divider2 = platino.createSprite({
+		image : "images/ReelLabelDivider.png",
+		x : 412 / positionFactor,
+		y : 40 / positionFactor,
+		width : 4 / imageScaleFactor,
+		height : 48 / imageScaleFactor
+	});
+
 	// Add the lever
 	lever = platino.createSprite({
 		image : "graphics/ball.png",
-		x : (game.screen.width - (60 / positionFactor)) ,
+		x : (game.screen.width - (60 / positionFactor)),
 		y : (game.screen.height - (60 / positionFactor)),
 		width : 58 / imageScaleFactor,
 		height : 58 / imageScaleFactor
 	});
-	scene.add(lever);
-	touchable.push(lever);
-	lever.addEventListener('touchend', onLeverTouch);
+	// touchable.push(lever);
+	// lever.addEventListener('touchend', onLeverTouch);
 
-	riskLabel = platino.createTextSprite({
-		text : '',
-		fontSize : 24 / fontFactor,
-		x : 10 / positionFactor,
-		y : 500 / positionFactor,
-		width : (game.screen.width - (85/positionFactor)),
-		height : 90 / scaleFactor
-	});
-	riskLabel.color(1,1,1);
-	scene.add(riskLabel);
+	scene.add(reel1);
+	scene.add(reel2);
+	scene.add(reel3);
+	scene.add(reelFrame);
+	scene.add(winLine);
+	scene.add(slotMachine);
+	scene.add(topBorder);
+	scene.add(genderLockIcon);
+	scene.add(genderUnLockIcon);
+	scene.add(genderLockLabel);
+	scene.add(activityLockIcon);
+	scene.add(activityUnLockIcon);
+	scene.add(activityLockLabel);
+	scene.add(protectionLockIcon);
+	scene.add(protectionUnLockIcon);
+	scene.add(protectionLockLabel);
+	scene.add(divider1);
+	scene.add(divider2);
+	scene.add(armFrame);
+	scene.add(resultsButton);
+	scene.add(resultsNewButton);
+	scene.add(tryAgainButton);
+	scene.add(touchToSpinButton);
+	// scene.add(lever);
+
+	// riskLabel = platino.createTextSprite({
+	// text : '',
+	// fontSize : 24 / fontFactor,
+	// x : 10 / positionFactor,
+	// y : 500 / positionFactor,
+	// width : (game.screen.width - (85/positionFactor)),
+	// height : 90 / scaleFactor
+	// });
+	// riskLabel.color(1,1,1);
+	// scene.add(riskLabel);
 	// touchable.push(riskLabel);
 	// riskLabel.addEventListener('touchend', onLeverTouch);
 
-	safetyLabel = platino.createTextSprite({
-		text : '',
-		fontSize : 24 / fontFactor,
-		x : 10 / positionFactor,
-		y : 600 / positionFactor,
-		width : (game.screen.width - (85/positionFactor)),
-		height : 90 / scaleFactor
-	});
-	safetyLabel.color(1,1,1);
-	scene.add(safetyLabel);
+	// safetyLabel = platino.createTextSprite({
+	// text : '',
+	// fontSize : 24 / fontFactor,
+	// x : 10 / positionFactor,
+	// y : 600 / positionFactor,
+	// width : (game.screen.width - (85/positionFactor)),
+	// height : 90 / scaleFactor
+	// });
+	// safetyLabel.color(1,1,1);
+	// scene.add(safetyLabel);
 
 }
 
@@ -1478,79 +1708,53 @@ function checkWin() {
 		Ti.API.debug('safety = ' + safety);
 		win.risk = outcome.attributes.risk;
 		win.safety = safety;
+		resultsNewButton.alpha = 1;
+		resultsButton.alpha = 0;
+		tryAgainButton.alpha = 0;
+		touchToSpinButton.alpha = 0;
 	} else {
-		alert('Please spin again!');
+		resultsButton.alpha = 0;
+		resultsNewButton.alpha = 0;
+		tryAgainButton.alpha = 1;
+		touchToSpinButton.alpha = 0;
 		win.risk = "Please spin again!";
 		win.safety = "None.";
 	}
 
-	/*
-	 if (reel1.item == reel2.item && reel1.item == reel3.item) {
-	 var particle = platino.createParticles({
-	 image : 'graphics/coinBurst.pex'
-	 });
-	 scene.add(particle);
-	 particle.move(240, 160);
-	 }
-	 */
 	canSpin = true;
 };
 
-function displayWin() {
-	Ti.API.debug('ShakeIt.' + arguments.callee.name);
-
-/*
-	if (win.risk != "") {
-		riskLabel.text = win.risk;
-	} else {
-		riskLabel.text = "Please spin again!";
-	}
-	if (win.safety != "") {
-		safetyLabel.text = win.safety;
-	} else {
-		safetyLabel.text = "";
-	}
-*/
-
-	var args = {
-		win: win
-	};
-
-
-	var contactController = Alloy.createController('DisplayWin', args);
-
-	if(OS_IOS) {
-		contactController.getView().open();
-	}	
-};
+function displayWinButton() {
+	// TODO update the win button state
+}
 
 // Stop the reels one by one, then check if user has won
 function endRoll() {
 	// Random values to stop at
 
 	if (isGenderLocked == false) {
-		reel1Random = reels.reel1.stops[Math.floor(Math.random() * (reel1.frameCount-1))];
+		reel1Random = reels.reel1.stops[Math.floor(Math.random() * (reel1.frameCount - 1))];
 		reel1.pauseAt(reel1Random);
 	}
 
 	if (isActivityLocked == false) {
-		reel2Random = reels.reel2.stops[Math.floor(Math.random() * (reel2.frameCount-1))];
+		reel2Random = reels.reel2.stops[Math.floor(Math.random() * (reel2.frameCount - 1))];
 		setTimeout(function() {
 			reel2.pauseAt(reel2Random);
 		}, 500);
 	}
 
 	if (isProtectionLocked == false) {
-		reel3Random = reels.reel3.stops[Math.floor(Math.random() * (reel3.frameCount-1))];
+		reel3Random = reels.reel3.stops[Math.floor(Math.random() * (reel3.frameCount - 1))];
 		setTimeout(function() {
 			reel3.pauseAt(reel3Random);
 		}, 1000);
 	}
 	checkWin();
 	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
-		displayWin();
+		displayWinButton();
 	} else {
-		setTimeout(displayWin, 1250);
+		setTimeout(displayWinButton, 1250);
 	}
 };
 
@@ -1590,7 +1794,7 @@ function onScreenTouch(e) {
 	var _event, i, sprite;
 
 	// Create a new object to send with the event
-	_event = {
+	var _event = {
 		x : e.x * TOUCH_SCALE,
 		y : e.y * TOUCH_SCALE
 	};
@@ -1604,8 +1808,13 @@ function onScreenTouch(e) {
 		// if sprite contains the touch coordinates, fire the event
 		// if (sprite.containsWithPadding(_event.x, _event.y, 20, 10)) {
 		if (sprite.contains(_event.x, _event.y)) {
-			// Ti.API.debug('Sprite found!');
-			sprite.fireEvent(e.type, _event);
+			Ti.API.debug('Sprite found!');
+			var args = {
+				x : e.x * TOUCH_SCALE,
+				y : e.y * TOUCH_SCALE,
+				tag : sprite.tag
+			};
+			sprite.fireEvent(e.type, args);
 			break;
 		}
 	}

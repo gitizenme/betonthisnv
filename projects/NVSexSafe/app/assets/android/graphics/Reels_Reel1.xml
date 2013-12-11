@@ -2,14 +2,14 @@
 <!-- This atlas was generated using SpriteHelper 2 -->
 <!-- http://www.gamedevhelper.com -->
 <Imageset Name="Reel1" Imagefile="Reels_Reel1.png" NativeHorzRes="188" NativeVertRes="896" AutoScaled="false">
-	<Image Name="Reel1Frame01@2X.png" XPos="1" YPos="1" Width="90" Height="177"/>
 	<Image Name="Reel1Frame02@2X.png" XPos="93" YPos="1" Width="90" Height="177"/>
+	<Image Name="Reel1Frame07@2X.png" XPos="1" YPos="538" Width="90" Height="177"/>
 	<Image Name="Reel1Frame03@2X.png" XPos="1" YPos="180" Width="90" Height="177"/>
-	<Image Name="Reel1Frame04@2X.png" XPos="93" YPos="180" Width="90" Height="177"/>
 	<Image Name="Reel1Frame05@2X.png" XPos="1" YPos="359" Width="90" Height="177"/>
 	<Image Name="Reel1Frame06@2X.png" XPos="93" YPos="359" Width="90" Height="177"/>
-	<Image Name="Reel1Frame07@2X.png" XPos="1" YPos="538" Width="90" Height="177"/>
 	<Image Name="Reel1Frame08@2X.png" XPos="96" YPos="535" Width="90" Height="177"/>
-	<Image Name="Reel1Frame09@2X.png" XPos="2" YPos="713" Width="90" Height="177"/>
+	<Image Name="Reel1Frame01@2X.png" XPos="1" YPos="1" Width="90" Height="177"/>
 	<Image Name="Reel1Frame10@2X.png" XPos="93" YPos="717" Width="90" Height="177"/>
+	<Image Name="Reel1Frame09@2X.png" XPos="2" YPos="713" Width="90" Height="177"/>
+	<Image Name="Reel1Frame04@2X.png" XPos="93" YPos="180" Width="90" Height="177"/>
 </Imageset>

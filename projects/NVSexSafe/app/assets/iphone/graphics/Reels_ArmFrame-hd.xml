@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This atlas was generated using SpriteHelper 2 -->
+<!-- http://www.gamedevhelper.com -->
+<Imageset Name="ArmFrame" Imagefile="Reels_ArmFrame-hd.png" NativeHorzRes="256" NativeVertRes="388" AutoScaled="false">
+	<Image Name="ArmFrame01@2x.png" XPos="2" YPos="2" Width="60" Height="190"/>
+	<Image Name="ArmFrame02@2x.png" XPos="66" YPos="2" Width="60" Height="190"/>
+	<Image Name="ArmFrame03@2x.png" XPos="130" YPos="2" Width="60" Height="190"/>
+	<Image Name="ArmFrame02@2x_1.png" XPos="194" YPos="2" Width="60" Height="190"/>
+	<Image Name="ArmFrame01@2x_1.png" XPos="2" YPos="196" Width="60" Height="190"/>
+</Imageset>

@@ -37,9 +37,9 @@
 	top: 20,
 	backgroundColor: "#2399A3",
 	barColor: "#CC0920",
-tabsBackgroundColor: "#0A0A0A"
+tabsBackgroundColor: "#0A0A0A",
 // tintColor: '#2399A3',
-// tabsTintColor: '#2399A3'
+tabsTintColor: '#08B082'
 },
 "TabGroup[platform=android]": {
 	tabsBackgroundColor: "#0A0A0A"

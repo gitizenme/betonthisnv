@@ -1,8 +1,8 @@
 // Colors
 // Black: #0A0A0A
-// Green: #C8D624
-// Cyan: #2399A3
-// Red: #CC0920
+// Yellow/Green: #D7DF23
+// Cyan: #08B082
+// Red: #E81C24
 
 Titanium.UI.setBackgroundColor('#000');
 
