@@ -16,7 +16,7 @@
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>1721fe33-c4ce-4aed-b339-12a5282882eb</guid>
-    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="ti.ui.defaultunit" type="string">system</property>
     <ios>
         <plist>
             <dict>
