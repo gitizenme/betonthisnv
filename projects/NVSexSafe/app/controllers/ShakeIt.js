@@ -13,173 +13,425 @@ var platino = require("co.lanica.platino");
  */
 
 var args = {
-	title : "Sex Safe"
+	title : "SEX SAFE"
 };
 
-/*
- "Male:" : "",
- "Female:" : "",
- "Trans - M to F:" : "",
- "Trans - F to M:" : "",
- "Indifferent:" : "",
- */
+var reels = {
+	reel1 : {
+		numberOfSprites : 10,
+		spriteNames : [],
+		symbolNames : ["Female", "Trans - M to F", "Trans - F to M", "Indifferent", "Male"],
+		stops : []
+	},
+	reel2 : {
+		numberOfSprites : 36,
+		spriteNames : [],
+		symbolNames : ["Oral Sex", "Massage", "Fingering", "Fisting", "Sex with Man", "Sex with Woman", "Sex Toy", "Dry Humping", "Rubbing a Vagina", "Masturbation", "Penis Rubbing", "Rimming", "Kissing", "Scissoring", "Sex Safe", "Anal Sex"],
+		stops : []
+	},
+	reel3 : {
+		numberOfSprites : 8,
+		spriteNames : [],
+		symbolNames : ["Condom", "Dental Dam", "Clothing", "None"],
+		stops : []
+	}
+};
 
 var activityMapping = {
-	"Male: Anal Sex" : "Giving Anal Sex",
-	"Female: Anal Sex" : "Giving Anal Sex",
-	"Trans - M to F: Anal Sex" : "Giving Anal Sex",
-	"Trans - F to M: Anal Sex" : "Giving Anal Sex",
-	"Indifferent: Anal Sex" : "Giving Anal Sex",
-
-	"Male:Oral Sex" : "Getting Oral Sex",
-	"Female:Oral Sex" : "Getting Oral Sex",
-	"Trans - M to F:Oral Sex" : "Getting Oral Sex",
-	"Trans - F to M:Oral Sex" : "Getting Oral Sex",
-	"Indifferent:Oral Sex" : "Getting Oral Sex",
-
-	"Female:Oral Sex" : "Going Down on a Vagina",
-	"Trans - M to F:Oral Sex" : "Going Down on a Vagina",
-	"Trans - F to M:Oral Sex" : "Going Down on a Vagina",
-	"Indifferent:Oral Sex" : "Going Down on a Vagina",
-
-	"Male: Anal Sex" : "Getting Anal Sex",
-	"Female: Anal Sex" : "Getting Anal Sex",
-	"Trans - M to F: Anal Sex" : "Getting Anal Sex",
-	"Trans - F to M: Anal Sex" : "Getting Anal Sex",
-	"Indifferent: Anal Sex" : "Getting Anal Sex",
-
-	"Male:Blow Job" : "Giving a Blow Job",
-	"Female:Blow Job" : "Giving a Blow Job",
-	"Trans - M to F:Blow Job" : "Giving a Blow Job",
-	"Trans - F to M:Blow Job" : "Giving a Blow Job",
-	"Indifferent:Blow Job" : "Giving a Blow Job",
-
-	"Male:Fingering" : "Fingering or Fisting",
-	"Female:Fingering" : "Fingering or Fisting",
-	"Trans - M to F:Fingering" : "Fingering or Fisting",
-	"Trans - F to M:Fingering" : "Fingering or Fisting",
-	"Indifferent:Fingering" : "Fingering or Fisting",
-
-	"Male:Fisting" : "Fingering or Fisting",
-	"Female:Fisting" : "Fingering or Fisting",
-	"Trans - M to F:Fisting" : "Fingering or Fisting",
-	"Trans - F to M:Fisting" : "Fingering or Fisting",
-	"Indifferent:Fisting" : "Fingering or Fisting",
-
-	"Male:Sex with Woman" : "Sex (Vaginal)",
-	"Female:Sex with Man" : "Sex",
-	"Trans - M to F:Sex with Man" : "Sex",
-	"Trans - F to M:Sex with Woman" : "Sex (Vaginal)",
-	"Indifferent:Sex with Man" : "Sex",
-
-	"Male:Sex with Woman" : "Decide to Have Sex",
-	"Female:Sex with Man" : "Decide to Have Sex",
-	"Trans - M to F:Sex with Man" : "Decide to Have Sex",
-	"Trans - F to M:Sex with Woman" : "Decide to Have Sex",
-	"Indifferent:Sex with Man" : "Decide to Have Sex",
-
-	"Male:Sex Toy" : "Insert a Sex Toy",
-	"Female:Sex Toy" : "Insert a Sex Toy",
-	"Trans - M to F:Sex Toy" : "Insert a Sex Toy",
-	"Trans - F to M:Sex Toy" : "Insert a Sex Toy",
-	"Indifferent:Sex Toy" : "Insert a Sex Toy",
-
-	"Male:Sex Toy" : "Play with a Sex Toy (No Insertion)",
-	"Female:Sex Toy" : "Play with a Sex Toy (No Insertion)",
-	"Trans - M to F:Sex Toy" : "Play with a Sex Toy (No Insertion)",
-	"Trans - F to M:Sex Toy" : "Play with a Sex Toy (No Insertion)",
-	"Indifferent:Sex Toy" : "Play with a Sex Toy (No Insertion)",
-
-	"Male:Dry Humping" : "Dry Humping",
-	"Female:Dry Humping" : "Dry Humping",
-	"Trans - M to F:Dry Humping" : "Dry Humping",
-	"Trans - F to M:Dry Humping" : "Dry Humping",
-	"Indifferent:Dry Humping" : "Dry Humping",
-
-	"Male:Rubbing a Vagina" : "Rubbing a Vagina",
-	"Female:Rubbing a Vagina" : "Rubbing a Vagina",
-	"Trans - M to F:Rubbing a Vagina" : "Rubbing a Vagina",
-	"Trans - F to M:Rubbing a Vagina" : "Rubbing a Vagina",
-	"Indifferent:Rubbing a Vagina" : "Rubbing a Vagina",
-
-	"Male:Penile Masturbation" : "Masturbation",
-	"Female:Penile Masturbation" : "Masturbation",
-	"Trans - M to F:Penile Masturbation" : "Masturbation",
-	"Trans - F to M:Penile Masturbation" : "Masturbation",
-	"Indifferent:Penile Masturbation" : "Masturbation",
-
-	"Male:Penis Rubbing" : "Penis Rubbing",
-	"Female:Penis Rubbing" : "Penis Rubbing",
-	"Trans - M to F:Penis Rubbing" : "Penis Rubbing",
-	"Trans - F to M:Penis Rubbing" : "Penis Rubbing",
-	"Indifferent:Penis Rubbing" : "Penis Rubbing",
-
-	"Male:Rimming" : "Rimming (Licking) Anus",
-	"Female:Rimming" : "Rimming (Licking) Anus",
-	"Trans - M to F:Rimming" : "Rimming (Licking) Anus",
-	"Trans - F to M:Rimming" : "Rimming (Licking) Anus",
-	"Indifferent:Rimming" : "Rimming (Licking) Anus",
-
-	"Male:Kissing" : "Kissing",
-	"Female:Kissing" : "Kissing",
-	"Trans - M to F:Kissing" : "Kissing",
-	"Trans - F to M:Kissing" : "Kissing",
-	"Indifferent:Kissing" : "Kissing",
-
-	"Male:Scissoring" : "Scissoring",
-	"Female:Scissoring" : "Scissoring",
-	"Trans - M to F:Scissoring" : "Scissoring",
-	"Trans - F to M:Scissoring" : "Scissoring",
-	"Indifferent:Scissoring" : "Scissoring",
-
-	"Male:Massage" : "Massage Partner",
-	"Female:Massage" : "Massage Partner",
-	"Trans - M to F:Massage" : "Massage Partner",
-	"Trans - F to M:Massage" : "Massage Partner",
-	"Indifferent:Massage" : "Massage Partner",
-
-	"Male:Massage" : "Apply Massage Oil",
-	"Female:Massage" : "Apply Massage Oil",
-	"Trans - M to F:Massage" : "Apply Massage Oil",
-	"Trans - F to M:Massage" : "Apply Massage Oil",
-	"Indifferent:Massage" : "Apply Massage Oil",
-
-	"Male:Hugs" : "Cuddle (Naked or Clothed)",
-	"Female:Hugs" : "Cuddle (Naked or Clothed)",
-	"Trans - M to F:Hugs" : "Cuddle (Naked or Clothed)",
-	"Trans - F to M:Hugs" : "Cuddle (Naked or Clothed)",
-	"Indifferent:Hugs" : "Cuddle (Naked or Clothed)",
-
-	"Male:Brush Hair" : "Play with Partner's Hair",
-	"Female:Brush Hair" : "Play with Partner's Hair",
-	"Trans - M to F:Brush Hair" : "Play with Partner's Hair",
-	"Trans - F to M:Brush Hair" : "Play with Partner's Hair",
-	"Indifferent:Brush Hair" : "Play with Partner's Hair",
-
-	"Male:NV" : "Undress Your Partner",
-	"Female:NV" : "Undress Your Partner",
-	"Trans - M to F:NV" : "Undress Your Partner",
-	"Trans - F to M:NV" : "Undress Your Partner",
-	"Indifferent:NV" : "Undress Your Partner",
-
-	"Male:NV" : "Dance (Naked or Clothed)",
-	"Female:NV" : "Dance (Naked or Clothed)",
-	"Trans - M to F:NV" : "Dance (Naked or Clothed)",
-	"Trans - F to M:NV" : "Dance (Naked or Clothed)",
-	"Indifferent:NV" : "Dance (Naked or Clothed)",
-
-	"Male:NV" : "Say Something Sexy",
-	"Female:NV" : "Say Something Sexy",
-	"Trans - M to F:NV" : "Say Something Sexy",
-	"Trans - F to M:NV" : "Say Something Sexy",
-	"Indifferent:NV" : "Say Something Sexy",
-
-	"Male:NV" : "Flirt with Your Partner",
-	"Female:NV" : "Flirt with Your Partner",
-	"Trans - M to F:NV" : "Flirt with Your Partner",
-	"Trans - F to M:NV" : "Flirt with Your Partner",
-	"Indifferent:NV" : "Flirt with Your Partner"
-
+	data : [{
+		"mapping" : "Male:Anal Sex",
+		"activity" : "Giving Anal Sex"
+	}, {
+		"mapping" : "Female:Anal Sex",
+		"activity" : "Giving Anal Sex"
+	}, {
+		"mapping" : "Trans - M to F:Anal Sex",
+		"activity" : "Giving Anal Sex"
+	}, {
+		"mapping" : "Trans - F to M:Anal Sex",
+		"activity" : "Giving Anal Sex"
+	}, {
+		"mapping" : "Indifferent:Anal Sex",
+		"activity" : "Giving Anal Sex"
+	}, {
+		"mapping" : "Male:Oral Sex",
+		"activity" : "Getting Oral Sex"
+	}, {
+		"mapping" : "Female:Oral Sex",
+		"activity" : "Getting Oral Sex"
+	}, {
+		"mapping" : "Trans - M to F:Oral Sex",
+		"activity" : "Getting Oral Sex"
+	}, {
+		"mapping" : "Trans - F to M:Oral Sex",
+		"activity" : "Getting Oral Sex"
+	}, {
+		"mapping" : "Indifferent:Oral Sex",
+		"activity" : "Getting Oral Sex"
+	}, {
+		"mapping" : "Female:Oral Sex",
+		"activity" : "Going Down on a Vagina"
+	}, {
+		"mapping" : "Trans - M to F:Oral Sex",
+		"activity" : "Going Down on a Vagina"
+	}, {
+		"mapping" : "Trans - F to M:Oral Sex",
+		"activity" : "Going Down on a Vagina"
+	}, {
+		"mapping" : "Indifferent:Oral Sex",
+		"activity" : "Going Down on a Vagina"
+	}, {
+		"mapping" : "Male:Anal Sex",
+		"activity" : "Getting Anal Sex"
+	}, {
+		"mapping" : "Female:Anal Sex",
+		"activity" : "Getting Anal Sex"
+	}, {
+		"mapping" : "Trans - M to F:Anal Sex",
+		"activity" : "Getting Anal Sex"
+	}, {
+		"mapping" : "Trans - F to M:Anal Sex",
+		"activity" : "Getting Anal Sex"
+	}, {
+		"mapping" : "Indifferent:Anal Sex",
+		"activity" : "Getting Anal Sex"
+	}, {
+		"mapping" : "Male:Oral Sex",
+		"activity" : "Giving a Blow Job"
+	}, {
+		"mapping" : "Female:Oral Sex",
+		"activity" : "Giving a Blow Job"
+	}, {
+		"mapping" : "Trans - M to F:Oral Sex",
+		"activity" : "Giving a Blow Job"
+	}, {
+		"mapping" : "Trans - F to M:Oral Sexb",
+		"activity" : "Giving a Blow Job"
+	}, {
+		"mapping" : "Indifferent:Oral Sex",
+		"activity" : "Giving a Blow Job"
+	}, {
+		"mapping" : "Male:Fingering",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Female:Fingering",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Trans - M to F:Fingering",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Trans - F to M:Fingering",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Indifferent:Fingering",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Male:Fisting",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Female:Fisting",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Trans - M to F:Fisting",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Trans - F to M:Fisting",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Indifferent:Fisting",
+		"activity" : "Fingering or Fisting"
+	}, {
+		"mapping" : "Male:Sex with Woman",
+		"activity" : "Sex (Vaginal)"
+	}, {
+		"mapping" : "Female:Sex with Man",
+		"activity" : "Sex"
+	}, {
+		"mapping" : "Trans - M to F:Sex with Man",
+		"activity" : "Sex"
+	}, {
+		"mapping" : "Trans - M to F:Sex with Woman",
+		"activity" : "Sex (Vaginal)"
+	}, {
+		"mapping" : "Trans - F to M:Sex with Woman",
+		"activity" : "Sex (Vaginal)"
+	}, {
+		"mapping" : "Trans - F to M:Sex with Man",
+		"activity" : "Sex"
+	}, {
+		"mapping" : "Indifferent:Sex with Man",
+		"activity" : "Sex"
+	}, {
+		"mapping" : "Male:Sex with Woman",
+		"activity" : "Decide to Have Sex"
+	}, {
+		"mapping" : "Female:Sex with Man",
+		"activity" : "Decide to Have Sex"
+	}, {
+		"mapping" : "Trans - M to F:Sex with Man",
+		"activity" : "Decide to Have Sex"
+	}, {
+		"mapping" : "Trans - F to M:Sex with Woman",
+		"activity" : "Decide to Have Sex"
+	}, {
+		"mapping" : "Indifferent:Sex with Man",
+		"activity" : "Decide to Have Sex"
+	}, {
+		"mapping" : "Male:Sex Toy",
+		"activity" : "Insert a Sex Toy"
+	}, {
+		"mapping" : "Female:Sex Toy",
+		"activity" : "Insert a Sex Toy"
+	}, {
+		"mapping" : "Trans - M to F:Sex Toy",
+		"activity" : "Insert a Sex Toy"
+	}, {
+		"mapping" : "Trans - F to M:Sex Toy",
+		"activity" : "Insert a Sex Toy"
+	}, {
+		"mapping" : "Indifferent:Sex Toy",
+		"activity" : "Insert a Sex Toy"
+	}, {
+		"mapping" : "Male:Sex Toy",
+		"activity" : "Play with a Sex Toy (No Insertion)"
+	}, {
+		"mapping" : "Female:Sex Toy",
+		"activity" : "Play with a Sex Toy (No Insertion)"
+	}, {
+		"mapping" : "Trans - M to F:Sex Toy",
+		"activity" : "Play with a Sex Toy (No Insertion)"
+	}, {
+		"mapping" : "Trans - F to M:Sex Toy",
+		"activity" : "Play with a Sex Toy (No Insertion)"
+	}, {
+		"mapping" : "Indifferent:Sex Toy",
+		"activity" : "Play with a Sex Toy (No Insertion)"
+	}, {
+		"mapping" : "Male:Dry Humping",
+		"activity" : "Dry Humping"
+	}, {
+		"mapping" : "Female:Dry Humping",
+		"activity" : "Dry Humping"
+	}, {
+		"mapping" : "Trans - M to F:Dry Humping",
+		"activity" : "Dry Humping"
+	}, {
+		"mapping" : "Trans - F to M:Dry Humping",
+		"activity" : "Dry Humping"
+	}, {
+		"mapping" : "Indifferent:Dry Humping",
+		"activity" : "Dry Humping"
+	}, {
+		"mapping" : "Male:Rubbing a Vagina",
+		"activity" : "Rubbing a Vagina"
+	}, {
+		"mapping" : "Female:Rubbing a Vagina",
+		"activity" : "Rubbing a Vagina"
+	}, {
+		"mapping" : "Trans - M to F:Rubbing a Vagina",
+		"activity" : "Rubbing a Vagina"
+	}, {
+		"mapping" : "Trans - F to M:Rubbing a Vagina",
+		"activity" : "Rubbing a Vagina"
+	}, {
+		"mapping" : "Indifferent:Rubbing a Vagina",
+		"activity" : "Rubbing a Vagina"
+	}, {
+		"mapping" : "Male:Masturbation",
+		"activity" : "Masturbation"
+	}, {
+		"mapping" : "Female:Masturbation",
+		"activity" : "Masturbation"
+	}, {
+		"mapping" : "Trans - M to F:Masturbation",
+		"activity" : "Masturbation"
+	}, {
+		"mapping" : "Trans - F to M:Masturbation",
+		"activity" : "Masturbation"
+	}, {
+		"mapping" : "Indifferent:Masturbation",
+		"activity" : "Masturbation"
+	}, {
+		"mapping" : "Male:Penis Rubbing",
+		"activity" : "Penis Rubbing"
+	}, {
+		"mapping" : "Female:Penis Rubbing",
+		"activity" : "Penis Rubbing"
+	}, {
+		"mapping" : "Trans - M to F:Penis Rubbing",
+		"activity" : "Penis Rubbing"
+	}, {
+		"mapping" : "Trans - F to M:Penis Rubbing",
+		"activity" : "Penis Rubbing"
+	}, {
+		"mapping" : "Indifferent:Penis Rubbing",
+		"activity" : "Penis Rubbing"
+	}, {
+		"mapping" : "Male:Rimming",
+		"activity" : "Rimming (Licking) Anus"
+	}, {
+		"mapping" : "Female:Rimming",
+		"activity" : "Rimming (Licking) Anus"
+	}, {
+		"mapping" : "Trans - M to F:Rimming",
+		"activity" : "Rimming (Licking) Anus"
+	}, {
+		"mapping" : "Trans - F to M:Rimming",
+		"activity" : "Rimming (Licking) Anus"
+	}, {
+		"mapping" : "Indifferent:Rimming",
+		"activity" : "Rimming (Licking) Anus"
+	}, {
+		"mapping" : "Male:Kissing",
+		"activity" : "Kissing"
+	}, {
+		"mapping" : "Female:Kissing",
+		"activity" : "Kissing"
+	}, {
+		"mapping" : "Trans - M to F:Kissing",
+		"activity" : "Kissing"
+	}, {
+		"mapping" : "Trans - F to M:Kissing",
+		"activity" : "Kissing"
+	}, {
+		"mapping" : "Indifferent:Kissing",
+		"activity" : "Kissing"
+	}, {
+		"mapping" : "Male:Scissoring",
+		"activity" : "Scissoring"
+	}, {
+		"mapping" : "Female:Scissoring",
+		"activity" : "Scissoring"
+	}, {
+		"mapping" : "Trans - M to F:Scissoring",
+		"activity" : "Scissoring"
+	}, {
+		"mapping" : "Trans - F to M:Scissoring",
+		"activity" : "Scissoring"
+	}, {
+		"mapping" : "Indifferent:Scissoring",
+		"activity" : "Scissoring"
+	}, {
+		"mapping" : "Male:Massage",
+		"activity" : "Massage Partner"
+	}, {
+		"mapping" : "Female:Massage",
+		"activity" : "Massage Partner"
+	}, {
+		"mapping" : "Trans - M to F:Massage",
+		"activity" : "Massage Partner"
+	}, {
+		"mapping" : "Trans - F to M:Massage",
+		"activity" : "Massage Partner"
+	}, {
+		"mapping" : "Indifferent:Massage",
+		"activity" : "Massage Partner"
+	}, {
+		"mapping" : "Male:Massage",
+		"activity" : "Apply Massage Oil"
+	}, {
+		"mapping" : "Female:Massage",
+		"activity" : "Apply Massage Oil"
+	}, {
+		"mapping" : "Trans - M to F:Massage",
+		"activity" : "Apply Massage Oil"
+	}, {
+		"mapping" : "Trans - F to M:Massage",
+		"activity" : "Apply Massage Oil"
+	}, {
+		"mapping" : "Indifferent:Massage",
+		"activity" : "Apply Massage Oil"
+	}, {
+		"mapping" : "Male:Sex Safe",
+		"activity" : "Cuddle (Naked or Clothed)"
+	}, {
+		"mapping" : "Female:Sex Safe",
+		"activity" : "Cuddle (Naked or Clothed)"
+	}, {
+		"mapping" : "Trans - M to F:Sex Safe",
+		"activity" : "Cuddle (Naked or Clothed)"
+	}, {
+		"mapping" : "Trans - F to M:Sex Safe",
+		"activity" : "Cuddle (Naked or Clothed)"
+	}, {
+		"mapping" : "Indifferent:Sex Safe",
+		"activity" : "Cuddle (Naked or Clothed)"
+	}, {
+		"mapping" : "Male:Sex Safe",
+		"activity" : "Play with Partner's Hair"
+	}, {
+		"mapping" : "Female:Sex Safe",
+		"activity" : "Play with Partner's Hair"
+	}, {
+		"mapping" : "Trans - M to F:Sex Safe",
+		"activity" : "Play with Partner's Hair"
+	}, {
+		"mapping" : "Trans - F to M:Sex Safe",
+		"activity" : "Play with Partner's Hair"
+	}, {
+		"mapping" : "Indifferent:Sex Safe",
+		"activity" : "Play with Partner's Hair"
+	}, {
+		"mapping" : "Male:Sex Safe",
+		"activity" : "Undress Your Partner"
+	}, {
+		"mapping" : "Female:Sex Safe",
+		"activity" : "Undress Your Partner"
+	}, {
+		"mapping" : "Trans - M to F:Sex Safe",
+		"activity" : "Undress Your Partner"
+	}, {
+		"mapping" : "Trans - F to M:Sex Safe",
+		"activity" : "Undress Your Partner"
+	}, {
+		"mapping" : "Indifferent:Sex Safe",
+		"activity" : "Undress Your Partner"
+	}, {
+		"mapping" : "Male:Sex Safe",
+		"activity" : "Dance (Naked or Clothed)"
+	}, {
+		"mapping" : "Female:Sex Safe",
+		"activity" : "Dance (Naked or Clothed)"
+	}, {
+		"mapping" : "Trans - M to F:Sex Safe",
+		"activity" : "Dance (Naked or Clothed)"
+	}, {
+		"mapping" : "Trans - F to M:Sex Safe",
+		"activity" : "Dance (Naked or Clothed)"
+	}, {
+		"mapping" : "Indifferent:Sex Safe",
+		"activity" : "Dance (Naked or Clothed)"
+	}, {
+		"mapping" : "Male:Sex Safe",
+		"activity" : "Say Something Sexy"
+	}, {
+		"mapping" : "Female:Sex Safe",
+		"activity" : "Say Something Sexy"
+	}, {
+		"mapping" : "Trans - M to F:Sex Safe",
+		"activity" : "Say Something Sexy"
+	}, {
+		"mapping" : "Trans - F to M:Sex Safe",
+		"activity" : "Say Something Sexy"
+	}, {
+		"mapping" : "Indifferent:NV",
+		"activity" : "Say Something Sexy"
+	}, {
+		"mapping" : "Male:Sex Safe",
+		"activity" : "Flirt with Your Partner"
+	}, {
+		"mapping" : "Female:Sex Safe",
+		"activity" : "Flirt with Your Partner"
+	}, {
+		"mapping" : "Trans - M to F:Sex Safe",
+		"activity" : "Flirt with Your Partner"
+	}, {
+		"mapping" : "Trans - F to M:Sex Safe",
+		"activity" : "Flirt with Your Partner"
+	}, {
+		"mapping" : "Indifferent:Sex Safe",
+		"activity" : "Flirt with Your Partner"
+	}]
 };
 
 var paytableData = {
@@ -1013,31 +1265,6 @@ var riskLabel, safetyLabel;
 var armFrame;
 var touchToSpinButton, resultsButton, resultsNewButton, tryAgainButton;
 
-var reels = {
-	reel1 : {
-		numberOfSprites : 10,
-		spriteNames : [],
-		symbolNames : ["Female", "Trans - M to F", "Trans - F to M", "Indifferent", "Male"],
-		stops : []
-	},
-	reel2 : {
-		numberOfSprites : 36,
-		spriteNames : [],
-		symbolNames : ["Oral Sex", "Massage", "Blow Job", "Fingering", "Fisting", "Sex with Man", "Sex with Woman", "Sex Toy", "Brush Hair", "Dry Humping", "Rubbing a Vagina", "Penile Masturbation", "Penis Rubbing", "Rimming, Kissing", "Scissoring", "Hugs", "Anal Sex"],
-		stops : []
-	},
-	reel3 : {
-		numberOfSprites : 8,
-		spriteNames : [],
-		// symbolNames : ["None", "Condom", "Dental Dam", "Clothing", "NV"],
-		symbolNames : ["Condom", "Dental Dam", "Clothing", "None"],
-		stops : []
-	}
-};
-
-// symbolNames : ["Giving Anal Sex", "Getting Oral Sex", "Giving Oral Sex", "Going Down on a Vagina", "Getting Anal Sex", "Getting Anal Sex", "Giving a Blow Job", "Fingering or Fisting", "Sex (Vaginal)", "Sex", "Insert a Sex Toy", "Dry Humping", "Rubbing a Vagina", "Masturbation", "Penis Rubbing", "Rimming (Licking) Anus", "Kissing", "Scissoring", "Undress Your Partner", "Cuddle (Naked or Clothed)", "Massage Partner", "Play with Partner’s Hair", "Apply Massage Oil", "Dance (Naked or Clothed)", "Say Something Sexy", "Play with a Sex Toy (No Insertion)", "Flirt with Your Partner", "Decide to Have Sex"]},
-// symbolNames : ["Anal Sex", "Oral Sex", "Massage", "Blow Job", "Fingering", "Fisting", "Sex with Man", "Sex with Woman", "Sex Toy", "Brush Hair", "Dry Humping", "Rubbing a Vagina", "Penile Masturbation", "Penis Rubbing", "Rimming", "Kissing", "Scissoring", "Hugs"];
-
 function onGenderLockTouch(e) {
 	Ti.API.debug("BEGIN - onGenderLockTouch: " + JSON.stringify(e));
 	var type, sprite;
@@ -1154,85 +1381,86 @@ function onResultsButtonTouch(e) {
 		armFrame.animate(0, 5, 250, 0);
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Protection sprite.');
-		if(e.tag == 'resultsButton') {
+		if (e.tag == 'resultsButton') {
 			resultsNewButton.alpha = 0;
 			resultsButton.alpha = 0;
+			tryAgainButton.alpha = 0;
+			touchToSpinButton.alpha = 1;
+			displayWin();
+		} else if (e.tag == 'resultsNewButton') {
+			resultsNewButton.alpha = 0;
+			resultsButton.alpha = 1;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
 			displayWin();
-		}
-		else if(e.tag == 'resultsNewButton') {
+		} else if (e.tag == 'tryAgainButton') {
 			resultsNewButton.alpha = 0;
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
-			displayWin();
-		}
-		else if(e.tag == 'tryAgainButton') {
-			resultsNewButton.alpha = 0;
-			resultsButton.alpha = 0;
-			tryAgainButton.alpha = 0;
-			touchToSpinButton.alpha = 0;
+			armFrame.animate(0, 5, 250, 0);
 			spin();
-		}
-		else if(e.tag == 'touchToSpinButton') {
+		} else if (e.tag == 'touchToSpinButton') {
 			resultsNewButton.alpha = 0;
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
-			spin();
-		}
-	}
-
-}
-
-function onResultsNewButtonTouch(e) {
-	Ti.API.debug("BEGIN - onResultsNewButtonTouch: " + JSON.stringify(e));
-	var type, sprite;
-
-	type = e.type;
-	sprite = e.source;
-
-	if (type === 'touchstart') {
-		Ti.API.info('Touch started on Protection sprite.');
-
-	} else if (type === 'touchmove') {
-		Ti.API.info('Touch moved on Protection sprite.');
-
-	} else if (type === 'touchend') {
-		Ti.API.info('Touch ended on Protection sprite.');
-		resultsNewButton.alpha = 0;
-		resultsButton.alpha = 0;
-		tryAgainButton.alpha = 0;
-		touchToSpinButton.alpha = 1;
-		displayWin();
-	}
-
-}
-
-function onTryAgainButtonTouch(e) {
-	Ti.API.debug("BEGIN - onTryAgainButtonTouch: " + JSON.stringify(e));
-	var type, sprite;
-
-	type = e.type;
-	sprite = e.source;
-
-	if (type === 'touchstart') {
-		Ti.API.info('Touch started on Protection sprite.');
-
-	} else if (type === 'touchmove') {
-		Ti.API.info('Touch moved on Protection sprite.');
-		armFrame.animate(0, 5, 250, 0);
-	} else if (type === 'touchend') {
-		Ti.API.info('Touch ended on Protection sprite.');
-		resultsNewButton.alpha = 0;
-		resultsButton.alpha = 0;
-		tryAgainButton.alpha = 0;
-		touchToSpinButton.alpha = 1;
+			armFrame.animate(0, 5, 250, 0);
 		spin();
+		}
 	}
 
 }
+
+/*
+
+ function onResultsNewButtonTouch(e) {
+ Ti.API.debug("BEGIN - onResultsNewButtonTouch: " + JSON.stringify(e));
+ var type, sprite;
+
+ type = e.type;
+ sprite = e.source;
+
+ if (type === 'touchstart') {
+ Ti.API.info('Touch started on Protection sprite.');
+
+ } else if (type === 'touchmove') {
+ Ti.API.info('Touch moved on Protection sprite.');
+
+ } else if (type === 'touchend') {
+ Ti.API.info('Touch ended on Protection sprite.');
+ resultsNewButton.alpha = 0;
+ resultsButton.alpha = 0;
+ tryAgainButton.alpha = 0;
+ touchToSpinButton.alpha = 1;
+ displayWin();
+ }
+
+ }
+
+ function onTryAgainButtonTouch(e) {
+ Ti.API.debug("BEGIN - onTryAgainButtonTouch: " + JSON.stringify(e));
+ var type, sprite;
+
+ type = e.type;
+ sprite = e.source;
+
+ if (type === 'touchstart') {
+ Ti.API.info('Touch started on Protection sprite.');
+
+ } else if (type === 'touchmove') {
+ Ti.API.info('Touch moved on Protection sprite.');
+ armFrame.animate(0, 5, 250, 0);
+ } else if (type === 'touchend') {
+ Ti.API.info('Touch ended on Protection sprite.');
+ resultsNewButton.alpha = 0;
+ resultsButton.alpha = 0;
+ tryAgainButton.alpha = 0;
+ touchToSpinButton.alpha = 1;
+ spin();
+ }
+ }
+ */
 
 function onLeverTouch(e) {
 	Ti.API.debug("BEGIN - onLeverTouch: " + JSON.stringify(e));
@@ -1243,18 +1471,22 @@ function onLeverTouch(e) {
 
 	if (type === 'touchstart') {
 		Ti.API.info('Touch started on first sprite.');
-
 	} else if (type === 'touchmove') {
 		Ti.API.info('Touch moved on first sprite.');
 		resultsNewButton.alpha = 0;
 		resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
 		armFrame.animate(0, 5, 250, 0);
+		spin();
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on first sprite.');
-		spin();
 	}
 
+}
+
+var oldPRessFontName = 'Old Press';
+if (OS_ANDROID) {
+	oldPRessFontName = 'Old-Press';
 }
 
 function initGameScene() {
@@ -1271,6 +1503,7 @@ function initGameScene() {
 	var imageScaleFactor = 1;
 	var positionFactor = 1;
 	var fontFactor = 1;
+	var lockLabelFontSize = 24;
 
 	if (OS_ANDROID) {
 		if (game.size.width == 360) {
@@ -1278,6 +1511,7 @@ function initGameScene() {
 			imageScaleFactor = 1.75;
 			fontFactor = 1.75;
 			positionFactor = 1.75;
+			imageSuffix = "";
 		} else if (game.size.width == 320) {
 			scaleFactor = 2;
 			imageScaleFactor = 2;
@@ -1324,7 +1558,7 @@ function initGameScene() {
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 50 / positionFactor,
+		x : 45 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
@@ -1335,7 +1569,7 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 50 / positionFactor,
+		x : 45 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
@@ -1345,8 +1579,8 @@ function initGameScene() {
 
 	genderLockLabel = platino.createTextSprite({
 		text : 'Your Gender',
-		fontSize : 20 / fontFactor,
-		x : 85 / positionFactor,
+		fontSize : lockLabelFontSize / fontFactor,
+		x : 80 / positionFactor,
 		y : 55 / positionFactor
 	});
 	genderLockLabel.width += 60;
@@ -1379,7 +1613,7 @@ function initGameScene() {
 
 	activityLockLabel = platino.createTextSprite({
 		text : 'Activity',
-		fontSize : 20 / fontFactor,
+		fontSize : lockLabelFontSize / fontFactor,
 		x : 295 / positionFactor,
 		y : 55 / positionFactor
 	});
@@ -1413,7 +1647,7 @@ function initGameScene() {
 
 	protectionLockLabel = platino.createTextSprite({
 		text : 'Protection',
-		fontSize : 20 / fontFactor,
+		fontSize : lockLabelFontSize / fontFactor,
 		x : 485 / positionFactor,
 		y : 55 / positionFactor
 	});
@@ -1457,6 +1691,7 @@ function initGameScene() {
 		scaleY : 1 / scaleFactor
 	});
 	touchable.push(armFrame);
+	armFrame.addEventListener('touchstart', onLeverTouch);
 	armFrame.addEventListener('touchmove', onLeverTouch);
 	armFrame.addEventListener('touchend', onLeverTouch);
 
@@ -1508,8 +1743,8 @@ function initGameScene() {
 
 	touchToSpinButton = platino.createTextSprite({
 		text : 'Pull Handle to Spin >',
-		tag: "touchToSpinButton",
-		fontFamily : 'Old Press',
+		tag : "touchToSpinButton",
+		fontFamily : oldPRessFontName,
 		fontSize : 60 / fontFactor,
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		width : 400 / imageScaleFactor,
@@ -1523,7 +1758,7 @@ function initGameScene() {
 
 	resultsButton = platino.createSprite({
 		image : "images/ResultsButton.png",
-		tag: "resultsButton",
+		tag : "resultsButton",
 		x : 120 / positionFactor,
 		y : 540 / positionFactor,
 		width : 400 / imageScaleFactor,
@@ -1535,7 +1770,7 @@ function initGameScene() {
 
 	resultsNewButton = platino.createSprite({
 		image : "images/ResultsNewButton.png",
-		tag: "resultsNewButton",
+		tag : "resultsNewButton",
 		x : 120 / positionFactor,
 		y : 540 / positionFactor,
 		width : 400 / imageScaleFactor,
@@ -1547,7 +1782,7 @@ function initGameScene() {
 
 	tryAgainButton = platino.createSprite({
 		image : "images/TryAgainButton.png",
-		tag: "tryAgainButton",
+		tag : "tryAgainButton",
 		x : 120 / positionFactor,
 		y : 540 / positionFactor,
 		width : 400 / imageScaleFactor,
@@ -1572,17 +1807,6 @@ function initGameScene() {
 		width : 4 / imageScaleFactor,
 		height : 48 / imageScaleFactor
 	});
-
-	// Add the lever
-	lever = platino.createSprite({
-		image : "graphics/ball.png",
-		x : (game.screen.width - (60 / positionFactor)),
-		y : (game.screen.height - (60 / positionFactor)),
-		width : 58 / imageScaleFactor,
-		height : 58 / imageScaleFactor
-	});
-	// touchable.push(lever);
-	// lever.addEventListener('touchend', onLeverTouch);
 
 	scene.add(reel1);
 	scene.add(reel2);
@@ -1655,11 +1879,15 @@ var collection = Backbone.Collection.extend({
 });
 
 var paytable = new collection(paytableData.data);
+var activityMapping = new collection(activityMapping.data);
 var reel1Random, reel2Random, reel3Random;
 
 var win = {
 	risk : "",
-	safety : ""
+	safety : "",
+	orientation : "",
+	activity : "",
+	protection : ""
 };
 
 // Check reels, show particle effect if winning spin, allow user to spin again
@@ -1673,45 +1901,74 @@ function checkWin() {
 	Ti.API.debug('reel2Random = ' + reel2Random);
 	Ti.API.debug('reel3Random = ' + reel3Random);
 
-	var orientation = reels.reel1.symbolNames[Math.floor(reel1.frame / 2)];
-	var activity = reels.reel2.symbolNames[Math.floor(reel2.frame / 2)];
-	var protection = reels.reel3.symbolNames[Math.floor(reel3.frame / 2)];
+	var orientation = reels.reel1.symbolNames[reel1Random / 2];
+	var activity = reels.reel2.symbolNames[reel2Random / 2];
+	var protection = reels.reel3.symbolNames[reel3Random / 2];
 
 	Ti.API.debug('orientation = ' + orientation);
 	Ti.API.debug('activity = ' + activity);
 	Ti.API.debug('protection = ' + protection);
 
-	var outcome = paytable.find(function(item) {
-		// Ti.API.debug('item = ', JSON.stringify(item));
-		if (item.attributes.orientation == orientation) {
-			var activityMapped = activityMapping[orientation + ':' + activity];
-			if (item.attributes.activity == activityMapped) {
-				if (item.attributes.protection.indexOf(protection) != -1) {
-					return item;
+	var activities = activityMapping.where({
+		mapping : orientation + ':' + activity
+	});
+	Ti.API.debug('activities.length = ' + activities.length);
+
+	if (activities.length > 0) {
+
+		var randomIdx = Math.floor(Math.random() * (activities.length));
+		var activityRandom = activities[randomIdx];
+		var activityName = activityRandom.attributes.activity;
+
+		Ti.API.debug('randomIdx = ' + randomIdx);
+		Ti.API.debug('activityRandom = ' + activityRandom);
+		Ti.API.debug('activityName = ' + activityName);
+
+		var outcome = paytable.find(function(item) {
+			// Ti.API.debug('item = ', JSON.stringify(item));
+			if (item.attributes.orientation == orientation) {
+				if (item.attributes.activity == activityName) {
+					if (item.attributes.protection.indexOf(protection) != -1) {
+						return item;
+					}
 				}
 			}
+		});
+
+		if (outcome != undefined) {
+			Ti.API.debug('outcome = ' + JSON.stringify(outcome));
+
+			var indexStr = "If " + protection + ":";
+			var safety = outcome.attributes.safety;
+			var safetyDetailIdx = safety.indexOf(indexStr);
+			if (safetyDetailIdx != -1) {
+				var nextColon = safety.indexOf(".  If", safetyDetailIdx + indexStr.length);
+				if (nextColon != -1) {
+					safety = safety.substr(safetyDetailIdx, (nextColon - safetyDetailIdx) + 1);
+				} else {
+					safety = safety.substr(safetyDetailIdx);
+				}
+			}
+
+			Ti.API.debug('outcome.risk = ' + outcome.attributes.risk);
+			Ti.API.debug('safety = ' + safety);
+			win.risk = outcome.attributes.risk;
+			win.safety = safety;
+			win.activity = activityName;
+			win.orientation = orientation;
+			win.protection = protection;
+			resultsNewButton.alpha = 1;
+			resultsButton.alpha = 0;
+			tryAgainButton.alpha = 0;
+			touchToSpinButton.alpha = 0;
+		} else {
+			resultsButton.alpha = 0;
+			resultsNewButton.alpha = 0;
+			tryAgainButton.alpha = 1;
+			touchToSpinButton.alpha = 0;
+			win.risk = "Please spin again!";
+			win.safety = "None.";
 		}
-	});
-
-	if (outcome != undefined) {
-		Ti.API.debug('outcome = ' + JSON.stringify(outcome));
-
-		var indexStr = "If " + protection + ":";
-		var safety = outcome.attributes.safety;
-		var safetyDetailIdx = safety.indexOf(indexStr);
-		if (safetyDetailIdx != -1) {
-			var nextColon = safety.indexOf(".  If", safetyDetailIdx + indexStr.length);
-			safety = safety.substr(safetyDetailIdx, (nextColon - safetyDetailIdx) + 1);
-		}
-
-		Ti.API.debug('outcome.risk = ' + outcome.attributes.risk);
-		Ti.API.debug('safety = ' + safety);
-		win.risk = outcome.attributes.risk;
-		win.safety = safety;
-		resultsNewButton.alpha = 1;
-		resultsButton.alpha = 0;
-		tryAgainButton.alpha = 0;
-		touchToSpinButton.alpha = 0;
 	} else {
 		resultsButton.alpha = 0;
 		resultsNewButton.alpha = 0;
@@ -1765,15 +2022,15 @@ function spin() {
 		canSpin = false;
 		// spinLight.frame = 1;
 		if (isGenderLocked == false) {
-			reel1.animate(0, 13, 50, -1);
+			reel1.animate(0, 10, 50, -1);
 		}
 
 		if (isActivityLocked == false) {
-			reel2.animate(0, 13, 70, -1);
+			reel2.animate(0, 32, 70, -1);
 		}
 
 		if (isProtectionLocked == false) {
-			reel3.animate(0, 13, 90, -1);
+			reel3.animate(0, 8, 90, -1);
 		}
 
 		// Stop the reels randomly between .8 and 2.5 seconds
@@ -1805,9 +2062,7 @@ function onScreenTouch(e) {
 		sprite = touchable[i];
 		// Ti.API.debug('Checking sprite: x=' + sprite.x + ", y=" + sprite.y);
 
-		// if sprite contains the touch coordinates, fire the event
-		// if (sprite.containsWithPadding(_event.x, _event.y, 20, 10)) {
-		if (sprite.contains(_event.x, _event.y)) {
+		if (sprite.alpha > 0 && sprite.contains(_event.x, _event.y)) {
 			Ti.API.debug('Sprite found!');
 			var args = {
 				x : e.x * TOUCH_SCALE,
@@ -1882,6 +2137,47 @@ function init() {
 
 }
 
+function openWebView() {
+	var args = {
+	};
+
+	var controller = Alloy.createController('BetOnThisNVWebView', args);
+
+	if (OS_IOS) {
+		controller.getView().open();
+	}
+}
+
+// Android
+if(OS_ANDROID) {
+    $.shakeItTab.addEventListener('focus', function() {
+        if($.shakeItTab.tabGroup.activity) {
+            var activity = $.shakeItTab.tabGroup.activity;
+             
+            // Menu
+            activity.invalidateOptionsMenu();
+            activity.onCreateOptionsMenu = function(e) {
+                var menu = e.menu;
+                var menuItem1 = menu.add({
+                    // title: 'Bet On This',
+                    titleCondensed: 'Bet On This',
+                    icon : 'images/BetOnThisIcon.png',
+                    showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
+                });
+                menuItem1.addEventListener('click', openWebView);
+            };
+             
+            // Action Bar
+            if( Alloy.Globals.Android.Api >= 11 && activity.actionBar) {      
+                activity.actionBar.title = 'NV SexSafe';
+            }            
+        }   
+    });
+}
+ 
+
 function open() {
+
 	init();
+
 }

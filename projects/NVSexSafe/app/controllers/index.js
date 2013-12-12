@@ -48,7 +48,18 @@ function init() {
 
 }
 
-function open() {
+function openWebView() {
+	var args = {
+	};
+
+	var controller = Alloy.createController('BetOnThisNVWebView', args);
+
+	if (OS_IOS) {
+		controller.getView().open();
+	}
+}
+
+function open(e) {
 	Ti.API.trace('index.' + arguments.callee.name);
 	init();
 }
@@ -58,20 +69,6 @@ Ti.API.info("Ti.Platform.displayCaps.platformHeight = " + Ti.Platform.displayCap
 
 var iOS7 = isIOS7Plus();
 $.index.top = iOS7 ? 20 : 0;
-
-if (OS_ANDROID) {
-	$.index.activity.onCreateOptionsMenu = function(e) {
-		var menu = e.menu;
-		var menuItem = menu.add({
-			title : "BetOnThisNV",
-			icon : "images/BetOnThisIcon.png",
-			showAsAction : Ti.Android.SHOW_AS_ACTION_IF_ROOM
-		});
-		menuItem.addEventListener("click", function(e) {
-			Ti.API.info("Action Item Clicked!");
-		});
-	};
-}
 
 $.index.open();
 

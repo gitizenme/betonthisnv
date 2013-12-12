@@ -2,7 +2,7 @@
 
 
 var args = {
-	title: "Find Condoms"
+	title: "FIND CONDOMS"
 };
 $.findCondoms.titleControl = Alloy.createController('NavTitleControl', args).getView();
 

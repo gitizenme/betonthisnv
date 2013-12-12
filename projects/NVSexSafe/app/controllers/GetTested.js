@@ -1,7 +1,7 @@
 
 
 var args = {
-	title: "Get Tested"
+	title: "GET TESTED"
 };
 $.getTested.titleControl = Alloy.createController('NavTitleControl', args).getView();
 

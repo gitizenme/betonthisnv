@@ -23,6 +23,17 @@ var rightNavButton = Ti.UI.createButton({
 rightNavButton.addEventListener('click', clickSend);
 */
 
+/*
+var win = {
+	risk : "",
+	safety : "",
+	orientation : "",
+	activity : "",
+	protection : ""
+};
+
+*/
+
 function open() {
     Ti.API.trace('DisplayWin.' + arguments.callee.name);
     if(win === null) {
@@ -35,10 +46,16 @@ function open() {
     	alert("Unable to display win!");
     }
     else {
+		$.orientationBody.text = win.orientation;
+		$.activityBody.text = win.activity;
+		$.protectionBody.text = win.protection;
     	$.riskBody.text = win.risk;
     	
     	if(win.safety != "") {
 	    	$.safetyBody.text = win.safety;
+    	}
+    	else {
+    		$.safetyBody.text = "N/A";
     	}
     }
 }

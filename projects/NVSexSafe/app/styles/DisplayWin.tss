@@ -1,0 +1,21 @@
+".title": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#CC0920",
+	font: {
+		fontSize: 24,
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+".body": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#0A0A0A",
+	font: {
+		fontSize: 14,
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}

@@ -3,11 +3,20 @@
 		<Window id="getHelp" title="Get Help">
 			<ScrollView layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
 			showHorizontalScrollIndicator="false" height="100%" width="80%">
-				<View class="infoButtonView">
-					<Button class="infoButton" image="images/GetHelpIcon.png" title="Get Help" onClick="getHelpClicked"></Button>
+				<View id="contactEntry" top="5" layout="vertical" class="ScrollWindow">
+					<Label id="hintLabel" top="3" width="95%" height="Ti.UI.SIZE"/>
+					<Label color="#000" top="6" text="Name:" left="5"/>
+					<TextField id="name" hintText="enter your name">
+					</TextField>
+					<Label top="6" text="Phone #:" left="5"/>
+					<TextField id="phone" hintText="enter your phone number">
+					</TextField>
+					<Label top="6" text="Message:" left="5"/>
+					<TextField id="message" hintText="enter a brief message">
+					</TextField>
+					<Button top="20" title="Send" onClick="clickSend">
 				</View>
 			</ScrollView>
 		</Window>
 	</Tab>
 </Alloy>
-

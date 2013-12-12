@@ -9,3 +9,8 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+if( OS_ANDROID ) {
+    Alloy.Globals.Android = { 
+        "Api" : Ti.Platform.Android.API_LEVEL
+    };
+}

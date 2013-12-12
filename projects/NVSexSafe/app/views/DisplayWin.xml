@@ -1,13 +1,19 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="open" title="Risk Factor">
+	<Window fullscreen="false" class="container" onOpen="open" title="Results">
 		<NavigationGroup id="navGroup" platform="ios">
-			<Window id="navWin" class="container" title="Risk Factor">
+			<Window id="navWin" class="container" title="Results">
 				<ScrollView id="scrollView" showVerticalScrollIndicator="true" showHorizontalScrollIndicator="true" height="95%" width="95%">
 					<View id="view" backgroundColor="#fff" color="#000" borderRadius="10" height="FILL" width="FILL" layout="vertical">
-						<Label id="riskTitle" top="5" color="#CC0920" text="Risk Factor" />
-						<Label id="riskBody" color="#000" textAlign="left" />
-						<Label id="safetyTitle" top="20" color="#CC0920" text="Safety" />
-						<Label id="safetyBody" color="#000" textAlign="left" />
+						<Label class="title" id="orientationTitle" top="5" text="Orientation" />
+						<Label class="body" id="orientationBody" />
+						<Label class="title" id="activityTitle" top="20" text="Activity" />
+						<Label class="body" id="activityBody" />
+						<Label class="title" id="protectionTitle" top="20" text="Protection" />
+						<Label class="body" id="protectionBody" />
+						<Label class="title" id="riskTitle" top="20" text="Risk Factor" />
+						<Label class="body" id="riskBody" />
+						<Label class="title" id="safetyTitle" top="20" text="Safety" />
+						<Label class="body" id="safetyBody" />
 					</View>
 				</ScrollView>
 			</Window>
