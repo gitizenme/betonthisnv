@@ -1,0 +1,10 @@
+<Alloy>
+	<Window fullscreen="false" class="container" onOpen="open" title="betonthisnv.org">
+		<NavigationGroup id="navGroup" platform="ios">
+			<Window id="navWin" class="container" title="betonthisnv.org">
+				<WebView url="http://betonthisnv.org"/>
+			</Window>
+		</NavigationGroup>
+	</Window>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
+</Alloy>

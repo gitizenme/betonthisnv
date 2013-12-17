@@ -9,8 +9,9 @@
     height: Ti.UI.FILL
 },
 '#days': {
-    backgroundImage: WPATH('/images/bg.png'),
-    backgroundRepeat: true,
+    // backgroundImage: WPATH('/images/bg.png'),
+    // backgroundRepeat: true,
+    backgroundColor: '#2399A3',
     layout: 'horizontal',
     top: 0,
     height: '22dp'

@@ -1,7 +1,7 @@
 <Alloy>
 	<Tab title="Find Condoms" id="findCondomsTab" icon="images/FindCondomsIcon.png">
 		<Window id="findCondoms" title="Find Condoms">
-			<WebView url="http://betonthisnv.org/Protect/Get_Free_Condoms/"></WebView>
+			<WebView top="7" url="http://betonthisnv.org/Protect/Get_Free_Condoms/"></WebView>
 		</Window>
 	</Tab>
 </Alloy>

@@ -1,0 +1,27 @@
+
+"#navLeftLabel" : {
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+  backgroundColor: 'transparent',
+	  color: "#fff",
+  font:{
+		    fontSize:10,
+		    fontWeight: 'bold'
+		  }
+		}
+
+"#navLeftImage" : {
+	  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  backgroundColor: 'transparent',
+	  color: '#CC0920',
+	  tintColor: '#fff'
+}
+
+"#navLeftView" : {
+  width: Ti.UI.FILL,
+	  height: Ti.UI.FILL,
+  backgroundColor: 'transparent',
+	  tintColor: '#fff'
+}

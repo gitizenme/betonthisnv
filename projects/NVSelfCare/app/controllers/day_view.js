@@ -24,7 +24,7 @@ function clickCalendar(e) {
 
 
 var leftNavButton = Alloy.createController('navBarButton').getView();
-leftNavButton.title = 'Calendar';
+leftNavButton.title = 'Back';
 leftNavButton.addEventListener('click', clickCalendar);
 
 // var rightNavButton = Alloy.createController('navBarButton').getView();

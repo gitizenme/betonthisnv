@@ -1,6 +1,9 @@
 var moment = require('alloy/moment');
 
 
+var args = {
+	title : "SELF CARE"
+};
 
 var currentMonth = moment();
 
@@ -69,3 +72,60 @@ $.calendar.addEventListener('click', function(e) {
 	}
 });
 
+
+$.calendarWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
+
+$.calendarWin.rightNavButton = Alloy.createController('NavRightButton', {}).getView();
+$.calendarWin.leftNavButton = Alloy.createController('NavLeftButton', {}).getView();
+
+
+function init() {
+	Ti.API.trace('calendar.' + arguments.callee.name);
+
+}
+
+function openWebView() {
+	var args = {
+	};
+
+	var controller = Alloy.createController('BetOnThisNVWebView', args);
+
+	if (OS_IOS) {
+		controller.getView().open();
+	}
+}
+
+// Android
+if(OS_ANDROID) {
+    $.calendarTab.addEventListener('focus', function() {
+        if($.calendarTab.tabGroup.activity) {
+            var activity = $.calendarTab.tabGroup.activity;
+             
+            // Menu
+            activity.invalidateOptionsMenu();
+            activity.onCreateOptionsMenu = function(e) {
+                var menu = e.menu;
+                var menuItem1 = menu.add({
+                    // title: 'Bet On This',
+                    titleCondensed: 'Bet On This',
+                    icon : 'images/BetOnThisIcon.png',
+                    showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
+                });
+                menuItem1.addEventListener('click', openWebView);
+            };
+             
+            // Action Bar
+            if( Alloy.Globals.Android.Api >= 11 && activity.actionBar != null) {      
+                activity.actionBar.title = 'NV SexSafe';
+            }            
+        }   
+    });
+}
+ 
+
+
+function open() {
+
+	init();
+
+}

@@ -1,10 +1,10 @@
 <Alloy>
-	<Tab id="calendarTab" title="Calendar" icon="images/airplane.png">
-		<Window id="calendarWin" title="My Calendar" layout="vertical">
+	<Tab id="calendarTab" title="Calendar" icon="images/CalendarIcon.png">
+		<Window id="calendarWin" title="SELF CARE" layout="vertical" onOpen="open">
 			<View class="control">
-				<Button id="prevMonth" title=" < " onClick="doPrevMonth" />
+				<Button id="prevMonth" title="Prev" onClick="doPrevMonth" />
 				<Label id="calendarHeading"/>
-				<Button id="nextMonth" title=" > " onClick="doNextMonth" />
+				<Button id="nextMonth" title="Next" onClick="doNextMonth" />
 			</View>
 			<View id="calendar">
 				<Widget id="current" src="jp.co.mountposition.calendar" />

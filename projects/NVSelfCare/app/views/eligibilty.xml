@@ -1,5 +1,5 @@
 <Alloy>
-	<Tab title="Eligibilty" icon="images/airplane.png">
+	<Tab title="Eligibilty" icon="images/CameraIcon.png">
 		<Window title="Eligibility Album">
 			<Label>Eligibility View</Label>
 		</Window>

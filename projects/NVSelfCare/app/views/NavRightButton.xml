@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="navRightView">
+		<Label id="navRightLabel" onClick="rightNavClicked">Bet On This</Label>
+		<ImageView id="navRightImage" image="images/BetOnThisIcon.png" onClick="rightNavClicked"/>
+	</View>
+</Alloy>

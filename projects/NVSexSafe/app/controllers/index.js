@@ -1,8 +1,17 @@
 // Colors
 // Black: #0A0A0A
 // Yellow/Green: #D7DF23
-// Cyan: #08B082
+// Cyan: #2399A3
 // Red: #E81C24
+
+
+// Tab Bar Dim Icons: 130,130,130
+// Tab Bar Active Icons: 8,176,194
+// Locked Reel Labels: 255,255,255
+// Unlocked Reel Labels: 0,0,0
+// Red: 232,28,36
+// Blue: 8,176,194
+// Yellow/Green: 215,223,35
 
 Titanium.UI.setBackgroundColor('#000');
 

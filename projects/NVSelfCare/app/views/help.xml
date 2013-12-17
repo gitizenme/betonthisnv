@@ -1,5 +1,5 @@
 <Alloy>
-	<Tab title="Help" icon="images/airplane.png">
+	<Tab title="Help" icon="images/GetHelpIcon.png">
 		<Window title="Get Help">
 			<Label>Help View</Label>
 		</Window>

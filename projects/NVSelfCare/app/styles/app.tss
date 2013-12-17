@@ -1,15 +1,48 @@
-"Window": {
-	backgroundColor: "#fff"
+"Window[platform=ios]": {
+	backgroundColor: "#fff",
+	tintColor: "#fff",
+	navTintColor: "#fff",
+	color: "#fff",
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+},
+"Window[platform=android]": {
+	backgroundColor: "#2399A3",
+	tintColor: "#fff",
+	navTintColor: "#fff",
+	color: "#fff"
+	},
+"View": {
+	backgroundColor: "#2399A3",
+	tintColor: "#fff",
+	color: "#fff"
 },
 ".container": {
-	backgroundColor: "#fff"
+	backgroundColor: "transparent",
+	tintColor: "#fff",
+	color: "#fff"
 },
 ".ScrollWindow": {
 	height: 'fill',
 	width: 'fill',
-	backgroundColor: "#fff",
-	// backgroundImage: 'background.jpg',
-	backgroundRepeat: true
+	backgroundColor: "#2399A3"
+	},
+"NavigationGroup": {
+	backgroundColor: "#2399A3",
+	barColor: "#2399A3",
+	tintColor: '#fff',
+	color: "#fff"
+},
+"TabGroup": {
+	// backgroundImage: "images/TabBar-Background.png"
+	top: 20,
+	backgroundColor: "#2399A3",
+	barColor: "#2399A3",
+tabsBackgroundColor: "#0A0A0A",
+// tintColor: '#2399A3',
+tabsTintColor: '#2399A3'
+},
+"TabGroup[platform=android]": {
+	tabsBackgroundColor: "#2399A3"
 },
 "ScrollView": {
 	contentWidth: 'auto',
@@ -17,18 +50,61 @@
 	showVerticalScrollIndicator: true,
 	showHorizontalScrollIndicator: true,
 },
+"Button": {
+	color: '#CC0920',
+	tintColor: '#CC0920'
+},
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#000",
+	color: "#0A0A0A",
 	font: {
-		fontSize: 20,
+		fontSize: 12,
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: 'center'
+},
+"Label[platform=android]": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#0A0A0A",
+	font: {
+		fontSize: '12dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	textAlign: 'center'
 },
 "TextField": {
-		top: 5,
+		top: 1,
 	left: 5,
-	borderStyle: "Ti.UI.INPUT_BORDERSTYLE_ROUNDED"
-		}
+	width: '80%',
+	height: 'size',
+	borderColor: '#eee',
+	borderWidth: 2,
+	borderRadius: 3
+		},
+	".dataEntry": {
+		layout: 'horizontal',
+			top: 2,
+			left: 2
+		},
+	".getHelpView": {
+		width:"100%",
+	height:"auto",
+	backgroundColor:"#257EB7"
+},
+".infoButtonView": {
+		borderRadius:"7 dp",
+		borderColor:"#0A0A0A",
+		backgroundColor:"#fff",
+		top: "5 dp",
+		height:"30%",
+		width:"auto"
+},
+".infoButton": {
+				width: "200dp",
+				},
+".infoWidget": {
+    icon: "images/BetOnThisIcon.png",
+    text: "BetOnThisNV"
+}

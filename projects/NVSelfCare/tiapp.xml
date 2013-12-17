@@ -17,6 +17,14 @@
     <analytics>true</analytics>
     <guid>7eb49b76-5a09-4046-ae66-18a594431f42</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleLightContent</string>
+            </dict>
+        </plist>
+    </ios>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -29,11 +37,12 @@
         </orientations>
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <tool-api-level>11</tool-api-level>
+        <tool-api-level>14</tool-api-level>
         <manifest android:versionCode="1" android:versionName="0.1.0">
-            <uses-sdk android:targetSdkVersion="11"/>
             <supports-screens android:anyDensity="false"/>
-        </manifest>
+			<application android:theme="@android:style/Theme.Holo"/>
+			<uses-sdk android:maxSdkVersion="18"
+            	android:minSdkVersion="10" android:targetSdkVersion="14"/>          </manifest>
     </android>
     <mobileweb>
         <precache/>

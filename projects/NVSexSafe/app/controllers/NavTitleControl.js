@@ -2,7 +2,9 @@
 
 var args = arguments[0] || {};
 
-$.title.text = args.title || 'NO TITLE!!!!';
+
+$.leftTitle.text = args.leftTitle || '';
+$.rightTitle.text = args.title || 'NO TITLE!!!!';
 
 
 function betOnThisClicked(e) {

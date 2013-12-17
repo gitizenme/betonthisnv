@@ -21,5 +21,9 @@
 },
 '#calendarHeading': {
     color: '#000',
-	    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+	font: {
+		fontSize: 14,
+		fontFamily: 'Helvetica Neue'
+	},
+		    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 }

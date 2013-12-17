@@ -1,6 +1,6 @@
 <Alloy>
-	<Tab title="Diary" icon="images/airplane.png">
-		<Window title="Care Diary">
+	<Tab title="Diary" icon="images/DiaryIcon.png">
+		<Window title="Diary">
 			<Label>Diary View</Label>
 		</Window>
 	</Tab>

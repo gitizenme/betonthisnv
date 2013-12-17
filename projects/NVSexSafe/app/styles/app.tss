@@ -1,18 +1,18 @@
 "Window[platform=ios]": {
-	backgroundColor: "#2399A3",
+	backgroundColor: "#000",
 	tintColor: "#fff",
 	navTintColor: "#fff",
 	color: "#fff",
 	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
 },
 "Window[platform=android]": {
-	backgroundColor: "#2399A3",
+	backgroundColor: "#000",
 	tintColor: "#fff",
 	navTintColor: "#fff",
 	color: "#fff"
 	},
 "View": {
-	backgroundColor: "#2399A3",
+	backgroundColor: "transaparent",
 	tintColor: "#fff",
 	color: "#fff"
 },
@@ -24,10 +24,10 @@
 ".ScrollWindow": {
 	height: 'fill',
 	width: 'fill',
-	backgroundColor: "#2399A3"
+	backgroundColor: "#000"
 	},
 "NavigationGroup": {
-	backgroundColor: "#2399A3",
+	backgroundColor: "#000",
 	barColor: "#2399A3",
 	tintColor: '#fff',
 	color: "#fff"
@@ -36,10 +36,10 @@
 	// backgroundImage: "images/TabBar-Background.png"
 	top: 20,
 	backgroundColor: "#2399A3",
-	barColor: "#CC0920",
+	barColor: "#E81C24",
 tabsBackgroundColor: "#0A0A0A",
 // tintColor: '#2399A3',
-tabsTintColor: '#08B082'
+tabsTintColor: '#2399A3'
 },
 "TabGroup[platform=android]": {
 	tabsBackgroundColor: "#0A0A0A"
@@ -51,13 +51,13 @@ tabsTintColor: '#08B082'
 	showHorizontalScrollIndicator: true,
 },
 "Button": {
-	color: '#CC0920',
-	tintColor: '#CC0920'
+	color: '#fff',
+	tintColor: '#fff'
 },
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#0A0A0A",
+	color: "#fff",
 	font: {
 		fontSize: 12,
 		fontFamily: 'Helvetica Neue'
@@ -67,7 +67,7 @@ tabsTintColor: '#08B082'
 "Label[platform=android]": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#0A0A0A",
+	color: "#fff",
 	font: {
 		fontSize: '12dp',
 		fontFamily: 'Helvetica Neue'
@@ -75,12 +75,11 @@ tabsTintColor: '#08B082'
 	textAlign: 'center'
 },
 "TextField": {
-		top: 1,
-	left: 5,
-	width: '80%',
+		width: '95%',
 	height: 'size',
+	color: '#fff',
 	borderColor: '#eee',
-	borderWidth: 2,
+	borderWidth: 1,
 	borderRadius: 3
 		},
 	".dataEntry": {

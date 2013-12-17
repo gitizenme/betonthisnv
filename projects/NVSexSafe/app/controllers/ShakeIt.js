@@ -830,31 +830,31 @@ var paytableData = {
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner'Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner'Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner'Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner'Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner'Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Scissoring",
@@ -1212,19 +1212,26 @@ var paytableData = {
  var protection = 'Condom';
  */
 
-$.shakeItWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
+var argsTitleContol = {
+	leftTitle: "SEX",
+	title: "SAFE"
+};
+
+$.shakeItWin.titleControl = Alloy.createController('NavTitleControl', argsTitleContol).getView();
 
 $.shakeItWin.rightNavButton = Alloy.createController('NavRightButton', {}).getView();
 $.shakeItWin.leftNavButton = Alloy.createController('NavLeftButton', {}).getView();
 
 // create game view
 var game = platino.createGameView();
+
+// TODO disables debug logs (not to be used for production)
 if (ENV_PRODUCTION) {
 	game.debug = false;
 } else {
 	game.debug = true;
 }
-// disables debug logs (not to be used for production)
+game.debug = true;
 
 game.getTiScale = function(x, y) {
 	return {
@@ -1252,6 +1259,7 @@ var canSpin = true;
 
 // Variable for the original Y of the lever
 var oY;
+var reel1Y = 0, reel2Y = 0, reel3Y = 0;
 
 // Background
 // var bg = platino.createSprite({image:"graphics/bg.png"});
@@ -1264,6 +1272,19 @@ var protectionUnLockIcon, protectionLockIcon, protectionLockLabel, isProtectionL
 var riskLabel, safetyLabel;
 var armFrame;
 var touchToSpinButton, resultsButton, resultsNewButton, tryAgainButton;
+
+function lockGender() {
+	if (!isGenderLocked) {
+		genderLockIcon.alpha = 0;
+		genderUnLockIcon.alpha = 1;
+		genderLockLabel.color(0, 0, 0);
+	} else {
+		genderLockIcon.alpha = 1;
+		genderUnLockIcon.alpha = 0;
+		genderLockLabel.color(1, 1, 1);
+	}
+
+}
 
 function onGenderLockTouch(e) {
 	Ti.API.debug("BEGIN - onGenderLockTouch: " + JSON.stringify(e));
@@ -1280,18 +1301,22 @@ function onGenderLockTouch(e) {
 
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Your Gender sprite.');
-		if (isGenderLocked) {
-			genderLockIcon.alpha = 0;
-			genderUnLockIcon.alpha = 1;
-			genderLockLabel.color(0, 0, 0);
-		} else {
-			genderLockIcon.alpha = 1;
-			genderUnLockIcon.alpha = 0;
-			genderLockLabel.color(1, 1, 1);
-		}
 		isGenderLocked = !isGenderLocked;
+		lockGender();
 	}
 
+}
+
+function lockActivity() {
+	if (!isActivityLocked) {
+		activityLockIcon.alpha = 0;
+		activityUnLockIcon.alpha = 1;
+		activityLockLabel.color(0, 0, 0);
+	} else {
+		activityLockIcon.alpha = 1;
+		activityUnLockIcon.alpha = 0;
+		activityLockLabel.color(1, 1, 1);
+	}
 }
 
 function onActivityLockTouch(e) {
@@ -1309,18 +1334,22 @@ function onActivityLockTouch(e) {
 
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Activity sprite.');
-		if (isActivityLocked) {
-			activityLockIcon.alpha = 0;
-			activityUnLockIcon.alpha = 1;
-			activityLockLabel.color(0, 0, 0);
-		} else {
-			activityLockIcon.alpha = 1;
-			activityUnLockIcon.alpha = 0;
-			activityLockLabel.color(1, 1, 1);
-		}
 		isActivityLocked = !isActivityLocked;
+		lockActivity();
 	}
 
+}
+
+function lockProtection() {
+	if (!isProtectionLocked) {
+		protectionLockIcon.alpha = 0;
+		protectionUnLockIcon.alpha = 1;
+		protectionLockLabel.color(0, 0, 0);
+	} else {
+		protectionLockIcon.alpha = 1;
+		protectionUnLockIcon.alpha = 0;
+		protectionLockLabel.color(1, 1, 1);
+	}
 }
 
 function onProtectionIconTouch(e) {
@@ -1338,16 +1367,8 @@ function onProtectionIconTouch(e) {
 
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Protection sprite.');
-		if (isProtectionLocked) {
-			protectionLockIcon.alpha = 0;
-			protectionUnLockIcon.alpha = 1;
-			protectionLockLabel.color(0, 0, 0);
-		} else {
-			protectionLockIcon.alpha = 1;
-			protectionUnLockIcon.alpha = 0;
-			protectionLockLabel.color(1, 1, 1);
-		}
 		isProtectionLocked = !isProtectionLocked;
+		lockProtection();
 	}
 
 }
@@ -1378,7 +1399,7 @@ function onResultsButtonTouch(e) {
 
 	} else if (type === 'touchmove') {
 		Ti.API.info('Touch moved on Protection sprite.');
-		armFrame.animate(0, 5, 250, 0);
+		armFrame.animate(0, 5, 50, 0);
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Protection sprite.');
 		if (e.tag == 'resultsButton') {
@@ -1386,6 +1407,7 @@ function onResultsButtonTouch(e) {
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 1;
+			touchToSpinButton.animate(0,4,500,-1);
 			displayWin();
 		} else if (e.tag == 'resultsNewButton') {
 			resultsNewButton.alpha = 0;
@@ -1398,15 +1420,16 @@ function onResultsButtonTouch(e) {
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
-			armFrame.animate(0, 5, 250, 0);
+			armFrame.animate(0, 5, 50, 0);
 			spin();
 		} else if (e.tag == 'touchToSpinButton') {
 			resultsNewButton.alpha = 0;
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
-			armFrame.animate(0, 5, 250, 0);
-		spin();
+			touchToSpinButton.pauseAt(0);
+			armFrame.animate(0, 5, 50, 0);
+			spin();
 		}
 	}
 
@@ -1476,10 +1499,84 @@ function onLeverTouch(e) {
 		resultsNewButton.alpha = 0;
 		resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
-		armFrame.animate(0, 5, 250, 0);
+		touchToSpinButton.pauseAt(0);
+		armFrame.animate(0, 5, 50, 0);
 		spin();
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on first sprite.');
+	}
+
+}
+
+function findFrameIdx(reel, reelYPos, newYPos) {
+	Ti.API.debug("reelYPos = " + reelYPos);
+	Ti.API.debug("reel.frameCount = " + reel.frameCount);
+	Ti.API.debug("reel.frame = " + reel.frame);
+	var frameIdx = reel.frame;
+	if (reelYPos < (newYPos - 10)) {
+		frameIdx -= 2;
+		if (frameIdx < 0) {
+			frameIdx = reel.frameCount - 2;
+		}
+	} else if (reelYPos > (newYPos + 10)) {
+		frameIdx += 2;
+		if (frameIdx >= reel.frameCount) {
+			frameIdx = 0;
+		}
+	}
+	return frameIdx;
+}
+
+var scrubAnimationTime = 750;
+
+function onReelTouch(e) {
+	Ti.API.debug("BEGIN - onReelTouch: " + JSON.stringify(e));
+	var type, sprite;
+
+	type = e.type;
+	sprite = e.source;
+	if (type === 'touchstart') {
+		Ti.API.info('Touch started on Reel sprite.');
+	} else if (type === 'touchmove') {
+		Ti.API.info('Touch moved on Reel sprite.');
+		if (e.tag == 'reel1') {
+			if (reel1Y != 0) {
+				var frameIdx = findFrameIdx(reel1, reel1Y, e.y);
+				reel1Random = frameIdx;
+				isGenderLocked = true;
+				lockGender();
+				Ti.API.debug("frameIdx = " + frameIdx);
+				reel1.animate([frameIdx], scrubAnimationTime, 0, 0);
+			}
+			reel1Y = e.y;
+
+		} else if (e.tag == 'reel2') {
+			Ti.API.debug("reel2Y = " + reel2Y);
+			if (reel2Y != 0) {
+				var frameIdx = findFrameIdx(reel2, reel2Y, e.y);
+				reel2Random = frameIdx;
+				isActivityLocked = true;
+				lockActivity();
+				Ti.API.debug("frameIdx = " + frameIdx);
+				reel2.animate([frameIdx], scrubAnimationTime, 0, 0);
+			}
+			reel2Y = e.y;
+
+		} else if (e.tag == 'reel3') {
+			Ti.API.debug("reel3Y = " + reel3Y);
+			if (reel3Y != 0) {
+				var frameIdx = findFrameIdx(reel3, reel3Y, e.y);
+				reel3Random = frameIdx;
+				isProtectionLocked = true;
+				lockProtection();
+				Ti.API.debug("frameIdx = " + frameIdx);
+				reel3.animate([frameIdx], scrubAnimationTime, 0, 0);
+			}
+			reel3Y = e.y;
+
+		}
+	} else if (type === 'touchend') {
+		Ti.API.info('Touch ended on Reel sprite.');
 	}
 
 }
@@ -1558,7 +1655,7 @@ function initGameScene() {
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 45 / positionFactor,
+		x : 40 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
@@ -1569,7 +1666,7 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 45 / positionFactor,
+		x : 40 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
@@ -1580,7 +1677,7 @@ function initGameScene() {
 	genderLockLabel = platino.createTextSprite({
 		text : 'Your Gender',
 		fontSize : lockLabelFontSize / fontFactor,
-		x : 80 / positionFactor,
+		x : 75 / positionFactor,
 		y : 55 / positionFactor
 	});
 	genderLockLabel.width += 60;
@@ -1626,7 +1723,7 @@ function initGameScene() {
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 450 / positionFactor,
+		x : 445 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
@@ -1637,7 +1734,7 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 450 / positionFactor,
+		x : 445 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
@@ -1648,7 +1745,7 @@ function initGameScene() {
 	protectionLockLabel = platino.createTextSprite({
 		text : 'Protection',
 		fontSize : lockLabelFontSize / fontFactor,
-		x : 485 / positionFactor,
+		x : 480 / positionFactor,
 		y : 55 / positionFactor
 	});
 	protectionLockLabel.width += 60;
@@ -1698,28 +1795,39 @@ function initGameScene() {
 	// Reel spritesheets
 	reel1 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel1' + suffix + '.xml',
+		tag : 'reel1',
 		x : 40 / positionFactor,
 		y : 100 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
 	reel1.selectFrame(reels.reel1.spriteNames[0]);
+	touchable.push(reel1);
+	reel1.addEventListener('touchmove', onReelTouch);
+
 	reel2 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel2' + suffix + '.xml',
+		tag : 'reel2',
 		x : 230 / positionFactor,
 		y : 100 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
 	reel2.selectFrame(reels.reel2.spriteNames[0]);
+	touchable.push(reel2);
+	reel2.addEventListener('touchmove', onReelTouch);
+
 	reel3 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel3' + suffix + '.xml',
+		tag : 'reel3',
 		x : 420 / positionFactor,
 		y : 100 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
 	reel3.selectFrame(reels.reel3.spriteNames[0]);
+	touchable.push(reel3);
+	reel3.addEventListener('touchmove', onReelTouch);
 
 	// Dimmers at top and bottom of screen
 	// var borders = platino.createSprite({image:"graphics/mask.png"});
@@ -1741,18 +1849,15 @@ function initGameScene() {
 		height : 444 / imageScaleFactor
 	});
 
-	touchToSpinButton = platino.createTextSprite({
-		text : 'Pull Handle to Spin >',
+	touchToSpinButton = platino.createSpriteSheet({
+		asset : 'graphics/Reels_PullHandle' + suffix + '.xml',
 		tag : "touchToSpinButton",
-		fontFamily : oldPRessFontName,
-		fontSize : 60 / fontFactor,
-		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-		width : 400 / imageScaleFactor,
-		height : 76 / imageScaleFactor,
-		x : 120 / positionFactor,
-		y : 540 / positionFactor
+		x : 100 / positionFactor,
+		y : 532 / positionFactor,
+		scaleX : 1 / scaleFactor,
+		scaleY : 1 / scaleFactor
 	});
-	touchToSpinButton.color(1, 1, 1);
+	touchToSpinButton.pauseAt(0);
 	touchable.push(touchToSpinButton);
 	touchToSpinButton.addEventListener('touchend', onResultsButtonTouch);
 
@@ -1887,7 +1992,8 @@ var win = {
 	safety : "",
 	orientation : "",
 	activity : "",
-	protection : ""
+	protection : "",
+	winFound: true
 };
 
 // Check reels, show particle effect if winning spin, allow user to spin again
@@ -1957,32 +2063,33 @@ function checkWin() {
 			win.activity = activityName;
 			win.orientation = orientation;
 			win.protection = protection;
-			resultsNewButton.alpha = 1;
-			resultsButton.alpha = 0;
-			tryAgainButton.alpha = 0;
-			touchToSpinButton.alpha = 0;
+			win.found = true;
 		} else {
-			resultsButton.alpha = 0;
-			resultsNewButton.alpha = 0;
-			tryAgainButton.alpha = 1;
-			touchToSpinButton.alpha = 0;
 			win.risk = "Please spin again!";
 			win.safety = "None.";
+			win.found = false;
 		}
 	} else {
-		resultsButton.alpha = 0;
-		resultsNewButton.alpha = 0;
-		tryAgainButton.alpha = 1;
-		touchToSpinButton.alpha = 0;
 		win.risk = "Please spin again!";
 		win.safety = "None.";
+		win.found = false;
 	}
 
 	canSpin = true;
 };
 
 function displayWinButton() {
-	// TODO update the win button state
+	if (win.found) {
+		resultsNewButton.alpha = 1;
+		resultsButton.alpha = 0;
+		tryAgainButton.alpha = 0;
+		touchToSpinButton.alpha = 0;
+	} else {
+		resultsButton.alpha = 0;
+		resultsNewButton.alpha = 0;
+		tryAgainButton.alpha = 1;
+		touchToSpinButton.alpha = 0;
+	}
 }
 
 // Stop the reels one by one, then check if user has won
@@ -2011,7 +2118,7 @@ function endRoll() {
 	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
 		displayWinButton();
 	} else {
-		setTimeout(displayWinButton, 1250);
+		setTimeout(displayWinButton, 1550);
 	}
 };
 
@@ -2122,11 +2229,16 @@ game.addEventListener("onload", function(e) {
 
 	// Start the game
 	game.start();
+	
+	touchToSpinButton.animate(0,4,500,-1);
 
-	Ti.Gesture.addEventListener('shake', function(e) {
-		Ti.API.debug("BEGIN - shake");
-		spin();
-	});
+
+	/*
+	 Ti.Gesture.addEventListener('shake', function(e) {
+	 Ti.API.debug("BEGIN - shake");
+	 spin();
+	 });
+	 */
 
 });
 
@@ -2149,32 +2261,31 @@ function openWebView() {
 }
 
 // Android
-if(OS_ANDROID) {
-    $.shakeItTab.addEventListener('focus', function() {
-        if($.shakeItTab.tabGroup.activity) {
-            var activity = $.shakeItTab.tabGroup.activity;
-             
-            // Menu
-            activity.invalidateOptionsMenu();
-            activity.onCreateOptionsMenu = function(e) {
-                var menu = e.menu;
-                var menuItem1 = menu.add({
-                    // title: 'Bet On This',
-                    titleCondensed: 'Bet On This',
-                    icon : 'images/BetOnThisIcon.png',
-                    showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
-                });
-                menuItem1.addEventListener('click', openWebView);
-            };
-             
-            // Action Bar
-            if( Alloy.Globals.Android.Api >= 11 && activity.actionBar) {      
-                activity.actionBar.title = 'NV SexSafe';
-            }            
-        }   
-    });
+if (OS_ANDROID) {
+	$.shakeItTab.addEventListener('focus', function() {
+		if ($.shakeItTab.tabGroup.activity) {
+			var activity = $.shakeItTab.tabGroup.activity;
+
+			// Menu
+			activity.invalidateOptionsMenu();
+			activity.onCreateOptionsMenu = function(e) {
+				var menu = e.menu;
+				var menuItem1 = menu.add({
+					// title: 'Bet On This',
+					titleCondensed : 'Bet On This',
+					icon : 'images/BetOnThisIcon.png',
+					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
+				});
+				menuItem1.addEventListener('click', openWebView);
+			};
+
+			// Action Bar
+			if (Alloy.Globals.Android.Api >= 11 && activity.actionBar != null) {
+				activity.actionBar.title = 'NV SexSafe';
+			}
+		}
+	});
 }
- 
 
 function open() {
 

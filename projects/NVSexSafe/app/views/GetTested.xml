@@ -1,7 +1,7 @@
 <Alloy>
 	<Tab title="Get Tested" id="getTestedTab" icon="images/GetTestedIcon.png">
 		<Window id="getTested" title="Get Tested">
-			<WebView url="http://betonthisnv.org/Protect/NV_Testing_Locations/"></WebView>
+			<WebView top="7" url="http://betonthisnv.org/Protect/NV_Testing_Locations/"></WebView>
 		</Window>
 	</Tab>
 </Alloy>
