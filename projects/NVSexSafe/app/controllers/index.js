@@ -51,10 +51,27 @@ function init() {
 		} else {
 			prodVersion = Ti.App.version + '-DEV';
 		}
+	}
+
+	var newVersion = Ti.App.version.split(".");
+	var currentVersion = prodVersion.split(".");
+	
+	var majorNew = parseInt(newVersion[0], 10);
+	var majorCurrent = parseInt(currentVersion[0], 10);
+
+	var minorNew = parseInt(newVersion[1], 10);
+	var minorCurrent = parseInt(currentVersion[1], 10);
+
+	var revNew = parseInt(newVersion[2].split("-")[0], 10);
+	var revCurrent = parseInt(currentVersion[2].split("-")[0], 10);
+
+	if(majorNew != majorCurrent || minorNew != minorCurrent || revNew != revCurrent) {
+		Ti.API.info("Updating version number stored in app settings");
 		Ti.App.Properties.setString('version_preference', prodVersion);
 	}
+	
 	Ti.API.debug('prodVersion = ' + prodVersion);
-
+	Alloy.Globals.version = prodVersion;
 }
 
 function openWebView() {

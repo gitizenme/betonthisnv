@@ -2233,20 +2233,32 @@ game.addEventListener("onload", function(e) {
 	touchToSpinButton.animate(0,4,500,-1);
 
 
-	/*
-	 Ti.Gesture.addEventListener('shake', function(e) {
-	 Ti.API.debug("BEGIN - shake");
-	 spin();
-	 });
-	 */
 
 });
+
+function spinOnShake(e) {
+	Ti.API.trace('ShakeIt.' + arguments.callee.name);
+	 spin();
+}
+
+function enableShake() { 
+	Ti.API.trace('ShakeIt.' + arguments.callee.name);
+	 Ti.Gesture.addEventListener('shake', spinOnShake);
+}
+
+function disableShake() {
+	Ti.API.trace('ShakeIt.' + arguments.callee.name);
+	 Ti.Gesture.removeEventListener('shake', spinOnShake);
+}
+
+Ti.App.addEventListener('pause', disableShake);
+Ti.App.addEventListener('resumed', enableShake);
 
 function init() {
 	Ti.API.trace('ShakeIt.' + arguments.callee.name);
 	// Add objects and open game window
 	$.shakeItWin.add(game);
-
+	enableShake();
 }
 
 function openWebView() {
@@ -2259,6 +2271,18 @@ function openWebView() {
 		controller.getView().open();
 	}
 }
+
+function openAboutView() {
+	var args = {
+	};
+
+	var controller = Alloy.createController('About', args);
+
+	if (OS_IOS) {
+		controller.getView().open();
+	}
+}
+
 
 // Android
 if (OS_ANDROID) {
@@ -2282,6 +2306,7 @@ if (OS_ANDROID) {
 			// Action Bar
 			if (Alloy.Globals.Android.Api >= 11 && activity.actionBar != null) {
 				activity.actionBar.title = 'NV SexSafe';
+				activity.actionBar.onHomeIconItemSelected = openAboutView;
 			}
 		}
 	});

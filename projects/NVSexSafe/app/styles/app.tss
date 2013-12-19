@@ -106,4 +106,164 @@ tabsTintColor: '#2399A3'
 ".infoWidget": {
     icon: "images/BetOnThisIcon.png",
     text: "BetOnThisNV"
+},
+".rockwellLabelMedium[platform=ios]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:18,
+    fontFamily: "Rockwell Extra Bold"
+	  }
+},
+".oldpressLabelMedium[platform=ios]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:18,
+				    fontFamily: "Old Press"
+	  }
+},
+".oldpressLabelLarge[platform=ios]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:36,
+				    fontFamily: "Old Press"
+	  }
+},
+".oldpressLabelXLarge[platform=ios]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:48,
+				    fontFamily: "Old Press"
+	  }
+},
+".rockwellLabelMedium[platform=android]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:18,
+				    fontFamily: "Rockwell-Extra-Bold"
+	  }
+},
+".oldpressLabelMedium[platform=android]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:18,
+						    fontFamily: "Old-Press"
+	  }
+},
+".oldpressLabelLarge[platform=android]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:36,
+						    fontFamily: "Old-Press"
+	  }
+},
+".oldpressLabelXLarge[platform=android]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:48,
+						    fontFamily: "Old-Press"
+	  }
+},
+".title": {
+	top:20,
+	left:0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#E81C24",
+	font: {
+		fontSize: 24,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
+".H2LEFT": {
+	top:20,
+	left:0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#E81C24",
+	font: {
+		fontSize: 18,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+},
+".body": {
+	top:0,
+	left:10,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#0A0A0A",
+	font: {
+		fontSize: 18,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+},
+"#leftTitle[platform=ios]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:36,
+    fontFamily: "Rockwell Extra Bold"
+	  }
+},
+"#rightTitle[platform=ios]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:42,
+				    fontFamily: "Old Press"
+	  }
+},
+"#leftTitle[platform=android]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:36,
+				    fontFamily: "Rockwell-Extra-Bold"
+	  }
+},
+"#rightTitle[platform=android]" : {
+  color: "#fff",
+  width: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+  font:{
+		    fontSize:42,
+						    fontFamily: "Old-Press"
+	  }
 }
+

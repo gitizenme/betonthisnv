@@ -2,10 +2,10 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>org.betonthisnv.nvsexsafe</id>
     <name>NV SexSafe</name>
-    <version>0.3.0</version>
+    <version>0.9.0</version>
     <publisher>BetOnThisNV</publisher>
     <url>http://betonthisnv.org</url>
-    <description>Sex Safe</description>
+    <description>When you protect yourself and others, everyone wins. Learn more about safer sex, testing, free condoms and how you can spread the word to help keep Nevada sexually safer.</description>
     <copyright>2013 by BetOnThisNV</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
@@ -38,11 +38,11 @@
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <tool-api-level>14</tool-api-level>
-        <manifest android:versionCode="3" android:versionName="0.3.0">
+        <manifest android:versionCode="1" android:versionName="0.9.0">
             <supports-screens android:anyDensity="false"/>
-			<application android:theme="@android:style/Theme.Holo"/>
-			<uses-sdk android:maxSdkVersion="18"
-            	android:minSdkVersion="10" android:targetSdkVersion="14"/>        
+            <application android:theme="@android:style/Theme.Holo"/>
+            <uses-sdk android:maxSdkVersion="18"
+                android:minSdkVersion="10" android:targetSdkVersion="14"/>
         </manifest>
     </android>
     <mobileweb>

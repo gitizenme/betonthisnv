@@ -1,18 +1,19 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="open" title="Results">
+	<Window fullscreen="false" class="container" onOpen="open" title="RISK FACTOR" barColor="#E81C24">
 		<NavigationGroup id="navGroup" platform="ios">
-			<Window id="navWin" title="Results" backgroundColor="#D7DF23">
-				<ScrollView id="scrollView" contentHeight="auto" showVerticalScrollIndicator="true">
-					<View id="view" height="Ti.UI.SIZE" layout="vertical" backgroundColor="#D7DF23">
+			<Window id="navWin" title="RISK FACTOR" backgroundColor="#000" barColor="#E81C24">
+				<ScrollView top="7" id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
+					  borderRadius="8" borderColor="#D7DF23" borderWidth="8" backgroundColor="#fff" >
+					<View id="riskView" layout="vertical" height="2000">
 						<Label class="title" id="orientationTitle" top="5" text="Orientation" />
 						<Label class="body" id="orientationBody" />
-						<Label class="title" id="activityTitle" top="20" text="Activity" />
+						<Label class="title" id="activityTitle" text="Activity" />
 						<Label class="body" id="activityBody" />
-						<Label class="title" id="protectionTitle" top="20" text="Protection" />
+						<Label class="title" id="protectionTitle" text="Protection" />
 						<Label class="body" id="protectionBody" />
-						<Label class="title" id="riskTitle" top="20" text="Risk Factor" />
+						<Label class="title" id="riskTitle" text="Risk Factor" />
 						<Label class="body" id="riskBody" />
-						<Label class="title" id="safetyTitle" top="20" text="Safety" />
+						<Label class="title" id="safetyTitle" text="Safety" />
 						<Label class="body" id="safetyBody" />
 					</View>
 				</ScrollView>
