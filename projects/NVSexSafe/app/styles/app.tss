@@ -189,7 +189,6 @@ tabsTintColor: '#2399A3'
 },
 ".title": {
 	top:20,
-	left:0,
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
@@ -203,7 +202,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 ".H2LEFT": {
 	top:20,
 	left:0,
-	width: Ti.UI.FILL,
+width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
 	font: {
@@ -216,6 +215,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 ".body": {
 	top:0,
 	left:10,
+		right:10,
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#0A0A0A",
@@ -232,8 +232,8 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:36,
-    fontFamily: "Rockwell Extra Bold"
+				    fontSize:42,
+				    fontFamily: "Old Press"
 	  }
 },
 "#rightTitle[platform=ios]" : {
@@ -252,8 +252,8 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:36,
-				    fontFamily: "Rockwell-Extra-Bold"
+				    fontSize:42,
+				    fontFamily: "Old-Press"
 	  }
 },
 "#rightTitle[platform=android]" : {
@@ -265,5 +265,15 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 		    fontSize:42,
 						    fontFamily: "Old-Press"
 	  }
-}
+},
+"#hintLabel": {
+	width: '95%',
+	color: '#EBDD31',
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
+	font: {
+		fontSize: '14dp',
+		fontWeight: 'Bold'
+		}
+},
 

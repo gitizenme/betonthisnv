@@ -1399,7 +1399,6 @@ function onResultsButtonTouch(e) {
 
 	} else if (type === 'touchmove') {
 		Ti.API.info('Touch moved on Protection sprite.');
-		armFrame.animate(0, 5, 50, 0);
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Protection sprite.');
 		if (e.tag == 'resultsButton') {
@@ -1420,7 +1419,6 @@ function onResultsButtonTouch(e) {
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
-			armFrame.animate(0, 5, 50, 0);
 			spin();
 		} else if (e.tag == 'touchToSpinButton') {
 			resultsNewButton.alpha = 0;
@@ -1428,7 +1426,6 @@ function onResultsButtonTouch(e) {
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
 			touchToSpinButton.pauseAt(0);
-			armFrame.animate(0, 5, 50, 0);
 			spin();
 		}
 	}
@@ -1500,7 +1497,6 @@ function onLeverTouch(e) {
 		resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
 		touchToSpinButton.pauseAt(0);
-		armFrame.animate(0, 5, 50, 0);
 		spin();
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on first sprite.');
@@ -1723,7 +1719,7 @@ function initGameScene() {
 		image : lockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 445 / positionFactor,
+		x : 440 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 0
 	});
@@ -1734,7 +1730,7 @@ function initGameScene() {
 		image : unLockImage,
 		width : 30 / imageScaleFactor,
 		height : 30 / imageScaleFactor,
-		x : 445 / positionFactor,
+		x : 440 / positionFactor,
 		y : 50 / positionFactor,
 		alpha : 1
 	});
@@ -1745,7 +1741,7 @@ function initGameScene() {
 	protectionLockLabel = platino.createTextSprite({
 		text : 'Protection',
 		fontSize : lockLabelFontSize / fontFactor,
-		x : 480 / positionFactor,
+		x : 475 / positionFactor,
 		y : 55 / positionFactor
 	});
 	protectionLockLabel.width += 60;
@@ -2122,12 +2118,7 @@ function endRoll() {
 	}
 };
 
-// Spin function
-function spin() {
-	// If user is allowed to spin, spin the reels
-	if (canSpin == true) {
-		canSpin = false;
-		// spinLight.frame = 1;
+function spinReels() {
 		if (isGenderLocked == false) {
 			reel1.animate(0, 10, 50, -1);
 		}
@@ -2147,7 +2138,16 @@ function spin() {
 		} else {
 			setTimeout(endRoll, ranVal);
 		}
+	
+}
 
+// Spin function
+function spin() {
+	// If user is allowed to spin, spin the reels
+	if (canSpin == true) {
+		canSpin = false;
+		armFrame.animate(0, 8, 50, 0);
+		setTimeout(spinReels, 5*50);
 	}
 };
 

@@ -5,6 +5,9 @@
 	<Image Name="ArmFrame01@2x.png" XPos="1" YPos="1" Width="30" Height="95"/>
 	<Image Name="ArmFrame02@2x.png" XPos="33" YPos="1" Width="30" Height="95"/>
 	<Image Name="ArmFrame03@2x.png" XPos="65" YPos="1" Width="30" Height="95"/>
-	<Image Name="ArmFrame02@2x_1.png" XPos="97" YPos="1" Width="30" Height="95"/>
-	<Image Name="ArmFrame01@2x_1.png" XPos="1" YPos="98" Width="30" Height="95"/>
+	<Image Name="ArmFrame04@2x.png" XPos="97" YPos="1" Width="30" Height="95"/>
+	<Image Name="ArmFrame05@2x.png" XPos="1" YPos="98" Width="30" Height="95"/>
+	<Image Name="ArmFrame06@2x.png" XPos="33" YPos="98" Width="30" Height="95"/>
+	<Image Name="ArmFrame07@2x.png" XPos="65" YPos="98" Width="30" Height="95"/>
+	<Image Name="ArmFrame08@2x.png" XPos="97" YPos="98" Width="30" Height="95"/>
 </Imageset>

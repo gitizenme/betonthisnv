@@ -4,7 +4,7 @@
 			<Window id="navWin" title="RISK FACTOR" backgroundColor="#000" barColor="#E81C24">
 				<ScrollView top="7" id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
 					  borderRadius="8" borderColor="#D7DF23" borderWidth="8" backgroundColor="#fff" >
-					<View id="riskView" layout="vertical" height="2000">
+					<View id="riskView" layout="vertical" height="800">
 						<Label class="title" id="orientationTitle" top="5" text="Orientation" />
 						<Label class="body" id="orientationBody" />
 						<Label class="title" id="activityTitle" text="Activity" />
