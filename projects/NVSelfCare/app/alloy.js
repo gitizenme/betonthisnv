@@ -14,3 +14,5 @@ if( OS_ANDROID ) {
         "Api" : Ti.Platform.Android.API_LEVEL
     };
 }
+
+Alloy.Globals.version = "0.0.0 DEV";

@@ -5,7 +5,7 @@
     <version>0.1.0</version>
     <publisher>BetOnThisNV</publisher>
     <url>http://betonthisnv.org</url>
-    <description>Self care</description>
+    <description>When you care for yourself and others, you live a longer, happier, healthier life. Learn more about where you can find HIV/AIDS care providers, see if you are eligible for Ryan White programs and learn how to live well with HIV/AIDS.</description>
     <copyright>2013 by BetOnThisNV</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
@@ -40,9 +40,10 @@
         <tool-api-level>14</tool-api-level>
         <manifest android:versionCode="1" android:versionName="0.1.0">
             <supports-screens android:anyDensity="false"/>
-			<application android:theme="@android:style/Theme.Holo"/>
-			<uses-sdk android:maxSdkVersion="18"
-            	android:minSdkVersion="10" android:targetSdkVersion="14"/>          </manifest>
+            <application android:theme="@android:style/Theme.Holo"/>
+            <uses-sdk android:maxSdkVersion="18"
+                android:minSdkVersion="10" android:targetSdkVersion="14"/>
+        </manifest>
     </android>
     <mobileweb>
         <precache/>

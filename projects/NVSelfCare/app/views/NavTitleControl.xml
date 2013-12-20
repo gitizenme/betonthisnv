@@ -1,5 +1,6 @@
 <Alloy>
-	<View class="container">
-		<Label id="title">SEX SAFE</Label>
+	<View class="container" layout="horizontal" width="Ti.UI.SIZE">
+		<Label id="leftTitle">SELF</Label>
+		<Label left="2" id="rightTitle">CARE</Label>
 	</View>
 </Alloy>

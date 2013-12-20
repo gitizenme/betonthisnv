@@ -51,6 +51,7 @@ function init() {
 		} else {
 			prodVersion = Ti.App.version + '-DEV';
 		}
+		Ti.App.Properties.setString('version_preference', prodVersion);
 	}
 
 	var newVersion = Ti.App.version.split(".");

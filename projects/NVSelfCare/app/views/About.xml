@@ -1,8 +1,25 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="open" title="About">
+	<Window fullscreen="false" class="container" onOpen="open" title="About" barColor="#2399A3">
 		<NavigationGroup id="navGroup" platform="ios">
-			<Window id="navWin" class="container" title="About">
-				<WebView url="http://izen.me"/>
+			<Window id="navWin" class="container" title="About" backgroundColor="#000" barColor="#2399A3">
+				<ScrollView id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
+				borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
+					<View top="10" id="riskView" layout="vertical" height="800">
+						<!-- <ImageView top="10" image="images/appicon.png"/> -->
+						<View layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+							<Label id="leftTitle" color="#2399A3">SELF</Label>
+							<Label id="rightTitle" left="5" color="#2399A3">CARE</Label>
+						</View>
+						<Label left="10" right="10" class="H2LEFT" id="descriptionLabel" text=""/>
+						<Label left="10" right="10" class="H2LEFT" id="versionLabel" text="Version:"/>
+						<Label left="10" right="10" class="H2LEFT" id="copyrightLabel" text="Copyright: "/>
+						<Label left="10" right="10" class="H2LEFT" id="publisherLabel" text="Published by: "/>
+						<Label left="10" right="10" class="H2LEFT" id="urlLabel" text="On the Web: " onClick="onTheWebClick" />
+						<Label left="10" right="10" class="H2LEFT" id="developmentBy" top="40" text="Application development by: izen.me"/>
+						<ImageView image="images/izenme_logo-100x100.png"/>
+						<Label left="10" right="10" class="H2LEFT" id="izenMeUrlLabel" text="On the Web: www.izen.me" onClick="onTheWebIzenMeClick" />
+					</View>
+				</ScrollView>
 			</Window>
 		</NavigationGroup>
 	</Window>

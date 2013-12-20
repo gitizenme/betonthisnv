@@ -95,6 +95,18 @@ function openWebView() {
 	}
 }
 
+function openAboutView() {
+	var args = {
+	};
+
+	var controller = Alloy.createController('About', args);
+
+	if (OS_IOS) {
+		controller.getView().open();
+	}
+}
+
+
 // Android
 if(OS_ANDROID) {
     $.calendarTab.addEventListener('focus', function() {
@@ -116,7 +128,8 @@ if(OS_ANDROID) {
              
             // Action Bar
             if( Alloy.Globals.Android.Api >= 11 && activity.actionBar != null) {      
-                activity.actionBar.title = 'NV SexSafe';
+                activity.actionBar.title = 'NV SelfCare';
+				activity.actionBar.onHomeIconItemSelected = openAboutView;
             }            
         }   
     });
