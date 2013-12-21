@@ -1,0 +1,27 @@
+"#login": {
+	navBarHidden: true,
+	fullscreen: false,
+	exitOnClose: false
+}
+
+".container": {
+	height: 'fill',
+	width: 'fill'
+}
+
+"#username": {
+	top: 10,
+	height: 40,
+	width: '80%',
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_NEXT
+}
+
+"#password": {
+	top: 10,
+	height: 40,
+	width: '80%',
+passwordMask: true,
+	returnKeyType: Ti.UI.RETURNKEY_DONE
+}
+

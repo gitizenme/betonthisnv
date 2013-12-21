@@ -8,6 +8,7 @@
 	"os:ios": {},
 	"os:mobileweb": {},
     "dependencies": {
+	    "com.appcelerator.loading":"1.0",
         "com.orthlieb.info": "1.0",
         "com.orthlieb.navigationgroup": "1.0",
         "com.orthlieb.scrollablewebview": "1.0",

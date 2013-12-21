@@ -16,3 +16,11 @@ if( OS_ANDROID ) {
 }
 
 Alloy.Globals.version = "0.0.0 DEV";
+
+Alloy.Globals.FirstTimeUse = false;
+Alloy.Globals.UserAuthenticated = false;
+Alloy.Globals.AuthenticateOnResume = true;
+
+Alloy.Collections.users = Alloy.Collections.instance("user");
+Alloy.Collections.users.fetch();
+Ti.API.debug("Number of users: " + Alloy.Collections.users.length);

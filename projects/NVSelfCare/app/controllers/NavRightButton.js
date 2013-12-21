@@ -9,6 +9,7 @@ function rightNavClicked(e) {
 
 	var args = {
 	};
+	Alloy.Globals.AuthenticateOnResume = false;
 
 
 	var controller = Alloy.createController('BetOnThisNVWebView', args);

@@ -1,5 +1,5 @@
 <Alloy>
-	<TabGroup onOpen="open" exitOnClose="true">
+	<TabGroup onOpen="open">
 		<Require src="calendar"/>
 		<Require src="diary"/>
 		<Require src="eligibilty"/>

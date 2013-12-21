@@ -9,6 +9,7 @@ function leftNavClicked(e) {
 
 	var args = {
 	};
+	Alloy.Globals.AuthenticateOnResume = false;
 
 
 	var contactController = Alloy.createController('About', args);

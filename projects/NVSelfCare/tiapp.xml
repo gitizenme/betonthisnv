@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>org.betonthisnv.nvselfcare</id>
     <name>NV SelfCare</name>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <publisher>BetOnThisNV</publisher>
     <url>http://betonthisnv.org</url>
     <description>When you care for yourself and others, you live a longer, happier, healthier life. Learn more about where you can find HIV/AIDS care providers, see if you are eligible for Ryan White programs and learn how to live well with HIV/AIDS.</description>

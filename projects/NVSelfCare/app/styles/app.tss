@@ -51,8 +51,8 @@ tabsTintColor: '#2399A3'
 	showHorizontalScrollIndicator: true,
 },
 "Button": {
-	color: '#CC0920',
-	tintColor: '#CC0920'
+	color: '#000',
+	tintColor: '#000'
 },
 "Label": {
 	width: Ti.UI.SIZE,
@@ -75,13 +75,9 @@ tabsTintColor: '#2399A3'
 	textAlign: 'center'
 },
 "TextField": {
-		top: 1,
-	left: 5,
-	width: '80%',
-	height: 'size',
-	borderColor: '#eee',
-	borderWidth: 2,
-	borderRadius: 3
+borderColor: '#fff',
+	borderWidth: 1,
+	borderRadius: 5
 		},
 	".dataEntry": {
 		layout: 'horizontal',
@@ -97,12 +93,12 @@ tabsTintColor: '#2399A3'
 		borderRadius:"7 dp",
 		borderColor:"#0A0A0A",
 		backgroundColor:"#fff",
-		top: "5 dp",
+		top: "5",
 		height:"30%",
 		width:"auto"
 },
 ".infoButton": {
-				width: "200dp",
+				width: "200",
 				},
 ".infoWidget": {
     icon: "images/BetOnThisIcon.png",
@@ -213,6 +209,19 @@ width: Ti.UI.FILL,
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
 textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 },
+".H3CENTER": {
+	top:20,
+	left:0,
+width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#E81C24",
+	font: {
+		fontSize: 15,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
 ".body": {
 	top:0,
 	left:10,
@@ -269,7 +278,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 },
 "#hintLabel": {
 	width: '95%',
-	color: '#EBDD31',
+	color: '#D7DF23',
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
 	font: {

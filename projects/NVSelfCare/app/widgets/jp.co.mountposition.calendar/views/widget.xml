@@ -1,7 +1,7 @@
 <Alloy>
 	<View id="view">
         <View id="container">
-            <View id="days">
+            <View id="days" backgroundColor="#0C6168">
             </View>
             <View id="dates" onClick="doClick">
             </View>
