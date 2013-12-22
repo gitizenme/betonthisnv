@@ -1,9 +1,5 @@
 var moment = require('alloy/moment');
 
-var args = {
-	title : "SELF CARE"
-};
-
 var currentMonth = moment();
 
 function updateCalendarHeading(current) {
@@ -56,7 +52,6 @@ $.calendarHeading.text = currentMonth.format("MMMM YYYY");
 // You can add image
 // $.current.setImage(16, 'images/airplane.png');
 
-
 // To handle the click event, set the listener to the parent View.
 $.calendar.addEventListener('click', function(e) {
 	// You can get selectedDate. (moment object)
@@ -75,10 +70,13 @@ $.calendar.addEventListener('click', function(e) {
 });
 
 if (OS_IOS) {
-	$.calendarWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
+	var args = {
+		title : "SELF CARE"
+	};
+	$.tabWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
 
-	$.calendarWin.rightNavButton = Alloy.createController('NavRightButton', {}).getView();
-	$.calendarWin.leftNavButton = Alloy.createController('NavLeftButton', {}).getView();
+	$.tabWin.rightNavButton = Alloy.createController('NavRightButton', {}).getView();
+	$.tabWin.leftNavButton = Alloy.createController('NavLeftButton', {}).getView();
 }
 
 function init() {
@@ -143,7 +141,6 @@ if (OS_ANDROID) {
 	});
 }
 
-var resumeFromPause = false;
 function open() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 

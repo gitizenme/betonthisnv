@@ -10,22 +10,20 @@ function updateHintLabel(msg, duration) {
 }
 
 function clickBack(e) {
-    $.contact.close();
+	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	$.navGroup.close();
+    $.day_view.close();
 }
 
 function clickBackAndroid(e) {
+	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
     $.navGroupWidget.close();
-}
-
-function clickCalendar(e) {
-	Ti.API.debug('behavior.' + arguments.callee.name + ': ' + JSON.stringify(e));
-	$.day_view.close();
 }
 
 
 var leftNavButton = Alloy.createController('navBarButton').getView();
 leftNavButton.title = 'Back';
-leftNavButton.addEventListener('click', clickCalendar);
+leftNavButton.addEventListener('click', clickBack);
 
 // var rightNavButton = Alloy.createController('navBarButton').getView();
 // rightNavButton.title = 'Save';
@@ -33,10 +31,9 @@ leftNavButton.addEventListener('click', clickCalendar);
 
 
 function open (args) {
-	Ti.API.trace('day_view.' + arguments.callee.name);
+	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(args));
 
 	updateHintLabel('Day View', 750);
-
 }
 
 

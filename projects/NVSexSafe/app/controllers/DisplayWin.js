@@ -3,6 +3,7 @@ var args = arguments[0] || {};
 var win = args.win || null;
 
 function clickBack(e) {
+	$.navGroup.close();
 	$.DisplayWin.close();
 }
 

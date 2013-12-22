@@ -2,7 +2,7 @@
 
 if (OS_IOS) {
 	var args = {
-		title : "ELIGIBILITY"
+		title : "JOURNAL"
 	};
 	$.tabWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
 
@@ -11,12 +11,12 @@ if (OS_IOS) {
 }
 
 function init() {
-	Ti.API.debug('eligibility.' + arguments.callee.name);
+	Ti.API.debug('diary.' + arguments.callee.name);
 
 }
 
 function open() {
-	Ti.API.debug('eligibility.' + arguments.callee.name);
+	Ti.API.debug('diary.' + arguments.callee.name);
 
 	init();
 

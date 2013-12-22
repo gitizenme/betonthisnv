@@ -1,6 +1,6 @@
 <Alloy>
 	<Tab id="calendarTab" title="Calendar" icon="images/CalendarIcon.png">
-		<Window id="calendarWin" title="SELF CARE" layout="vertical" onOpen="open">
+		<Window id="tabWin" title="SELF CARE" layout="vertical" onOpen="open">
 			<View class="control" backgroundColor="#fff">
 				<Button id="prevMonth" title="Prev" onClick="doPrevMonth" />
 				<Label id="calendarHeading"/>

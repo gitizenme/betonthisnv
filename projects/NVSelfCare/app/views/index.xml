@@ -1,7 +1,7 @@
 <Alloy>
 	<TabGroup onOpen="open" exitOnClose="true">
 		<Require src="calendar"/>
-		<Require src="diary"/>
+		<Require src="journal"/>
 		<Require src="eligibilty"/>
 		<Require src="help"/>
 	</TabGroup>

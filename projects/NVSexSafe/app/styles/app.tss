@@ -275,5 +275,4 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 		fontSize: '14dp',
 		fontWeight: 'Bold'
 		}
-},
-
+}

@@ -1,5 +1,6 @@
 
 function clickBack(e) {
+	$.navGroup.close();
     $.BetOnThisNVWebView.close();
 }
 

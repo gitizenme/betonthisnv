@@ -1,11 +1,18 @@
 
+var androidBackButtonClicked = false;
+
 function clickBack(e) {
+	Ti.API.debug('BetOnThisNVWebView.' + arguments.callee.name);
     $.BetOnThisNVWebView.close();
+	androidBackButtonClicked = true;
 }
 
-function clickBackAndroid(e) {
-    $.navGroupWidget.close();
+
+function onAndroidBack() {
+	Ti.API.debug('BetOnThisNVWebView.' + arguments.callee.name);
+	androidBackButtonClicked = true;
 }
+
 
 var leftNavButton = Ti.UI.createButton({
     title : 'Back'
@@ -21,6 +28,21 @@ rightNavButton.addEventListener('click', clickSend);
 
 function open() {
     Ti.API.trace('BetOnThisNVWebView.' + arguments.callee.name);
+	if (OS_ANDROID) {
+		$.navWin.activity.addEventListener('stop', stopActivityAndroid);
+	}
+}
+
+if (OS_ANDROID) {
+
+	function stopActivityAndroid(e) {
+		Ti.API.trace('About.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	    $.navWin.close();
+	    if(!androidBackButtonClicked) {
+			Alloy.Globals.AuthenticateOnResume = true;
+	    }
+	}
+
 }
 
 if (OS_ANDROID) {

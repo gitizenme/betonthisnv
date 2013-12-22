@@ -1,8 +1,0 @@
-<Alloy>
-	<TabGroup onOpen="open">
-		<Require src="calendar"/>
-		<Require src="diary"/>
-		<Require src="eligibilty"/>
-		<Require src="help"/>
-	</TabGroup>
-</Alloy>

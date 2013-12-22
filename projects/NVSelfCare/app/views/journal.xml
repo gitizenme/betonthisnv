@@ -1,0 +1,7 @@
+<Alloy>
+	<Tab title="Journal" icon="images/DiaryIcon.png">
+		<Window id="tabWin" title="JOURNAL" layout="vertical" onOpen="open">
+			<Label>Journal View</Label>
+		</Window>
+	</Tab>
+</Alloy>

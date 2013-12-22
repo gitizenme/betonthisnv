@@ -1,6 +1,6 @@
 <Alloy>
 	<View fullscreen="false" class="container" id="navView">
-		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="ABOUT" backgroundColor="#000">
+		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="ABOUT" backgroundColor="#000" onAndroid:back="onAndroidBack">
 			<Button top="5" height="35dp" left="5" title="Back" onClick="clickBackAndroid"/>
 			<ScrollView id="scrollView" top="50dp" contentHeight="auto"
 			borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >

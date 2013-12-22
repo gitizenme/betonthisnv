@@ -1,6 +1,6 @@
 <Alloy>
 	<Window fullscreen="false" class="container" onOpen="open" title="RISK FACTOR" barColor="#E81C24">
-		<NavigationGroup id="navGroup" platform="ios">
+		<NavigationWindow id="navGroup" platform="ios" modal="true">
 			<Window id="navWin" title="RISK FACTOR" backgroundColor="#000" barColor="#E81C24">
 				<ScrollView top="7" id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
 					  borderRadius="8" borderColor="#D7DF23" borderWidth="8" backgroundColor="#fff" >
@@ -18,7 +18,7 @@
 					</View>
 				</ScrollView>
 			</Window>
-		</NavigationGroup>
+		</NavigationWindow>
 	</Window>
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>
