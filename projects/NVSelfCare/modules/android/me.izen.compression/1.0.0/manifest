@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+description: Get some compression!
+author: Joe Chavez
+license: Free for me but not for you
+copyright: 2013 izen.me
+
+
+# these should not be edited
+name: android_compression
+moduleid: me.izen.compression
+guid: e4239b8c-a49a-4a7a-8aae-49b8477d09cb
+platform: android
+minsdk: 3.2.0.GA

@@ -26,6 +26,10 @@
 
 Titanium.UI.setBackgroundColor('#000');
 
+var Compression = require('me.izen.compression');
+var outputDirectory = Ti.Filesystem.applicationDataDirectory;
+var inputDirectory = Ti.Filesystem.resourcesDirectory + 'data/';
+
 var prodVersion = Ti.App.Properties.getString('version_preference', '0.0.0-DEV');
 
 function checkForAppReset() {
@@ -119,8 +123,25 @@ function setAppVersion() {
 	Alloy.Globals.version = prodVersion;
 }
 
+function testCompression() {
+	var writeToZip = outputDirectory + '/zipFiles.zip';
+	Ti.API.info("Output to ZIP file: " + writeToZip);
+	
+	var result = Compression.zip(writeToZip, 'YourPassword', [inputDirectory + 'a.txt', inputDirectory + 'b.txt']);
+	
+	if (result == 'success') {
+		if (!Ti.Filesystem.getFile(writeToZip).exists()) {
+			Ti.API.error('FAIL: The target zip does not exist!');
+		} else {
+			Ti.API.info('Zip Files: ' + result + ', to: ' + writeToZip);
+		}
+	}
+}
+
 function init() {
 	Ti.API.debug('index.' + arguments.callee.name);
+	
+	// testCompression();
 	checkForAppReset();
 	setAppVersion();
 	initFirstTimeUse();

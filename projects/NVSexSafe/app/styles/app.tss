@@ -76,7 +76,7 @@ tabsTintColor: '#2399A3'
 },
 "TextField": {
 		width: '95%',
-	height: 'size',
+	height: Ti.UI.SIZE,
 	color: '#fff',
 	borderColor: '#eee',
 	borderWidth: 1,

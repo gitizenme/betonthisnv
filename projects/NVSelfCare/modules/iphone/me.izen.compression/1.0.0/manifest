@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+description: Compression module for iOS
+author: Joe Chavz
+license: Free for me and not for you
+copyright: 2013 izen.me
+
+
+# these should not be edited
+name: ios_compression
+moduleid: me.izen.compression
+guid: db1d4926-92da-446b-8ac7-92b5fbb3454a
+platform: iphone
+minsdk: 3.2.0.GA
