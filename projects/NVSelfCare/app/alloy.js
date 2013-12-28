@@ -24,3 +24,8 @@ Alloy.Globals.AuthenticateOnResume = true;
 Alloy.Collections.users = Alloy.Collections.instance("user");
 Alloy.Collections.users.fetch();
 Ti.API.debug("Number of users: " + Alloy.Collections.users.length);
+
+Alloy.Collections.journal = Alloy.Collections.instance("journal");
+Alloy.Collections.journal.fetch();
+Ti.API.debug("Number of journal entries: " + Alloy.Collections.journal.length);
+

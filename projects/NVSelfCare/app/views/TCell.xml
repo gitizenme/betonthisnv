@@ -1,0 +1,11 @@
+<Alloy>
+	<Window fullscreen="false" class="container" onOpen="open" title="TCell" barColor="#2399A3">
+		<Window id="navWin" class="container" title="TCell" backgroundColor="#2399A3" barColor="#2399A3">
+			<ScrollView id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
+			borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
+				<View top="10" id="mainView" layout="vertical" height="800">
+				</View>
+			</ScrollView>
+		</Window>
+	</Window>
+</Alloy>

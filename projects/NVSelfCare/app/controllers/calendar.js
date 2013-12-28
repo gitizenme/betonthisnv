@@ -14,14 +14,14 @@ function doPrevMonth() {
 	var widget;
 
 	// Remove current month calendar.
-	$.calendar.remove($.calendar.children[0]);
+	$.calendarView.remove($.calendarView.children[0]);
 
 	// Create previous month calendar and add view
 	currentMonth.subtract('months', 1);
 	widget = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
 		period : currentMonth
 	});
-	$.calendar.add(widget.getView());
+	$.calendarView.add(widget.getView());
 
 	// Get calendar displayed (moment object)
 	// Ti.API.info(widget.calendarMonth());
@@ -31,14 +31,14 @@ function doPrevMonth() {
 function doNextMonth() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 	var widget;
-	$.calendar.remove($.calendar.children[0]);
+	$.calendarView.remove($.calendarView.children[0]);
 
 	// Create next month calendar and add view
 	currentMonth.add('months', 1);
 	widget = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
 		period : currentMonth
 	});
-	$.calendar.add(widget.getView());
+	$.calendarView.add(widget.getView());
 
 	// Ti.API.info(widget.calendarMonth());
 	updateCalendarHeading(currentMonth);
@@ -53,7 +53,7 @@ $.calendarHeading.text = currentMonth.format("MMMM YYYY");
 // $.current.setImage(16, 'images/airplane.png');
 
 // To handle the click event, set the listener to the parent View.
-$.calendar.addEventListener('click', function(e) {
+$.calendarView.addEventListener('click', function(e) {
 	// You can get selectedDate. (moment object)
 	var selectedDate = $.current.selectedDate();
 
@@ -118,7 +118,9 @@ if (OS_ANDROID) {
 			var activity = $.calendarTab.tabGroup.activity;
 
 			// Menu
-			activity.invalidateOptionsMenu();
+			if(activity.invalidateOptionsMenu != undefined) {
+				activity.invalidateOptionsMenu();
+			}
 			activity.onCreateOptionsMenu = function(e) {
 				var menu = e.menu;
 				var menuItem1 = menu.add({

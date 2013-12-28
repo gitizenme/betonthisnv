@@ -6,7 +6,7 @@
 				<Label id="calendarHeading"/>
 				<Button id="nextMonth" title="Next" onClick="doNextMonth" />
 			</View>
-			<View id="calendar">
+			<View id="calendarView">
 				<Widget id="current" src="jp.co.mountposition.calendar" />
 			</View>
 		</Window>

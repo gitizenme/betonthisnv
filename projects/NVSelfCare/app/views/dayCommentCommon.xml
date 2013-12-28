@@ -1,0 +1,12 @@
+<Alloy>
+	<ScrollView id="scrollView" top="5" contentHeight="SIZE" contentWidth="SIZE"
+	borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
+		<View top="5" id="mainView" layout="vertical" height="SIZE" width="SIZE">
+			<Label color="#fff">Type your comment in below\nTouch Save to keep it.</Label>
+			<TextArea id="textArea" left="10" right="10" bottom="10" width="FILL"
+			borderWidth="2" borderColor="#bbb" borderRadius="5"
+			color="#888" textAlign="left" value="Type in your comment here..."
+			top="5"/>
+		</View>
+	</ScrollView>
+</Alloy>

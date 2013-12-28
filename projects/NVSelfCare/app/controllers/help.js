@@ -46,7 +46,6 @@ function onTouchStart() {
 
 var Compression = require('me.izen.compression');
 var outputDirectory = Ti.Filesystem.applicationDataDirectory + '/';
-var inputDirectory = Ti.Filesystem.resourcesDirectory + 'data/';
 var tempDirectory = Ti.Filesystem.tempDirectory + '/';
 var zipRootDir = 'package';
 var password = 'YourPassword';

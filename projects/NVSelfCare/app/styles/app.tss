@@ -2,13 +2,13 @@
 	backgroundColor: "#2399A3",
 	tintColor: "#fff",
 	navTintColor: "#fff",
+		barColor: "#2399A3",
 	color: "#fff",
 	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
 },
 "Window[platform=android]": {
 	backgroundColor: "#2399A3",
-	tintColor: "#fff",
-	navTintColor: "#fff",
+	barColor: "#2399A3",
 	color: "#fff"
 	},
 "View": {
@@ -27,7 +27,7 @@
 	backgroundColor: "#000"
 	},
 "NavigationGroup": {
-	backgroundColor: "#000",
+	backgroundColor: "#2399A3",
 	barColor: "#2399A3",
 	tintColor: '#fff',
 	color: "#fff"
@@ -245,7 +245,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-				    fontSize:42,
+				    fontSize:36,
 				    fontFamily: "Old Press"
 	  }
 },
@@ -255,7 +255,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:42,
+		    fontSize:36,
 				    fontFamily: "Old Press"
 	  }
 },
@@ -265,7 +265,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-				    fontSize:42,
+				    fontSize:36,
 				    fontFamily: "Old-Press"
 	  }
 },
@@ -275,7 +275,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:42,
+		    fontSize:36,
 						    fontFamily: "Old-Press"
 	  }
 },

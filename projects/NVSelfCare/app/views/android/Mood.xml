@@ -1,0 +1,11 @@
+<Alloy>
+	<View fullscreen="false" class="container" id="navView">
+		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="Mood" backgroundColor="#2399A3" onAndroid:back="onAndroidBack">
+			<ScrollView id="scrollView" top="5" contentHeight="auto"
+			borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
+				<View top="10" id="mainView" layout="vertical" height="800"></View>
+			</ScrollView>
+		</Window>
+	</View>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
+</Alloy>

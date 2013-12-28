@@ -1,0 +1,7 @@
+<Alloy>
+	<View fullscreen="false" class="container" id="navView">
+		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="COMMENT" backgroundColor="#2399A3" onAndroid:back="onAndroidBack">
+			<Require type="view" src="dayCommentCommon" id="dayCommentCommonView" />
+		</Window>
+	</View>
+</Alloy>

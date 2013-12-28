@@ -3,6 +3,7 @@ var androidBackButtonClicked = false;
 
 function clickBack(e) {
 	Ti.API.debug('BetOnThisNVWebView.' + arguments.callee.name);
+	$.navGroup.close();
     $.BetOnThisNVWebView.close();
 	androidBackButtonClicked = true;
 }

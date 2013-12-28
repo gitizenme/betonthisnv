@@ -1,12 +1,8 @@
 <Alloy>
+    <Collection src="journal" />
 	<View fullscreen="false" class="container" id="contactView">
-		<Window id="navGroupWin" fullscreen="false" layout="vertical" class="container" onOpen="open" title="Day View">
-			<Button title="Back" onClick="clickBackAndroid"></Button>
-			<ScrollView id="scroll">
-				<View id="entry" layout="vertical" class="ScrollWindow">
-					<Label top="0" width="95%" height="40" id="hintLabel"/>
-				</View>
-			</ScrollView>
+		<Window id="navWin" fullscreen="false" layout="vertical" class="container" onOpen="open" title="Day View" onAndroid:back="onAndroidBack">
+			<Require type="view" src="dayViewList" id="listView" onClick="itemClick"/>
 		</Window>
 	</View>
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
