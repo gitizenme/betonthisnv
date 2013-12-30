@@ -2301,6 +2301,14 @@ if (OS_ANDROID) {
 					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
 				});
 				menuItem1.addEventListener('click', openWebView);
+				if (Alloy.Globals.Android.Api < 11 && activity.actionBar == null) {
+					var menuItem2 = menu.add({
+						titleCondensed : 'About',
+						icon : '/images/appicon-Small-40.png',
+						showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
+					});
+					menuItem2.addEventListener('click', openAboutView);
+				}
 			};
 
 			// Action Bar

@@ -44,9 +44,9 @@ function loadModelIntoCalendar() {
 		var sortDateYear = sortDate.year();
 		var calendarViewMonth = currentMonth.month();
 		var calendarViewYear = currentMonth.year();
-		
-		if(sortDateMonth == calendarViewMonth && sortDateYear == calendarViewYear) {
-			return entry;	
+
+		if (sortDateMonth == calendarViewMonth && sortDateYear == calendarViewYear) {
+			return entry;
 		}
 	});
 
@@ -101,7 +101,7 @@ function doNextMonth() {
 		period : currentMonth
 	});
 	$.calendarView.add($.current.getView());
-	
+
 	updateCalendarHeading(currentMonth);
 	loadModelIntoCalendar();
 }
@@ -186,12 +186,20 @@ if (OS_ANDROID) {
 			activity.onCreateOptionsMenu = function(e) {
 				var menu = e.menu;
 				var menuItem1 = menu.add({
-					// title: 'Bet On This',
 					titleCondensed : 'Bet On This',
-					icon : 'images/BetOnThisIcon.png',
+					icon : '/images/BetOnThisIcon.png',
 					showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
 				});
 				menuItem1.addEventListener('click', openWebView);
+				if (Alloy.Globals.Android.Api < 11 && activity.actionBar == null) {
+					var menuItem2 = menu.add({
+						titleCondensed : 'About',
+						icon : '/images/appicon-Small-40.png',
+						showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
+					});
+					menuItem2.addEventListener('click', openAboutView);
+				}
+
 			};
 
 			// Action Bar

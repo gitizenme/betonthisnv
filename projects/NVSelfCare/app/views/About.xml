@@ -1,5 +1,5 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="open" title="About" barColor="#2399A3">
+	<!-- <Window fullscreen="false" class="container" onOpen="open" title="About" barColor="#2399A3"> -->
 		<NavigationWindow id="navGroup" platform="ios" modal="true">
 			<Window id="navWin" class="container" title="About" backgroundColor="#000" barColor="#2399A3">
 				<ScrollView id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
@@ -22,6 +22,6 @@
 				</ScrollView>
 			</Window>
 		</NavigationWindow>
-	</Window>
+	<!-- </Window> -->
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>

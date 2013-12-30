@@ -1,8 +1,6 @@
 <Alloy>
-	<View fullscreen="false" class="container" id="navView">
-		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="betonthisnv.org" onAndroid:back="onAndroidBack">
-			<WebView url="http://betonthisnv.org"/>
-		</Window>
-	</View>
+	<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="betonthisnv.org" onAndroid:back="onAndroidBack">
+		<WebView url="http://betonthisnv.org"/>
+	</Window>
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>
