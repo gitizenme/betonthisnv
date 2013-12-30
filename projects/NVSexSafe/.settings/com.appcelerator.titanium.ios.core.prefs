@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=NVSexSafe
+iosLaunchConfigurationAttributes/appid=org.betonthisnv.nvsexsafe
+iosLaunchConfigurationAttributes/certificate=Joe Chavez (N22579JW7L)
+iosLaunchConfigurationAttributes/keychain=/Users/joe/Projects/izenme/ADC/izenme_iOS_keys.keychain
+iosLaunchConfigurationAttributes/sdk_version=7.0.3
+iosLaunchConfigurationAttributes/uuid=DD8532EF-4124-4BEE-9B0D-5808AAD7EA72
 provisioning_profiles/adhoc/02B722FE-E323-4002-AE93-5DCD0235F994/appid=org.betonthisnv.nvsexsafe
 provisioning_profiles/adhoc/02B722FE-E323-4002-AE93-5DCD0235F994/name=NV SexSafe AdHoc
 provisioning_profiles/adhoc/02B722FE-E323-4002-AE93-5DCD0235F994/uuid=02B722FE-E323-4002-AE93-5DCD0235F994

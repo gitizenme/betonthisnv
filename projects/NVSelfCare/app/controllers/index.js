@@ -32,9 +32,28 @@ var inputDirectory = Ti.Filesystem.resourcesDirectory + 'data/';
 
 var prodVersion = Ti.App.Properties.getString('version_preference', '0.0.0-DEV');
 
-function checkForAppReset() {
+function resetModels() {
 	Ti.API.debug('index.' + arguments.callee.name);
 	var users = Alloy.Collections.instance('user');
+
+	var model;
+	while (model = users.pop()) {
+		model.destroy();
+	}
+	users.reset();
+	Ti.API.debug('users.length = ' + users.length);
+
+	var journal = Alloy.Collections.instance("journal"); 
+	while (model = journal.pop()) {
+		model.destroy();
+	}
+	journal.reset();
+	Ti.API.debug('journal.length = ' + journal.length);
+
+}
+
+function checkForAppReset() {
+	Ti.API.debug('index.' + arguments.callee.name);
 
 	var appSettingsReset = Ti.App.Properties.getString('reset_preference', 'NO');
 	Titanium.API.debug('reset_preference:' + appSettingsReset);
@@ -42,13 +61,8 @@ function checkForAppReset() {
 		Ti.App.Properties.setBool('FirstTimeUse', true);
 		Ti.App.Properties.setString('version_preference', '');
 		Ti.App.Properties.setString('reset_preference', 'NO');
-		var model;
-		while ( model = users.pop()) {
-			model.destroy();
-		}
-		users.reset();
+		resetModels();
 	}
-	Ti.API.debug('users.length = ' + users.length);
 }
 
 // Function to test if device is iOS 7 or later
@@ -126,9 +140,9 @@ function setAppVersion() {
 function testCompression() {
 	var writeToZip = outputDirectory + '/zipFiles.zip';
 	Ti.API.info("Output to ZIP file: " + writeToZip);
-	
+
 	var result = Compression.zip(writeToZip, 'YourPassword', [inputDirectory + 'a.txt', inputDirectory + 'b.txt']);
-	
+
 	if (result == 'success') {
 		if (!Ti.Filesystem.getFile(writeToZip).exists()) {
 			Ti.API.error('FAIL: The target zip does not exist!');
@@ -140,7 +154,7 @@ function testCompression() {
 
 function init() {
 	Ti.API.debug('index.' + arguments.callee.name);
-	
+
 	// testCompression();
 	checkForAppReset();
 	setAppVersion();

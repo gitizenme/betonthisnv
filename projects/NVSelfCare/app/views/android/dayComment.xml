@@ -1,7 +1,11 @@
 <Alloy>
+    <Collection src="journal" />
 	<View fullscreen="false" class="container" id="navView">
-		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="COMMENT" backgroundColor="#2399A3" onAndroid:back="onAndroidBack">
+		<Window id="navWin" fullscreen="false" onOpen="open" title="COMMENT" backgroundColor="#2399A3" onAndroid:back="onAndroidBack"
+			layout="vertical">
+			<Button top="5" height="35" right="5" title="Save" onClick="save"/>
 			<Require type="view" src="dayCommentCommon" id="dayCommentCommonView" />
 		</Window>
 	</View>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>

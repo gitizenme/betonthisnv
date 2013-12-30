@@ -1,13 +1,18 @@
 exports.definition = {
 	config: {
 		columns: {
-		    "calendarDate": "datetime",
-		    "data": "string",
-		    "type": "string"
+		    "editDate": "TEXT",
+		    "sortDate": "TEXT",
+		    "data": "TEXT",
+		    "displayData": "TEXT",
+		    "section" : "INTEGER",
+		    "type": "INTEGER",
+		    "journal_id" : "INTEGER PRIMARY KEY AUTOINCREMENT"
 		},
 		adapter: {
 			type: "sql",
-			collection_name: "journal"
+			collection_name: "journal",
+			idAttribute: "journal_id"
 		}
 	},
 	extendModel: function(Model) {

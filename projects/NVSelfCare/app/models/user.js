@@ -1,9 +1,9 @@
 exports.definition = {
 	config: {
 		columns: {
-		    "username": "string",
-		    "password": "string",
-		    "data": "string"
+		    "username": "TEXT",
+		    "password": "TEXT",
+		    "data": "TEXT"
 		},
 		adapter: {
 			type: "sql",

@@ -197,19 +197,34 @@ function onAndroidBack() {
 	// do nothing
 }
 
-function resetAppData() {
-	Ti.API.debug('login.' + arguments.callee.name);
+function resetModels() {
+	Ti.API.debug('index.' + arguments.callee.name);
 	var users = Alloy.Collections.instance('user');
 
-	Ti.App.Properties.setBool('FirstTimeUse', true);
-	Ti.App.Properties.setString('version_preference', '');
-	Ti.App.Properties.setString('reset_preference', 'NO');
 	var model;
-	while ( model = users.pop()) {
+	while (model = users.pop()) {
 		model.destroy();
 	}
 	users.reset();
 	Ti.API.debug('users.length = ' + users.length);
+
+	var journal = Alloy.Collections.instance("journal"); 
+	while (model = journal.pop()) {
+		model.destroy();
+	}
+	journal.reset();
+	Ti.API.debug('journal.length = ' + journal.length);
+
+}
+
+
+function resetAppData() {
+	Ti.API.debug('login.' + arguments.callee.name);
+	
+	Ti.App.Properties.setBool('FirstTimeUse', true);
+	Ti.App.Properties.setString('version_preference', '');
+	Ti.App.Properties.setString('reset_preference', 'NO');
+	resetModels();
 
 	userExists = false;
 	configureUI();

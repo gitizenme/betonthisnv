@@ -1,5 +1,7 @@
+
+
 <Alloy>
-	<ListView defaultItemTemplate="template" id="dayViewList">
+	<ListView defaultItemTemplate="template" id="theList">
 
 		<!-- The Templates tag sets the ListView's templates property -->
 
@@ -11,7 +13,7 @@
 			<ItemTemplate name="template">
 				<ImageView bindId="pic" id="icon" />
 				<Label bindId="info" id="title" />
-				<Label bindId="es_info" id="subtitle" />
+				<Label bindId="subinfo" id="subtitle" width="Ti.UI.FILL" />
 			</ItemTemplate>
 
 		</Templates>
@@ -22,26 +24,26 @@
 			<!-- Specify data to bind to the item template with inline attributes
 			defined as <bindId>:<Ti.UI.Component.property> -->
 
-			<ListItem info:text="Comment" es_info:text="(tap to edit)" pic:image="/images/CommentIcon.png" />
-			<ListItem info:text="Mood" es_info:text="(tap to select)" pic:image="/images/MoodNoneIcon.png" />
+			<ListItem info:text="Comment" subinfo:text="(tap to edit)" pic:image="/images/CommentIcon.png" />
+			<ListItem info:text="Mood" subinfo:text="(tap to edit)" pic:image="/images/MoodNoneIcon.png" />
 		</ListSection>
 		<ListSection headerTitle="Alerts">
-			<ListItem info:text="Doctor's Appointment" es_info:text="" pic:image="/images/DrAppointmentIcon.png" />
-			<ListItem info:text="Medication" es_info:text="" pic:image="/images/MedicationIcon.png" />
-			<!-- <ListItem info:text="Alarm" es_info:text="" pic:image="/images/AlarmIcon.png" /> -->
+			<ListItem info:text="Doctor's Appointment" subinfo:text="(tap to edit)" pic:image="/images/DrAppointmentIcon.png" />
+			<ListItem info:text="Medication" subinfo:text="(tap to edit)" pic:image="/images/MedicationIcon.png" />
+			<!-- <ListItem info:text="Alarm" subinfo:text="" pic:image="/images/AlarmIcon.png" /> -->
 		</ListSection>
 		<ListSection headerTitle="Health">
-			<ListItem info:text="T-Cell Count" es_info:text="" pic:image="/images/TCellIcon.png" />
-			<ListItem info:text="Weight" es_info:text="" pic:image="/images/WeightIcon.png" />
-			<ListItem info:text="Hours of Sleep" es_info:text="" pic:image="/images/SleepIcon.png" />
-			<ListItem info:text="Fatigue Level" es_info:text="" pic:image="/images/FatigueIcon.png" />
-			<ListItem info:text="Blood Pressure" es_info:text="" pic:image="/images/BloodPressureIcon.png" />
-			<ListItem info:text="Body Measurements" es_info:text="" pic:image="/images/BodyMeasurementIcon.png" />
+			<ListItem info:text="T-Cell Count" subinfo:text="(tap to edit)" pic:image="/images/TCellIcon.png" />
+			<ListItem info:text="Weight" subinfo:text="(tap to edit)" pic:image="/images/WeightIcon.png" />
+			<ListItem info:text="Hours of Sleep" subinfo:text="(tap to edit)" pic:image="/images/SleepIcon.png" />
+			<ListItem info:text="Fatigue Level" subinfo:text="(tap to edit)" pic:image="/images/FatigueIcon.png" />
+			<ListItem info:text="Blood Pressure" subinfo:text="(tap to edit)" pic:image="/images/BloodPressureIcon.png" />
+			<ListItem info:text="Body Measurements" subinfo:text="(tap to edit)" pic:image="/images/BodyMeasurementIcon.png" />
 		</ListSection>
 		<ListSection headerTitle="Activity">
-			<ListItem info:text="Had Sex" es_info:text="" pic:image="/images/SexIcon.png" />
-			<ListItem info:text="Alchohol/Tobacco" es_info:text="" pic:image="/images/AlcoholTobaccoIcon.png" />
-			<ListItem info:text="Other Substance Abuse" es_info:text="" pic:image="/images/OtherSubstanceIcon.png" />
+			<ListItem info:text="Had Sex" subinfo:text="(tap to edit)" pic:image="/images/SexIcon.png" />
+			<ListItem info:text="Alchohol/Tobacco" subinfo:text="(tap to edit)" pic:image="/images/AlcoholTobaccoIcon.png" />
+			<ListItem info:text="Other Substance Abuse" subinfo:text="(tap to edit)" pic:image="/images/OtherSubstanceIcon.png" />
 		</ListSection>
 	</ListView>
 </Alloy>

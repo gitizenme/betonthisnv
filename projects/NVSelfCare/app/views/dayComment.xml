@@ -1,4 +1,5 @@
 <Alloy>
+    <Collection src="journal" />
 	<Window fullscreen="false" class="container" onOpen="open" title="Comment" barColor="#2399A3">
 		<Require type="view" src="dayCommentCommon" id="dayCommentCommonView" />
 	</Window>

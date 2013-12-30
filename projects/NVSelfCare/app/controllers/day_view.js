@@ -1,5 +1,9 @@
 var moment = require('alloy/moment');
 var animation = require('alloy/animation');
+var types = require('types');
+
+var journal = Alloy.Collections.journal;
+journal.fetch();
 
 var args = arguments[0] || {};
 
@@ -7,33 +11,51 @@ var selectedDate = args.day || 'XX/XX/XXXX';
 
 $.openAndroidView = false;
 
-var day_view_itemClick = {
-	"section" : {
-		"id" : "__alloyId12"
-	},
-	"sectionIndex" : 0,
-	"bindId" : "es_info",
-	"itemIndex" : 0,
-	"accessoryClicked" : false,
-	"bubbles" : true,
-	"type" : "itemclick",
-	"source" : {
-		"canScroll" : true,
-		"id" : "listView",
-		"caseInsensitiveSearch" : true,
-		"horizontalWrap" : true,
-		"defaultItemTemplate" : "template",
-		"dictTemplates" : {
-			"template" : {}
-		}
-	},
-	"cancelBubble" : false
-};
+var listView = $.listView.getView('theList');
 
-var SECTION_DIARY = 0;
-var SECTION_ALERTS = 1;
-var SECTION_HEALTH = 2;
-var SECTION_ACTIVITY = 3;
+function updateListViewRow(entry) {
+	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(entry));
+
+	if (listView && (entry.section < listView.sections.length) && entry.type < listView.sections[entry.section].items.length) {
+		var section = listView.sections[entry.section];
+		var listDataItem = section.items[entry.type];
+
+		var dateSaved = moment(entry.editDate);
+		listDataItem.subinfo.text = "Updated " + dateSaved.fromNow();
+		listDataItem.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK;
+		listDataItem.info.text = entry.displayData;
+
+		if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_MOOD) {
+			listDataItem.pic.image = types.moodImages[parseInt(entry.data)];
+		}
+
+		section.updateItemAt(entry.type, listDataItem);
+	}
+
+}
+
+function loadModelIntoListView() {
+	Ti.API.debug('day_view.' + arguments.callee.name);
+	journal.fetch();
+
+	var existingJournalModel = journal.where({
+		sortDate : selectedDate.format("M/D/YYYY")
+	});
+
+	for (var i = 0, j = existingJournalModel.length; i < j; i++) {
+		var entry = existingJournalModel[i];
+		updateListViewRow(entry.attributes);
+	};
+
+}
+
+function journalChanged(context) {
+	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(context));
+
+	updateListViewRow(context.attributes);
+}
+
+journal.on('change', journalChanged);
 
 function sectionDiaryClick(e) {
 	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
@@ -41,10 +63,11 @@ function sectionDiaryClick(e) {
 	$.openAndroidView = true;
 
 	switch(e.itemIndex) {
-		case 0:
+		case types.SECTION_DIARY_COMMENT:
 			// comment - text field
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "COMMENT"
 			};
 			var controller = Alloy.createController('dayComment', openArgs);
@@ -52,10 +75,11 @@ function sectionDiaryClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 1:
+		case types.SECTION_DIARY_MOOD:
 			// mood - list view
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "MOOD"
 			};
 			var controller = Alloy.createController('Mood', openArgs);
@@ -75,10 +99,11 @@ function sectionAlertsClick(e) {
 	$.openAndroidView = true;
 
 	switch(e.itemIndex) {
-		case 0:
+		case types.SECTION_ALERTS_DR_APPT:
 			// Dr.Appointment - date picker
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "DR APPPOINTMENT"
 			};
 			var controller = Alloy.createController('DrAppointment', openArgs);
@@ -86,10 +111,11 @@ function sectionAlertsClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 1:
-			// medication - date picker
+		case types.SECTION.ALERTS_MEDICATION:
+			// MEDICATION - date picker
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "MEDICATION"
 			};
 			var controller = Alloy.createController('Medication', openArgs);
@@ -97,10 +123,11 @@ function sectionAlertsClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 2:
+		case types.SECTION_ALERTS_ALERT:
 			// alarm - date picker
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "ALARM"
 			};
 			var controller = Alloy.createController('Alarm', openArgs);
@@ -119,10 +146,11 @@ function sectionHealthClick(e) {
 	$.openAndroidView = true;
 
 	switch(e.itemIndex) {
-		case 0:
+		case types.SECTION_HEALTH_TCELL:
 			// T-cell - text field
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "T-CELL COUNT"
 			};
 			var controller = Alloy.createController('TCell', openArgs);
@@ -130,10 +158,11 @@ function sectionHealthClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 1:
+		case types.SECTION_HEALTH_WEIGHT:
 			// weight - picker
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "WEIGHT"
 			};
 			var controller = Alloy.createController('Weight', openArgs);
@@ -141,10 +170,11 @@ function sectionHealthClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 2:
-			// sleep - text field 
+		case types.SECTION_HEALTH_SLEEP:
+			// sleep - text field
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "SLEEP"
 			};
 			var controller = Alloy.createController('Sleep', openArgs);
@@ -152,10 +182,11 @@ function sectionHealthClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 3:
+		case types.SECTION_HEALTH_FATIGUE:
 			// fatigue - list view
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "FATIGUE"
 			};
 			var controller = Alloy.createController('Fatigue', openArgs);
@@ -163,10 +194,11 @@ function sectionHealthClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 4:
+		case types.SECTION_HEALTH_BLOOD_PRESSURE:
 			// blood pressure - picker
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "BLOOD PRESSURE"
 			};
 			var controller = Alloy.createController('BloodPressure', openArgs);
@@ -174,10 +206,11 @@ function sectionHealthClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 5:
+		case types.SECTION_HEALTH_MEASUREMENTS:
 			// body measurements - text fields
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "MEASUREMENTS"
 			};
 			var controller = Alloy.createController('BodyMeasurements', openArgs);
@@ -196,10 +229,11 @@ function sectionActivityClick(e) {
 	$.openAndroidView = true;
 
 	switch(e.itemIndex) {
-		case 0:
+		case types.SECTION_ACTIVITY_HAD_SEX:
 			// had sex - check indicator
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "HAD SEX"
 			};
 			var controller = Alloy.createController('HadSex', openArgs);
@@ -207,10 +241,11 @@ function sectionActivityClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 1:
+		case types.SECTION_ACTIVITY_ALCOHOL_TOBACCO:
 			// Alcohol/tobacco - list view with checks
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "ALCOHOL/TOBACCO"
 			};
 			var controller = Alloy.createController('AlcoholTobacco', openArgs);
@@ -218,10 +253,11 @@ function sectionActivityClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case 2:
+		case types.SECTION_ACTIVITY_OTHER:
 			// Other abuse - text area
 			var openArgs = {
 				navGroup : $.navGroupWidget,
+				modelDate : selectedDate,
 				title : "OTHER USE"
 			};
 			var controller = Alloy.createController('OtherSubstances', openArgs);
@@ -238,16 +274,16 @@ function itemClick(e) {
 	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
 
 	switch(e.sectionIndex) {
-		case SECTION_DIARY:
+		case types.SECTION_DIARY:
 			sectionDiaryClick(e);
 			break;
-		case SECTION_ALERTS:
+		case types.SECTION_ALERTS:
 			sectionAlertsClick(e);
 			break;
-		case SECTION_HEALTH:
+		case types.SECTION_HEALTH:
 			sectionHealthClick(e);
 			break;
-		case SECTION_ACTIVITY:
+		case types.SECTION_ACTIVITY:
 			sectionActivityClick(e);
 			break;
 		default:
@@ -259,11 +295,21 @@ function itemClick(e) {
 function open(args) {
 	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(args));
 
+	loadModelIntoListView();
+
 	if (OS_ANDROID) {
 		$.navWin.activity.addEventListener('stop', stopActivityAndroid);
 		$.navWin.activity.addEventListener('restart', restartActivityAndroid);
 		$.navWin.activity.addEventListener('pause', pauseActivityAndroid);
 		$.navWin.activity.addEventListener('resume', resumeActivityAndroid);
+
+		// Action Bar
+		if (Alloy.Globals.Android.Api >= 11 && $.navWin.activity.actionBar != null) {
+			$.navWin.activity.actionBar.title = 'Day View - ' + selectedDate.format("M/D/YYYY");
+		}
+		else {
+			$.navWin.title = 'Day View - ' + selectedDate.format("M/D/YYYY");
+		}
 	}
 }
 
@@ -296,10 +342,7 @@ if (OS_ANDROID) {
 	function stopActivityAndroid(e) {
 		Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
 		if (!$.openAndroidView) {
-			// $.navWin.close();
 			Alloy.Globals.AuthenticateOnResume = true;
-		} else {
-			// $.navWin.close();
 		}
 	}
 
@@ -310,7 +353,6 @@ if (OS_IOS) {
 	function clickBack(e) {
 		Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
 		$.navGroup.close();
-		$.day_view.close();
 	}
 
 	var leftNavButton = Alloy.createController('navBarButton').getView();

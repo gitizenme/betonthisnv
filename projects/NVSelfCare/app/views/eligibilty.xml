@@ -1,4 +1,5 @@
 <Alloy>
+    <Collection src="journal" />
 	<Tab title="Eligibilty" icon="images/CameraIcon.png">
 		<Window id="tabWin" title="ELIGIBILITY" layout="vertical" onOpen="open">
 			<Label>Eligibility View</Label>

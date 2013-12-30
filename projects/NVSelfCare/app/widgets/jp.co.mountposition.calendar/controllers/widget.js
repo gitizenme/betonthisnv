@@ -22,10 +22,11 @@ $.selected = null;
 
 doClick = function(e) {
 	var _ref, _ref1, _ref2;
-	if ((e.source.date != null) && !e.source._isEntry) {
+	// if ((e.source.date != null) && !e.source._isEntry) {
+	if (e.source.date != null) {
 		if ($.selected != null) {
 			if (( _ref = $.selected.children[0]) != null) {
-				_ref.backgroundColor = '#08B082';
+				_ref.backgroundColor = '#9CA219';
 			}
 		}
 		$.selected = e.source;
@@ -188,8 +189,7 @@ while (col !== 0) {
 	}
 }
 
-
-exports.setImage = function(day, image, options) {
+exports.setImage = function(day, image, row, column, options) {
 	var _ref3;
 	if (options == null) {
 		options = {};
@@ -201,14 +201,17 @@ exports.setImage = function(day, image, options) {
 	void 0;
 	if ((tile != null ? tile.date :
 	void 0) != null) {
-		tile.remove(tile.children[0]);
+		// tile.remove(tile.children[0]);
+		tile.children[0].backgroundColor = '#9CA219';
 		_.extend(tile, {
 			_isEntry : true
 		}, options);
 		return tile.add(Ti.UI.createImageView({
 			image : image,
-			width : TILE_WIDTH - 3,
-			height : TILE_WIDTH - 3,
+			top : (row * (TILE_WIDTH / 3)),
+			left : ((column-1) * ((TILE_WIDTH / 6)+4))+4,
+			width : (TILE_WIDTH / 6)+3,
+			height: Ti.UI.SIZE,
 			touchEnabled : false
 		}));
 	}
