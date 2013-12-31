@@ -9,7 +9,7 @@ function configureUI() {
 	Ti.API.debug('login.' + arguments.callee.name);
 
 	Ti.API.debug('userExists = ' + userExists);
-	
+
 	clearHintLabel();
 	updateButtonState("#fff");
 	if (userExists) {
@@ -73,7 +73,11 @@ function onOpen() {
 
 function focusUsername() {
 	Ti.API.debug('login.' + arguments.callee.name);
-	updateHintLabel('Create a user name.', 750);
+	if (!userExists) {
+		updateHintLabel('Create a user name.', 750);
+	} else {
+		updateHintLabel('Enter your user name.', 750);
+	}
 	updateButtonState("#fff");
 }
 
@@ -202,14 +206,14 @@ function resetModels() {
 	var users = Alloy.Collections.instance('user');
 
 	var model;
-	while (model = users.pop()) {
+	while ( model = users.pop()) {
 		model.destroy();
 	}
 	users.reset();
 	Ti.API.debug('users.length = ' + users.length);
 
-	var journal = Alloy.Collections.instance("journal"); 
-	while (model = journal.pop()) {
+	var journal = Alloy.Collections.instance("journal");
+	while ( model = journal.pop()) {
 		model.destroy();
 	}
 	journal.reset();
@@ -217,10 +221,9 @@ function resetModels() {
 
 }
 
-
 function resetAppData() {
 	Ti.API.debug('login.' + arguments.callee.name);
-	
+
 	Ti.App.Properties.setBool('FirstTimeUse', true);
 	Ti.App.Properties.setString('version_preference', '');
 	Ti.App.Properties.setString('reset_preference', 'NO');
@@ -229,7 +232,7 @@ function resetAppData() {
 	userExists = false;
 	configureUI();
 	$.username.focus();
-	
+
 }
 
 function deleteAccount() {

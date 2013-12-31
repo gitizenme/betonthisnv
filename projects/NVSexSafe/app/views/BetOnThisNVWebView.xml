@@ -1,6 +1,6 @@
 <Alloy>
 	<NavigationWindow id="navGroup" platform="ios" modal="true">
-		<Window id="navWin" class="container" title="betonthisnv.org">
+		<Window id="navWin" class="container" title="betonthisnv.org" onOpen="open">
 			<WebView url="http://betonthisnv.org"/>
 		</Window>
 	</NavigationWindow>

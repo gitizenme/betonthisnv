@@ -75,30 +75,39 @@ tabsTintColor: '#2399A3'
 	textAlign: 'center'
 },
 "TextField": {
-		width: '95%',
+	width: '95%',
 	height: Ti.UI.SIZE,
-		color: '#fff',
-borderColor: '#eee',
+	color: '#fff',
+	borderColor: '#eee',
 	borderWidth: 1,
 	borderRadius: 3
-		},
-	".dataEntry": {
-		layout: 'horizontal',
-			top: 2,
-			left: 2
-		},
-	".getHelpView": {
-		width:"100%",
+},
+".dateTimeField": {
+	width: '95%',
+	height: Ti.UI.SIZE,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: '#fff',
+	borderColor: '#eee',
+	borderWidth: 1,
+	borderRadius: 3
+},
+".dataEntry": {
+	layout: 'horizontal',
+	top: 2,
+	left: 2
+},
+".getHelpView": {
+	width:"100%",
 	height:"auto",
 	backgroundColor:"#257EB7"
 },
 ".infoButtonView": {
-		borderRadius:"7 dp",
-		borderColor:"#0A0A0A",
-		backgroundColor:"#fff",
-		top: "5",
-		height:"30%",
-		width:"auto"
+	borderRadius:"7 dp",
+	borderColor:"#0A0A0A",
+	backgroundColor:"#fff",
+	top: "5",
+	height:"30%",
+	width:"auto"
 },
 ".infoButton": {
 				width: "200",
@@ -188,7 +197,7 @@ borderColor: '#eee',
 	  }
 },
 ".title": {
-	top:20,
+	top:10,
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#2399A3",
@@ -200,7 +209,7 @@ borderColor: '#eee',
 textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 },
 ".H2LEFT": {
-	top:20,
+	top:10,
 	left:0,
 width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
@@ -212,14 +221,80 @@ width: Ti.UI.FILL,
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
 textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 },
+".H3LEFT": {
+	top:10,
+	left:10,
+width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#0A0A0A",
+	font: {
+		fontSize: 15,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+},
+".H4LEFT": {
+	top:10,
+	left:10,
+	bottom: 5,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#0A0A0A",
+	font: {
+		fontSize: 12,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+},
+".H1CENTER": {
+	top:10,
+	left:0,
+width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#E81C24",
+	font: {
+		fontSize: 24,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
+".H2CENTER": {
+	top:10,
+	left:0,
+width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#E81C24",
+	font: {
+		fontSize: 18,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
 ".H3CENTER": {
-	top:20,
+	top:10,
 	left:0,
 width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
 	font: {
 		fontSize: 15,
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
+".H4CENTER": {
+	top:10,
+	left:0,
+width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	color: "#E81C24",
+	font: {
+		fontSize: 12,
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -314,7 +389,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	touchEnabled: false,
 	horizontalWrap: false,
 	ellipsize: true,
-    left: 80, top: 0, width: Ti.UI.FILL, height: 25, right: 5
+    left: 70, top: 0, width: Ti.UI.FILL, height: 25, right: 5
 },
 "#subtitle" : {
     color: 'gray',
@@ -322,6 +397,6 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
 	touchEnabled: false,
-    left: 80, bottom: 5
+    left: 70, bottom: 5
 }
 

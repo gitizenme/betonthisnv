@@ -212,7 +212,8 @@ exports.setImage = function(day, image, row, column, options) {
 			left : ((column-1) * ((TILE_WIDTH / 6)+4))+4,
 			width : (TILE_WIDTH / 6)+3,
 			height: Ti.UI.SIZE,
-			touchEnabled : false
+			touchEnabled : false,
+			tintColor: options.tintColor || '#fff'
 		}));
 	}
 };

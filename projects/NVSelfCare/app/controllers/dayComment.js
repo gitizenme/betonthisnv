@@ -1,3 +1,7 @@
+/**
+ * @author Joe Chavez
+ */
+
 var moment = require('alloy/moment');
 var types = require('types');
 

@@ -1,13 +1,4 @@
 <Alloy>
-<!--
-	<ScrollView platform="android" id="scrollView" top="5" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE"
-	borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#2399A3">
-		<View platform="android" top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
-			<Label platform="android" top="5" color="#000">Type your comment in below\nTouch Save to keep it.</Label>
-			<TextArea platform="android" top="10" width="Ti.UI.FILL" height="Ti.UI.FILL" id="textArea" color="#000" backgroundColor="#ccc" value="" />
-		</View>
-	</ScrollView>
--->
 	<ScrollView id="scrollView" top="5" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE" backgroundColor="#fff">
 		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
 			<Label top="5" color="#000">Type your comment in below\nTouch Save to keep it.</Label>

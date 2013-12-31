@@ -37,14 +37,14 @@ function resetModels() {
 	var users = Alloy.Collections.instance('user');
 
 	var model;
-	while (model = users.pop()) {
+	while ( model = users.pop()) {
 		model.destroy();
 	}
 	users.reset();
 	Ti.API.debug('users.length = ' + users.length);
 
-	var journal = Alloy.Collections.instance("journal"); 
-	while (model = journal.pop()) {
+	var journal = Alloy.Collections.instance("journal");
+	while ( model = journal.pop()) {
 		model.destroy();
 	}
 	journal.reset();
@@ -182,7 +182,10 @@ function open() {
 	init();
 
 	if (OS_ANDROID) {
-		$.index.activity.addEventListener('restart', restartAppAndroid);
+		$.index.activity.addEventListener('stop', stopActivityAndroid);
+		$.index.activity.addEventListener('restart', restartActivityAndroid);
+		$.index.activity.addEventListener('pause', pauseActivityAndroid);
+		$.index.activity.addEventListener('resume', resumeActivityAndroid);
 	}
 
 }
@@ -195,26 +198,54 @@ $.index.top = iOS7 ? 20 : 0;
 
 if (OS_ANDROID) {
 
-	function restartAppAndroid() {
-		Ti.API.trace('index.' + arguments.callee.name);
+	function restartActivityAndroid(e) {
+		Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
 		if (Alloy.Globals.AuthenticateOnResume) {
-			resumeApp();
+			appResumed();
 		} else {
 			Alloy.Globals.AuthenticateOnResume = true;
 		}
 	}
 
+	function stopActivityAndroid(e) {
+		Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
+	function pauseActivityAndroid(e) {
+		Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
+	function resumeActivityAndroid(e) {
+		Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
 }
 
-function resumeApp() {
-	Ti.API.trace('index.' + arguments.callee.name);
+function appResumed(e) {
+	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
 	checkForAppReset();
 	setAppVersion();
 	nextController();
 }
 
+function appResume(e) {
+	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+function appPause(e) {
+	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+function appPaused(e) {
+	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
 if (OS_IOS) {
-	Ti.App.addEventListener('resumed', resumeApp);
+
+	Ti.App.addEventListener('resumed', appResumed);
+	Ti.App.addEventListener('resume', appResume);
+	Ti.App.addEventListener('pause', appPause);
+	Ti.App.addEventListener('paused', appPaused);
 }
 
 $.index.open();

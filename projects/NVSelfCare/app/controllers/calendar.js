@@ -8,28 +8,23 @@ var currentMonth = moment();
 
 function updateCalendarIconForActivity(entry) {
 	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(entry));
+	var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
 	if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_COMMENT) {
-		var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
 		$.current.setImage(selectedDate, '/images/CommentIconSmall.png', 1, 1);
 	}
 	if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_HAD_SEX) {
-		var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
 		$.current.setImage(selectedDate, '/images/SexIconSmall.png', 1, 2);
 	}
 	if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_MOOD) {
-		var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
 		$.current.setImage(selectedDate, types.moodImagesSmall[parseInt(entry.data)], 1, 3);
 	}
-	if (entry.section == types.SECTION_ALERTS && entry.type == types.SECTION_ALERTS_MEDICATION) {
-		var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
-		$.current.setImage(selectedDate, '/images/MedicationIconSmall.png', 2, 1);
+	if (entry.section == types.SECTION_ALERTS && entry.type == types.SECTION_ALERTS_DR_APPT) {
+		$.current.setImage(selectedDate, '/images/DrAppointmentIconSmall.png', 2, 1);
 	}
 	if (entry.section == types.SECTION_HEALTH && entry.type == types.SECTION_HEALTH_TCELL) {
-		var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
 		$.current.setImage(selectedDate, '/images/TCellIconSmall.png', 2, 2);
 	}
 	if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_ALCOHOL_TOBACCO) {
-		var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
 		$.current.setImage(selectedDate, '/images/AlcoholTobaccoIconSmall.png', 2, 3);
 	}
 }
@@ -37,6 +32,8 @@ function updateCalendarIconForActivity(entry) {
 function loadModelIntoCalendar() {
 	Ti.API.debug('day_view.' + arguments.callee.name);
 	journal.fetch();
+
+	// TODO clear calendar if no data
 
 	var existingJournalModel = journal.filter(function(entry) {
 		var sortDate = moment(entry.attributes.sortDate, "MM/DD/YYYY");
@@ -75,7 +72,6 @@ function doPrevMonth() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 
 	// Remove current month calendar.
-	$.calendarView.remove($.calendarView.children[0]);
 
 	// Create previous month calendar and add view
 	currentMonth.subtract('months', 1);
@@ -83,16 +79,17 @@ function doPrevMonth() {
 	$.current = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
 		period : currentMonth
 	});
+	loadModelIntoCalendar();
+	$.current.getView().hide();
+	$.calendarView.remove($.calendarView.children[0]);
 	$.calendarView.add($.current.getView());
+	$.current.getView().show();
 
 	updateCalendarHeading(currentMonth);
-	loadModelIntoCalendar();
 }
 
 function doNextMonth() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
-
-	$.calendarView.remove($.calendarView.children[0]);
 
 	// Create next month calendar and add view
 	currentMonth.add('months', 1);
@@ -100,10 +97,13 @@ function doNextMonth() {
 	$.current = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
 		period : currentMonth
 	});
+	loadModelIntoCalendar();
+	$.current.getView().hide();
+	$.calendarView.remove($.calendarView.children[0]);
 	$.calendarView.add($.current.getView());
+	$.current.getView().show();
 
 	updateCalendarHeading(currentMonth);
-	loadModelIntoCalendar();
 }
 
 // You can select tile

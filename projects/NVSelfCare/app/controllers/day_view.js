@@ -22,7 +22,7 @@ function updateListViewRow(entry) {
 
 		var dateSaved = moment(entry.editDate);
 		listDataItem.subinfo.text = "Updated " + dateSaved.fromNow();
-		listDataItem.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_CHECKMARK;
+		listDataItem.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_DETAIL;
 		listDataItem.info.text = entry.displayData;
 
 		if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_MOOD) {
@@ -111,7 +111,7 @@ function sectionAlertsClick(e) {
 				$.navGroup.openWindow(controller.getView(), openArgs);
 			}
 			break;
-		case types.SECTION.ALERTS_MEDICATION:
+		case types.SECTION_ALERTS_MEDICATION:
 			// MEDICATION - date picker
 			var openArgs = {
 				navGroup : $.navGroupWidget,
@@ -306,8 +306,7 @@ function open(args) {
 		// Action Bar
 		if (Alloy.Globals.Android.Api >= 11 && $.navWin.activity.actionBar != null) {
 			$.navWin.activity.actionBar.title = 'Day View - ' + selectedDate.format("M/D/YYYY");
-		}
-		else {
+		} else {
 			$.navWin.title = 'Day View - ' + selectedDate.format("M/D/YYYY");
 		}
 	}

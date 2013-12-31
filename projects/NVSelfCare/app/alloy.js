@@ -20,6 +20,7 @@ Alloy.Globals.version = "0.0.0 DEV";
 Alloy.Globals.FirstTimeUse = false;
 Alloy.Globals.UserAuthenticated = false;
 Alloy.Globals.AuthenticateOnResume = true;
+Alloy.Globals.CurrentOpenWindow = null;
 
 Alloy.Collections.users = Alloy.Collections.instance("user");
 Alloy.Collections.users.fetch();

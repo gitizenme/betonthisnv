@@ -1,0 +1,25 @@
+<Alloy>
+	<ScrollView id="scrollView" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE" backgroundColor="#2399A3">
+		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
+			<Label class="H2CENTER" color="#0A0A0A">Select a date and time below or type in your appointment date and time.\nTouch Save when finished.</Label>
+			<View top="10" layout="vertical" borderColor="#cccccc" borderRadius="8" borderWidth="2" height="Ti.UI.SIZE" backgroundColor="#2399A3" >
+				<Label class="H3CENTER" top="4" color="#0A0A0A">Appointment Time</Label>
+				<TextField class="dateTimeField" id="dateTimeField" bottom="5" onChange="dateTimeFieldChanged" />
+			</View>
+			<View top="10" layout="vertical" borderColor="#cccccc" borderRadius="8" borderWidth="2" height="Ti.UI.SIZE" backgroundColor="#2399A3" >
+				<Label class="H3CENTER" color="#0A0A0A">Date</Label>
+				<Slider id="dateSlider" min="0" max="300" width="75%" top="5" bottom="5" height="Ti.UI.SIZE" value="150" onChange="updateDate"/>
+				<!-- <Label class="H3CENTER" color="#0A0A0A" id="dateLabel" /> -->
+			</View>
+			<View top="10" layout="vertical" borderColor="#cccccc" borderRadius="8" borderWidth="2" height="Ti.UI.SIZE" backgroundColor="#2399A3" >
+				<Label class="H3CENTER" color="#0A0A0A">Time</Label>
+				<Slider id="timeSlider" min="0" max="300" width="75%" top="5" bottom="5" height="Ti.UI.SIZE" value="150" onChange="updateTime"/>
+				<!-- <Label class="H3CENTER" color="#0A0A0A" id="timeLabel" /> -->
+			</View>
+			<View top="10" layout="horizontal" borderColor="#cccccc" borderRadius="8" borderWidth="2" height="Ti.UI.SIZE" backgroundColor="#2399A3" >
+				<Switch id="saveToCalendar" top="5" left="5" value="false"></Switch>
+				<Label class="H4LEFT" top="5" left="5" right="5" color="#0A0A0A">Create Calendar Event?\nEnabling this will create an appointment on your calendar. A one time authorization is required for NV SelfCare to interact with your calendar.</Label>
+			</View>
+		</View>
+	</ScrollView>
+</Alloy>
