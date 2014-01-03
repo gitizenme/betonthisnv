@@ -1,8 +1,8 @@
 <Alloy>
 	<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="ABOUT" backgroundColor="#000" onAndroid:back="onAndroidBack">
-		<ScrollView id="scrollView" top="5" contentHeight="auto"
-		borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
-			<View top="10" id="riskView" layout="vertical" height="800">
+		<ScrollView id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
+		borderRadius="8" borderColor="#000" borderWidth="2" backgroundColor="#000" >
+			<View top="10" id="riskView" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
 				<!-- <ImageView top="10" image="/images/appicon.png"/> -->
 				<View layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
 					<Label id="leftTitle" color="#2399A3">SELF</Label>
@@ -14,7 +14,7 @@
 				<Label left="10" right="10" class="H2LEFT" id="publisherLabel" text="Published by: "/>
 				<Label left="10" right="10" class="H2LEFT" id="urlLabel" text="On the Web: " onClick="onTheWebClick" />
 				<Label left="10" right="10" class="H2LEFT" id="developmentBy" top="40" text="Application development by: izen.me"/>
-				<ImageView image="/images/izenme_logo-100x100.png"/>
+				<ImageView image="/images/izenme_logo-100x100.png" width="400" />
 				<Label left="10" right="10" class="H2LEFT" id="izenMeUrlLabel" text="On the Web: www.izen.me" onClick="onTheWebIzenMeClick" />
 			</View>
 		</ScrollView>

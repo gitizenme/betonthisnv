@@ -1213,8 +1213,8 @@ var paytableData = {
  */
 
 var argsTitleContol = {
-	leftTitle: "SEX",
-	title: "SAFE"
+	leftTitle : "SEX",
+	title : "SAFE"
 };
 
 $.shakeItWin.titleControl = Alloy.createController('NavTitleControl', argsTitleContol).getView();
@@ -1406,7 +1406,7 @@ function onResultsButtonTouch(e) {
 			resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 1;
-			touchToSpinButton.animate(0,4,500,-1);
+			touchToSpinButton.animate(0, 4, 500, -1);
 			displayWin();
 		} else if (e.tag == 'resultsNewButton') {
 			resultsNewButton.alpha = 0;
@@ -1543,6 +1543,8 @@ function onReelTouch(e) {
 				lockGender();
 				Ti.API.debug("frameIdx = " + frameIdx);
 				reel1.animate([frameIdx], scrubAnimationTime, 0, 0);
+				checkWin();
+				displayWinButton();
 			}
 			reel1Y = e.y;
 
@@ -1555,6 +1557,8 @@ function onReelTouch(e) {
 				lockActivity();
 				Ti.API.debug("frameIdx = " + frameIdx);
 				reel2.animate([frameIdx], scrubAnimationTime, 0, 0);
+				checkWin();
+				displayWinButton();
 			}
 			reel2Y = e.y;
 
@@ -1567,6 +1571,8 @@ function onReelTouch(e) {
 				lockProtection();
 				Ti.API.debug("frameIdx = " + frameIdx);
 				reel3.animate([frameIdx], scrubAnimationTime, 0, 0);
+				checkWin();
+				displayWinButton();
 			}
 			reel3Y = e.y;
 
@@ -1581,6 +1587,8 @@ var oldPRessFontName = 'Old Press';
 if (OS_ANDROID) {
 	oldPRessFontName = 'Old-Press';
 }
+
+var originalSceneWidth = 640;
 
 function initGameScene() {
 	Ti.API.debug("BEGIN - initGameScene");
@@ -1598,20 +1606,15 @@ function initGameScene() {
 	var fontFactor = 1;
 	var lockLabelFontSize = 24;
 
+	Ti.API.info("Ti.Platform.displayCaps.dpi = " + Ti.Platform.displayCaps.dpi);
+	Ti.API.info("game.size.width = " + game.size.width);
+
 	if (OS_ANDROID) {
-		if (game.size.width == 360) {
-			scaleFactor = 1.75;
-			imageScaleFactor = 1.75;
-			fontFactor = 1.75;
-			positionFactor = 1.75;
-			imageSuffix = "";
-		} else if (game.size.width == 320) {
-			scaleFactor = 2;
-			imageScaleFactor = 2;
-			fontFactor = 2;
-			positionFactor = 2;
-			imageSuffix = "";
-		}
+		scaleFactor = originalSceneWidth / game.size.width;
+		imageScaleFactor = scaleFactor;
+		fontFactor = scaleFactor;
+		positionFactor = scaleFactor;
+		imageSuffix = "";
 	}
 	if (OS_IOS) {
 		if (Ti.Platform.displayCaps.dpi == 160) {
@@ -1626,9 +1629,11 @@ function initGameScene() {
 	var lockImage = 'images/LockedIcon' + imageSuffix + '.png';
 	var unLockImage = 'images/UnlockedIcon' + imageSuffix + '.png';
 
-	Ti.API.debug("BEGIN - scaleFactor = " + scaleFactor);
-	Ti.API.debug("BEGIN - positionFactor = " + positionFactor);
-	Ti.API.debug("BEGIN - suffix = " + suffix);
+	Ti.API.info("BEGIN - scaleFactor = " + scaleFactor);
+	Ti.API.info("BEGIN - positionFactor = " + positionFactor);
+	Ti.API.info("BEGIN - fontFactor = " + fontFactor);
+	Ti.API.info("BEGIN - imageScaleFactor = " + imageScaleFactor);
+	Ti.API.info("BEGIN - suffix = " + suffix);
 
 	var reelFrame = platino.createSprite({
 		image : "images/ReelFrame.png",
@@ -1676,8 +1681,8 @@ function initGameScene() {
 		x : 75 / positionFactor,
 		y : 55 / positionFactor
 	});
-	genderLockLabel.width += 60;
-	genderLockLabel.height += 15;
+	// genderLockLabel.width += 60;
+	// genderLockLabel.height += 15;
 	touchable.push(genderLockLabel);
 	genderLockLabel.addEventListener('touchend', onGenderLockTouch);
 
@@ -1710,8 +1715,8 @@ function initGameScene() {
 		x : 295 / positionFactor,
 		y : 55 / positionFactor
 	});
-	activityLockLabel.width += 60;
-	activityLockLabel.height += 15;
+	// activityLockLabel.width += 80;
+	// activityLockLabel.height += 15;
 	touchable.push(activityLockLabel);
 	activityLockLabel.addEventListener('touchend', onActivityLockTouch);
 
@@ -1744,8 +1749,8 @@ function initGameScene() {
 		x : 475 / positionFactor,
 		y : 55 / positionFactor
 	});
-	protectionLockLabel.width += 60;
-	protectionLockLabel.height += 15;
+	// protectionLockLabel.width += 60;
+	// protectionLockLabel.height += 15;
 	touchable.push(protectionLockLabel);
 	protectionLockLabel.addEventListener('touchend', onProtectionIconTouch);
 
@@ -1989,10 +1994,10 @@ var win = {
 	orientation : "",
 	activity : "",
 	protection : "",
-	winFound: true
+	winFound : true
 };
 
-// Check reels, show particle effect if winning spin, allow user to spin again
+// Check reels, show particle effect if winning spin, allow user to spin again transaparent
 function checkWin() {
 
 	Ti.API.debug('reel1.frame = ' + reel1.frame);
@@ -2119,26 +2124,26 @@ function endRoll() {
 };
 
 function spinReels() {
-		if (isGenderLocked == false) {
-			reel1.animate(0, 10, 50, -1);
-		}
+	if (isGenderLocked == false) {
+		reel1.animate(0, 10, 50, -1);
+	}
 
-		if (isActivityLocked == false) {
-			reel2.animate(0, 32, 70, -1);
-		}
+	if (isActivityLocked == false) {
+		reel2.animate(0, 32, 70, -1);
+	}
 
-		if (isProtectionLocked == false) {
-			reel3.animate(0, 8, 90, -1);
-		}
+	if (isProtectionLocked == false) {
+		reel3.animate(0, 8, 90, -1);
+	}
 
-		// Stop the reels randomly between .8 and 2.5 seconds
-		var ranVal = Math.floor((Math.random() * 4000) + 800);
-		if (isGenderLocked && isActivityLocked && isProtectionLocked) {
-			endRoll();
-		} else {
-			setTimeout(endRoll, ranVal);
-		}
-	
+	// Stop the reels randomly between .8 and 2.5 seconds
+	var ranVal = Math.floor((Math.random() * 4000) + 800);
+	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
+		endRoll();
+	} else {
+		setTimeout(endRoll, ranVal);
+	}
+
 }
 
 // Spin function
@@ -2147,7 +2152,7 @@ function spin() {
 	if (canSpin == true) {
 		canSpin = false;
 		armFrame.animate(0, 8, 50, 0);
-		setTimeout(spinReels, 5*50);
+		setTimeout(spinReels, 5 * 50);
 	}
 };
 
@@ -2229,26 +2234,24 @@ game.addEventListener("onload", function(e) {
 
 	// Start the game
 	game.start();
-	
-	touchToSpinButton.animate(0,4,500,-1);
 
-
+	touchToSpinButton.animate(0, 4, 500, -1);
 
 });
 
 function spinOnShake(e) {
 	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	 spin();
+	spin();
 }
 
-function enableShake() { 
+function enableShake() {
 	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	 Ti.Gesture.addEventListener('shake', spinOnShake);
+	Ti.Gesture.addEventListener('shake', spinOnShake);
 }
 
 function disableShake() {
 	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	 Ti.Gesture.removeEventListener('shake', spinOnShake);
+	Ti.Gesture.removeEventListener('shake', spinOnShake);
 }
 
 Ti.App.addEventListener('pause', disableShake);
@@ -2283,10 +2286,10 @@ function openAboutView() {
 	}
 }
 
-
 // Android
 if (OS_ANDROID) {
-	$.shakeItTab.addEventListener('focus', function() {
+	function configureAndroidMenu() {
+
 		if ($.shakeItTab.tabGroup.activity) {
 			var activity = $.shakeItTab.tabGroup.activity;
 
@@ -2317,11 +2320,15 @@ if (OS_ANDROID) {
 				activity.actionBar.onHomeIconItemSelected = openAboutView;
 			}
 		}
-	});
+	}
+
 }
 
 function open() {
 
 	init();
 
+	if (OS_ANDROID) {
+		configureAndroidMenu();
+	}
 }

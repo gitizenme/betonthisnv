@@ -62,8 +62,8 @@ function onFocus(e) {
 function updateHintLabel(msg, duration) {
 	Ti.API.debug('login.' + arguments.callee.name);
 	$.hintLabel.opacity = 0.0;
-	animation.fadeIn($.hintLabel, duration);
 	$.hintLabel.text = msg;
+	animation.fadeIn($.hintLabel, duration);
 }
 
 function onOpen() {

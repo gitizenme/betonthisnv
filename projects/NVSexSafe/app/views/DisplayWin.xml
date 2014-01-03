@@ -1,24 +1,22 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="open" title="RISK FACTOR" barColor="#E81C24">
-		<NavigationWindow id="navGroup" platform="ios" modal="true">
-			<Window id="navWin" title="RISK FACTOR" backgroundColor="#000" barColor="#E81C24">
-				<ScrollView top="7" id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
-					  borderRadius="8" borderColor="#D7DF23" borderWidth="8" backgroundColor="#fff" >
-					<View id="riskView" layout="vertical" height="800">
-						<Label class="title" id="orientationTitle" top="5" text="Orientation" />
-						<Label class="body" id="orientationBody" />
-						<Label class="title" id="activityTitle" text="Activity" />
-						<Label class="body" id="activityBody" />
-						<Label class="title" id="protectionTitle" text="Protection" />
-						<Label class="body" id="protectionBody" />
-						<Label class="title" id="riskTitle" text="Risk Factor" />
-						<Label class="body" id="riskBody" />
-						<Label class="title" id="safetyTitle" text="Safety" />
-						<Label class="body" id="safetyBody" />
-					</View>
-				</ScrollView>
-			</Window>
-		</NavigationWindow>
-	</Window>
+	<NavigationWindow id="navGroup" platform="ios" modal="true" onOpen="open" >
+		<Window id="navWin" title="RISK FACTOR" backgroundColor="#000" barColor="#E81C24">
+			<ScrollView top="7" id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
+			borderRadius="8" borderColor="#D7DF23" borderWidth="2" backgroundColor="#fff" >
+				<View id="riskView" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
+					<Label class="title" top="5" id="orientationTitle" top="5" text="Orientation" />
+					<Label class="body" id="orientationBody" />
+					<Label class="title" id="activityTitle" text="Activity" />
+					<Label class="body" id="activityBody" />
+					<Label class="title" id="protectionTitle" text="Protection" />
+					<Label class="body" id="protectionBody" />
+					<Label class="title" id="riskTitle" text="Risk Factor" />
+					<Label class="body" id="riskBody" />
+					<Label class="title" id="safetyTitle" text="Safety" />
+					<Label class="body" bottom="5" id="safetyBody" />
+				</View>
+			</ScrollView>
+		</Window>
+	</NavigationWindow>
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>

@@ -1,11 +1,13 @@
 <Alloy>
 	<View fullscreen="false" class="container" id="navView">
-		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="RISK FACTOR" backgroundColor="#D7DF23">
-			<Button top="5" height="35dp" left="5" title="Back" onClick="clickBackAndroid"/>
-			<ScrollView id="scrollView" top="50dp" contentHeight="auto"
-					  borderRadius="8" borderColor="#D7DF23" borderWidth="8" backgroundColor="#fff" >
-				<View id="riskView" layout="vertical" height="800">
-					<Label class="title" id="orientationTitle" top="5" text="Orientation" />
+		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="RISK FACTOR" backgroundColor="#D7DF23" layout="vertical">
+			<View top="10" left="10" borderColor="#fff"  borderRadius="8" borderWidth="2" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE" >
+				<Label top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="BACK" onClick="clickBackAndroid">
+			</View>
+			<ScrollView id="scrollView" top="20" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
+					  borderRadius="8" borderColor="#D7DF23" borderWidth="2" backgroundColor="#fff" >
+				<View id="riskView" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
+					<Label class="title" top="5" id="orientationTitle" top="5" text="Orientation" />
 					<Label class="body" id="orientationBody" />
 					<Label class="title" id="activityTitle" top="20" text="Activity" />
 					<Label class="body" id="activityBody" />
@@ -14,7 +16,7 @@
 					<Label class="title" id="riskTitle" top="20" text="Risk Factor" />
 					<Label class="body" id="riskBody" />
 					<Label class="title" id="safetyTitle" top="20" text="Safety" />
-					<Label class="body" id="safetyBody" />
+					<Label class="body" bottom="5" id="safetyBody" />
 				</View>
 			</ScrollView>
 		</Window>

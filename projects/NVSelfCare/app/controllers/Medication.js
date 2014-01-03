@@ -116,7 +116,6 @@ if (OS_ANDROID) {
 
 	function stopActivityAndroid(e) {
 		Ti.API.debug('Medication.' + arguments.callee.name + ': ' + JSON.stringify(e));
-		save();
 		if (!openAndroidView) {
 			Alloy.Globals.AuthenticateOnResume = true;
 			$.navWin.close();

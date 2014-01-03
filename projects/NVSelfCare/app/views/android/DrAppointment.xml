@@ -3,7 +3,9 @@
 	<View fullscreen="false" class="container" id="navView">
 		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="DrAppointment" backgroundColor="#2399A3" onAndroid:back="onAndroidBack"
 			layout="vertical">
-			<Button top="5" height="35" right="5" title="Save" onClick="save"/>
+			<View id="saveButtonView" top="10" right="5" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+				<Label id="saveButtonLabel" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="SAVE" onClick="save"/>
+			</View>
 			<Require type="view" src="drAppointmentCommon" id="drAppointmentCommonView" />
 		</Window>
 	</View>

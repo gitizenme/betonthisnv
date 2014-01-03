@@ -7,24 +7,60 @@
 	    width: Ti.UI.FILL,
     height: Ti.UI.SIZE
 },
-'#prevMonth': {
-    left: 3 //,
-    // backgroundSelectedImage: "images/airplane.png",
-    // backgroundImage: "images/airplane.png", 
-    // image: "images/airplane.png" 
+'#prevButtonLabel[platform=ios]': {
+	font: {
+		fontSize: '26dp',
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#0A0A0A",
+	top: "5",
+	left: "13",
+	right: "10",
+	bottom: "3"
 },
-'#nextMonth': {
-    right: 3 //,
-    // backgroundSelectedImage: "images/airplane.png",
-    // backgroundImage: "images/airplane.png", 
-    // image: "images/airplane.png" 
+'#prevButtonLabel[platform=android]': {
+	font: {
+		fontSize: '30dp',
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#0A0A0A",
+	top: "5",
+	left: "18",
+	right: "15",
+	bottom: "3"
+},
+'#nextButtonLabel[platform=ios]': {
+	font: {
+		fontSize: '26dp',
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#0A0A0A",
+	top: "5",
+	left: "13",
+	right: "10",
+	bottom: "3"
+},
+'#nextButtonLabel[platform=android]': {
+	font: {
+		fontSize: '30dp',
+		fontFamily: 'Helvetica Neue'
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#0A0A0A",
+	top: "5",
+	left: "18",
+	right: "15",
+	bottom: "3"
 },
 '#calendarHeading': {
-    color: '#000',
+    color: '#0A0A0A',
 	font: {
-		fontSize: 18,
+		fontSize: '20dp',
 		fontFamily: 'Helvetica Neue',
 		fontWeight: 'bold'
 	},
-		    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 }

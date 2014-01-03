@@ -10,18 +10,26 @@
 }
 
 "#username": {
+	font: {
+		fontSize: '26dp',
+		fontFamily: 'Helvetica Neue',
+		fontWeight: 'bold'
+	},
 	top: 10,
-	height: 40,
 	width: '80%',
 	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
 	returnKeyType: Ti.UI.RETURNKEY_NEXT
 }
 
 "#password": {
+	font: {
+		fontSize: '26dp',
+		fontFamily: 'Helvetica Neue',
+		fontWeight: 'bold'
+	},
 	top: 10,
-	height: 40,
 	width: '80%',
-passwordMask: true,
+	passwordMask: true,
 	returnKeyType: Ti.UI.RETURNKEY_DONE
 }
 

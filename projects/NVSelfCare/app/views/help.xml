@@ -4,7 +4,7 @@
 		<Window id="getHelp" title="Get Help">
 			<ScrollView top="7" layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
 				contentHeight="auto" contentWidth="auto">
-				<View id="contactEntry" layout="vertical" height="800" backgroundColor="#2399A3" onTouchstart="onTouchStart">
+				<View id="contactEntry" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.SIZE" backgroundColor="#2399A3" onTouchstart="onTouchStart">
 					<Label top="20" id="hintLabel" text="Fill out this form to..."/>
 					<Label top="6" text="Name:" left="5"/>
 					<TextField top="2" left="5" id="name" hintText="enter your name" onFocus="focusName" onReturn="focusPhoneNumber"/>

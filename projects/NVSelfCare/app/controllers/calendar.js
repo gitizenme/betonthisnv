@@ -1,3 +1,4 @@
+var animation = require('alloy/animation');
 var moment = require('alloy/moment');
 var types = require('types');
 
@@ -61,49 +62,68 @@ function journalChanged(context) {
 
 journal.on('change', journalChanged);
 
-function updateCalendarHeading(current) {
+function animateCalendarMonthChange(current) {
 	Ti.API.debug('calendar.' + arguments.callee.name);
+
+	// $.current.getView().hide();
+	// $.current.getView().show();
+
+
+	animation.fadeOut($.calendarView, 150, function() {
+		$.calendarView.remove($.calendarView.children[0]);
+		$.calendarView.add($.current.getView());
+		animation.fadeIn($.calendarView, 150);
+	});
+
 	var monthYearSelected = current.format("MMMM YYYY");
 	Ti.API.info(monthYearSelected);
-	$.calendarHeading.text = monthYearSelected;
+
+	animation.fadeOut($.calendarHeading, 125, function() {
+		$.calendarHeading.text = monthYearSelected;
+		animation.fadeIn($.calendarHeading, 125);
+	});
+
+	animation.fadeOut($.prevButtonLabel, 175, function() {
+		$.prevButtonLabel.text = moment(current).subtract('M', 1).format('MMM');
+		animation.fadeIn($.prevButtonLabel, 175);
+	});
+
+	animation.fadeOut($.nextButtonLabel, 175, function() {
+		$.nextButtonLabel.text = moment(current).add('M', 1).format('MMM');
+		animation.fadeIn($.nextButtonLabel, 175);
+	});
+
 }
 
 function doPrevMonth() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 
-	// Remove current month calendar.
-
-	// Create previous month calendar and add view
 	currentMonth.subtract('months', 1);
 	$.current = null;
 	$.current = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
 		period : currentMonth
 	});
-	loadModelIntoCalendar();
-	$.current.getView().hide();
-	$.calendarView.remove($.calendarView.children[0]);
-	$.calendarView.add($.current.getView());
-	$.current.getView().show();
 
-	updateCalendarHeading(currentMonth);
+	loadModelIntoCalendar();
+	
+	animateCalendarMonthChange(currentMonth);
+	
 }
 
 function doNextMonth() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 
-	// Create next month calendar and add view
 	currentMonth.add('months', 1);
 	$.current = null;
 	$.current = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
 		period : currentMonth
 	});
-	loadModelIntoCalendar();
-	$.current.getView().hide();
-	$.calendarView.remove($.calendarView.children[0]);
-	$.calendarView.add($.current.getView());
-	$.current.getView().show();
 
-	updateCalendarHeading(currentMonth);
+	loadModelIntoCalendar();
+
+	animateCalendarMonthChange(currentMonth);
+
+
 }
 
 // You can select tile
@@ -144,6 +164,9 @@ if (OS_IOS) {
 function init() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 
+	$.prevButtonLabel.text = moment(currentMonth).subtract('M', 1).format('MMM');
+	$.nextButtonLabel.text = moment(currentMonth).add('M', 1).format('MMM');
+
 }
 
 function openWebView() {
@@ -174,8 +197,9 @@ function openAboutView() {
 
 // Android
 if (OS_ANDROID) {
-	$.calendarTab.addEventListener('focus', function() {
-		Ti.API.debug('calendar.focus' + arguments.callee.name);
+
+	function configureAndroidMenu() {
+		Ti.API.debug('calendar' + arguments.callee.name);
 		if ($.calendarTab.tabGroup.activity) {
 			var activity = $.calendarTab.tabGroup.activity;
 
@@ -210,7 +234,13 @@ if (OS_ANDROID) {
 
 		}
 
-	});
+	}
+
+	/*
+	 $.calendarTab.addEventListener('focus', function() {
+	 configureAndroidMenu();
+	 });
+	 */
 }
 
 function open() {
@@ -218,6 +248,9 @@ function open() {
 
 	init();
 	loadModelIntoCalendar();
+	if (OS_ANDROID) {
+		configureAndroidMenu();
+	}
 
 }
 

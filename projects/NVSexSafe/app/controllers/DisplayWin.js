@@ -4,7 +4,6 @@ var win = args.win || null;
 
 function clickBack(e) {
 	$.navGroup.close();
-	$.DisplayWin.close();
 }
 
 function clickBackAndroid(e) {
@@ -40,7 +39,7 @@ function open() {
 		if (OS_ANDROID) {
 			$.navGroupWidget.close();
 		} else {
-			$.DisplayWin.close();
+			$.navGroup.close();
 		}
 		alert("Unable to display win!");
 	} else {

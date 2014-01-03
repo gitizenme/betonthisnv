@@ -1,18 +1,8 @@
 <Alloy>
 	<TabGroup onOpen="open">
-		<!-- The Menu tag adds the Android menu. -->
-<!--
-		<Menu id="menu" platform="android">
-			<MenuItem id="menuItem" title="Bet On This" icon="BetOnThisIcon.png" onClick="menuClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM" />
-		</Menu>
--->
 		<Require src="ShakeIt"/>
 		<Require src="FindCondoms"/>
 		<Require src="GetTested"/>
 		<Require src="GetHelp"/>
-		<!--
-		<Require src="info"/>
-		<Require src="test"/>
-		-->
 	</TabGroup>
 </Alloy>

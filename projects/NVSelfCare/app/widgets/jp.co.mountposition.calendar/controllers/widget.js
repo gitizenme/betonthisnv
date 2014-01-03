@@ -42,9 +42,13 @@ for ( i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
 	$.days.add(Ti.UI.createLabel({
 		color : WEEK_COLOR[i],
 		textAlign : 'center',
-		font : {},
+		font : {
+			fontSize : '14dp',
+			fontFamily : 'Helvetica Neue',
+			fontWeight : 'bold'
+		},
 		text : day,
-		height : '20',
+		height : Ti.UI.FILL,
 		width : TILE_WIDTH
 	}));
 }
@@ -113,7 +117,7 @@ if (dayOfWeek !== 0) {
 			backgroundColor : '#6CD1D7',
 			text : prevMonth.daysInMonth() - i,
 			font : {
-				fontSize : 10,
+				fontSize : '10dp',
 			},
 			textAlign : Ti.UI.TEXT_ALIGNMENT_RIGHT,
 			verticalAlign : Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
@@ -137,7 +141,7 @@ for ( i = _k = 1, _ref2 = period.daysInMonth(); 1 <= _ref2 ? _k <= _ref2 : _k >=
 		color : DAY_COLOR[period.day()],
 		backgroundColor : '#fff',
 		font : {
-			fontSize : 10,
+			fontSize : '10dp',
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_RIGHT,
 		verticalAlign : Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
@@ -171,7 +175,7 @@ while (col !== 0) {
 		backgroundColor : '#6CD1D7',
 		text : nextMonth.date(),
 		font : {
-			fontSize : 10,
+			fontSize : '10dp',
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_RIGHT,
 		verticalAlign : Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
@@ -209,11 +213,11 @@ exports.setImage = function(day, image, row, column, options) {
 		return tile.add(Ti.UI.createImageView({
 			image : image,
 			top : (row * (TILE_WIDTH / 3)),
-			left : ((column-1) * ((TILE_WIDTH / 6)+4))+4,
-			width : (TILE_WIDTH / 6)+3,
-			height: Ti.UI.SIZE,
+			left : ((column - 1) * ((TILE_WIDTH / 6) + 4)) + 4,
+			width : (TILE_WIDTH / 6) + 3,
+			height : Ti.UI.SIZE,
 			touchEnabled : false,
-			tintColor: options.tintColor || '#fff'
+			tintColor : options.tintColor || '#fff'
 		}));
 	}
 };

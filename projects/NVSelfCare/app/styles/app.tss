@@ -59,7 +59,7 @@ tabsTintColor: '#2399A3'
 	height: Ti.UI.SIZE,
 	color: "#0A0A0A",
 	font: {
-		fontSize: 12,
+		fontSize: '12dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	textAlign: 'center'
@@ -77,8 +77,18 @@ tabsTintColor: '#2399A3'
 "TextField": {
 	width: '95%',
 	height: Ti.UI.SIZE,
-	color: '#fff',
-	borderColor: '#eee',
+	backgroundColor: "#2399A3",
+	color: "#fff",
+	borderColor: '#D7DF23',
+	borderWidth: 1,
+	borderRadius: 3
+},
+"TextArea": {
+	width: '95%',
+	height: Ti.UI.SIZE,
+	backgroundColor: "#2399A3",
+	color: "#fff",
+	borderColor: '#D7DF23',
 	borderWidth: 1,
 	borderRadius: 3
 },
@@ -102,7 +112,7 @@ tabsTintColor: '#2399A3'
 	backgroundColor:"#257EB7"
 },
 ".infoButtonView": {
-	borderRadius:"7 dp",
+	borderRadius:"7dp",
 	borderColor:"#0A0A0A",
 	backgroundColor:"#fff",
 	top: "5",
@@ -162,7 +172,7 @@ tabsTintColor: '#2399A3'
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:18,
+		    fontSize:'18dp',
 				    fontFamily: "Rockwell-Extra-Bold"
 	  }
 },
@@ -172,7 +182,7 @@ tabsTintColor: '#2399A3'
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:18,
+		    fontSize:'18dp',
 						    fontFamily: "Old-Press"
 	  }
 },
@@ -182,7 +192,7 @@ tabsTintColor: '#2399A3'
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:36,
+		    fontSize: '36dp',
 						    fontFamily: "Old-Press"
 	  }
 },
@@ -192,7 +202,7 @@ tabsTintColor: '#2399A3'
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:48,
+		    fontSize:'48dp',
 						    fontFamily: "Old-Press"
 	  }
 },
@@ -202,7 +212,7 @@ tabsTintColor: '#2399A3'
 	height: Ti.UI.SIZE,
 	color: "#2399A3",
 	font: {
-		fontSize: 24,
+		fontSize: '24dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -215,7 +225,7 @@ width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#2399A3",
 	font: {
-		fontSize: 18,
+		fontSize: '24dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -228,7 +238,7 @@ width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#0A0A0A",
 	font: {
-		fontSize: 15,
+		fontSize: '15dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -242,7 +252,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	height: Ti.UI.SIZE,
 	color: "#0A0A0A",
 	font: {
-		fontSize: 12,
+		fontSize: '12dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -255,7 +265,7 @@ width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
 	font: {
-		fontSize: 24,
+		fontSize: '24dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -268,7 +278,7 @@ width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
 	font: {
-		fontSize: 18,
+		fontSize: '18dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -281,7 +291,7 @@ width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
 	font: {
-		fontSize: 15,
+		fontSize: '15dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -294,7 +304,7 @@ width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
 	color: "#E81C24",
 	font: {
-		fontSize: 12,
+		fontSize: '12dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -308,7 +318,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 	height: Ti.UI.SIZE,
 	color: "#0A0A0A",
 	font: {
-		fontSize: 18,
+		fontSize: '18dp',
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
@@ -340,7 +350,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-				    fontSize:36,
+				    fontSize:'36dp',
 				    fontFamily: "Old-Press"
 	  }
 },
@@ -350,7 +360,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
   font:{
-		    fontSize:36,
+		    fontSize:'36dp',
 						    fontFamily: "Old-Press"
 	  }
 },
@@ -372,6 +382,10 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	touchEnabled: false,
     left: 10, width: Ti.UI.SIZE, height: Ti.UI.SIZE
 },
+"#icon[platform=android]" : {
+	touchEnabled: false,
+    left: '10dp', width: '58dp', height: Ti.UI.SIZE
+},
 // "#title[platform=ios]" : {
     // color: 'white',
     // font: { fontFamily:'Arial', fontSize: 20, fontWeight:'bold' },
@@ -383,20 +397,20 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 // },
 "#title" : {
     color: 'white',
-    font: { fontFamily:'Arial', fontSize: 20, fontWeight:'bold' },
+    font: { fontFamily:'Arial', fontSize: '20dp', fontWeight:'bold' },
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
 	touchEnabled: false,
 	horizontalWrap: false,
 	ellipsize: true,
-    left: 70, top: 0, width: Ti.UI.FILL, height: 25, right: 5
+    left: '70dp', top: '5dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
 },
 "#subtitle" : {
     color: 'gray',
-    font: { fontFamily:'Arial', fontSize: 12 },
+    font: { fontFamily:'Arial', fontSize: '12dp' },
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
 	touchEnabled: false,
-    left: 70, bottom: 5
+    left: '70dp', bottom: '5dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
 }
 
