@@ -24,7 +24,6 @@
 // Tab Bar Icons Lit- 8,176,194
 // Nav Bar Icons- 255,255,255
 
-Titanium.UI.setBackgroundColor('#000');
 
 var Compression = require('me.izen.compression');
 var outputDirectory = Ti.Filesystem.applicationDataDirectory;
@@ -155,11 +154,9 @@ function testCompression() {
 function init() {
 	Ti.API.debug('index.' + arguments.callee.name);
 
-	// testCompression();
 	checkForAppReset();
 	setAppVersion();
 	initFirstTimeUse();
-
 	nextController();
 
 }
@@ -176,9 +173,30 @@ function openWebView() {
 	}
 }
 
+function onAndroidBack() {
+	Ti.API.debug('index.' + arguments.callee.name);
+	var alertDialog = Ti.UI.createAlertDialog({
+		title : 'Alert',
+		message : 'Do you want to quit this application?',
+		buttonNames : ['Yes', 'No'],
+		cancel : 1
+	});
+
+	alertDialog.addEventListener('click', function(e) {
+		if (e.index === 1) {
+			return;
+		}
+
+		$.index.close();
+	});
+
+	alertDialog.show();
+}
+
 var resumeFirstTime = true;
 function open() {
 	Ti.API.trace('index.' + arguments.callee.name);
+
 	init();
 
 	if (OS_ANDROID) {
@@ -223,6 +241,7 @@ if (OS_ANDROID) {
 
 function appResumed(e) {
 	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+
 	checkForAppReset();
 	setAppVersion();
 	nextController();

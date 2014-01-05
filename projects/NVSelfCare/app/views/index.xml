@@ -1,5 +1,5 @@
 <Alloy>
-	<TabGroup onOpen="open" exitOnClose="true">
+	<TabGroup onOpen="open" onAndroid:back="onAndroidBack">
 		<Require src="calendar"/>
 		<Require src="journal"/>
 		<Require src="eligibilty"/>

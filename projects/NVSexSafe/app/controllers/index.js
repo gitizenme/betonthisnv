@@ -86,6 +86,29 @@ function openWebView() {
 	}
 }
 
+
+function onAndroidBack() {
+	Ti.API.debug('index.' + arguments.callee.name);
+        var alertDialog = Ti.UI.createAlertDialog({
+            title:'Alert',
+            message:'Do you want to quit this application?',
+            buttonNames:['Yes','No'],
+            cancel:1
+        });
+ 
+        alertDialog.addEventListener('click', function(e)
+        {
+            if (e.index === 1) {
+                return;
+            }
+ 
+            $.index.close();
+        });
+ 
+        alertDialog.show();
+}
+
+
 function open(e) {
 	Ti.API.trace('index.' + arguments.callee.name);
 	init();

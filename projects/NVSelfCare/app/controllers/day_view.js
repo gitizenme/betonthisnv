@@ -14,7 +14,7 @@ $.openAndroidView = false;
 var listView = $.listView.getView('theList');
 
 function updateListViewRow(entry) {
-	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(entry));
+	Ti.API.debug('day_view.' + arguments.callee.name);
 
 	if (listView && (entry.section < listView.sections.length) && entry.type < listView.sections[entry.section].items.length) {
 		var section = listView.sections[entry.section];
@@ -34,6 +34,20 @@ function updateListViewRow(entry) {
 
 }
 
+function focus(e) {
+	Ti.API.debug('day_view.' + arguments.callee.name);
+	// Alloy.Globals.loader.Close();
+}
+
+function closeLoader() {
+	Alloy.Globals.loader.Close();
+}
+
+function postlayout(e) {
+	Ti.API.debug('day_view.' + arguments.callee.name);
+	// Alloy.Globals.loader.Close();
+}
+
 function loadModelIntoListView() {
 	Ti.API.debug('day_view.' + arguments.callee.name);
 	journal.fetch();
@@ -46,6 +60,8 @@ function loadModelIntoListView() {
 		var entry = existingJournalModel[i];
 		updateListViewRow(entry.attributes);
 	};
+	
+ 	setTimeout(closeLoader, 500);
 
 }
 
@@ -292,10 +308,11 @@ function itemClick(e) {
 
 }
 
-function open(args) {
-	Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(args));
 
-	loadModelIntoListView();
+function open() {
+	Ti.API.debug('day_view.' + arguments.callee.name);
+ 
+	setTimeout(loadModelIntoListView, 700);
 
 	if (OS_ANDROID) {
 		$.navWin.activity.addEventListener('stop', stopActivityAndroid);
@@ -311,6 +328,8 @@ function open(args) {
 		}
 	}
 }
+
+
 
 if (OS_ANDROID) {
 	$.navGroupWidget.open($.navWin, {});

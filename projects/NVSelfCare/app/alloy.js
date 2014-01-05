@@ -9,11 +9,31 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+Ti.App.forceSplashAsSnapshot = true;
+Ti.UI.setBackgroundColor('#2399A3');
+
+
 if( OS_ANDROID ) {
     Alloy.Globals.Android = { 
         "Api" : Ti.Platform.Android.API_LEVEL
     };
 }
+
+var Loader = require('Loader');
+Alloy.Globals.loader = new Loader();
+Alloy.Globals.loader.Create("Loading...", {
+	color : "#fff",
+	backgroundColor : "#2399A3"
+});
+
+Alloy.Globals.resumeLoader = new Loader();
+Alloy.Globals.resumeLoader.Create("Loading...", {
+	color : "#fff",
+	backgroundColor : "#2399A3",
+	opacity: 1
+});
+
 
 Alloy.Globals.version = "0.0.0 DEV";
 
@@ -29,4 +49,6 @@ Ti.API.debug("Number of users: " + Alloy.Collections.users.length);
 Alloy.Collections.journal = Alloy.Collections.instance("journal");
 Alloy.Collections.journal.fetch();
 Ti.API.debug("Number of journal entries: " + Alloy.Collections.journal.length);
+
+
 

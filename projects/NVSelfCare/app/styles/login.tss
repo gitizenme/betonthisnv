@@ -12,8 +12,7 @@
 "#username": {
 	font: {
 		fontSize: '26dp',
-		fontFamily: 'Helvetica Neue',
-		fontWeight: 'bold'
+		fontFamily: 'Helvetica Neue'
 	},
 	top: 10,
 	width: '80%',
@@ -24,8 +23,7 @@
 "#password": {
 	font: {
 		fontSize: '26dp',
-		fontFamily: 'Helvetica Neue',
-		fontWeight: 'bold'
+		fontFamily: 'Helvetica Neue'
 	},
 	top: 10,
 	width: '80%',

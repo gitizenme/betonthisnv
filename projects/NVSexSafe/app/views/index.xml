@@ -1,5 +1,5 @@
 <Alloy>
-	<TabGroup onOpen="open">
+	<TabGroup onOpen="open" onAndroid:back="onAndroidBack">
 		<Require src="ShakeIt"/>
 		<Require src="FindCondoms"/>
 		<Require src="GetTested"/>

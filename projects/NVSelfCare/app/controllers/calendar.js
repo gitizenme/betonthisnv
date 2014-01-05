@@ -31,7 +31,7 @@ function updateCalendarIconForActivity(entry) {
 }
 
 function loadModelIntoCalendar() {
-	Ti.API.debug('day_view.' + arguments.callee.name);
+	Ti.API.debug('calendar.' + arguments.callee.name);
 	journal.fetch();
 
 	// TODO clear calendar if no data
@@ -67,7 +67,6 @@ function animateCalendarMonthChange(current) {
 
 	// $.current.getView().hide();
 	// $.current.getView().show();
-
 
 	animation.fadeOut($.calendarView, 150, function() {
 		$.calendarView.remove($.calendarView.children[0]);
@@ -105,9 +104,9 @@ function doPrevMonth() {
 	});
 
 	loadModelIntoCalendar();
-	
+
 	animateCalendarMonthChange(currentMonth);
-	
+
 }
 
 function doNextMonth() {
@@ -123,19 +122,17 @@ function doNextMonth() {
 
 	animateCalendarMonthChange(currentMonth);
 
-
 }
 
 // You can select tile
+// $.current.getView().hide();
 $.current.setDate(currentMonth.date());
 
 $.calendarHeading.text = currentMonth.format("MMMM YYYY");
 
-// You can add image
-// $.current.setImage(16, 'images/airplane.png');
+function showDayView() {
+	Alloy.Globals.loader.Open();
 
-// To handle the click event, set the listener to the parent View.
-$.calendarView.addEventListener('click', function(e) {
 	// You can get selectedDate. (moment object)
 	var selectedDate = $.current.selectedDate();
 
@@ -149,6 +146,12 @@ $.calendarView.addEventListener('click', function(e) {
 	if (OS_IOS) {
 		dayViewController.getView().open();
 	}
+
+}
+
+// To handle the click event, set the listener to the parent View.
+$.calendarView.addEventListener('click', function(e) {
+	showDayView();
 });
 
 if (OS_IOS) {
@@ -189,6 +192,19 @@ function openAboutView() {
 	Alloy.Globals.AuthenticateOnResume = false;
 
 	var controller = Alloy.createController('About', args);
+
+	if (OS_IOS) {
+		controller.getView().open();
+	}
+}
+
+function openLoginView() {
+	Ti.API.trace('calendar.' + arguments.callee.name);
+	var args = {
+	};
+	Alloy.Globals.AuthenticateOnResume = false;
+
+	var controller = Alloy.createController('Login', args);
 
 	if (OS_IOS) {
 		controller.getView().open();
@@ -236,12 +252,16 @@ if (OS_ANDROID) {
 
 	}
 
-	/*
-	 $.calendarTab.addEventListener('focus', function() {
-	 configureAndroidMenu();
-	 });
-	 */
 }
+
+// toggleCalendarVisible();
+var overlayView = Ti.UI.createView({
+	backgroundColor : '#2399A3',
+	width : Ti.UI.FILL,
+	height : Ti.UI.FILL
+});
+
+$.calendarView.add(overlayView);
 
 function open() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
@@ -253,4 +273,35 @@ function open() {
 	}
 
 }
+
+function blur(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+function focus(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	$.calendarView.remove(overlayView);
+}
+
+function appResumed(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+function appResume(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+function appPause(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	$.calendarView.add(overlayView);
+}
+
+function appPaused(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+Ti.App.addEventListener('resumed', appResumed);
+Ti.App.addEventListener('resume', appResume);
+Ti.App.addEventListener('pause', appPause);
+Ti.App.addEventListener('paused', appPaused);
 
