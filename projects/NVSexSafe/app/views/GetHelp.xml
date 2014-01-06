@@ -4,7 +4,7 @@
 			<ScrollView top="7" layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
 				contentHeight="auto" contentWidth="auto" backgroundColor="#2399A3" >
 				<View id="contactEntry" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" backgroundColor="#2399A3" onTouchstart="onTouchStart">
-					<Label top="20" id="hintLabel" text="Fill out this form to..."/>
+					<Label top="20" id="hintLabel" text=""/>
 					<Label top="6" text="Name:" left="5"/>
 					<TextField top="2" left="5" id="name" hintText="enter your name" onFocus="focusName" onReturn="focusPhoneNumber"/>
 					<Label top="6" text="Phone #:" left="5"/>
@@ -14,7 +14,7 @@
 					<View top="20" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE" >
 						<Label top="10" left="13" right="10" bottom="5" class="oldpressLabelXLarge" text="SEND" onClick="clickSend">
 					</View>
-					<Label top="20" bottom="5" text="Need link to privacy policy."/>
+					<!-- <Label top="20" bottom="5" text="Need link to privacy policy."/> -->
 				</View>
 			</ScrollView>
 		</Window>

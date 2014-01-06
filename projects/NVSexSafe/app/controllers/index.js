@@ -4,7 +4,6 @@
 // Cyan: #2399A3
 // Red: #E81C24
 
-
 // Tab Bar Dim Icons: 130,130,130
 // Tab Bar Active Icons: 8,176,194
 // Locked Reel Labels: 255,255,255
@@ -56,7 +55,7 @@ function init() {
 
 	var newVersion = Ti.App.version.split(".");
 	var currentVersion = prodVersion.split(".");
-	
+
 	var majorNew = parseInt(newVersion[0], 10);
 	var majorCurrent = parseInt(currentVersion[0], 10);
 
@@ -66,11 +65,11 @@ function init() {
 	var revNew = parseInt(newVersion[2].split("-")[0], 10);
 	var revCurrent = parseInt(currentVersion[2].split("-")[0], 10);
 
-	if(majorNew != majorCurrent || minorNew != minorCurrent || revNew != revCurrent) {
+	if (majorNew != majorCurrent || minorNew != minorCurrent || revNew != revCurrent) {
 		Ti.API.info("Updating version number stored in app settings");
 		Ti.App.Properties.setString('version_preference', prodVersion);
 	}
-	
+
 	Ti.API.debug('prodVersion = ' + prodVersion);
 	Alloy.Globals.version = prodVersion;
 }
@@ -86,39 +85,40 @@ function openWebView() {
 	}
 }
 
-
 function onAndroidBack() {
 	Ti.API.debug('index.' + arguments.callee.name);
-        var alertDialog = Ti.UI.createAlertDialog({
-            title:'Alert',
-            message:'Do you want to quit this application?',
-            buttonNames:['Yes','No'],
-            cancel:1
-        });
- 
-        alertDialog.addEventListener('click', function(e)
-        {
-            if (e.index === 1) {
-                return;
-            }
- 
-            $.index.close();
-        });
- 
-        alertDialog.show();
-}
+	var alertDialog = Ti.UI.createAlertDialog({
+		title : 'Alert',
+		message : 'Do you want to quit this application?',
+		buttonNames : ['Yes', 'No'],
+		cancel : 1
+	});
 
+	alertDialog.addEventListener('click', function(e) {
+		if (e.index === 1) {
+			return;
+		}
+
+		$.index.close();
+	});
+
+	alertDialog.show();
+}
 
 function open(e) {
 	Ti.API.trace('index.' + arguments.callee.name);
 	init();
+	// var reelSpinGearsSound = Ti.Media.createSound({
+		// url : '/sounds/PhonographCrank_S011TE.775.mp3'
+	// });
+	// reelSpinGearsSound.play();
 }
 
 Ti.API.info("Ti.Platform.displayCaps.platformWidth = " + Ti.Platform.displayCaps.platformWidth);
 Ti.API.info("Ti.Platform.displayCaps.platformHeight = " + Ti.Platform.displayCaps.platformHeight);
 
-var iOS7 = isIOS7Plus();
-$.index.top = iOS7 ? 20 : 0;
+Alloy.Globals.isIOS7 = isIOS7Plus();
+$.index.top = Alloy.Globals.isIOS7  ? 20 : 0;
 
 $.index.open();
 

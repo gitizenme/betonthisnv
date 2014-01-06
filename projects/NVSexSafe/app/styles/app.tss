@@ -212,19 +212,35 @@ width: Ti.UI.FILL,
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
 textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 },
-".body": {
+".body[platform=ios]": {
 	top:0,
 	left:10,
-		right:10,
+	right:10,
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
+	handleLinks: true,
 	color: "#0A0A0A",
 	font: {
 		fontSize: "18dp",
 		fontFamily: 'Helvetica Neue'
 	},
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
-textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+},
+".body[platform=android]": {
+	top:0,
+	left:10,
+	right:10,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	autoLink: Ti.UI.AUTOLINK_URLS,
+	color: "#0A0A0A",
+	font: {
+		fontSize: "18dp",
+		fontFamily: 'Helvetica Neue'
+	},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 },
 "#leftTitle[platform=ios]" : {
   color: "#fff",

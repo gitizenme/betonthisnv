@@ -14,6 +14,7 @@ function hideKeyboard() {
 	$.name.blur();
 	$.phone.blur();
 	$.message.blur();
+	updateHintLabel('', 0);
 }
 
 function updateHintLabel(msg, duration) {

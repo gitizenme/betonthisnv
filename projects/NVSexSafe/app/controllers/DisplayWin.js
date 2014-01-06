@@ -49,9 +49,47 @@ function open() {
 		$.riskBody.text = win.risk;
 
 		if (win.safety != "") {
-			$.safetyBody.text = win.safety;
+
+			if (OS_IOS) {
+
+				var text = win.safety;
+
+				if (Alloy.Globals.isIOS7) {
+					var attr = Titanium.UI.iOS.createAttributedString({
+						text : text,
+						attributes : [
+						// Underlines text
+						{
+							type : Titanium.UI.iOS.ATTRIBUTE_UNDERLINES_STYLE,
+							value : Titanium.UI.iOS.ATTRIBUTE_UNDERLINE_STYLE_SINGLE,
+							range : [text.indexOf("http://"), 51]
+						},
+						// Sets a foreground color
+						{
+							type : Titanium.UI.iOS.ATTRIBUTE_FOREGROUND_COLOR,
+							value : "blue",
+							range : [text.indexOf("http://"), 51]
+						}]
+					});
+					$.safetyBody.attributedString = attr;
+				} else {
+					$.safetyBody.text = text;
+				}
+			}
+			if (OS_ANDROID) {
+				$.safetyBody.text = win.safety;
+			}
+
 		} else {
-			$.safetyBody.text = "N/A";
+			var text = "There is not safety information for this SexSafe activity. Checkout ☞ http://www.betonthisnv.org for more information.";
+
+			if (OS_IOS) {
+
+			}
+			if (OS_ANDROID) {
+				$.safetyBody.text = text;
+			}
+
 		}
 	}
 }
@@ -61,6 +99,22 @@ if (OS_ANDROID) {
 }
 
 if (OS_IOS) {
+
+	function openUrl(e) {
+		if (Alloy.Globals.isIOS7) {
+			if ($.safetyBody.attributedString.text.indexOf("http://") != -1) {
+				Ti.API.debug('DisplayWin.' + arguments.callee.name + ': ' + JSON.stringify(e));
+				Ti.Platform.openURL("http://betonthisnv.org/Protect/How_to_Use_a_Condom/");
+			}
+		}
+		else {
+			if ($.safetyBody.text.indexOf("http://") != -1) {
+				Ti.API.debug('DisplayWin.' + arguments.callee.name + ': ' + JSON.stringify(e));
+				Ti.Platform.openURL("http://betonthisnv.org/Protect/How_to_Use_a_Condom/");
+			}
+		}
+	}
+
 	var args = {
 		title : "RISK FACTOR"
 	};
@@ -69,4 +123,6 @@ if (OS_IOS) {
 	// $.contactWin.rightNavButton = rightNavButton;
 	$.navGroupWidget.init($.navGroup, {});
 	$.navGroupWidget.open($.navWin, {});
+
+	$.safetyBody.addEventListener('click', openUrl);
 }

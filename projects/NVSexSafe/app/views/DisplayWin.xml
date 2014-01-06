@@ -2,7 +2,7 @@
 	<NavigationWindow id="navGroup" platform="ios" modal="true" onOpen="open" >
 		<Window id="navWin" title="RISK FACTOR" backgroundColor="#000" barColor="#E81C24">
 			<ScrollView top="7" id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
-			borderRadius="8" borderColor="#D7DF23" borderWidth="2" backgroundColor="#fff" >
+			borderRadius="8" borderColor="#D7DF23" borderWidth="2" backgroundColor="#fff"  >
 				<View id="riskView" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
 					<Label class="title" top="5" id="orientationTitle" top="5" text="Orientation" />
 					<Label class="body" id="orientationBody" />
@@ -13,7 +13,7 @@
 					<Label class="title" id="riskTitle" text="Risk Factor" />
 					<Label class="body" id="riskBody" />
 					<Label class="title" id="safetyTitle" text="Safety" />
-					<Label class="body" bottom="5" id="safetyBody" />
+					<Label class="body" id="safetyBody" />
 				</View>
 			</ScrollView>
 		</Window>

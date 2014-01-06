@@ -1,16 +1,49 @@
 // require Platino
 var platino = require("co.lanica.platino");
 
-/*
- $.sex_shake_web.init($.shakeItWin);
- $.sex_shake_web.on('click', function(e) {
- Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
- var arg = {
- targetPage : 0
- };
- var win1 = Alloy.createController('BetOnThisNVWebView', arg).getView();
- });
- */
+if (OS_IOS) {
+	Ti.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAYBACK;
+}
+
+var reelScrobbleSound = Ti.Media.createSound({
+	url : '/sounds/ActionMovement_AP1.74.mp3'
+});
+
+var touchForResultsSound = Ti.Media.createSound({
+	url : '/sounds/ButtonPush_S011FO.79.mp3'
+});
+
+var reel1StopSound = Ti.Media.createSound({
+	url : '/sounds/ButtonSwitchGear_S08TE.204.mp3'
+});
+var reel2StopSound = Ti.Media.createSound({
+	url : '/sounds/ButtonSwitchGear_S08TE.204.mp3'
+});
+var reel3StopSound = Ti.Media.createSound({
+	url : '/sounds/ButtonSwitchGear_S08TE.204.mp3'
+});
+
+var winningSpinSound = Ti.Media.createSound({
+	url : '/sounds/CoinsDrop_AP1.1084.mp3'
+});
+
+var leverPullSound = Ti.Media.createSound({
+	url : '/sounds/LeverCrankShort_SEU02.35.mp3'
+});
+
+var reelSpinMusicSound = Ti.Media.createSound({
+	url : '/sounds/MarimbaArpeggio_S08MU.721.mp3'
+});
+reelSpinMusicSound.looping = true;
+
+var tryAgainSound = Ti.Media.createSound({
+	url : '/sounds/MMFX_GLITCH BUZZ_SB01.439.mp3'
+});
+
+var reelSpinGearsSound = Ti.Media.createSound({
+	url : '/sounds/PhonographCrank_S011TE.775.mp3'
+});
+reelSpinGearsSound.looping = true;
 
 var args = {
 	title : "SEX SAFE"
@@ -440,7 +473,7 @@ var paytableData = {
 		"activity" : "Giving Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: HIV can be transmitted through this activity. Do not ignore this risk.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Giving Anal Sex",
@@ -458,223 +491,223 @@ var paytableData = {
 		"activity" : "Giving Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: HIV can be transmitted through this activity. Do not ignore this risk.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Giving Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: HIV can be transmitted through this activity. Do not ignore this risk.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Getting Oral Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can ask that they blow on or caress with their mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can ask that they blow on or caress with their mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Getting Oral Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Getting Oral Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Getting Oral Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Ask your partner to use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Getting Oral Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Ask your partner to use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Giving Oral Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Ask your partner to use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Going Down on a Vagina",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Going Down on a Vagina",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Going Down on a Vagina",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Going Down on a Vagina",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, your partner is safe. "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Getting Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity has the highest risk for transmitting HIV.  Other STD Risk: Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Getting Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity has the highest risk for transmitting HIV.  Other STD Risk: Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Getting Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity has the highest risk for transmitting HIV.  Other STD Risk: Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Getting Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity has the highest risk for transmitting HIV.  Other STD Risk: Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Getting Anal Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity has the highest risk for transmitting HIV.  Other STD Risk: Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Giving a Blow Job",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Giving a Blow Job",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Giving a Blow Job",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Giving a Blow Job",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Giving a Blow Job",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Fingering or Fisting",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Fingering or Fisting",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Fingering or Fisting",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Fingering or Fisting",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Fingering or Fisting",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a barrier: a condom, dental dam or medical gloves. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use a condom.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Sex (Vaginal)",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV and is the most common way women get infected with HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV and is the most common way women get infected with HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Sex (Vaginal)",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Sex",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Insert a Sex Toy",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Insert a Sex Toy",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Insert a Sex Toy",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Insert a Sex Toy",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : " Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch!"
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch!"
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Insert a Sex Toy",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: This activity can transmit HIV.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: Sex toys over clothing can be fun. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Dry Humping",
@@ -770,61 +803,61 @@ var paytableData = {
 		"activity" : "Penis Rubbing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Lower Risk Activity  Other STD Risk: Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Penis Rubbing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Lower Risk Activity  Other STD Risk: Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Penis Rubbing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Lower Risk Activity  Other STD Risk: Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Penis Rubbing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Lower Risk Activity  Other STD Risk: Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Penis Rubbing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Lower Risk Activity  Other STD Risk: Herpes, Genital Warts    ",
-		"safety" : "If None: Ask your partner to use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
+		"safety" : "If None: Ask your partner to use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as fondling. "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Rimming (Licking) Anus",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Rimming (Licking) Anus",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Rimming (Licking) Anus",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Rimming (Licking) Anus",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Rimming (Licking) Anus",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Unlikely, but could.  Other STD Risk: Herpes, Genital Warts   ",
-		"safety" : "If None: Use a dental dam. Touch right here to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
+		"safety" : "If None: Use a dental dam. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: A condom won't be of any use here unless you make it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: Great, you have a dental dam! Make sure it is free from tears or holes and check the expiration date before use. Do not open the wrapper with your teeth. Use water-based lubricant. Play safe!  If Clothing: You can blow on or caress with your mouth over clothing. As long as no fluids enter the mouth, you are safe. "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Kissing",
@@ -860,31 +893,31 @@ var paytableData = {
 		"activity" : "Scissoring",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "Better known as Docking for men.  HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Use a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
+		"safety" : "If None: Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Dental Dam: A dental dam won't be any use here. Use a condom.  If Clothing: This is more commonly known as dry humping. Do not try to insert wearing clothing. Ouch! "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Scissoring",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Find a condom and turn it into a barrier. Touch right here to learn how to make one.  If Condom: Great, you have a condom! Turn it into a barrier. Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom and turn it into a barrier. Touch right here to learn how to make one.  If Clothing: This is more commonly known as dry humping. "
+		"safety" : "If None: Find a condom and turn it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Condom: Great, you have a condom! Turn it into a barrier. Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom and turn it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Clothing: This is more commonly known as dry humping. "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Scissoring",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts    ",
-		"safety" : "If None: Find a condom and turn it into a barrier. Touch right here to learn how to make one.  If Condom: Great, you have a condom! Turn it into a barrier. Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom and turn it into a barrier. Touch right here to learn how to make one.  If Clothing: This is more commonly known as dry humping. "
+		"safety" : "If None: Find a condom and turn it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Condom: Great, you have a condom! Turn it into a barrier. Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom and turn it into a barrier. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Clothing: This is more commonly known as dry humping. "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Scissoring",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "Better known as Docking for men.  HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "If None: Find a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom. Touch right here to learn how to use one.  If Clothing: This is more commonly known as dry humping. "
+		"safety" : "If None: Find a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Clothing: This is more commonly known as dry humping. "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Scissoring",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "Better known as Docking for men.  HIV Transmission Risk: Has never been reported, although under certain conditions transmission could be possible.  Other STD Risk: Chlamydia, Gonorrhea, Syphilis, Herpes, Genital Warts  ",
-		"safety" : "None: Find a condom. Touch right here to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom. Touch right here to learn how to use one.  If Clothing: This is more commonly known as dry humping. "
+		"safety" : "None: Find a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Condom: Great, you have a condom! Make sure it is free from tears or holes and check the expiration date before use. Do not open the condom wrapper with your teeth. Use water-based lubricant. Play safe! Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to make one.  If Dental Dam: A dental dam won't be any use here. Use a condom. Touch right here ☞ http://betonthisnv.org/Protect/How_to_Use_a_Condom/ to learn how to use one.  If Clothing: This is more commonly known as dry humping. "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Undress Your Partner",
@@ -1303,6 +1336,7 @@ function onGenderLockTouch(e) {
 		Ti.API.info('Touch ended on Your Gender sprite.');
 		isGenderLocked = !isGenderLocked;
 		lockGender();
+		reelScrobbleSound.play();
 	}
 
 }
@@ -1336,6 +1370,7 @@ function onActivityLockTouch(e) {
 		Ti.API.info('Touch ended on Activity sprite.');
 		isActivityLocked = !isActivityLocked;
 		lockActivity();
+		reelScrobbleSound.play();
 	}
 
 }
@@ -1369,12 +1404,15 @@ function onProtectionIconTouch(e) {
 		Ti.API.info('Touch ended on Protection sprite.');
 		isProtectionLocked = !isProtectionLocked;
 		lockProtection();
+		reelScrobbleSound.play();
 	}
 
 }
 
 function displayWin() {
 	Ti.API.debug('ShakeIt.' + arguments.callee.name);
+
+	touchForResultsSound.play();
 
 	var args = {
 		win : win
@@ -1432,56 +1470,6 @@ function onResultsButtonTouch(e) {
 
 }
 
-/*
-
- function onResultsNewButtonTouch(e) {
- Ti.API.debug("BEGIN - onResultsNewButtonTouch: " + JSON.stringify(e));
- var type, sprite;
-
- type = e.type;
- sprite = e.source;
-
- if (type === 'touchstart') {
- Ti.API.info('Touch started on Protection sprite.');
-
- } else if (type === 'touchmove') {
- Ti.API.info('Touch moved on Protection sprite.');
-
- } else if (type === 'touchend') {
- Ti.API.info('Touch ended on Protection sprite.');
- resultsNewButton.alpha = 0;
- resultsButton.alpha = 0;
- tryAgainButton.alpha = 0;
- touchToSpinButton.alpha = 1;
- displayWin();
- }
-
- }
-
- function onTryAgainButtonTouch(e) {
- Ti.API.debug("BEGIN - onTryAgainButtonTouch: " + JSON.stringify(e));
- var type, sprite;
-
- type = e.type;
- sprite = e.source;
-
- if (type === 'touchstart') {
- Ti.API.info('Touch started on Protection sprite.');
-
- } else if (type === 'touchmove') {
- Ti.API.info('Touch moved on Protection sprite.');
- armFrame.animate(0, 5, 250, 0);
- } else if (type === 'touchend') {
- Ti.API.info('Touch ended on Protection sprite.');
- resultsNewButton.alpha = 0;
- resultsButton.alpha = 0;
- tryAgainButton.alpha = 0;
- touchToSpinButton.alpha = 1;
- spin();
- }
- }
- */
-
 function onLeverTouch(e) {
 	Ti.API.debug("BEGIN - onLeverTouch: " + JSON.stringify(e));
 	var type, sprite;
@@ -1497,6 +1485,7 @@ function onLeverTouch(e) {
 		resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
 		touchToSpinButton.pauseAt(0);
+		leverPullSound.play();
 		spin();
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on first sprite.');
@@ -1509,21 +1498,26 @@ function findFrameIdx(reel, reelYPos, newYPos) {
 	Ti.API.debug("reel.frameCount = " + reel.frameCount);
 	Ti.API.debug("reel.frame = " + reel.frame);
 	var frameIdx = reel.frame;
+	var frameIdxTween = frameIdx;
 	if (reelYPos < (newYPos - 10)) {
 		frameIdx -= 2;
+		frameIdxTween = frameIdx + 1;
 		if (frameIdx < 0) {
 			frameIdx = reel.frameCount - 2;
+			frameIdxTween = frameIdx + 1;
 		}
 	} else if (reelYPos > (newYPos + 10)) {
 		frameIdx += 2;
+		frameIdxTween = frameIdx - 1;
 		if (frameIdx >= reel.frameCount) {
 			frameIdx = 0;
+			frameIdxTween = reel.frameCount - 1;
 		}
 	}
-	return frameIdx;
+	return [frameIdxTween, frameIdx];
 }
 
-var scrubAnimationTime = 750;
+var scrubAnimationTime = 250;
 
 function onReelTouch(e) {
 	Ti.API.debug("BEGIN - onReelTouch: " + JSON.stringify(e));
@@ -1538,12 +1532,12 @@ function onReelTouch(e) {
 		if (e.tag == 'reel1') {
 			if (reel1Y != 0) {
 				var frameIdx = findFrameIdx(reel1, reel1Y, e.y);
-				reel1Random = frameIdx;
+				reel1Random = frameIdx[1];
 				isGenderLocked = true;
 				lockGender();
 				Ti.API.debug("frameIdx = " + frameIdx);
-				reel1.animate([frameIdx], scrubAnimationTime, 0, 0);
-				checkWin();
+				reel1.animate(frameIdx, scrubAnimationTime, 0, 0);
+				// reelScrobbleSound.play();
 				displayWinButton();
 			}
 			reel1Y = e.y;
@@ -1552,12 +1546,12 @@ function onReelTouch(e) {
 			Ti.API.debug("reel2Y = " + reel2Y);
 			if (reel2Y != 0) {
 				var frameIdx = findFrameIdx(reel2, reel2Y, e.y);
-				reel2Random = frameIdx;
+				reel2Random = frameIdx[1];
 				isActivityLocked = true;
 				lockActivity();
 				Ti.API.debug("frameIdx = " + frameIdx);
-				reel2.animate([frameIdx], scrubAnimationTime, 0, 0);
-				checkWin();
+				reel2.animate(frameIdx, scrubAnimationTime, 0, 0);
+				// reelScrobbleSound.play();
 				displayWinButton();
 			}
 			reel2Y = e.y;
@@ -1566,12 +1560,12 @@ function onReelTouch(e) {
 			Ti.API.debug("reel3Y = " + reel3Y);
 			if (reel3Y != 0) {
 				var frameIdx = findFrameIdx(reel3, reel3Y, e.y);
-				reel3Random = frameIdx;
+				reel3Random = frameIdx[1];
 				isProtectionLocked = true;
 				lockProtection();
 				Ti.API.debug("frameIdx = " + frameIdx);
-				reel3.animate([frameIdx], scrubAnimationTime, 0, 0);
-				checkWin();
+				reel3.animate(frameIdx, scrubAnimationTime, 0, 0);
+				// reelScrobbleSound.play();
 				displayWinButton();
 			}
 			reel3Y = e.y;
@@ -1590,15 +1584,302 @@ if (OS_ANDROID) {
 
 var originalSceneWidth = 640;
 
+// Add coin text
+// var coinText = platino.createTextSprite({text:"Coins: "+coins, fontSize:20,
+// width:150, height:50, x:25,y:10});
+// scene.add(coinText);
+
+// Add spin text and light
+// var spinText = platino.createTextSprite({text:"Spin:", fontSize:20, width:150,
+// height:50, x:300, y:10});
+// scene.add(spinText);
+// var spinLight = platino.createSpriteSheet({image:"graphics/greenLight.png",
+// width:35, height:35, x:350, y:5});
+// scene.add(spinLight);
+
+var collection = Backbone.Collection.extend({
+	comparator : function(model) {
+		return model.get('orientation');
+	}
+});
+
+var paytable = new collection(paytableData.data);
+var activityMapping = new collection(activityMapping.data);
+var reel1Random, reel2Random, reel3Random;
+
+var win = {
+	risk : "",
+	safety : "",
+	orientation : "",
+	activity : "",
+	protection : "",
+	winFound : true
+};
+
+// Check reels, show particle effect if winning spin, allow user to spin again transaparent
+function checkWin() {
+
+	Ti.API.debug('reel1.frame = ' + reel1.frame);
+	Ti.API.debug('reel2.frame = ' + reel2.frame);
+	Ti.API.debug('reel3.frame = ' + reel3.frame);
+
+	Ti.API.debug('reel1Random = ' + reel1Random);
+	Ti.API.debug('reel2Random = ' + reel2Random);
+	Ti.API.debug('reel3Random = ' + reel3Random);
+
+	var orientation = reels.reel1.symbolNames[reel1Random / 2];
+	var activity = reels.reel2.symbolNames[reel2Random / 2];
+	var protection = reels.reel3.symbolNames[reel3Random / 2];
+
+	Ti.API.debug('orientation = ' + orientation);
+	Ti.API.debug('activity = ' + activity);
+	Ti.API.debug('protection = ' + protection);
+
+	var activities = activityMapping.where({
+		mapping : orientation + ':' + activity
+	});
+	Ti.API.debug('activities.length = ' + activities.length);
+
+	if (activities.length > 0) {
+
+		var randomIdx = Math.floor(Math.random() * (activities.length));
+		var activityRandom = activities[randomIdx];
+		var activityName = activityRandom.attributes.activity;
+
+		Ti.API.debug('randomIdx = ' + randomIdx);
+		Ti.API.debug('activityRandom = ' + activityRandom);
+		Ti.API.debug('activityName = ' + activityName);
+
+		var outcome = paytable.find(function(item) {
+			// Ti.API.debug('item = ', JSON.stringify(item));
+			if (item.attributes.orientation == orientation) {
+				if (item.attributes.activity == activityName) {
+					if (item.attributes.protection.indexOf(protection) != -1) {
+						return item;
+					}
+				}
+			}
+		});
+
+		if (outcome != undefined) {
+			Ti.API.debug('outcome = ' + JSON.stringify(outcome));
+
+			var indexStr = "If " + protection + ":";
+			var safety = outcome.attributes.safety;
+			var safetyDetailIdx = safety.indexOf(indexStr);
+			if (safetyDetailIdx != -1) {
+				var nextColon = safety.indexOf(".  If", safetyDetailIdx + indexStr.length);
+				if (nextColon != -1) {
+					safety = safety.substr(safetyDetailIdx, (nextColon - safetyDetailIdx) + 1);
+				} else {
+					safety = safety.substr(safetyDetailIdx);
+				}
+			}
+
+			Ti.API.debug('outcome.risk = ' + outcome.attributes.risk);
+			Ti.API.debug('safety = ' + safety);
+			win.risk = outcome.attributes.risk;
+			win.safety = safety;
+			win.activity = activityName;
+			win.orientation = orientation;
+			win.protection = protection;
+			win.found = true;
+		} else {
+			win.risk = "Please spin again!";
+			win.safety = "None.";
+			win.found = false;
+		}
+	} else {
+		win.risk = "Please spin again!";
+		win.safety = "None.";
+		win.found = false;
+	}
+
+	canSpin = true;
+};
+
+function displayWinButton() {
+	checkWin();
+	if (win.found) {
+		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked) {
+			winningSpinSound.play();
+			Ti.Media.vibrate();
+		}
+		resultsNewButton.alpha = 1;
+		resultsButton.alpha = 0;
+		tryAgainButton.alpha = 0;
+		touchToSpinButton.alpha = 0;
+	} else {
+		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked) {
+			tryAgainSound.play();
+		}
+		resultsButton.alpha = 0;
+		resultsNewButton.alpha = 0;
+		tryAgainButton.alpha = 1;
+		touchToSpinButton.alpha = 0;
+	}
+}
+
+// Stop the reels one by one, then check if user has won
+function endRoll() {
+	// Random values to stop at
+
+	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
+		// reelSpinMusicSound.stop();
+		reelSpinGearsSound.stop();
+		displayWinButton();
+	} else {
+		var displayWinTimeout = 0;
+		if (isGenderLocked == false) {
+			reel1Random = reels.reel1.stops[Math.floor(Math.random() * (reel1.frameCount - 1))];
+			// reelSpinMusicSound.stop();
+			reelSpinGearsSound.stop();
+			reel1StopSound.play();
+			reel1.pauseAt(reel1Random);
+		}
+
+		if (isActivityLocked == false) {
+			reel2Random = reels.reel2.stops[Math.floor(Math.random() * (reel2.frameCount - 1))];
+			setTimeout(function() {
+				// reelSpinMusicSound.stop();
+				reelSpinGearsSound.stop();
+				reel2StopSound.play();
+				reel2.pauseAt(reel2Random);
+			}, 500);
+			displayWinTimeout += 500;
+		}
+
+		if (isProtectionLocked == false) {
+			reel3Random = reels.reel3.stops[Math.floor(Math.random() * (reel3.frameCount - 1))];
+			setTimeout(function() {
+				// reelSpinMusicSound.stop();
+				reelSpinGearsSound.stop();
+				reel3StopSound.play();
+				reel3.pauseAt(reel3Random);
+			}, 1000);
+			displayWinTimeout += 1000;
+		}
+		setTimeout(displayWinButton, displayWinTimeout);
+	}
+
+};
+
+function spinReels() {
+
+	reelSpinGearsSound.play();
+
+	if (isGenderLocked == false) {
+		reel1.animate(0, 10, 50, -1);
+	}
+
+	if (isActivityLocked == false) {
+		reel2.animate(0, 32, 70, -1);
+	}
+
+	if (isProtectionLocked == false) {
+		reel3.animate(0, 8, 90, -1);
+	}
+
+	// Stop the reels randomly between .8 and 2.5 seconds
+	var ranVal = Math.floor((Math.random() * 2200) + 700);
+	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
+		endRoll();
+	} else {
+		setTimeout(endRoll, ranVal);
+	}
+}
+
+// Spin function
+function spin() {
+	// If user is allowed to spin, spin the reels
+	if (canSpin == true) {
+		canSpin = false;
+		armFrame.animate(0, 8, 50, 0);
+		setTimeout(spinReels, 5 * 50);
+	}
+};
+
+var TOUCH_SCALE = 1;
+
+function onScreenTouch(e) {
+	Ti.API.debug("BEGIN - onScreenTouch: " + JSON.stringify(e));
+	var _event, i, sprite;
+
+	// Create a new object to send with the event
+	var _event = {
+		x : e.x * TOUCH_SCALE,
+		y : e.y * TOUCH_SCALE
+	};
+
+	// iterate backwards so last items added to 'touchable' array
+	// receive touch events first
+	for ( i = touchable.length - 1; i >= 0; i--) {
+		sprite = touchable[i];
+		// Ti.API.debug('Checking sprite: x=' + sprite.x + ", y=" + sprite.y);
+
+		if (sprite.alpha > 0 && sprite.contains(_event.x, _event.y)) {
+			Ti.API.debug('Sprite found!');
+			var args = {
+				x : e.x * TOUCH_SCALE,
+				y : e.y * TOUCH_SCALE,
+				tag : sprite.tag
+			};
+			sprite.fireEvent(e.type, args);
+			break;
+		}
+	}
+};
+
+////////////
+game.addEventListener("touchstart", function(e) {
+	Ti.API.debug("BEGIN - touchstart");
+	onScreenTouch(e);
+	/*
+	 if (lever.contains(e.x, e.y) && lever.y > 45 && lever.y < 245) {
+	 oY = lever.y - e.y;
+	 }
+	 */
+});
+game.addEventListener("touchmove", function(e) {
+	Ti.API.debug("BEGIN - touchmove");
+	onScreenTouch(e);
+	/*
+	 if (lever.contains(e.x, e.y) && lever.y > 45 && lever.y < 245) {
+	 lever.y = e.y + oY;
+	 }
+	 */
+});
+////////////
+// Listener to spin
+game.addEventListener("touchend", function(e) {
+	Ti.API.debug("BEGIN - touchend");
+	onScreenTouch(e);
+});
+////////////////////////////
+
+function spinOnShake(e) {
+	Ti.API.trace('ShakeIt.' + arguments.callee.name);
+	spin();
+}
+
+function enableShake() {
+	Ti.API.trace('ShakeIt.' + arguments.callee.name);
+	Ti.Gesture.addEventListener('shake', spinOnShake);
+}
+
+function disableShake() {
+	Ti.API.trace('ShakeIt.' + arguments.callee.name);
+	Ti.Gesture.removeEventListener('shake', spinOnShake);
+}
+
+Ti.App.addEventListener('pause', disableShake);
+Ti.App.addEventListener('resumed', enableShake);
+
 function initGameScene() {
 	Ti.API.debug("BEGIN - initGameScene");
 
 	var suffix = "-hd";
 	var imageSuffix = "@2x";
-
-	// if (game.screen.width == 320 || game.screen.width == 480) {//iphone 2G,3G 3GS
-	// suffix = "";
-	// }
 
 	var scaleFactor = 1;
 	var imageScaleFactor = 1;
@@ -1830,10 +2111,6 @@ function initGameScene() {
 	touchable.push(reel3);
 	reel3.addEventListener('touchmove', onReelTouch);
 
-	// Dimmers at top and bottom of screen
-	// var borders = platino.createSprite({image:"graphics/mask.png"});
-	// scene.add(borders);
-
 	var winLine = platino.createSprite({
 		image : "images/WinningLine.png",
 		x : 0 / positionFactor,
@@ -1937,289 +2214,8 @@ function initGameScene() {
 	scene.add(resultsNewButton);
 	scene.add(tryAgainButton);
 	scene.add(touchToSpinButton);
-	// scene.add(lever);
-
-	// riskLabel = platino.createTextSprite({
-	// text : '',
-	// fontSize : 24 / fontFactor,
-	// x : 10 / positionFactor,
-	// y : 500 / positionFactor,
-	// width : (game.screen.width - (85/positionFactor)),
-	// height : 90 / scaleFactor
-	// });
-	// riskLabel.color(1,1,1);
-	// scene.add(riskLabel);
-	// touchable.push(riskLabel);
-	// riskLabel.addEventListener('touchend', onLeverTouch);
-
-	// safetyLabel = platino.createTextSprite({
-	// text : '',
-	// fontSize : 24 / fontFactor,
-	// x : 10 / positionFactor,
-	// y : 600 / positionFactor,
-	// width : (game.screen.width - (85/positionFactor)),
-	// height : 90 / scaleFactor
-	// });
-	// safetyLabel.color(1,1,1);
-	// scene.add(safetyLabel);
 
 }
-
-// Add coin text
-// var coinText = platino.createTextSprite({text:"Coins: "+coins, fontSize:20,
-// width:150, height:50, x:25,y:10});
-// scene.add(coinText);
-
-// Add spin text and light
-// var spinText = platino.createTextSprite({text:"Spin:", fontSize:20, width:150,
-// height:50, x:300, y:10});
-// scene.add(spinText);
-// var spinLight = platino.createSpriteSheet({image:"graphics/greenLight.png",
-// width:35, height:35, x:350, y:5});
-// scene.add(spinLight);
-
-var collection = Backbone.Collection.extend({
-	comparator : function(model) {
-		return model.get('orientation');
-	}
-});
-
-var paytable = new collection(paytableData.data);
-var activityMapping = new collection(activityMapping.data);
-var reel1Random, reel2Random, reel3Random;
-
-var win = {
-	risk : "",
-	safety : "",
-	orientation : "",
-	activity : "",
-	protection : "",
-	winFound : true
-};
-
-// Check reels, show particle effect if winning spin, allow user to spin again transaparent
-function checkWin() {
-
-	Ti.API.debug('reel1.frame = ' + reel1.frame);
-	Ti.API.debug('reel2.frame = ' + reel2.frame);
-	Ti.API.debug('reel3.frame = ' + reel3.frame);
-
-	Ti.API.debug('reel1Random = ' + reel1Random);
-	Ti.API.debug('reel2Random = ' + reel2Random);
-	Ti.API.debug('reel3Random = ' + reel3Random);
-
-	var orientation = reels.reel1.symbolNames[reel1Random / 2];
-	var activity = reels.reel2.symbolNames[reel2Random / 2];
-	var protection = reels.reel3.symbolNames[reel3Random / 2];
-
-	Ti.API.debug('orientation = ' + orientation);
-	Ti.API.debug('activity = ' + activity);
-	Ti.API.debug('protection = ' + protection);
-
-	var activities = activityMapping.where({
-		mapping : orientation + ':' + activity
-	});
-	Ti.API.debug('activities.length = ' + activities.length);
-
-	if (activities.length > 0) {
-
-		var randomIdx = Math.floor(Math.random() * (activities.length));
-		var activityRandom = activities[randomIdx];
-		var activityName = activityRandom.attributes.activity;
-
-		Ti.API.debug('randomIdx = ' + randomIdx);
-		Ti.API.debug('activityRandom = ' + activityRandom);
-		Ti.API.debug('activityName = ' + activityName);
-
-		var outcome = paytable.find(function(item) {
-			// Ti.API.debug('item = ', JSON.stringify(item));
-			if (item.attributes.orientation == orientation) {
-				if (item.attributes.activity == activityName) {
-					if (item.attributes.protection.indexOf(protection) != -1) {
-						return item;
-					}
-				}
-			}
-		});
-
-		if (outcome != undefined) {
-			Ti.API.debug('outcome = ' + JSON.stringify(outcome));
-
-			var indexStr = "If " + protection + ":";
-			var safety = outcome.attributes.safety;
-			var safetyDetailIdx = safety.indexOf(indexStr);
-			if (safetyDetailIdx != -1) {
-				var nextColon = safety.indexOf(".  If", safetyDetailIdx + indexStr.length);
-				if (nextColon != -1) {
-					safety = safety.substr(safetyDetailIdx, (nextColon - safetyDetailIdx) + 1);
-				} else {
-					safety = safety.substr(safetyDetailIdx);
-				}
-			}
-
-			Ti.API.debug('outcome.risk = ' + outcome.attributes.risk);
-			Ti.API.debug('safety = ' + safety);
-			win.risk = outcome.attributes.risk;
-			win.safety = safety;
-			win.activity = activityName;
-			win.orientation = orientation;
-			win.protection = protection;
-			win.found = true;
-		} else {
-			win.risk = "Please spin again!";
-			win.safety = "None.";
-			win.found = false;
-		}
-	} else {
-		win.risk = "Please spin again!";
-		win.safety = "None.";
-		win.found = false;
-	}
-
-	canSpin = true;
-};
-
-function displayWinButton() {
-	if (win.found) {
-		resultsNewButton.alpha = 1;
-		resultsButton.alpha = 0;
-		tryAgainButton.alpha = 0;
-		touchToSpinButton.alpha = 0;
-	} else {
-		resultsButton.alpha = 0;
-		resultsNewButton.alpha = 0;
-		tryAgainButton.alpha = 1;
-		touchToSpinButton.alpha = 0;
-	}
-}
-
-// Stop the reels one by one, then check if user has won
-function endRoll() {
-	// Random values to stop at
-
-	if (isGenderLocked == false) {
-		reel1Random = reels.reel1.stops[Math.floor(Math.random() * (reel1.frameCount - 1))];
-		reel1.pauseAt(reel1Random);
-	}
-
-	if (isActivityLocked == false) {
-		reel2Random = reels.reel2.stops[Math.floor(Math.random() * (reel2.frameCount - 1))];
-		setTimeout(function() {
-			reel2.pauseAt(reel2Random);
-		}, 500);
-	}
-
-	if (isProtectionLocked == false) {
-		reel3Random = reels.reel3.stops[Math.floor(Math.random() * (reel3.frameCount - 1))];
-		setTimeout(function() {
-			reel3.pauseAt(reel3Random);
-		}, 1000);
-	}
-	checkWin();
-	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
-		displayWinButton();
-	} else {
-		setTimeout(displayWinButton, 1550);
-	}
-};
-
-function spinReels() {
-	if (isGenderLocked == false) {
-		reel1.animate(0, 10, 50, -1);
-	}
-
-	if (isActivityLocked == false) {
-		reel2.animate(0, 32, 70, -1);
-	}
-
-	if (isProtectionLocked == false) {
-		reel3.animate(0, 8, 90, -1);
-	}
-
-	// Stop the reels randomly between .8 and 2.5 seconds
-	var ranVal = Math.floor((Math.random() * 4000) + 800);
-	if (isGenderLocked && isActivityLocked && isProtectionLocked) {
-		endRoll();
-	} else {
-		setTimeout(endRoll, ranVal);
-	}
-
-}
-
-// Spin function
-function spin() {
-	// If user is allowed to spin, spin the reels
-	if (canSpin == true) {
-		canSpin = false;
-		armFrame.animate(0, 8, 50, 0);
-		setTimeout(spinReels, 5 * 50);
-	}
-};
-
-var TOUCH_SCALE = 1;
-
-function onScreenTouch(e) {
-	Ti.API.debug("BEGIN - onScreenTouch: " + JSON.stringify(e));
-	var _event, i, sprite;
-
-	// Create a new object to send with the event
-	var _event = {
-		x : e.x * TOUCH_SCALE,
-		y : e.y * TOUCH_SCALE
-	};
-
-	// iterate backwards so last items added to 'touchable' array
-	// receive touch events first
-	for ( i = touchable.length - 1; i >= 0; i--) {
-		sprite = touchable[i];
-		// Ti.API.debug('Checking sprite: x=' + sprite.x + ", y=" + sprite.y);
-
-		if (sprite.alpha > 0 && sprite.contains(_event.x, _event.y)) {
-			Ti.API.debug('Sprite found!');
-			var args = {
-				x : e.x * TOUCH_SCALE,
-				y : e.y * TOUCH_SCALE,
-				tag : sprite.tag
-			};
-			sprite.fireEvent(e.type, args);
-			break;
-		}
-	}
-};
-
-////////////
-game.addEventListener("touchstart", function(e) {
-	Ti.API.debug("BEGIN - touchstart");
-	onScreenTouch(e);
-	/*
-	 if (lever.contains(e.x, e.y) && lever.y > 45 && lever.y < 245) {
-	 oY = lever.y - e.y;
-	 }
-	 */
-});
-game.addEventListener("touchmove", function(e) {
-	Ti.API.debug("BEGIN - touchmove");
-	onScreenTouch(e);
-	/*
-	 if (lever.contains(e.x, e.y) && lever.y > 45 && lever.y < 245) {
-	 lever.y = e.y + oY;
-	 }
-	 */
-});
-////////////
-// Listener to spin
-game.addEventListener("touchend", function(e) {
-	Ti.API.debug("BEGIN - touchend");
-	onScreenTouch(e);
-	/*
-	 if (lever.y > 49) {
-	 spin();
-	 }
-	 transform.duration = lever.y * 1.5;
-	 lever.transform(transform);
-	 */
-});
-////////////////////////////
 
 game.addEventListener("onload", function(e) {
 	Ti.API.debug("BEGIN - onload");
@@ -2238,24 +2234,6 @@ game.addEventListener("onload", function(e) {
 	touchToSpinButton.animate(0, 4, 500, -1);
 
 });
-
-function spinOnShake(e) {
-	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	spin();
-}
-
-function enableShake() {
-	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	Ti.Gesture.addEventListener('shake', spinOnShake);
-}
-
-function disableShake() {
-	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	Ti.Gesture.removeEventListener('shake', spinOnShake);
-}
-
-Ti.App.addEventListener('pause', disableShake);
-Ti.App.addEventListener('resumed', enableShake);
 
 function init() {
 	Ti.API.trace('ShakeIt.' + arguments.callee.name);
