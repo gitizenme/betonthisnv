@@ -2,8 +2,8 @@
 <!-- This atlas was generated using SpriteHelper 2 -->
 <!-- http://www.gamedevhelper.com -->
 <Imageset Name="PullHandle" Imagefile="Reels_PullHandle.png" NativeHorzRes="226" NativeVertRes="181" AutoScaled="false">
-	<Image Name="PullHandleFrame01@2x.png" XPos="1" YPos="0" Width="223" Height="44"/>
-	<Image Name="PullHandleFrame02@2x.png" XPos="1" YPos="45" Width="222" Height="43"/>
 	<Image Name="PullHandleFrame03@2x.png" XPos="1" YPos="90" Width="222" Height="43"/>
+	<Image Name="PullHandleFrame01@2x.png" XPos="1" YPos="0" Width="223" Height="44"/>
 	<Image Name="PullHandleFrame04@2x.png" XPos="1" YPos="135" Width="222" Height="44"/>
+	<Image Name="PullHandleFrame02@2x.png" XPos="1" YPos="45" Width="222" Height="43"/>
 </Imageset>

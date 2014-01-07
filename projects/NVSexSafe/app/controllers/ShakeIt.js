@@ -1307,6 +1307,7 @@ var armFrame;
 var touchToSpinButton, resultsButton, resultsNewButton, tryAgainButton;
 
 function lockGender() {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
 	if (!isGenderLocked) {
 		genderLockIcon.alpha = 0;
 		genderUnLockIcon.alpha = 1;
@@ -1342,6 +1343,7 @@ function onGenderLockTouch(e) {
 }
 
 function lockActivity() {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
 	if (!isActivityLocked) {
 		activityLockIcon.alpha = 0;
 		activityUnLockIcon.alpha = 1;
@@ -1376,6 +1378,7 @@ function onActivityLockTouch(e) {
 }
 
 function lockProtection() {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
 	if (!isProtectionLocked) {
 		protectionLockIcon.alpha = 0;
 		protectionUnLockIcon.alpha = 1;
@@ -1441,26 +1444,27 @@ function onResultsButtonTouch(e) {
 		Ti.API.info('Touch ended on Protection sprite.');
 		if (e.tag == 'resultsButton') {
 			resultsNewButton.alpha = 0;
-			resultsButton.alpha = 0;
+			// resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 1;
 			touchToSpinButton.animate(0, 4, 500, -1);
 			displayWin();
 		} else if (e.tag == 'resultsNewButton') {
 			resultsNewButton.alpha = 0;
-			resultsButton.alpha = 1;
+			// resultsButton.alpha = 1;
 			tryAgainButton.alpha = 0;
-			touchToSpinButton.alpha = 0;
+			touchToSpinButton.alpha = 1;
+			touchToSpinButton.animate(0, 4, 500, -1);
 			displayWin();
 		} else if (e.tag == 'tryAgainButton') {
 			resultsNewButton.alpha = 0;
-			resultsButton.alpha = 0;
+			// resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
 			spin();
 		} else if (e.tag == 'touchToSpinButton') {
 			resultsNewButton.alpha = 0;
-			resultsButton.alpha = 0;
+			// resultsButton.alpha = 0;
 			tryAgainButton.alpha = 0;
 			touchToSpinButton.alpha = 0;
 			touchToSpinButton.pauseAt(0);
@@ -1482,42 +1486,65 @@ function onLeverTouch(e) {
 	} else if (type === 'touchmove') {
 		Ti.API.info('Touch moved on first sprite.');
 		resultsNewButton.alpha = 0;
-		resultsButton.alpha = 0;
+		// resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
 		touchToSpinButton.pauseAt(0);
-		leverPullSound.play();
 		spin();
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on first sprite.');
 	}
 
 }
+/*
 
 function findFrameIdx(reel, reelYPos, newYPos) {
 	Ti.API.debug("reelYPos = " + reelYPos);
 	Ti.API.debug("reel.frameCount = " + reel.frameCount);
 	Ti.API.debug("reel.frame = " + reel.frame);
 	var frameIdx = reel.frame;
-	var frameIdxTween = frameIdx;
+	// var frameIdxTween = frameIdx;
 	if (reelYPos < (newYPos - 10)) {
 		frameIdx -= 2;
-		frameIdxTween = frameIdx + 1;
+		// frameIdxTween = frameIdx + 2;
 		if (frameIdx < 0) {
 			frameIdx = reel.frameCount - 2;
-			frameIdxTween = frameIdx + 1;
+			// frameIdxTween = frameIdx + 2;
 		}
 	} else if (reelYPos > (newYPos + 10)) {
 		frameIdx += 2;
-		frameIdxTween = frameIdx - 1;
+		// frameIdxTween = frameIdx - 2;
 		if (frameIdx >= reel.frameCount) {
 			frameIdx = 0;
-			frameIdxTween = reel.frameCount - 1;
+			// frameIdxTween = reel.frameCount - 2;
 		}
 	}
-	return [frameIdxTween, frameIdx];
+	// return [frameIdx, frameIdxTween];
+	return frameIdx;
+}
+*/
+
+function findFrameIdx(reel, reelYPos, newYPos) {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
+	Ti.API.debug("reelYPos = " + reelYPos);
+	Ti.API.debug("newYPos = " + newYPos);
+	Ti.API.debug("reel.frameCount = " + reel.frameCount);
+	Ti.API.debug("reel.frame = " + reel.frame);
+	var frameIdx = reel.frame;
+	if (reelYPos < (newYPos - 60)) {
+		frameIdx -= 2;
+		if (frameIdx < 0) {
+			frameIdx = reel.frameCount - 2;
+		}
+	} else if (reelYPos > (newYPos + 60)) {
+		frameIdx += 2;
+		if (frameIdx >= reel.frameCount) {
+			frameIdx = 0;
+		}
+	}
+	return frameIdx;
 }
 
-var scrubAnimationTime = 250;
+var scrubAnimationTime = 300;
 
 function onReelTouch(e) {
 	Ti.API.debug("BEGIN - onReelTouch: " + JSON.stringify(e));
@@ -1532,11 +1559,12 @@ function onReelTouch(e) {
 		if (e.tag == 'reel1') {
 			if (reel1Y != 0) {
 				var frameIdx = findFrameIdx(reel1, reel1Y, e.y);
-				reel1Random = frameIdx[1];
+				reel1Random = frameIdx;
 				isGenderLocked = true;
 				lockGender();
 				Ti.API.debug("frameIdx = " + frameIdx);
-				reel1.animate(frameIdx, scrubAnimationTime, 0, 0);
+				Ti.API.debug("reel1.frame = " + reel1.frame);
+				reel1.animate([frameIdx], scrubAnimationTime, 0, 0);
 				// reelScrobbleSound.play();
 				displayWinButton();
 			}
@@ -1546,11 +1574,12 @@ function onReelTouch(e) {
 			Ti.API.debug("reel2Y = " + reel2Y);
 			if (reel2Y != 0) {
 				var frameIdx = findFrameIdx(reel2, reel2Y, e.y);
-				reel2Random = frameIdx[1];
+				reel2Random = frameIdx;
 				isActivityLocked = true;
 				lockActivity();
 				Ti.API.debug("frameIdx = " + frameIdx);
-				reel2.animate(frameIdx, scrubAnimationTime, 0, 0);
+				Ti.API.debug("reel2.frame = " + reel2.frame);
+				reel2.animate([frameIdx], scrubAnimationTime, 0, 0);
 				// reelScrobbleSound.play();
 				displayWinButton();
 			}
@@ -1560,11 +1589,12 @@ function onReelTouch(e) {
 			Ti.API.debug("reel3Y = " + reel3Y);
 			if (reel3Y != 0) {
 				var frameIdx = findFrameIdx(reel3, reel3Y, e.y);
-				reel3Random = frameIdx[1];
+				reel3Random = frameIdx;
 				isProtectionLocked = true;
 				lockProtection();
 				Ti.API.debug("frameIdx = " + frameIdx);
-				reel3.animate(frameIdx, scrubAnimationTime, 0, 0);
+				Ti.API.debug("reel3.frame = " + reel3.frame);
+				reel3.animate([frameIdx], scrubAnimationTime, 0, 0);
 				// reelScrobbleSound.play();
 				displayWinButton();
 			}
@@ -1573,6 +1603,23 @@ function onReelTouch(e) {
 		}
 	} else if (type === 'touchend') {
 		Ti.API.info('Touch ended on Reel sprite.');
+		if (e.tag == 'reel1') {
+			var frameIdx = reel1.frame;
+			if((e.y / 2) < 170) {
+				frameIdx = reel1.frame-2;
+				if(frameIdx < 0) {
+					frameIdx = reel1.frameCount-2;
+				}
+			}
+			else {
+				frameIdx = reel1.frame+2;
+				if(frameIdx >= reel1.frameCount) {
+					frameIdx = 0;
+				}
+			}
+			reel1.animate([reel1.frame, frameIdx], scrubAnimationTime, 0, 0);
+		}
+
 	}
 
 }
@@ -1605,7 +1652,7 @@ var collection = Backbone.Collection.extend({
 
 var paytable = new collection(paytableData.data);
 var activityMapping = new collection(activityMapping.data);
-var reel1Random, reel2Random, reel3Random;
+var reel1Random = 0, reel2Random = 0, reel3Random = 0;
 
 var win = {
 	risk : "",
@@ -1706,14 +1753,14 @@ function displayWinButton() {
 			Ti.Media.vibrate();
 		}
 		resultsNewButton.alpha = 1;
-		resultsButton.alpha = 0;
+		// resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
 		touchToSpinButton.alpha = 0;
 	} else {
 		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked) {
 			tryAgainSound.play();
 		}
-		resultsButton.alpha = 0;
+		// resultsButton.alpha = 0;
 		resultsNewButton.alpha = 0;
 		tryAgainButton.alpha = 1;
 		touchToSpinButton.alpha = 0;
@@ -1794,6 +1841,7 @@ function spin() {
 	// If user is allowed to spin, spin the reels
 	if (canSpin == true) {
 		canSpin = false;
+		leverPullSound.play();
 		armFrame.animate(0, 8, 50, 0);
 		setTimeout(spinReels, 5 * 50);
 	}
@@ -1857,23 +1905,6 @@ game.addEventListener("touchend", function(e) {
 });
 ////////////////////////////
 
-function spinOnShake(e) {
-	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	spin();
-}
-
-function enableShake() {
-	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	Ti.Gesture.addEventListener('shake', spinOnShake);
-}
-
-function disableShake() {
-	Ti.API.trace('ShakeIt.' + arguments.callee.name);
-	Ti.Gesture.removeEventListener('shake', spinOnShake);
-}
-
-Ti.App.addEventListener('pause', disableShake);
-Ti.App.addEventListener('resumed', enableShake);
 
 function initGameScene() {
 	Ti.API.debug("BEGIN - initGameScene");
@@ -2086,6 +2117,7 @@ function initGameScene() {
 	reel1.selectFrame(reels.reel1.spriteNames[0]);
 	touchable.push(reel1);
 	reel1.addEventListener('touchmove', onReelTouch);
+	// reel1.addEventListener('touchend', onReelTouch);
 
 	reel2 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel2' + suffix + '.xml',
@@ -2098,6 +2130,7 @@ function initGameScene() {
 	reel2.selectFrame(reels.reel2.spriteNames[0]);
 	touchable.push(reel2);
 	reel2.addEventListener('touchmove', onReelTouch);
+	// reel2.addEventListener('touchend', onReelTouch);
 
 	reel3 = platino.createSpriteSheet({
 		asset : 'graphics/Reels_Reel3' + suffix + '.xml',
@@ -2110,6 +2143,7 @@ function initGameScene() {
 	reel3.selectFrame(reels.reel3.spriteNames[0]);
 	touchable.push(reel3);
 	reel3.addEventListener('touchmove', onReelTouch);
+	// reel3.addEventListener('touchend', onReelTouch);
 
 	var winLine = platino.createSprite({
 		image : "images/WinningLine.png",
@@ -2139,6 +2173,7 @@ function initGameScene() {
 	touchable.push(touchToSpinButton);
 	touchToSpinButton.addEventListener('touchend', onResultsButtonTouch);
 
+/*
 	resultsButton = platino.createSprite({
 		image : "images/ResultsButton.png",
 		tag : "resultsButton",
@@ -2149,7 +2184,8 @@ function initGameScene() {
 		alpha : 0
 	});
 	touchable.push(resultsButton);
-	resultsButton.addEventListener('touchend', onResultsButtonTouch);
+	resultsButton.addEventListener('touchend', onResultsButtonTouch);*/
+
 
 	resultsNewButton = platino.createSprite({
 		image : "images/ResultsNewButton.png",
@@ -2210,7 +2246,7 @@ function initGameScene() {
 	scene.add(divider1);
 	scene.add(divider2);
 	scene.add(armFrame);
-	scene.add(resultsButton);
+	// scene.add(resultsButton);
 	scene.add(resultsNewButton);
 	scene.add(tryAgainButton);
 	scene.add(touchToSpinButton);
@@ -2264,6 +2300,8 @@ function openAboutView() {
 	}
 }
 
+
+
 // Android
 if (OS_ANDROID) {
 	function configureAndroidMenu() {
@@ -2302,11 +2340,89 @@ if (OS_ANDROID) {
 
 }
 
+function spinOnShake(e) {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	if(!isAppPaused) {
+		spin();
+	}
+}
+
+function enableShake() {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
+	Ti.Gesture.addEventListener('shake', spinOnShake);
+}
+
+function disableShake() {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name);
+	Ti.Gesture.removeEventListener('shake', spinOnShake);
+}
+
+var isAppPaused = false;
+
+function appResumed(e) {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	isAppPaused = false;
+	enableShake();
+}
+
+function appResume(e) {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+function appPause(e) {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	isAppPaused = true;
+	disableShake();
+}
+
+function appPaused(e) {
+	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+}
+
+
+if (OS_ANDROID) {
+
+	function restartActivityAndroid(e) {
+		Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
+	function stopActivityAndroid(e) {
+		Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
+	function pauseActivityAndroid(e) {
+		Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+		appPause();
+		appPaused();		
+	}
+
+	function resumeActivityAndroid(e) {
+		Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
+		appResume();
+		appResumed();
+	}
+
+}
+
+
 function open() {
 
 	init();
 
 	if (OS_ANDROID) {
 		configureAndroidMenu();
+		$.shakeItTab.tabGroup.activity.addEventListener('stop', stopActivityAndroid);
+		$.shakeItTab.tabGroup.activity.addEventListener('restart', restartActivityAndroid);
+		$.shakeItTab.tabGroup.activity.addEventListener('pause', pauseActivityAndroid);
+		$.shakeItTab.tabGroup.activity.addEventListener('resume', resumeActivityAndroid);
 	}
 }
+
+if (OS_IOS) {
+
+	Ti.App.addEventListener('resumed', appResumed);
+	Ti.App.addEventListener('resume', appResume);
+	Ti.App.addEventListener('pause', appPause);
+	Ti.App.addEventListener('paused', appPaused);
+}
+

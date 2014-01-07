@@ -9,7 +9,7 @@
 	<Image Name="Reel1Frame05@2X.png" XPos="1" YPos="359" Width="90" Height="177"/>
 	<Image Name="Reel1Frame06@2X.png" XPos="93" YPos="359" Width="90" Height="177"/>
 	<Image Name="Reel1Frame07@2X.png" XPos="1" YPos="538" Width="90" Height="177"/>
-	<Image Name="Reel1Frame08@2X.png" XPos="1" YPos="717" Width="90" Height="177"/>
-	<Image Name="Reel1Frame09@2X.png" XPos="93" YPos="538" Width="90" Height="177"/>
+	<Image Name="Reel1Frame08@2X.png" XPos="93" YPos="538" Width="90" Height="177"/>
+	<Image Name="Reel1Frame09@2X.png" XPos="1" YPos="717" Width="90" Height="177"/>
 	<Image Name="Reel1Frame10@2X.png" XPos="93" YPos="717" Width="90" Height="177"/>
 </Imageset>
