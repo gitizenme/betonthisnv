@@ -863,31 +863,31 @@ var paytableData = {
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - 'Do you ever get cold sores?'  If Condom: A condom won't be of any use here. Best to ask your partner  'Do you ever get cold sores?'  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner 'Do you ever get cold sores?'  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner 'Do you ever get cold sores?' "
 	}, {
 		"orientation" : "Female",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - 'Do you ever get cold sores?'  If Condom: A condom won't be of any use here. Best to ask your partner 'Do you ever get cold sores?'  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner 'Do you ever get cold sores?'  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner  'Do you ever get cold sores?'  "
 	}, {
 		"orientation" : "Trans - M to F",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - 'Do you ever get cold sores?'  If Condom: A condom won't be of any use here. Best to ask your partner  'Do you ever get cold sores?'  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner  'Do you ever get cold sores?'  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner  'Do you ever get cold sores?' "
 	}, {
 		"orientation" : "Trans - F to M",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - 'Do you ever get cold sores?'  If Condom: A condom won't be of any use here. Best to ask your partner  'Do you ever get cold sores?'  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner 'Do you ever get cold sores?'  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner 'Do you ever get cold sores?' "
 	}, {
 		"orientation" : "Indifferent",
 		"activity" : "Kissing",
 		"protection" : "None, Condom, Dental Dam, Clothing",
 		"risk" : "HIV Transmission Risk: Safe! Safe! Safe!  Other STD Risk: Herpes   ",
-		"safety" : "If None: Ask your partner - Do you ever get cold sores?  If Condom: A condom won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner'Do you ever get cold sores?  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner'Do you ever get cold sores? "
+		"safety" : "If None: Ask your partner - 'Do you ever get cold sores?'  If Condom: A condom won't be of any use here. Best to ask your partner 'Do you ever get cold sores?'  If Dental Dam: A dental dam won't be of any use here. Best to ask your partner 'Do you ever get cold sores?'  If Clothing: Kiss someone while pulling their shirt over their head. That's sexy. But when you really start kissing, best to ask your partner 'Do you ever get cold sores?' "
 	}, {
 		"orientation" : "Male",
 		"activity" : "Scissoring",
@@ -1495,33 +1495,34 @@ function onLeverTouch(e) {
 	}
 
 }
+
 /*
 
-function findFrameIdx(reel, reelYPos, newYPos) {
-	Ti.API.debug("reelYPos = " + reelYPos);
-	Ti.API.debug("reel.frameCount = " + reel.frameCount);
-	Ti.API.debug("reel.frame = " + reel.frame);
-	var frameIdx = reel.frame;
-	// var frameIdxTween = frameIdx;
-	if (reelYPos < (newYPos - 10)) {
-		frameIdx -= 2;
-		// frameIdxTween = frameIdx + 2;
-		if (frameIdx < 0) {
-			frameIdx = reel.frameCount - 2;
-			// frameIdxTween = frameIdx + 2;
-		}
-	} else if (reelYPos > (newYPos + 10)) {
-		frameIdx += 2;
-		// frameIdxTween = frameIdx - 2;
-		if (frameIdx >= reel.frameCount) {
-			frameIdx = 0;
-			// frameIdxTween = reel.frameCount - 2;
-		}
-	}
-	// return [frameIdx, frameIdxTween];
-	return frameIdx;
-}
-*/
+ function findFrameIdx(reel, reelYPos, newYPos) {
+ Ti.API.debug("reelYPos = " + reelYPos);
+ Ti.API.debug("reel.frameCount = " + reel.frameCount);
+ Ti.API.debug("reel.frame = " + reel.frame);
+ var frameIdx = reel.frame;
+ // var frameIdxTween = frameIdx;
+ if (reelYPos < (newYPos - 10)) {
+ frameIdx -= 2;
+ // frameIdxTween = frameIdx + 2;
+ if (frameIdx < 0) {
+ frameIdx = reel.frameCount - 2;
+ // frameIdxTween = frameIdx + 2;
+ }
+ } else if (reelYPos > (newYPos + 10)) {
+ frameIdx += 2;
+ // frameIdxTween = frameIdx - 2;
+ if (frameIdx >= reel.frameCount) {
+ frameIdx = 0;
+ // frameIdxTween = reel.frameCount - 2;
+ }
+ }
+ // return [frameIdx, frameIdxTween];
+ return frameIdx;
+ }
+ */
 
 function findFrameIdx(reel, reelYPos, newYPos) {
 	Ti.API.debug('ShakeIt.' + arguments.callee.name);
@@ -1560,8 +1561,9 @@ function onReelTouch(e) {
 			if (reel1Y != 0) {
 				var frameIdx = findFrameIdx(reel1, reel1Y, e.y);
 				reel1Random = frameIdx;
-				isGenderLocked = true;
-				lockGender();
+				isReelScrobble = true;
+				// isGenderLocked = true;
+				// lockGender();
 				Ti.API.debug("frameIdx = " + frameIdx);
 				Ti.API.debug("reel1.frame = " + reel1.frame);
 				reel1.animate([frameIdx], scrubAnimationTime, 0, 0);
@@ -1575,8 +1577,9 @@ function onReelTouch(e) {
 			if (reel2Y != 0) {
 				var frameIdx = findFrameIdx(reel2, reel2Y, e.y);
 				reel2Random = frameIdx;
-				isActivityLocked = true;
-				lockActivity();
+				isReelScrobble = true;
+				// isActivityLocked = true;
+				// lockActivity();
 				Ti.API.debug("frameIdx = " + frameIdx);
 				Ti.API.debug("reel2.frame = " + reel2.frame);
 				reel2.animate([frameIdx], scrubAnimationTime, 0, 0);
@@ -1590,8 +1593,9 @@ function onReelTouch(e) {
 			if (reel3Y != 0) {
 				var frameIdx = findFrameIdx(reel3, reel3Y, e.y);
 				reel3Random = frameIdx;
-				isProtectionLocked = true;
-				lockProtection();
+				isReelScrobble = true;
+				// isProtectionLocked = true;
+				// lockProtection();
 				Ti.API.debug("frameIdx = " + frameIdx);
 				Ti.API.debug("reel3.frame = " + reel3.frame);
 				reel3.animate([frameIdx], scrubAnimationTime, 0, 0);
@@ -1605,15 +1609,14 @@ function onReelTouch(e) {
 		Ti.API.info('Touch ended on Reel sprite.');
 		if (e.tag == 'reel1') {
 			var frameIdx = reel1.frame;
-			if((e.y / 2) < 170) {
-				frameIdx = reel1.frame-2;
-				if(frameIdx < 0) {
-					frameIdx = reel1.frameCount-2;
+			if ((e.y / 2) < 170) {
+				frameIdx = reel1.frame - 2;
+				if (frameIdx < 0) {
+					frameIdx = reel1.frameCount - 2;
 				}
-			}
-			else {
-				frameIdx = reel1.frame+2;
-				if(frameIdx >= reel1.frameCount) {
+			} else {
+				frameIdx = reel1.frame + 2;
+				if (frameIdx >= reel1.frameCount) {
 					frameIdx = 0;
 				}
 			}
@@ -1653,6 +1656,7 @@ var collection = Backbone.Collection.extend({
 var paytable = new collection(paytableData.data);
 var activityMapping = new collection(activityMapping.data);
 var reel1Random = 0, reel2Random = 0, reel3Random = 0;
+var isReelScrobble = false;
 
 var win = {
 	risk : "",
@@ -1711,25 +1715,40 @@ function checkWin() {
 		if (outcome != undefined) {
 			Ti.API.debug('outcome = ' + JSON.stringify(outcome));
 
-			var indexStr = "If " + protection + ":";
+			var protectionStr = "If " + protection + ":";
 			var safety = outcome.attributes.safety;
-			var safetyDetailIdx = safety.indexOf(indexStr);
+			var safetyDetailIdx = safety.indexOf(protectionStr);
 			if (safetyDetailIdx != -1) {
-				var nextColon = safety.indexOf(".  If", safetyDetailIdx + indexStr.length);
-				if (nextColon != -1) {
-					safety = safety.substr(safetyDetailIdx, (nextColon - safetyDetailIdx) + 1);
+				var nextSafety = safety.indexOf(".  If", safetyDetailIdx + protectionStr.length);
+				if (nextSafety != -1) {
+					safety = safety.substr(safetyDetailIdx + protectionStr.length, (nextSafety - safetyDetailIdx - protectionStr.length) + 1);
 				} else {
-					safety = safety.substr(safetyDetailIdx);
+					nextSafety = safety.indexOf("!  If", safetyDetailIdx + protectionStr.length);
+					if (nextSafety != -1) {
+						safety = safety.substr(safetyDetailIdx + protectionStr.length, (nextSafety - safetyDetailIdx - protectionStr.length) + 1);
+					} else {
+						nextSafety = safety.indexOf("'  If", safetyDetailIdx + protectionStr.length);
+						if (nextSafety != -1) {
+							safety = safety.substr(safetyDetailIdx + protectionStr.length, (nextSafety - safetyDetailIdx - protectionStr.length) + 1);
+						} else {
+							nextSafety = safety.indexOf("?  If", safetyDetailIdx + protectionStr.length);
+							if (nextSafety != -1) {
+								safety = safety.substr(safetyDetailIdx + protectionStr.length, (nextSafety - safetyDetailIdx - protectionStr.length) + 1);
+							} else {
+								safety = safety.substr(safetyDetailIdx + protectionStr.length);
+							}
+						}
+					}
 				}
 			}
 
 			Ti.API.debug('outcome.risk = ' + outcome.attributes.risk);
 			Ti.API.debug('safety = ' + safety);
-			win.risk = outcome.attributes.risk;
-			win.safety = safety;
-			win.activity = activityName;
-			win.orientation = orientation;
-			win.protection = protection;
+			win.risk = outcome.attributes.risk.trim();
+			win.safety = safety.trim();
+			win.activity = activityName.trim();
+			win.orientation = orientation.trim();
+			win.protection = protection.trim();
 			win.found = true;
 		} else {
 			win.risk = "Please spin again!";
@@ -1748,17 +1767,23 @@ function checkWin() {
 function displayWinButton() {
 	checkWin();
 	if (win.found) {
-		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked) {
+		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked  && !isReelScrobble) {
 			winningSpinSound.play();
 			Ti.Media.vibrate();
+		}
+		else {
+			isReelScrobble = false;
 		}
 		resultsNewButton.alpha = 1;
 		// resultsButton.alpha = 0;
 		tryAgainButton.alpha = 0;
 		touchToSpinButton.alpha = 0;
 	} else {
-		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked) {
+		if (!isGenderLocked && !isActivityLocked && !isProtectionLocked && !isReelScrobble) {
 			tryAgainSound.play();
+		}
+		else {
+			isReelScrobble = false;
 		}
 		// resultsButton.alpha = 0;
 		resultsNewButton.alpha = 0;
@@ -1904,7 +1929,6 @@ game.addEventListener("touchend", function(e) {
 	onScreenTouch(e);
 });
 ////////////////////////////
-
 
 function initGameScene() {
 	Ti.API.debug("BEGIN - initGameScene");
@@ -2173,19 +2197,18 @@ function initGameScene() {
 	touchable.push(touchToSpinButton);
 	touchToSpinButton.addEventListener('touchend', onResultsButtonTouch);
 
-/*
-	resultsButton = platino.createSprite({
-		image : "images/ResultsButton.png",
-		tag : "resultsButton",
-		x : 120 / positionFactor,
-		y : 540 / positionFactor,
-		width : 400 / imageScaleFactor,
-		height : 76 / imageScaleFactor,
-		alpha : 0
-	});
-	touchable.push(resultsButton);
-	resultsButton.addEventListener('touchend', onResultsButtonTouch);*/
-
+	/*
+	 resultsButton = platino.createSprite({
+	 image : "images/ResultsButton.png",
+	 tag : "resultsButton",
+	 x : 120 / positionFactor,
+	 y : 540 / positionFactor,
+	 width : 400 / imageScaleFactor,
+	 height : 76 / imageScaleFactor,
+	 alpha : 0
+	 });
+	 touchable.push(resultsButton);
+	 resultsButton.addEventListener('touchend', onResultsButtonTouch);*/
 
 	resultsNewButton = platino.createSprite({
 		image : "images/ResultsNewButton.png",
@@ -2300,8 +2323,6 @@ function openAboutView() {
 	}
 }
 
-
-
 // Android
 if (OS_ANDROID) {
 	function configureAndroidMenu() {
@@ -2342,7 +2363,7 @@ if (OS_ANDROID) {
 
 function spinOnShake(e) {
 	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
-	if(!isAppPaused) {
+	if (!isAppPaused) {
 		spin();
 	}
 }
@@ -2379,7 +2400,6 @@ function appPaused(e) {
 	Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
 }
 
-
 if (OS_ANDROID) {
 
 	function restartActivityAndroid(e) {
@@ -2393,7 +2413,7 @@ if (OS_ANDROID) {
 	function pauseActivityAndroid(e) {
 		Ti.API.debug('ShakeIt.' + arguments.callee.name + ': ' + JSON.stringify(e));
 		appPause();
-		appPaused();		
+		appPaused();
 	}
 
 	function resumeActivityAndroid(e) {
@@ -2403,7 +2423,6 @@ if (OS_ANDROID) {
 	}
 
 }
-
 
 function open() {
 
