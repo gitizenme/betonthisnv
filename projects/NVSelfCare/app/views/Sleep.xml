@@ -1,11 +1,6 @@
 <Alloy>
-	<Window fullscreen="false" class="container" onOpen="open" title="Sleep" barColor="#2399A3">
-		<Window id="navWin" class="container" title="Sleep" backgroundColor="#2399A3" barColor="#2399A3">
-			<ScrollView id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true"
-			borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
-				<View top="10" id="mainView" layout="vertical" height="800">
-				</View>
-			</ScrollView>
-		</Window>
+    <Collection src="journal" />
+	<Window fullscreen="false" class="container" onOpen="open" title="SLEEP" barColor="#2399A3" backgroundColor="#2399A3">
+			<Require type="view" src="sleepCommon" id="sleepCommonView" />
 	</Window>
 </Alloy>

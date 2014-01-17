@@ -165,7 +165,7 @@ function sectionHealthClick(e) {
 			}
 			break;
 		case types.SECTION_HEALTH_WEIGHT:
-			// weight - picker
+			// weight - text field
 			var openArgs = {
 				navGroup : $.navGroupWidget,
 				modelDate : selectedDate,
@@ -201,7 +201,7 @@ function sectionHealthClick(e) {
 			}
 			break;
 		case types.SECTION_HEALTH_BLOOD_PRESSURE:
-			// blood pressure - picker
+			// blood pressure - text field
 			var openArgs = {
 				navGroup : $.navGroupWidget,
 				modelDate : selectedDate,
@@ -236,7 +236,7 @@ function sectionActivityClick(e) {
 
 	switch(e.itemIndex) {
 		case types.SECTION_ACTIVITY_HAD_SEX:
-			// had sex - check indicator
+			// had sex - text area
 			var openArgs = {
 				navGroup : $.navGroupWidget,
 				modelDate : selectedDate,
@@ -248,7 +248,7 @@ function sectionActivityClick(e) {
 			}
 			break;
 		case types.SECTION_ACTIVITY_ALCOHOL_TOBACCO:
-			// Alcohol/tobacco - list view with checks
+			// Alcohol/tobacco - text area
 			var openArgs = {
 				navGroup : $.navGroupWidget,
 				modelDate : selectedDate,
@@ -324,6 +324,15 @@ function open() {
 if (OS_ANDROID) {
 	$.navGroupWidget.open($.navWin, {});
 }
+
+function focus(e) {
+	Ti.API.debug('day_view.' + arguments.callee.name);
+}
+
+function blur(e) {
+	Ti.API.debug('day_view.' + arguments.callee.name);
+}
+
 
 if (OS_ANDROID) {
 	function onAndroidBack() {

@@ -1,0 +1,11 @@
+<Alloy>
+	<ScrollView id="scrollView" top="5" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE" backgroundColor="#fff">
+		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
+			<Label top="5" color="#000">Write a brief description of your other substance use activities\nTouch Save to keep it.</Label>
+			<TextArea id="textArea" left="10" right="10" bottom="10" width="Ti.UI.FILL" height="Ti.UI.FILL"
+			borderWidth="2" borderColor="#bbb" borderRadius="5"
+			color="#888" textAlign="left" value="" backgroundColor="#fff"
+			top="5" suppressReturn="false" />
+		</View>
+	</ScrollView>
+</Alloy>

@@ -1,0 +1,11 @@
+<Alloy>
+	<ScrollView id="scrollView" top="5" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE"  backgroundColor="#2399A3">
+		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
+			<Label top="5" color="#D7DF23">Type in body measurements\nTouch Save to keep it.</Label>
+			<TextField id="textFieldBustSize" top="5" hintText="your bust size" keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD"  />
+			<TextField id="textFieldWaistSize" top="5" hintText="your waist size" keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD"  />
+			<TextField id="textFieldHipSize" top="5" hintText="your hip size" keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD"  />
+			<ImageView top="10" image="/images/body-measure.png"></ImageView>
+		</View>
+	</ScrollView>
+</Alloy>

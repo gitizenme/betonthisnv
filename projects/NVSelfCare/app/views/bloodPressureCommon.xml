@@ -1,0 +1,9 @@
+<Alloy>
+	<ScrollView id="scrollView" top="5" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE"  backgroundColor="#2399A3">
+		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
+			<Label top="5" color="#D7DF23">Type in blood pressure\nTouch Save to keep it.</Label>
+			<TextField id="textFieldSystolic" top="5" hintText="mm Hg (upper #)" keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD"  />
+			<TextField id="textFieldDiastolic" top="5" hintText="mm Hg (lower #)" keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD"  />
+		</View>
+	</ScrollView>
+</Alloy>

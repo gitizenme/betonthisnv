@@ -1,0 +1,46 @@
+<Alloy>
+	<ListView defaultItemTemplate="normal" id="theList">
+
+		<!-- The Templates tag sets the ListView's templates property -->
+
+		<Templates>
+
+			<!-- Define your item templates within the Templates tags or use the
+			Require tag to include a view that only contains an ItemTemplate -->
+
+<!--
+			<ItemTemplate name="template">
+				<ImageView bindId="pic" id="icon" />
+				<Label bindId="info" id="title" />
+				<Label bindId="subinfo" id="subtitle" />
+			</ItemTemplate>
+-->
+			<ItemTemplate name="normal">
+				<View backgroundColor="#5AAFB5">
+					<ImageView bindId="pic" id="icon" />
+					<Label bindId="info" id="title" />
+					<Label bindId="subinfo" id="subtitle" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="selected">
+				<View backgroundColor="#6CD1D7">
+					<ImageView bindId="pic" id="icon" />
+					<Label bindId="info" id="title" />
+					<Label bindId="subinfo" id="subtitle" />
+				</View>
+			</ItemTemplate>
+
+		</Templates>
+		<ListSection headerTitle="Fatigue">
+
+			<!-- You can specify any ListItem or ListDataItem properties in ListItem -->
+
+			<!-- Specify data to bind to the item template with inline attributes
+			defined as <bindId>:<Ti.UI.Component.property> -->
+
+			<ListItem info:text="Energetic" subinfo:text="" pic:image="/images/MoodHappyIcon.png" />
+			<ListItem info:text="Tired" subinfo:text="" pic:image="/images/MoodSleepyIcon.png" />
+			<ListItem info:text="Okay" subinfo:text="" pic:image="/images/MoodSatisfiedIcon.png" />
+		</ListSection>
+	</ListView>
+</Alloy>

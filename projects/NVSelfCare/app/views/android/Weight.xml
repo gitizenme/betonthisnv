@@ -1,11 +1,12 @@
 <Alloy>
+	<Collection src="journal" />
 	<View fullscreen="false" class="container" id="navView">
-		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="Weight" backgroundColor="#2399A3" onAndroid:back="onAndroidBack">
-			<ScrollView id="scrollView" top="5" contentHeight="auto"
-			borderRadius="8" borderColor="#000" borderWidth="8" backgroundColor="#000" >
-				<View top="10" id="mainView" layout="vertical" height="800">
-				</View>
-			</ScrollView>
+		<Window id="navWin" fullscreen="false" onOpen="open" title="COMMENT" backgroundColor="#2399A3" onAndroid:back="onAndroidBack"
+		layout="vertical">
+			<View id="saveButtonView" top="10" right="5" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+				<Label id="saveButtonLabel" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="SAVE" onClick="save"/>
+			</View>
+			<Require type="view" src="weightCommon" id="weightCommonView" />
 		</Window>
 	</View>
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>

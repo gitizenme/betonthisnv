@@ -43,7 +43,7 @@
 		<ListSection headerTitle="Activity">
 			<ListItem info:text="Had Sex" subinfo:text="(tap to edit)" pic:image="/images/SexIcon.png" />
 			<ListItem info:text="Alchohol/Tobacco" subinfo:text="(tap to edit)" pic:image="/images/AlcoholTobaccoIcon.png" />
-			<ListItem info:text="Other Substance Abuse" subinfo:text="(tap to edit)" pic:image="/images/OtherSubstanceIcon.png" />
+			<ListItem info:text="Other Use" subinfo:text="(tap to edit)" pic:image="/images/OtherSubstanceIcon.png" />
 		</ListSection>
 	</ListView>
 </Alloy>
