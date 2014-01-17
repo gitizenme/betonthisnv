@@ -66,7 +66,7 @@ function updateHintLabel(msg, duration) {
 	animation.fadeIn($.hintLabel, duration);
 }
 
-function onOpen() {
+function open() {
 	Ti.API.debug('login.' + arguments.callee.name);
 	configureUI();
 }

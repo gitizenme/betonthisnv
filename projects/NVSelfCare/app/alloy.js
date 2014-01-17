@@ -15,11 +15,12 @@ Ti.UI.setBackgroundColor('#2399A3');
 
 
 if( OS_ANDROID ) {
-    Alloy.Globals.Android = { 
+    Alloy.Globals.Android = {
         "Api" : Ti.Platform.Android.API_LEVEL
     };
 }
 
+/*
 var Loader = require('Loader');
 Alloy.Globals.loader = new Loader();
 Alloy.Globals.loader.Create("Loading...", {
@@ -33,6 +34,7 @@ Alloy.Globals.resumeLoader.Create("Loading...", {
 	backgroundColor : "#2399A3",
 	opacity: 1
 });
+*/
 
 
 Alloy.Globals.version = "0.0.0 DEV";

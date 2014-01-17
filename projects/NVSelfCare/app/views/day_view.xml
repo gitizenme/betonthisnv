@@ -1,6 +1,6 @@
 <Alloy>
 	<NavigationWindow id="navGroup" platform="ios" modal="false" onOpen="open" >
-		<Window id="navWin" class="container" title="Day" onPostlayout="postlayout" onFocus="focus" >
+		<Window id="navWin" class="container" title="Day" onFocus="focus" >
 			<Require type="view" src="dayViewList" id="listView" onClick="itemClick"/>
 		</Window>
 	</NavigationWindow>

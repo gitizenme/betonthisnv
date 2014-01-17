@@ -34,17 +34,7 @@ function updateListViewRow(entry) {
 
 }
 
-function focus(e) {
-	Ti.API.debug('day_view.' + arguments.callee.name);
-	// Alloy.Globals.loader.Close();
-}
-
 function closeLoader() {
-	Alloy.Globals.loader.Close();
-}
-
-function postlayout(e) {
-	Ti.API.debug('day_view.' + arguments.callee.name);
 	// Alloy.Globals.loader.Close();
 }
 
@@ -60,7 +50,7 @@ function loadModelIntoListView() {
 		var entry = existingJournalModel[i];
 		updateListViewRow(entry.attributes);
 	};
-	
+
  	setTimeout(closeLoader, 500);
 
 }
@@ -311,7 +301,7 @@ function itemClick(e) {
 
 function open() {
 	Ti.API.debug('day_view.' + arguments.callee.name);
- 
+
 	setTimeout(loadModelIntoListView, 700);
 
 	if (OS_ANDROID) {
@@ -340,6 +330,7 @@ if (OS_ANDROID) {
 		Ti.API.debug('day_view.' + arguments.callee.name);
 		$.openAndroidView = true;
 		$.navWin.close();
+		closeLoader();
 	}
 
 	function resumeActivityAndroid(e) {
@@ -371,6 +362,7 @@ if (OS_IOS) {
 	function clickBack(e) {
 		Ti.API.debug('day_view.' + arguments.callee.name + ': ' + JSON.stringify(e));
 		$.navGroup.close();
+		closeLoader();
 	}
 
 	var leftNavButton = Alloy.createController('navBarButton').getView();

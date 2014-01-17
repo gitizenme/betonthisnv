@@ -36,6 +36,9 @@ doClick = function(e) {
 	}
 };
 
+
+Ti.API.debug("Calendar: creating days of the week heading...");
+
 _ref = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 for ( i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
 	day = _ref[i];
@@ -103,6 +106,7 @@ createWeekView = function() {
 
 weekView = createWeekView();
 
+Ti.API.debug("Calendar: creating days of the previous month");
 if (dayOfWeek !== 0) {
 	for ( i = _j = _ref1 = dayOfWeek - 1; _ref1 <= 0 ? _j <= 0 : _j >= 0; i = _ref1 <= 0 ? ++_j : --_j) {
 
@@ -130,6 +134,7 @@ if (dayOfWeek !== 0) {
 	}
 }
 
+Ti.API.debug("Days of the current month");
 for ( i = _k = 1, _ref2 = period.daysInMonth(); 1 <= _ref2 ? _k <= _ref2 : _k >= _ref2; i = 1 <= _ref2 ? ++_k : --_k) {
 	tile = Ti.UI.createView({
 		backgroundColor : 'transparent',
@@ -163,6 +168,7 @@ for ( i = _k = 1, _ref2 = period.daysInMonth(); 1 <= _ref2 ? _k <= _ref2 : _k >=
 	}
 }
 
+Ti.API.debug("Create days of the next month");
 while (col !== 0) {
 	tile = Ti.UI.createView({
 		backgroundColor : 'transparent',
@@ -194,6 +200,7 @@ while (col !== 0) {
 }
 
 exports.setImage = function(day, image, row, column, options) {
+	Ti.API.debug("Calendar.setImage");
 	var _ref3;
 	if (options == null) {
 		options = {};
@@ -223,6 +230,7 @@ exports.setImage = function(day, image, row, column, options) {
 };
 
 exports.setView = function(day, view, options) {
+	Ti.API.debug("Calendar.setView");
 	var _ref3;
 	if (options == null) {
 		options = {};
@@ -257,6 +265,7 @@ exports.select = function(day) {
 };
 
 exports.setDate = function() {
+	Ti.API.debug("Calendar.setDate");
 	if (moment.isMoment(day)) {
 		day = day.date();
 	}
@@ -267,6 +276,7 @@ exports.getDate = function() {
 };
 
 exports.selectedDate = function() {
+	Ti.API.debug("Calendar.selectedDate");
 	if ($.selected != null) {
 		return moment.unix($.selected.date);
 	} else {

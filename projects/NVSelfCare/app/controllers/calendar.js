@@ -124,14 +124,8 @@ function doNextMonth() {
 
 }
 
-// You can select tile
-// $.current.getView().hide();
-$.current.setDate(currentMonth.date());
-
-$.calendarHeading.text = currentMonth.format("MMMM YYYY");
-
 function showDayView() {
-	Alloy.Globals.loader.Open();
+	// Alloy.Globals.loader.Open();
 
 	// You can get selectedDate. (moment object)
 	var selectedDate = $.current.selectedDate();
@@ -149,10 +143,10 @@ function showDayView() {
 
 }
 
-// To handle the click event, set the listener to the parent View.
-$.calendarView.addEventListener('click', function(e) {
+function onClickCalendar(e) {
 	showDayView();
-});
+
+}
 
 if (OS_IOS) {
 	var args = {
@@ -166,6 +160,13 @@ if (OS_IOS) {
 
 function init() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
+
+	// You can select tile
+	$.current.getView().hide();
+	$.current.setDate(currentMonth.date());
+	//
+	$.calendarHeading.text = currentMonth.format("MMMM YYYY");
+	//
 
 	$.prevButtonLabel.text = moment(currentMonth).subtract('M', 1).format('MMM');
 	$.nextButtonLabel.text = moment(currentMonth).add('M', 1).format('MMM');
@@ -215,7 +216,7 @@ function openLoginView() {
 if (OS_ANDROID) {
 
 	function configureAndroidMenu() {
-		Ti.API.debug('calendar' + arguments.callee.name);
+		Ti.API.debug('calendar.' + arguments.callee.name);
 		if ($.calendarTab.tabGroup.activity) {
 			var activity = $.calendarTab.tabGroup.activity;
 
@@ -254,37 +255,42 @@ if (OS_ANDROID) {
 
 }
 
-// toggleCalendarVisible();
 var overlayView = Ti.UI.createView({
 	backgroundColor : '#2399A3',
 	width : Ti.UI.FILL,
 	height : Ti.UI.FILL
 });
 
-$.calendarView.add(overlayView);
-
 function open() {
 	Ti.API.debug('calendar.' + arguments.callee.name);
 
 	init();
-	loadModelIntoCalendar();
+	setTimeout(loadModelIntoCalendar, 750);
 	if (OS_ANDROID) {
 		configureAndroidMenu();
+		$.calendarTab.tabGroup.activity.addEventListener('stop', stopActivityAndroid);
+		$.calendarTab.tabGroup.activity.addEventListener('restart', restartActivityAndroid);
+		$.calendarTab.tabGroup.activity.addEventListener('pause', pauseActivityAndroid);
+		$.calendarTab.tabGroup.activity.addEventListener('resume', resumeActivityAndroid);
 	}
 
+	$.current.getView().show();
+
 }
 
-function blur(e) {
-	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+
+
+function onTabBlur(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name);
 }
 
-function focus(e) {
-	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
-	$.calendarView.remove(overlayView);
+function onTabFocus(e) {
+	Ti.API.debug('calendar.' + arguments.callee.name);
 }
 
 function appResumed(e) {
 	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	$.current.getView().show();
 }
 
 function appResume(e) {
@@ -293,15 +299,43 @@ function appResume(e) {
 
 function appPause(e) {
 	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
-	$.calendarView.add(overlayView);
+	$.current.getView().hide();
 }
 
 function appPaused(e) {
 	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
 }
 
-Ti.App.addEventListener('resumed', appResumed);
-Ti.App.addEventListener('resume', appResume);
-Ti.App.addEventListener('pause', appPause);
-Ti.App.addEventListener('paused', appPaused);
+if (OS_ANDROID) {
+
+	function restartActivityAndroid(e) {
+		Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
+	function stopActivityAndroid(e) {
+		Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	}
+
+	function pauseActivityAndroid(e) {
+		Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+		// $.current.getView().hide();
+		// $.calendarView.add(overlayView);
+	}
+
+	function resumeActivityAndroid(e) {
+		Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(e));
+		// $.current.getView().show();
+		// $.calendarView.remove(overlayView);
+	}
+
+}
+
+if (OS_IOS) {
+
+	Ti.App.addEventListener('resumed', appResumed);
+	Ti.App.addEventListener('resume', appResume);
+	Ti.App.addEventListener('pause', appPause);
+	Ti.App.addEventListener('paused', appPaused);
+
+}
 

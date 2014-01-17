@@ -1,18 +1,19 @@
 <Alloy>
 	<Collection src="journal" />
-	<Tab id="calendarTab" title="Calendar" icon="images/CalendarIcon.png">
-		<Window id="tabWin" title="SELF CARE" layout="vertical" onOpen="open" onFocus="focus" onBlur="blur" >
-			<ScrollView id="scrollView" contentHeight="auto" contentWidth="auto" showVerticalScrollIndicator="true" layout="vertical">
+	<Tab id="calendarTab" title="Calendar" icon="images/CalendarIcon.png" onBlur="onTabBlur" onFocus="onTabFocus">
+		<Window id="tabWin" title="SELF CARE" layout="vertical" onOpen="open" >
+			<ScrollView top="7" layout="vertical" id="scrollView" showVerticalScrollIndicator="true"
+			contentHeight="auto" contentWidth="auto">
 				<View id="calendarHeader" visible="true" class="control" backgroundColor="#fff">
-					<View id="nextButtonView" top="5" left="5"  bottom="5" borderColor="#0A0A0A"  borderRadius="8" borderWidth="1" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-						<Label id="prevButtonLabel" text="Prev" onClick="doPrevMonth"/>
-					</View>
-					<Label id="calendarHeading" />
-					<View id="nextButtonView" top="5" right="5" bottom="5" borderColor="#0A0A0A"  borderRadius="8" borderWidth="1" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-						<Label id="nextButtonLabel" text="Next" onClick="doNextMonth"/>
-					</View>
+				<View id="nextButtonView" top="5" left="5"  bottom="5" borderColor="#0A0A0A"  borderRadius="8" borderWidth="1" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+				<Label id="prevButtonLabel" text="Prev" onClick="doPrevMonth"/>
 				</View>
-				<View id="calendarView" visible="true">
+				<Label id="calendarHeading" />
+				<View id="nextButtonView" top="5" right="5" bottom="5" borderColor="#0A0A0A"  borderRadius="8" borderWidth="1" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+				<Label id="nextButtonLabel" text="Next" onClick="doNextMonth"/>
+				</View>
+				</View>
+				<View id="calendarView" visible="true" onClick="onClickCalendar">
 					<Widget id="current" src="jp.co.mountposition.calendar" />
 				</View>
 			</ScrollView>

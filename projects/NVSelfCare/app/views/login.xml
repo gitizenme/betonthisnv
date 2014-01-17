@@ -1,5 +1,5 @@
 <Alloy>
-	<Window onOpen="onOpen" onAndroid:back="onAndroidBack">
+	<Window onOpen="open" onAndroid:back="onAndroidBack">
 		<ScrollView id="loginScrollView" showVerticalScrollIndicator="true"
 		contentHeight="auto" contentWidth="auto">
 			<View top="40" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
