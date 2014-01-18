@@ -2,7 +2,12 @@
 	<Collection src="journal" />
 	<Tab title="Journal" icon="images/DiaryIcon.png">
 		<Window id="tabWin" title="JOURNAL" layout="vertical" onOpen="open">
-			<ListView defaultItemTemplate="template" id="journalListView"
+<!--
+			<View id="sendButtonView" top="10" right="5" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+				<Label id="sendButtonLabel" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="SEND" onClick="send"/>
+			</View>
+-->
+			<ListView top="5" defaultItemTemplate="template" id="journalListView"
 				keepSectionsInSearch="true" onItemclick="itemClick"
 				caseInsensitiveSearch="true" backgroundColor="#5AAFB5">
 				<Templates>
@@ -15,4 +20,5 @@
 			</ListView>
 		</Window>
 	</Tab>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>

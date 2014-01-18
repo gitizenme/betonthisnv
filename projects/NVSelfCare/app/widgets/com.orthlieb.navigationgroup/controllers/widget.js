@@ -1,8 +1,8 @@
 // Originally derived from example code from Appcelerator developer relations.
 $.windowStack = [];
 
-$.navGroup
-$.top
+$.navGroup;
+$.top;
 
 $.init = function(navGroupWindow) {
 	if (OS_IOS) {

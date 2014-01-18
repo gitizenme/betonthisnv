@@ -14,7 +14,7 @@ var navGroup = args.navGroup || null;
 var winTitle = args.title || null;
 var sortDate = args.modelDate || null;
 
-var openAndroidView = false;
+$.openAndroidView = false;
 
 $.navGroup = navGroup;
 
@@ -104,13 +104,14 @@ function save() {
 if (OS_ANDROID) {
 	function onAndroidBack() {
 		Ti.API.debug('BodyMeasurements.' + arguments.callee.name);
-		openAndroidView = true;
+		$.openAndroidView = true;
+		Alloy.Globals.AuthenticateOnResume = false;
 		$.navWin.close();
 	}
 
 	function stopActivityAndroid(e) {
 		Ti.API.debug('BodyMeasurements.' + arguments.callee.name + ': ' + JSON.stringify(e));
-		if (!openAndroidView) {
+		if (!$.openAndroidView) {
 			Alloy.Globals.AuthenticateOnResume = true;
 			$.navWin.close();
 		} else {

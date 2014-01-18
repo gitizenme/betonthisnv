@@ -10,24 +10,28 @@ var currentMonth = moment();
 function updateCalendarIconForActivity(entry) {
 	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(entry));
 	var selectedDate = moment(entry.sortDate, "YYYY/MM/DD");
-	if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_COMMENT) {
-		$.current.setImage(selectedDate, '/images/CommentIconSmall.png', 1, 1);
+
+	if (currentMonth.isSame(selectedDate, 'year') && currentMonth.isSame(selectedDate, 'month')) {
+		if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_COMMENT) {
+			$.current.setImage(selectedDate, '/images/CommentIconSmall.png', 1, 1);
+		}
+		if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_HAD_SEX) {
+			$.current.setImage(selectedDate, '/images/SexIconSmall.png', 1, 2);
+		}
+		if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_MOOD) {
+			$.current.setImage(selectedDate, types.moodImagesSmall[parseInt(entry.data)], 1, 3);
+		}
+		if (entry.section == types.SECTION_ALERTS && entry.type == types.SECTION_ALERTS_DR_APPT) {
+			$.current.setImage(selectedDate, '/images/DrAppointmentIconSmall.png', 2, 1);
+		}
+		if (entry.section == types.SECTION_HEALTH && entry.type == types.SECTION_HEALTH_TCELL) {
+			$.current.setImage(selectedDate, '/images/TCellIconSmall.png', 2, 2);
+		}
+		if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_ALCOHOL_TOBACCO) {
+			$.current.setImage(selectedDate, '/images/AlcoholTobaccoIconSmall.png', 2, 3);
+		}
 	}
-	if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_HAD_SEX) {
-		$.current.setImage(selectedDate, '/images/SexIconSmall.png', 1, 2);
-	}
-	if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_MOOD) {
-		$.current.setImage(selectedDate, types.moodImagesSmall[parseInt(entry.data)], 1, 3);
-	}
-	if (entry.section == types.SECTION_ALERTS && entry.type == types.SECTION_ALERTS_DR_APPT) {
-		$.current.setImage(selectedDate, '/images/DrAppointmentIconSmall.png', 2, 1);
-	}
-	if (entry.section == types.SECTION_HEALTH && entry.type == types.SECTION_HEALTH_TCELL) {
-		$.current.setImage(selectedDate, '/images/TCellIconSmall.png', 2, 2);
-	}
-	if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_ALCOHOL_TOBACCO) {
-		$.current.setImage(selectedDate, '/images/AlcoholTobaccoIconSmall.png', 2, 3);
-	}
+
 }
 
 function loadModelIntoCalendar() {
@@ -277,8 +281,6 @@ function open() {
 	$.current.getView().show();
 
 }
-
-
 
 function onTabBlur(e) {
 	Ti.API.debug('calendar.' + arguments.callee.name);

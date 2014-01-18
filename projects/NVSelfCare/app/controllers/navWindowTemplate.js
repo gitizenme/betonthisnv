@@ -2,11 +2,12 @@ var args = arguments[0] || {};
 
 var navGroup = args.navGroup || null;
 
-var openAndroidView = false;
+$.openAndroidView = false;
 
 function onAndroidBack() {
 	Ti.API.debug('navWindowTemplate.' + arguments.callee.name);
-	openAndroidView = true;
+	Alloy.Globals.AuthenticateOnResume = false;
+	$.openAndroidView = true;
 }
 
 function open() {
@@ -22,7 +23,7 @@ if (OS_ANDROID) {
 	function stopActivityAndroid(e) {
 		Ti.API.debug('navWindowTemplate.' + arguments.callee.name + ': ' + JSON.stringify(e));
 	    $.navWin.close();
-		if (!openAndroidView) {
+		if (!$.openAndroidView) {
 			Alloy.Globals.AuthenticateOnResume = true;
 		}
 	}
@@ -48,7 +49,7 @@ if (OS_IOS) {
 		systemButton: Ti.UI.iPhone.SystemButton.SAVE
 	});
 	rightNavButton.addEventListener('click', clickSave);
-	
+
 	$.navWindowTemplate.titleControl = Alloy.createController('NavTitleControl', titleArgs).getView();
 	$.navWindowTemplate.rightNavButton = rightNavButton;
 }

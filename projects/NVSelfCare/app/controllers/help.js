@@ -102,10 +102,12 @@ function clickSend(e) {
 	var emailDialog = Ti.UI.createEmailDialog();
 	emailDialog.subject = "[BetOnThisNV - NV SelfCare] Get Help";
 	// TODO change this
-	emailDialog.toRecipients = ['joe@izen.me'];
-	emailDialog.html = true;
+	emailDialog.toRecipients = ['bdhansen@health.nv.gov'];
 	emailDialog.messageBody = 'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;
+	emailDialog.open();
 
+	// TODO put this logic where it goes
+/*
 	var writeToZip = outputDirectory + '/nvsexsafe_package.zip';
 
 	if (createArchive(writeToZip)) {
@@ -129,5 +131,6 @@ function clickSend(e) {
 	else {
 		alert("Unable create data archive for SelfCare. Unable to send message.");
 	}
+*/
 }
 

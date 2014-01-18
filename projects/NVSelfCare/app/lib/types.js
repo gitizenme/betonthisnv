@@ -2,11 +2,11 @@
  * @author Joe Chavez
  */
 
-exports.moodImages = [ "/images/MoodHappyIcon.png", "/images/MoodSadIcon.png", "/images/MoodSleepyIcon.png", "/images/MoodSatisfiedIcon.png", "/images/MoodNoneIcon.png"];
-exports.moodImagesSmall = [ "/images/MoodHappyIconSmall.png", "/images/MoodSadIconSmall.png", "/images/MoodSleepyIconSmall.png", "/images/MoodSatisfiedIconSmall.png", "/images/MoodNoneIconSmall.png"];
+exports.moodImages = ["/images/MoodHappyIcon.png", "/images/MoodSadIcon.png", "/images/MoodSleepyIcon.png", "/images/MoodSatisfiedIcon.png", "/images/MoodNoneIcon.png"];
+exports.moodImagesSmall = ["/images/MoodHappyIconSmall.png", "/images/MoodSadIconSmall.png", "/images/MoodSleepyIconSmall.png", "/images/MoodSatisfiedIconSmall.png", "/images/MoodNoneIconSmall.png"];
 
-exports.fatigueImages = [ "/images/MoodHappyIcon.png", "/images/MoodSleepyIcon.png", "/images/MoodSatisfiedIcon.png"];
-exports.fatigueImagesSmall = [ "/images/MoodHappyIconSmall.png", "/images/MoodSleepyIconSmall.png", "/images/MoodSatisfiedIconSmall.png"];
+exports.fatigueImages = ["/images/MoodHappyIcon.png", "/images/MoodSleepyIcon.png", "/images/MoodSatisfiedIcon.png"];
+exports.fatigueImagesSmall = ["/images/MoodHappyIconSmall.png", "/images/MoodSleepyIconSmall.png", "/images/MoodSatisfiedIconSmall.png"];
 
 exports.SECTION_DIARY = _SECTION_DIARY = 0;
 exports.SECTION_DIARY_COMMENT = _SECTION_DIARY_COMMENT = 0;
@@ -30,28 +30,83 @@ exports.SECTION_ACTIVITY_HAD_SEX = _SECTION_ACTIVITY_HAD_SEX = 0;
 exports.SECTION_ACTIVITY_ALCOHOL_TOBACCO = _SECTION_ACTIVITY_ALCOHOL_TOBACCO = 1;
 exports.SECTION_ACTIVITY_OTHER = _SECTION_ACTIVITY_OTHER = 2;
 
-
-exports.listViewImages = {
+exports.activityTypes = {
 	0 : {
-		0 : "/images/CommentIcon.png",
-		1 : "/images/MoodNoneIcon.png"
+		0 : {
+			image : "/images/CommentIcon.png",
+			title: "COMMENT",
+			controllerName : "dayComment"
+		},
+		1 : {
+			image : "/images/MoodNoneIcon.png",
+			title: "MOOD",
+			controllerName : "Mood"
+		}
 	},
 	1 : {
-		0 : "/images/DrAppointmentIcon.png",
-		1 : "/images/MedicationIcon.png",
-		2 : "/images/AlarmIcon.png"
+		0 : {
+			image : "/images/DrAppointmentIcon.png",
+			title: "DR APPPOINTMENT",
+			controllerName : "DrAppointment"
+		},
+		1 : {
+			image : "/images/MedicationIcon.png",
+			title: "MEDICATION",
+			controllerName : "Medication"
+		},
+		2 : {
+			image : "/images/AlarmIcon.png",
+			title: "ALARM",
+			controllerName : "Alarm"
+		}
 	},
 	2 : {
-		0 : "/images/TCellIcon.png",
-		1 : "/images/WeightIcon.png",
-		2 : "/images/SleepIcon.png",
-		3 : "/images/FatigueIcon.png",
-		4 : "/images/BloodPressureIcon.png",
-		5 : "/images/BodyMeasurementIcon.png"
+		0 : {
+			image : "/images/TCellIcon.png",
+			title: "T-CELL COUNT",
+			controllerName : "TCell"
+		},
+		1 : {
+			image : "/images/WeightIcon.png",
+			title: "WEIGHT",
+			controllerName : "Weight"
+		},
+		2 : {
+			image : "/images/SleepIcon.png",
+			title: "SLEEP",
+			controllerName : "Sleep"
+		},
+		3 : {
+			image : "/images/FatigueIcon.png",
+			title: "FATIGUE",
+			controllerName : "Fatigue"
+		},
+		4 : {
+			image : "/images/BloodPressureIcon.png",
+			title: "BLOOD PRESSURE",
+			controllerName : "BloodPressure"
+		},
+		5 : {
+			image : "/images/BodyMeasurementIcon.png",
+			title: "MEASUREMENTS",
+			controllerName : "BodyMeasurements"
+		}
 	},
 	3 : {
-		0 : "/images/SexIcon.png",
-		1 : "/images/AlcoholTobaccoIcon.png",
-		2 : "/images/OtherSubstanceIcon.png"
+		0 : {
+			image : "/images/SexIcon.png",
+			title: "HAD SEX",
+			controllerName : "HadSex"
+		},
+		1 : {
+			image : "/images/AlcoholTobaccoIcon.png",
+			title: "ALCOHOL/TOBACCO",
+			controllerName : "AlcoholTobacco"
+		},
+		2 : {
+			image : "/images/OtherSubstanceIcon.png",
+			title: "OTHER USE",
+			controllerName : "OtherSubstances"
+		}
 	},
 };
