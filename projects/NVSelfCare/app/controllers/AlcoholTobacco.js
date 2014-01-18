@@ -22,7 +22,7 @@ function open() {
 	Ti.API.debug('AlcoholTobacco.' + arguments.callee.name);
 
 	var existingJournalModel = journal.where({
-		sortDate : sortDate.format("M/D/YYYY"),
+		sortDate : sortDate.format("YYYY/MM/DD"),
 		section : types.SECTION_ACTIVITY,
 		type : types.SECTION_ACTIVITY_ALCOHOL_TOBACCO
 	});
@@ -46,7 +46,7 @@ function save() {
 	var modelDate = moment();
 
 	var existingJournalModel = journal.where({
-		sortDate : sortDate.format("M/D/YYYY"),
+		sortDate : sortDate.format("YYYY/MM/DD"),
 		section : types.SECTION_ACTIVITY,
 		type : types.SECTION_ACTIVITY_ALCOHOL_TOBACCO
 	});
@@ -59,7 +59,7 @@ function save() {
 	} else if (existingJournalModel.length == 0) {
 		var entry = Alloy.createModel('journal', {
 			editDate : modelDate.toISOString(),
-			sortDate : sortDate.format("M/D/YYYY"),
+			sortDate : sortDate.format("YYYY/MM/DD"),
 			displayData : textAreaComment.value,
 			data : textAreaComment.value,
 			section : types.SECTION_ACTIVITY,

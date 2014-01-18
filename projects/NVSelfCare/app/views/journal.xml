@@ -1,8 +1,18 @@
 <Alloy>
-    <Collection src="journal" />
+	<Collection src="journal" />
 	<Tab title="Journal" icon="images/DiaryIcon.png">
 		<Window id="tabWin" title="JOURNAL" layout="vertical" onOpen="open">
-			<Label>Journal View</Label>
+			<ListView defaultItemTemplate="template" id="journalListView"
+				keepSectionsInSearch="true"
+				caseInsensitiveSearch="true" backgroundColor="#5AAFB5">
+				<Templates>
+					<ItemTemplate name="template">
+						<ImageView bindId="pic" id="icon" />
+						<Label bindId="info" id="title" />
+						<Label bindId="subinfo" id="subtitle" width="Ti.UI.FILL" />
+					</ItemTemplate>
+				</Templates>
+			</ListView>
 		</Window>
 	</Tab>
 </Alloy>

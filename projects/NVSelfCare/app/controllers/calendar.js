@@ -9,7 +9,7 @@ var currentMonth = moment();
 
 function updateCalendarIconForActivity(entry) {
 	Ti.API.debug('calendar.' + arguments.callee.name + ': ' + JSON.stringify(entry));
-	var selectedDate = moment(entry.sortDate, "MM/DD/YYYY");
+	var selectedDate = moment(entry.sortDate, "YYYY/MM/DD");
 	if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_COMMENT) {
 		$.current.setImage(selectedDate, '/images/CommentIconSmall.png', 1, 1);
 	}
@@ -37,7 +37,7 @@ function loadModelIntoCalendar() {
 	// TODO clear calendar if no data
 
 	var existingJournalModel = journal.filter(function(entry) {
-		var sortDate = moment(entry.attributes.sortDate, "MM/DD/YYYY");
+		var sortDate = moment(entry.attributes.sortDate, "YYYY/MM/DD");
 		var sortDateMonth = sortDate.month();
 		var sortDateYear = sortDate.year();
 		var calendarViewMonth = currentMonth.month();

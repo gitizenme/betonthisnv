@@ -43,7 +43,7 @@ function loadModelIntoListView() {
 	journal.fetch();
 
 	var existingJournalModel = journal.where({
-		sortDate : selectedDate.format("M/D/YYYY")
+		sortDate : selectedDate.format("YYYY/MM/DD")
 	});
 
 	for (var i = 0, j = existingJournalModel.length; i < j; i++) {
@@ -312,9 +312,9 @@ function open() {
 
 		// Action Bar
 		if (Alloy.Globals.Android.Api >= 11 && $.navWin.activity.actionBar != null) {
-			$.navWin.activity.actionBar.title = 'Day View - ' + selectedDate.format("M/D/YYYY");
+			$.navWin.activity.actionBar.title = 'Day View - ' + selectedDate.format("YYYY/MM/DD");
 		} else {
-			$.navWin.title = 'Day View - ' + selectedDate.format("M/D/YYYY");
+			$.navWin.title = 'Day View - ' + selectedDate.format("YYYY/MM/DD");
 		}
 	}
 }

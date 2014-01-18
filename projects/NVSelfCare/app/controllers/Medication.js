@@ -25,7 +25,7 @@ function open() {
 	Ti.API.debug('Medication.' + arguments.callee.name);
 
 	var existingJournalModel = journal.where({
-		sortDate : sortDate.format("M/D/YYYY"),
+		sortDate : sortDate.format("YYYY/MM/DD"),
 		section : types.SECTION_ALERTS,
 		type : types.SECTION_ALERTS_MEDICATION
 	});
@@ -46,7 +46,7 @@ function open() {
 			saveToCalendar.value = apptData.saveToCalendar;
 		}
 	}
-	
+
 	if (OS_ANDROID) {
 		$.navWin.activity.addEventListener('stop', stopActivityAndroid);
 	}
@@ -69,7 +69,7 @@ function save() {
 	var modelDate = moment();
 
 	var existingJournalModel = journal.where({
-		sortDate : sortDate.format("M/D/YYYY"),
+		sortDate : sortDate.format("YYYY/MM/DD"),
 		section : types.SECTION_ALERTS,
 		type : types.SECTION_ALERTS_MEDICATION
 	});
@@ -88,7 +88,7 @@ function save() {
 	} else if (existingJournalModel.length == 0) {
 		var entry = Alloy.createModel('journal', {
 			editDate : modelDate.toISOString(),
-			sortDate : sortDate.format("M/D/YYYY"),
+			sortDate : sortDate.format("YYYY/MM/DD"),
 			displayData : 'Medication:' + dateTimeField.value,
 			data : JSON.stringify(dataToStore),
 			section : types.SECTION_ALERTS,

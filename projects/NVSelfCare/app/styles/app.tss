@@ -374,6 +374,9 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 		fontWeight: 'Bold'
 		}
 },
+"ListView" : {
+	    backgroundColor: "#5AAFB5"
+},
 "ListItem" : {
 	    backgroundColor: "#5AAFB5", selectedBackgroundColor: "#6CD1D7",
 	    accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_NONE
@@ -396,7 +399,7 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
     // left: 80, top: 0
 // },
 "#title" : {
-    color: 'white',
+    color: '#D7DF23',
     font: { fontFamily:'Arial', fontSize: '20dp', fontWeight:'bold' },
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,

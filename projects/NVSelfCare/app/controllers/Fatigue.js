@@ -26,7 +26,7 @@ function open() {
 	Ti.API.debug('Fatigue.' + arguments.callee.name);
 
 	var existingJournalModel = journal.where({
-		sortDate : sortDate.format("M/D/YYYY"),
+		sortDate : sortDate.format("YYYY/MM/DD"),
 		section : types.SECTION_HEALTH,
 		type : types.SECTION_HEALTH_FATIGUE
 	});
@@ -67,7 +67,7 @@ function save() {
 	var listDataItem = section.items[itemIndex];
 
 	var existingJournalModel = journal.where({
-		sortDate : sortDate.format("M/D/YYYY"),
+		sortDate : sortDate.format("YYYY/MM/DD"),
 		section : types.SECTION_HEALTH,
 		type : types.SECTION_HEALTH_FATIGUE
 	});
@@ -81,7 +81,7 @@ function save() {
 	} else if (existingJournalModel.length == 0) {
 		var entry = Alloy.createModel('journal', {
 			editDate : modelDate.toISOString(),
-			sortDate : sortDate.format("M/D/YYYY"),
+			sortDate : sortDate.format("YYYY/MM/DD"),
 			displayData : listDataItem.info.text || 'Fatigue',
 			data : itemIndex,
 			section : types.SECTION_HEALTH,
