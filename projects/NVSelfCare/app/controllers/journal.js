@@ -5,6 +5,8 @@ var types = require('types');
 var journal = Alloy.Collections.journal;
 journal.fetch();
 
+var searchBar;
+
 function journalChanged(context) {
 	Ti.API.debug('journal.' + arguments.callee.name + ': ' + JSON.stringify(context));
 	loadData();
@@ -63,7 +65,7 @@ function loadData() {
 				image = types.fatigueImages[parseInt(entry.data)];
 			}
 
-			rowProps.searchableText = moment(entry.sortDate) + " " + entry.displayData;
+			rowProps.searchableText = moment(key).calendar() + " " + entry.displayData;
 
 			var item = {
 				info : {
@@ -86,22 +88,94 @@ function loadData() {
 
 	$.journalListView.setSections(sections);
 
-	var search = Titanium.UI.createSearchBar({
-		barColor : '#000',
+	searchBar = Titanium.UI.createSearchBar({
+		barColor : '#5AAFB5',
+		color : '#2399A3',
 		showCancel : true,
-		height : 43,
+		height : '43dp',
 		top : 0,
+		hintText : 'Search by date or title'
 	});
-	search.addEventListener('cancel', function() {
-		search.blur();
+	searchBar.addEventListener('cancel', function() {
+		searchBar.blur();
 	});
 
-	search.addEventListener('change', function(e) {
-		$.journalListView.searchText = e.value;
-	});
-	$.journalListView.headerView = search;
+	if (OS_IOS) {
+		searchBar.addEventListener('change', function(e) {
+			$.journalListView.searchText = e.value;
+		});
+		$.journalListView.headerView = searchBar;
+	}
+	if (OS_ANDROID) {
+		$.journalListView.searchView = searchBar;
+	}
 
-	// $.journalListView.searchView = search;
+}
+
+var temp = {
+	"section" : {},
+	"sectionIndex" : 0,
+	"bindId" : "info",
+	"itemIndex" : 0,
+	"accessoryClicked" : false,
+	"bubbles" : true,
+	"type" : "itemclick",
+	"source" : {
+		"keepSectionsInSearch" : "true",
+		"backgroundColor" : "#5AAFB5",
+		"id" : "journalListView",
+		"headerView" : {
+			"hintText" : "Search by date or title",
+			"barColor" : "#5AAFB5",
+			"horizontalWrap" : true,
+			"color" : "#2399A3",
+			"top" : 0,
+			"height" : "43dp",
+			"showCancel" : true
+		},
+		"horizontalWrap" : true,
+		"caseInsensitiveSearch" : "true",
+		"dictTemplates" : {
+			"template" : {}
+		},
+		"defaultItemTemplate" : "template",
+		"canScroll" : true
+	},
+	"cancelBubble" : false
+};
+
+var XXXproperties = {
+	"subinfo" : {
+		"text" : "Updated 2 hours ago"
+	},
+	"pic" : {
+		"image" : "/images/CommentIcon.png"
+	},
+	"info" : {
+		"text" : "Hi\n"
+	},
+	"properties" : {
+		"modelId" : 16,
+		"backgroundColor" : "#5AAFB5",
+		"searchableText" : "1386576000000 Dr. Appt:1/18/2014 8:45 PM",
+		"selectedBackgroundColor" : "#6CD1D7",
+		"accessoryType" : 0
+	}
+};
+
+function itemClick(e) {
+	Ti.API.debug('journal.' + arguments.callee.name + ': ' + JSON.stringify(e));
+
+	if (OS_ANDROID) {
+		// Clear search bar
+		searchBar.value = "";
+		// hiding and showing the search bar forces it back to its non-focused appearance.
+		searchBar.hide();
+		searchBar.show();
+	}
+
+	var itemForSection = $.journalListView.sections[e.sectionIndex].items[e.itemIndex];
+	Ti.API.debug("journal: itemForSection.properties = " + JSON.stringify(itemForSection));
 
 }
 

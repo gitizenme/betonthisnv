@@ -3,7 +3,7 @@
 	<Tab title="Journal" icon="images/DiaryIcon.png">
 		<Window id="tabWin" title="JOURNAL" layout="vertical" onOpen="open">
 			<ListView defaultItemTemplate="template" id="journalListView"
-				keepSectionsInSearch="true"
+				keepSectionsInSearch="true" onItemclick="itemClick"
 				caseInsensitiveSearch="true" backgroundColor="#5AAFB5">
 				<Templates>
 					<ItemTemplate name="template">
