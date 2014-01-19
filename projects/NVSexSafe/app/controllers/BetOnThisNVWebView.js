@@ -40,7 +40,7 @@ if (OS_IOS) {
 	leftNavButton.addEventListener('click', clickBack);
 
 	var args = {
-		title : "betonthisnv.org"
+		title : "BetOnThisNV.org"
 	};
 	$.navWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
 	$.navWin.leftNavButton = leftNavButton;
