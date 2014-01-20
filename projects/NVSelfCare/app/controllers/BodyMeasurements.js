@@ -68,13 +68,14 @@ function save() {
 		type : types.SECTION_HEALTH_MEASUREMENTS
 	});
 
-	var displayData = 'Body Measurements';
 
 	var dataToStore = {
 		bustSize : textFieldBustSize.value,
 		waistSize : textFieldWaistSize.value,
 		hipSize : textFieldHipSize.value
 	};
+
+	var displayData = 'Bust: ' + dataToStore.bustSize + ', Waist: ' + dataToStore.waistSize + ', Hips: ' + dataToStore.hipSize;
 
 	if (existingJournalModel.length == 1) {
 		existingJournalModel[0].save({

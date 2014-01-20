@@ -33,11 +33,13 @@ exports.SECTION_ACTIVITY_OTHER = _SECTION_ACTIVITY_OTHER = 2;
 exports.activityTypes = {
 	0 : {
 		0 : {
+			type: "Comment",
 			image : "/images/CommentIcon.png",
 			title: "COMMENT",
 			controllerName : "dayComment"
 		},
 		1 : {
+			type: "Mood",
 			image : "/images/MoodNoneIcon.png",
 			title: "MOOD",
 			controllerName : "Mood"
@@ -45,16 +47,19 @@ exports.activityTypes = {
 	},
 	1 : {
 		0 : {
+			type: "Dr. Appointment",
 			image : "/images/DrAppointmentIcon.png",
 			title: "DR APPPOINTMENT",
 			controllerName : "DrAppointment"
 		},
 		1 : {
+			type: "Medication Reminder",
 			image : "/images/MedicationIcon.png",
 			title: "MEDICATION",
 			controllerName : "Medication"
 		},
 		2 : {
+			type: "Alarm",
 			image : "/images/AlarmIcon.png",
 			title: "ALARM",
 			controllerName : "Alarm"
@@ -62,31 +67,37 @@ exports.activityTypes = {
 	},
 	2 : {
 		0 : {
+			type: "T-Cell Count",
 			image : "/images/TCellIcon.png",
 			title: "T-CELL COUNT",
 			controllerName : "TCell"
 		},
 		1 : {
+			type: "Weight",
 			image : "/images/WeightIcon.png",
 			title: "WEIGHT",
 			controllerName : "Weight"
 		},
 		2 : {
+			type: "Sleep (hours)",
 			image : "/images/SleepIcon.png",
 			title: "SLEEP",
 			controllerName : "Sleep"
 		},
 		3 : {
+			type: "Fatigue",
 			image : "/images/FatigueIcon.png",
 			title: "FATIGUE",
 			controllerName : "Fatigue"
 		},
 		4 : {
+			type: "Blood Pressure",
 			image : "/images/BloodPressureIcon.png",
 			title: "BLOOD PRESSURE",
 			controllerName : "BloodPressure"
 		},
 		5 : {
+			type: "Body Measurements",
 			image : "/images/BodyMeasurementIcon.png",
 			title: "MEASUREMENTS",
 			controllerName : "BodyMeasurements"
@@ -94,16 +105,19 @@ exports.activityTypes = {
 	},
 	3 : {
 		0 : {
+			type: "Sexual Activity",
 			image : "/images/SexIcon.png",
 			title: "HAD SEX",
 			controllerName : "HadSex"
 		},
 		1 : {
+			type: "Alcohol/Tobacco Use Activity",
 			image : "/images/AlcoholTobaccoIcon.png",
 			title: "ALCOHOL/TOBACCO",
 			controllerName : "AlcoholTobacco"
 		},
 		2 : {
+			type: "Other Substances Activity",
 			image : "/images/OtherSubstanceIcon.png",
 			title: "OTHER USE",
 			controllerName : "OtherSubstances"

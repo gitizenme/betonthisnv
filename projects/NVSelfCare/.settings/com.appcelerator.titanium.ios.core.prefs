@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-iosLaunchConfigurationAttributes/ATTR_MINIFY=false
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
 iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=NVSelfCare
 iosLaunchConfigurationAttributes/appid=org.betonthisnv.nvselfcare
 iosLaunchConfigurationAttributes/certificate=izen.me

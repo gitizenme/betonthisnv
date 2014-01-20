@@ -10,7 +10,6 @@ var searchBar;
 function journalChanged(context) {
 	Ti.API.debug('journal.' + arguments.callee.name + ': ' + JSON.stringify(context));
 	loadData();
-	// updateListViewRow(context.attributes);
 }
 
 journal.on('change', journalChanged);
@@ -116,139 +115,6 @@ function loadData() {
 
 }
 
-var iosClick = {
-	"section" : {},
-	"sectionIndex" : 0,
-	"bindId" : "info",
-	"itemIndex" : 0,
-	"accessoryClicked" : false,
-	"bubbles" : true,
-	"type" : "itemclick",
-	"source" : {
-		"keepSectionsInSearch" : "true",
-		"backgroundColor" : "#5AAFB5",
-		"id" : "journalListView",
-		"headerView" : {
-			"hintText" : "Search by date or title",
-			"barColor" : "#5AAFB5",
-			"horizontalWrap" : true,
-			"color" : "#2399A3",
-			"top" : 0,
-			"height" : "43dp",
-			"showCancel" : true
-		},
-		"horizontalWrap" : true,
-		"caseInsensitiveSearch" : "true",
-		"dictTemplates" : {
-			"template" : {}
-		},
-		"defaultItemTemplate" : "template",
-		"canScroll" : true
-	},
-	"cancelBubble" : false
-};
-
-var androidClick = {
-	"type" : "itemclick",
-	"source" : {
-		"backgroundRepeat" : false,
-		"rect" : {
-			"height" : 0,
-			"y" : 0,
-			"x" : 0,
-			"width" : 0
-		},
-		"visible" : true,
-		"size" : {
-			"height" : 0,
-			"y" : 0,
-			"width" : 0,
-			"x" : 0
-		},
-		"keepScreenOn" : false,
-		"apiName" : "Ti.UI.ListItem",
-		"children" : [],
-		"enabled" : true,
-		"bubbleParent" : true
-	},
-	"itemIndex" : 0,
-	"sectionIndex" : 7,
-	"section" : {
-		"bubbleParent" : true,
-		"footerView" : null,
-		"headerTitle" : "02/06/2014",
-		"items" : [{
-			"subinfo" : {
-				"text" : "Updated 16 hours ago"
-			},
-			"properties" : {
-				"modelId" : 29,
-				"accessoryType" : 2,
-				"activityType" : {
-					"image" : "/images/MoodNoneIcon.png",
-					"controllerName" : "Mood",
-					"title" : "MOOD"
-				},
-				"selectedDate" : "2014/02/06",
-				"backgroundColor" : "#5AAFB5",
-				"searchableText" : "02/06/2014 Happy",
-				"selectedBackgroundColor" : "#6CD1D7"
-			},
-			"pic" : {
-				"image" : "/images/MoodHappyIcon.png"
-			},
-			"info" : {
-				"text" : "Happy"
-			}
-		}],
-		"children" : [],
-		"rect" : {
-			"height" : 0,
-			"y" : 0,
-			"x" : 0,
-			"width" : 0
-		},
-		"size" : {
-			"height" : 0,
-			"y" : 0,
-			"width" : 0,
-			"x" : 0
-		},
-		"keepScreenOn" : false,
-		"headerView" : null,
-		"apiName" : "Ti.UI.ListSection",
-		"footerTitle" : null
-	},
-	"y" : 96,
-	"x" : 1018,
-	"bubbles" : true,
-	"cancelBubble" : false
-};
-
-var XXXproperties = {
-	"subinfo" : {
-		"text" : "Updated 13 hours ago"
-	},
-	"pic" : {
-		"image" : "/images/DrAppointmentIcon.png"
-	},
-	"info" : {
-		"text" : "Dr. Appt:1/18/2014 8:45 PM"
-	},
-	"properties" : {
-		"selectedBackgroundColor" : "#6CD1D7",
-		"backgroundColor" : "#5AAFB5",
-		"accessoryType" : 2,
-		"selectedDate" : "2013/12/09",
-		"activityType" : {
-			"image" : "/images/DrAppointmentIcon.png",
-			"title" : "DR APPPOINTMENT",
-			"controllerName" : "DrAppointment"
-		},
-		"modelId" : 16,
-		"searchableText" : "12/09/2013 Dr. Appt:1/18/2014 8:45 PM"
-	}
-};
 
 function itemClick(e) {
 	Ti.API.debug('journal.' + arguments.callee.name + ': ' + JSON.stringify(e));
@@ -282,156 +148,82 @@ function itemClick(e) {
 
 }
 
-var Compression = require('me.izen.compression');
-var outputDirectory = Ti.Filesystem.applicationDataDirectory + '/';
-var tempDirectory = Ti.Filesystem.tempDirectory + '/';
-var zipRootDir = 'package';
-var password = 'YourPassword';
-
-function createArchive(writeToZip) {
+function ConvertToCSV(objArray) {
 	Ti.API.trace('journal.' + arguments.callee.name);
+	var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+	var str = '';
 
-	var zipOkay = false;
-	Ti.API.info("Output to ZIP file: " + writeToZip);
+	for (var i = 0; i < array.length; i++) {
+		var line = '';
+		for (var index in array[i]) {
+			if (line != '')
+				line += ',';
+			line += '"';
+			line += array[i][index];
+			line += '"';
+		}
+
+		str += line + '\r\n';
+	}
+
+	return str;
+}
+
+
+function send(e) {
+	Ti.API.trace('journal.' + arguments.callee.name + ": " + JSON.stringify(e));
+
+	var zipRootDir = 'package';
 
 	var packageDir = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, zipRootDir);
 	if (! packageDir.exists()) {
 		packageDir.createDirectory();
 	}
 
-	var a_txt = Ti.Filesystem.getFile(packageDir.resolve(), 'a.txt');
-	Ti.API.debug("a_txt path = " + a_txt.resolve());
-	a_txt.write("This is the a.txt file....", false);
+	var filesToSend = [];
 
-	var b_txt = Ti.Filesystem.getFile(packageDir.resolve(), 'b.txt');
-	Ti.API.debug("b_txt path = " + b_txt.resolve());
-	b_txt.write("This is the b.txt file....", false);
+	var fileName = "NV_SexSafe_Journal_" + moment().format("MMDDYYYY-hhmm-A");
+	var journalFile = Ti.Filesystem.getFile(packageDir.resolve(), fileName + ".csv");
 
-	var result = '';
+	var keys = ['sortDate', 'displayData'];
+	var journalData = journal.map(function(entry) {
+		var mapped = {};
+
+		for (var i = 0, j = keys.length; i < j; i++) {
+			mapped[keys[i]] = entry.attributes[keys[i]];
+		};
+		mapped["type"] = types.activityTypes[entry.attributes.section][entry.attributes.type].type;
+
+		return mapped;
+	});
+
+	var journalCSV = '"Date", "Data", "Type"\r\n' +  ConvertToCSV(JSON.stringify(journalData));
+	journalFile.write(journalCSV, false);
 
 	if (OS_IOS) {
-		result = Compression.zip(writeToZip, zipRootDir, password, [a_txt.resolve(), b_txt.resolve()]);
+		filesToSend.push(journalFile.resolve());
 	}
 	if (OS_ANDROID) {
-		result = Compression.zip(writeToZip, zipRootDir, password, [a_txt.name, b_txt.name]);
+		filesToSend.push(journalFile.name);
 	}
 
-	if (result == 'success') {
-		if (!Ti.Filesystem.getFile(writeToZip).exists()) {
-			Ti.API.error('FAIL: The target zip does not exist!');
-		} else {
-			Ti.API.info('Zip Files: ' + result + ', to: ' + writeToZip);
-		}
-		zipOkay = true;
-	} else {
-		Ti.API.error("Error creating archive: " + result);
+	var args = {
+		outputDirectory : Ti.Filesystem.applicationDataDirectory + '/',
+		tempDirectory : Ti.Filesystem.tempDirectory + '/',
+		zipRootDir : zipRootDir,
+		zipFileName : fileName + '.zip',
+		title : 'SEND\nJOURNAL',
+		sendInfo : 'Please enter a password to create a password protected file that contains your Journal information.\nWrite this password down and communicate it to your case manager using a separate messge.\nThis file will be encrypted and sent via the e-mail app on your device.',
+		sendFileList : filesToSend
+	};
+
+	var sendMessageController = Alloy.createController('SendEncryptedMessage', args);
+
+	if(OS_IOS) {
+		sendMessageController.getView().open();
 	}
 
 	packageDir = null;
-	a_txt = null;
-	b_txt = null;
-
-	return zipOkay;
-}
-
-function sendMessage() {
-	var emailDialog = Ti.UI.createEmailDialog();
-	emailDialog.subject = "[BetOnThisNV - NV SelfCare] Get Help";
-	// TODO change this
-	emailDialog.toRecipients = ['bdhansen@health.nv.gov'];
-	emailDialog.messageBody = 'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;
-
-	var writeToZip = outputDirectory + '/nvsexsafe_package.zip';
-
-	if (createArchive(writeToZip)) {
-		if (OS_ANDROID) {
-			var f = Ti.Filesystem.getFile(writeToZip);
-			var copyFileName = Ti.Filesystem.tempDirectory + '/nvsexsafe_package.zip';
-			if (f.copy(copyFileName)) {
-				var fCopy = Ti.Filesystem.getFile(writeToZip);
-				emailDialog.addAttachment(fCopy);
-				emailDialog.open();
-			} else {
-				alert("Unable create data archive for SelfCare. Unable to send message.");
-				Ti.API.error("Copy of attachment file failed: " + copyFileName);
-			}
-
-		} else if (OS_IOS) {
-			emailDialog.addAttachment(Ti.Filesystem.getFile(writeToZip));
-			emailDialog.open();
-		}
-	} else {
-		alert("Unable create data archive for SelfCare. Unable to send message.");
-	}
-
-}
-
-function send(e) {
-	Ti.API.trace('journal.' + arguments.callee.name + ": " + JSON.stringify(e));
-
-	var title = 'Enter Password';
-	var labelText = 'Enter a password to protect your data.\n  You will give to the case worker using a different method of communication.\n  A strong password is 8 to 16 characters with at least one capital letter, number and special character.';
-	if (OS_ANDROID) {
-		var inputView = Titanium.UI.createView({
-			backgroundColor : '#111',
-			layout : 'vertical'
-		});
-
-		var label = Titanium.UI.createLabel({
-			font : {
-				fontSize : '26dp',
-				fontFamily : 'Helvetica Neue'
-			},
-			top : 10,
-			width : '80%',
-			text : labelText
-		});
-
-		var passwordField = Titanium.UI.createTextField({
-			font : {
-				fontSize : '26dp',
-				fontFamily : 'Helvetica Neue'
-			},
-			top : 10,
-			width : '50%',
-			passwordMask : true,
-			hintText : 'enter a password',
-			returnKeyType : Ti.UI.RETURNKEY_DONE
-		});
-
-		inputView.add(label);
-		inputView.add(passwordField);
-		var dialog = Titanium.UI.createAlertDialog({
-			androidView : inputView,
-			buttonNames : ['OK', 'Cancel'],
-			title : title
-		});
-
-	}
-	if (OS_IOS) {
-		var dialog = Titanium.UI.createAlertDialog({
-			androidView : inputView,
-			buttonNames : ['OK', 'Cancel'],
-			title : title,
-			message : labelText,
-			style : Titanium.UI.iPhone.AlertDialogStyle.SECURE_TEXT_INPUT,
-			persistent : true
-		});
-
-	}
-	dialog.addEventListener('click', function(e) {
-		Titanium.API.info("Dialog Click : " + JSON.stringify(e));
-		if (e.button == true && e.index == 0) {
-			if (!val || val.length == 0) {
-
-			} else {
-				password = passwordField.value;
-				sendMessage();
-			}
-		}
-	});
-
-	dialog.show();
 
 }
 

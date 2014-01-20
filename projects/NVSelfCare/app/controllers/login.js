@@ -19,6 +19,7 @@ function configureUI() {
 		$.createButtonLabel.visible = false;
 		$.createButtonView.visible = false;
 		$.resetButton.visible = true;
+		$.rightTitle.text = "ACCOUNT\nLOGIN";
 	} else {
 		updateHintLabel('Enter a user name and password to create an account. If you forget your user name or password your information will be lost.', 750);
 		$.createButtonLabel.visible = true;
@@ -26,6 +27,7 @@ function configureUI() {
 		$.loginButtonLabel.visible = false;
 		$.loginButtonView.visible = false;
 		$.resetButton.visible = false;
+		$.rightTitle.text = "CREATE\nACCOUNT";
 	}
 }
 

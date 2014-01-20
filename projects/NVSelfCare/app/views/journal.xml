@@ -2,14 +2,17 @@
 	<Collection src="journal" />
 	<Tab title="Journal" icon="images/DiaryIcon.png">
 		<Window id="tabWin" title="JOURNAL" layout="vertical" onOpen="open">
-<!--
-			<View id="sendButtonView" top="10" right="5" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-				<Label id="sendButtonLabel" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="SEND" onClick="send"/>
+			<View layout="horizontal" width="Ti.UI.FILL" height="Ti.UI.SIZE">
+				<View id="sendButtonView" top="7" left="15" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+					<Label id="sendButtonLabel" top="7" left="7" right="7" bottom="5" class="oldpressLabelLarge" text="SEND" onClick="send"/>
+				</View>
+				<View left="0" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+					<Label width="Ti.UI.FILL" height="Ti.UI.SIZE" color="#fff" text="Use the SEND button to securely e-mail\nyour journal to a case worker." />
+				</View>
 			</View>
--->
 			<ListView top="5" defaultItemTemplate="template" id="journalListView"
-				keepSectionsInSearch="true" onItemclick="itemClick"
-				caseInsensitiveSearch="true" backgroundColor="#5AAFB5">
+			keepSectionsInSearch="true" onItemclick="itemClick"
+			caseInsensitiveSearch="true" backgroundColor="#5AAFB5">
 				<Templates>
 					<ItemTemplate name="template">
 						<ImageView bindId="pic" id="icon" />

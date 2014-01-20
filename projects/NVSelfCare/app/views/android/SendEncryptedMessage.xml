@@ -1,9 +1,9 @@
 <Alloy>
-	<NavigationWindow id="navGroup" platform="ios" modal="false" onOpen="open" >
-		<Window id="navWin" class="container" title="Day" onFocus="focus" onBlur="blur" >
+	<View fullscreen="false" class="container" id="contactView" backgroundColor="#2399A3">
+		<Window id="navWin" fullscreen="false" layout="vertical" class="container" onOpen="open" title="Day View" onAndroid:back="onAndroidBack">
 			<ScrollView id="scrollView" showVerticalScrollIndicator="true"
 			contentHeight="auto" contentWidth="auto" backgroundColor="#2399A3">
-				<View top="5" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" onTouchstart="onTouchStart">
+				<View top="40" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL">
 					<View layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
 						<ImageView image="/images/appicon.png"></ImageView>
 						<Label left="5" id="rightTitle" color="#fff">SEND</Label>
@@ -16,13 +16,13 @@
 					<Label top="6" text="Message:" left="5"/>
 					<TextField top="2" left="5" id="message" hintText="enter a brief message" onFocus="focusMessage" onReturn="focusPassword"/>
 					<Label top="6" text="Password:" left="5"/>
-					<TextField id="password" left="5" hintText="enter password" autocorrect="false" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" onFocus="focusPassword" onReturn="focusSendButton"/>
+					<TextField id="password" left="5" hintText="enter password" autocorrect="false" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" onFocus="focusPassword" onReturn="checkPassword"/>
 					<View id="sendButtonView" visible="true" top="10" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
 						<Label id="sendButtonLabel" visible="true" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="SEND" onClick="sendEncryptedMessage"/>
 					</View>
 				</View>
 			</ScrollView>
 		</Window>
-	</NavigationWindow>
+	</View>
 	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
 </Alloy>
