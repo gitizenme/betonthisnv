@@ -1,0 +1,5 @@
+<Alloy>
+	<View backgroundColor="#FF0000" height="Ti.UI.SIZE">
+		<Label color="#fff">Status: incomplete</Label>
+	</View>
+</Alloy>

@@ -1,8 +1,216 @@
 <Alloy>
-    <Collection src="journal" />
-	<Tab title="Eligibilty" icon="images/CameraIcon.png">
-		<Window id="tabWin" title="ELIGIBILITY" layout="vertical" onOpen="open">
-			<Label>Eligibility View</Label>
+	<Collection src="documents" />
+	<Tab id="calendarTab" title="ELIGIBILITY" icon="images/CameraIcon.png" onBlur="onTabBlur" onFocus="onTabFocus">
+		<Window id="tabWin" layout="vertical" title="ELIGIBILITY" onOpen="open" >
+			<View layout="horizontal" width="Ti.UI.FILL" height="Ti.UI.SIZE">
+				<View id="sendButtonView" top="7" left="15" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+					<Label id="sendButtonLabel" top="7" left="7" right="7" bottom="5" class="oldpressLabelLarge" text="SEND" onClick="send"/>
+				</View>
+				<View left="0" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+					<Label width="Ti.UI.FILL" height="Ti.UI.SIZE" color="#fff" text="Use the SEND button to securely e-mail\nyour eligibility documents to a case worker." />
+				</View>
+			</View>
+			<ListView top="3" defaultItemTemplate="default" id="theList"
+				separatorColor="transparent" onItemclick="itemClick" >
+
+				<!-- The Templates tag sets the ListView's templates property -->
+
+				<Templates>
+
+					<!-- Define your item templates within the Templates tags or use the
+					Require tag to include a view that only contains an ItemTemplate -->
+
+					<ItemTemplate name="default">
+						<Label bindId="info" id="title" />
+					</ItemTemplate>
+					<ItemTemplate name="title">
+						<Label bindId="info" id="listTitle"  top="5" borderColor="#D7DF23" borderRadius="8" borderWidth="2" />
+					</ItemTemplate>
+					<ItemTemplate name="info" height="Ti.UI.SIZE">
+						<View height="Ti.UI.SIZE" backgroundColor="#2399A3" >
+							<Label bindId="info" id="info" />
+						</View>
+					</ItemTemplate>
+					<ItemTemplate name="item" height="Ti.UI.SIZE">
+						<View height="Ti.UI.SIZE" backgroundColor="#2399A3" >
+							<ImageView bindId="pic" id="icon" />
+							<Label bindId="info" id="title" />
+							<Label bindId="subinfo" id="subtitle" width="Ti.UI.FILL" />
+						</View>
+					</ItemTemplate>
+					<ItemTemplate name="infoItem" height="Ti.UI.SIZE">
+						<View height="40dp" backgroundColor="#2399A3" >
+							<ImageView bindId="pic" id="icon" />
+							<Label bindId="info" id="infoItemTitle" />
+							<Label bindId="subinfo" id="subtitle" width="Ti.UI.FILL" />
+						</View>
+					</ItemTemplate>
+
+				</Templates>
+
+				<!-- Sets ListView's searchView property. -->
+				<!-- <SearchBar class="search" platform="ios" /> -->
+				<!-- <SearchView class="search" platform="android" /> -->
+
+				<!-- Sets ListView's headerView property
+				<HeaderView>
+				<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+				<Label>Header View</Label>
+				</View>
+				</HeaderView>
+				-->
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>PROOF OF HIV INFECTION (Item #1)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer1" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="HIV Infection" template="title" />
+					<ListItem info:text="All clients must provide medical/legal documentation of HIV Infection. This documentation must be verified at each eligibility assessment or reassessment. One of the following acceptable documents is required:
+
+1. Western Blot
+2. Physician Letter (on Letterhead) signed by M.D. including:
+a. Client is receiving treatment for HIV/AIDS; and/or
+b. Statement of Quantitative Viral Load
+3. Quantitative Viral Load Test with value when accompanied by a Physician Letter stating HIV positive diagnosis. " template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>PROOF OF RESIDENCY (Item #2)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer2" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="Residency" template="title" />
+					<ListItem info:text="All clients must provide proof of residency by providing a MINIMUM OF TWO ITEMS from the list below. The documents must be dated and current. United States citizenship is not a requirement of Ryan White Part A, B, or C eligibility. Ryan White Part A Residency Requirements Ryan White Part B Residency Requirements Ryan White Part C Residency Requirements
+
+
+- Client must be a resident of Clark County Nevada, Nye County Nevada, or Mohave County Arizona.
+- Current Lease/Rental Agreement (Agreement’s that have expired and client is on a month to month lease are Client must be a resident of the state of Nevada.
+- Current Lease/Rental Agreement (Agreement’s that have expired and client is on a month to month lease are NOT ACCEPTABLE) Client must be a resident of Clark County Nevada.
+- Current Lease/Rental Agreement (Agreement’s that have expired and client is on a month to month lease are NOT ACCEPTABLE)
+- Rent/Mortgage Receipt " template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>PROOF OF IDENTIFICATION (Item #3)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer3" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="Identification" template="title" />
+					<ListItem info:text="All clients must present proof of identification. This can be in the form of a current government issued Identification Card, or officially sanctioned photo identification. One of the following documents is required:
+
+a. Current Nevada Driver’s License
+1. Arizona or Nevada Drivers License will suffice for Part A services
+b. Current Nevada DMV Identification Card
+1. Arizona or Nevada DMV Identification Card will suffice for Part A services
+c. Passport/Foreign Country ID
+d. INS papers/Permanent Resident Card
+e. Government issued photo ID card
+f. Consulate Card
+g. Resident Alien Card (U.S. citizenry not required)
+h. Social Security Card or Birth Certificate; must be in conjunction with a picture ID as described in a-g. " template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>PROOF OF HOUSEHOLD (Item #4)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer4" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="Household" template="title" />
+					<ListItem info:text="All clients must provide proof of household. Household makeup includes client, spouse, registered domestic partner and dependents. Client must provide following documentation where applicable:
+a. Marriage License
+b. Domestic Partner Registration Form
+c. Birth Certificates of dependents in household" template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>PROOF OF INCOME LEVEL (Item #5)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer5" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="Income" template="title" />
+					<ListItem info:text="All clients must present proof of gross income, not to exceed 400% of the federal poverty level (FPL). Documentation must be dated 30 days before the date of eligibility appointment. ALL APPLICABLE DOCUMENTS MUST BE SUBMITTED:
+
+a. Copy of three months of most current pay stubs of client, client’s spouse or registered domestic partner. Gross income is the determining amount.
+b. Copy of disability, SSI, retirement, pension statements VA, child support/alimony, unemployment benefits, etc. award letter or copy of check of client/client’s spouse.
+c. IRS statement of income for client/client’s spouse for the year immediately preceding the application; and signature on the 4056T IRS form.
+d. Profit and Loss Statement from self-employment of client/client’s spouse for the most current quarter.
+e. Statement of no income
+f. Statement of cash assistance
+g. Bank statements with direct deposits, must be in conjunction with check stubs
+h. Pre-paid debit card statements
+i. IF APPLICANT IS DEPENDENT ON OTHER FOR HOUSING AND FINANCIAL SUPPORT, THE APPLICANT MUST HAVE THE FAMILY MEMBER OR FRIEND COMPLETE THE DEPENDENT SUPPORT FORM PROVIDED IN THE APPLICATION PACKET. THE FAMILY MEMBER OR FRIEND MUST PROVIDE
+PROOF OF RESIDENCE WITH CURRENT UTILITY BILL, CURRENT RENT RECEIPT, ETC." template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>ASSET TEST (Item #6)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer6" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="Assets" template="title" />
+					<ListItem info:text="Client must not have assets that exceed $10,000. Clients may have one single-family, owner occupied dwelling and one automobile (two if married) that does not count toward their asset limit. If assets exceed the asset limit of $10,000, clients may deduct applicable payments that have been made, prior to the eligibility appointment; receipts are required. Spend downs are only applicable to clients whose family income exceeds 400% of the current FPL. The program may allow spend-downs reducing the client total gross income as appropriate (when payments in the categories listed below are current and in good standing, with appropriate documentation for verification).All assets must be verified. Documents must be provided and on file for the three months immediately preceding the eligibility appointment: ALL THAT APPLY
+
+ Stock reports
+ Insurance settlements
+ Copy of bonds or maturity schedules
+ Copy of ALL current bank statements (all pages), including PayPal and similar online accounts
+ Copy of Certificate of Deposit (CD’s) statements;
+ Written, dated, and signed client’s statement regarding cash on-hand
+ IRA’s that cannot be accessed without penalty, are not a source of income for the client, and show no withdrawals, are not included as an asset prior to age 59 ½.Verification documentation is required if client has an IRA. If a client is age 59 ½ and access to retirement accounts is allowed all withdrawals are counted as income. " template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+				<ListSection>
+					<HeaderView>
+						<View backgroundColor="#FFF" height="Ti.UI.SIZE">
+							<Label>LABS (Item #7)</Label>
+						</View>
+					</HeaderView>
+<!--
+					<FooterView>
+						<Require id="footer7" src="eligibilitySectionFooter" type="view" />
+					</FooterView>
+-->
+					<ListItem info:text="Labs" template="title" />
+					<ListItem info:text="Medical Verification in the form of Labs (Labs are considered current if completed during the most recent six (6) months)-REQUIRED FOR PART B ELIGIBILITY-ENCOURAGED FOR PART A AND C ELIGIBILITY BUT NOT REQUIRED. As the purpose of Ryan White services is to keep clients in medical care and adherent to medication through medical and support services reviewing client labs is an essential part of care. Part A however will not deny eligibility based on the absence of lab paperwork, however, it is strongly encouraged that clients bring a copy of their labs in for review." template="info" />
+					<ListItem accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE" info:text="Documents Added: none" subinfo:text="(tap to add document)" pic:image="/images/CameraIcon.png" template="infoItem" />
+				</ListSection>
+			</ListView>
 		</Window>
 	</Tab>
 </Alloy>

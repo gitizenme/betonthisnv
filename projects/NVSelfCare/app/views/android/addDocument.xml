@@ -1,0 +1,14 @@
+<Alloy>
+    <Collection src="documents" />
+	<View fullscreen="false" class="container" id="navView">
+		<Window id="navWin" fullscreen="false" class="container" onOpen="open" title="DOCUMENTS" backgroundColor="#2399A3" onAndroid:back="onAndroidBack"
+			layout="vertical">
+			<View id="addButtonView" top="10" right="5" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
+				<Label id="addButtonLabel" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="ADD" onClick="clickAdd"/>
+			</View>
+			<Require type="view" src="addDocumentViewList" id="listView" onClick="itemClick" onDblclick="deleteDocument" />
+		</Window>
+	</View>
+	<Widget src="com.orthlieb.navigationgroup" id="navGroupWidget"/>
+</Alloy>
+

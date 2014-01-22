@@ -1,0 +1,16 @@
+{
+  "email": {
+    "to": [
+      "bdhansen@health.nv.gov",
+      "to.person@health.nv.gov"
+    ],
+    "cc": [
+      "cc.person@health.nv.gov"
+    ]
+    "bcc": [
+      "bcc.person@health.nv.gov"
+    ]
+  },
+  "subject ": "[NV SelfCare] E-Mail Subject",
+  "body": "'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;"
+}

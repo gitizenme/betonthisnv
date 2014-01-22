@@ -154,8 +154,9 @@ function login(e) {
 		var userPassword = Ti.Utils.sha256($.password.value);
 		if (userPassword == user[0].attributes.password) {
 			Alloy.Globals.AuthenticateOnResume = false;
-			Alloy.Globals.UserAuthenticated = true;
+			Alloy.Globals.UserAuthenticating = false;
 			$.login.close();
+			Alloy.createController('home', args).getView().open();
 		} else {
 			alert(errorMsg);
 			updateHintLabel(errorMsg, 750);
@@ -192,8 +193,9 @@ function createNewAccount(e) {
 		users.add(user);
 		user.save();
 		Alloy.Globals.AuthenticateOnResume = false;
-		Alloy.Globals.UserAuthenticated = true;
+		Alloy.Globals.UserAuthenticating = false;
 		$.login.close();
+		Alloy.createController('home', args).getView().open();
 	}
 
 }
@@ -220,6 +222,13 @@ function resetModels() {
 	}
 	journal.reset();
 	Ti.API.debug('journal.length = ' + journal.length);
+
+	var documents = Alloy.Collections.instance("documents");
+	while ( model = documents.pop()) {
+		model.destroy();
+	}
+	documents.reset();
+	Ti.API.debug('documents.length = ' + documents.length);
 
 }
 

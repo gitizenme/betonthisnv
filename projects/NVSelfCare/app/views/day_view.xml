@@ -1,4 +1,5 @@
 <Alloy>
+    <Collection src="journal" />
 	<NavigationWindow id="navGroup" platform="ios" modal="false" onOpen="open" >
 		<Window id="navWin" class="container" title="Day" onFocus="focus" onBlur="blur" >
 			<Require type="view" src="dayViewList" id="listView" onClick="itemClick"/>

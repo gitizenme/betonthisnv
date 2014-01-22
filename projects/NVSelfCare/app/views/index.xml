@@ -1,8 +1,13 @@
 <Alloy>
+	<Window onOpen="open" exitOnClose="true">
+
+	</Window>
+<!--
 	<TabGroup onOpen="open" onAndroid:back="onAndroidBack">
 		<Require src="calendar"/>
 		<Require src="journal"/>
 		<Require src="eligibilty"/>
 		<Require src="help"/>
 	</TabGroup>
+-->
 </Alloy>

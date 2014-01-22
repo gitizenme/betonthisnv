@@ -24,7 +24,6 @@
 // Tab Bar Icons Lit- 8,176,194
 // Nav Bar Icons- 255,255,255
 
-
 var Compression = require('me.izen.compression');
 var outputDirectory = Ti.Filesystem.applicationDataDirectory;
 var inputDirectory = Ti.Filesystem.resourcesDirectory + 'data/';
@@ -49,6 +48,12 @@ function resetModels() {
 	journal.reset();
 	Ti.API.debug('journal.length = ' + journal.length);
 
+	var documents = Alloy.Collections.instance("documents");
+	while ( model = journal.pop()) {
+		model.destroy();
+	}
+	documents.reset();
+	Ti.API.debug('documents.length = ' + documents.length);
 }
 
 function checkForAppReset() {
@@ -96,13 +101,15 @@ function nextController() {
 	 }
 	 */
 
-	var users = Alloy.Collections.instance('user');
+	if (!Alloy.Globals.UserAuthenticating) {
+		var users = Alloy.Collections.instance('user');
 
-	var args = {
-		userExists : users.length
-	};
+		var args = {
+			userExists : users.length
+		};
 
-	Alloy.createController('login', args).getView().open();
+		Alloy.createController('login', args).getView().open();
+	}
 }
 
 function setAppVersion() {
@@ -211,14 +218,16 @@ function open() {
 Ti.API.info("Ti.Platform.displayCaps.platformWidth = " + Ti.Platform.displayCaps.platformWidth);
 Ti.API.info("Ti.Platform.displayCaps.platformHeight = " + Ti.Platform.displayCaps.platformHeight);
 
-var iOS7 = isIOS7Plus();
-$.index.top = iOS7 ? 20 : 0;
+// var iOS7 = isIOS7Plus();
+// $.index.top = iOS7 ? 20 : 0;
 
 if (OS_ANDROID) {
 
 	function restartActivityAndroid(e) {
 		Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
-		if (Alloy.Globals.AuthenticateOnResume) {
+		if (Alloy.Globals.ExitApplicationByUser) {
+			$.index.close();
+		} else if (Alloy.Globals.AuthenticateOnResume) {
 			appResumed();
 		} else {
 			Alloy.Globals.AuthenticateOnResume = true;
@@ -242,13 +251,13 @@ if (OS_ANDROID) {
 function appResumed(e) {
 	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
 
-	checkForAppReset();
-	setAppVersion();
-	nextController();
 }
 
 function appResume(e) {
 	Ti.API.debug('index.' + arguments.callee.name + ': ' + JSON.stringify(e));
+	checkForAppReset();
+	setAppVersion();
+	nextController();
 }
 
 function appPause(e) {

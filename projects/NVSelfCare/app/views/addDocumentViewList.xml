@@ -1,0 +1,23 @@
+<Alloy>
+	<View layout="vertical" backgroundColor="#2399A3">
+		<View layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE" horizontalWrap="false" >
+			<Switch id="saveToLibrarySwitch" value="false" ></Switch>
+			<Label top="3" left="2" right="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE" color="#fff" wordWrap="true" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT"
+			text="Touch Add above to add a new document from your camera or photo library.\nTouch Delete to remove a document.\nTouch OFF to turn on saving document photos to your photo library." />
+		</View>
+		<ListView defaultItemTemplate="template" id="theList">
+			<Templates>
+				<ItemTemplate name="template" height="Ti.UI.SIZE">
+					<View height="Ti.UI.SIZE" width="Ti.UI.FILL">
+						<ImageView bindId="pic" id="iconDocument" />
+						<Label bindId="info" id="titleDocument" />
+						<Label bindId="subinfo" id="subtitleDocument" />
+						<Button title="Delete" id="deleteDocument" onClick="deleteDocument" />
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection headerTitle="Documents"></ListSection>
+		</ListView>
+	</View>
+	<Require id="loading" type="widget" src="com.appcelerator.loading"/>
+</Alloy>

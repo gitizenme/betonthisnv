@@ -40,9 +40,12 @@ Alloy.Globals.resumeLoader.Create("Loading...", {
 Alloy.Globals.version = "0.0.0 DEV";
 
 Alloy.Globals.FirstTimeUse = false;
-Alloy.Globals.UserAuthenticated = false;
+Alloy.Globals.UserAuthenticating = false;
 Alloy.Globals.AuthenticateOnResume = true;
 Alloy.Globals.CurrentOpenWindow = null;
+Alloy.Globals.ExitApplicationByUser = false;
+
+Alloy.Globals.DocumentsDir = Ti.Filesystem.applicationDataDirectory + 'documents';
 
 Alloy.Collections.users = Alloy.Collections.instance("user");
 Alloy.Collections.users.fetch();
@@ -51,6 +54,10 @@ Ti.API.debug("Number of users: " + Alloy.Collections.users.length);
 Alloy.Collections.journal = Alloy.Collections.instance("journal");
 Alloy.Collections.journal.fetch();
 Ti.API.debug("Number of journal entries: " + Alloy.Collections.journal.length);
+
+Alloy.Collections.documents = Alloy.Collections.instance("documents");
+Alloy.Collections.documents.fetch();
+Ti.API.debug("Number of documents entries: " + Alloy.Collections.journal.length);
 
 
 

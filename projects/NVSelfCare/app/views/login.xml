@@ -1,8 +1,8 @@
 <Alloy>
 	<Window onOpen="open" onAndroid:back="onAndroidBack">
 		<ScrollView id="loginScrollView" showVerticalScrollIndicator="true"
-		contentHeight="auto" contentWidth="auto">
-			<View top="40" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL" >
+		contentHeight="auto" contentWidth="auto" backgroundColor="#2399A3" >
+			<View top="40" layout="vertical" height="Ti.UI.SIZE" width="Ti.UI.FILL"  backgroundColor="#2399A3" >
 				<View layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
 					<ImageView image="/images/appicon.png"></ImageView>
 					<Label left="5" id="rightTitle" color="#fff">ACCOUNT</Label>

@@ -21,7 +21,8 @@
 	tintColor: "#fff",
 	color: "#fff"
 },
-".ScrollWindow": {
+"ScrollView": {
+	backgroundColor: "transparent",
 	height: 'fill',
 	width: 'fill',
 	backgroundColor: "#000"
@@ -381,26 +382,55 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	    backgroundColor: "#5AAFB5", selectedBackgroundColor: "#6CD1D7",
 	    accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_NONE
 },
+"#listTitle" : {
+    color: '#D7DF23',
+    font: { fontFamily:'Arial', fontSize: '24dp', fontWeight:'bold' },
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+	touchEnabled: false,
+	horizontalWrap: true,
+	ellipsize: false,
+    left: '5dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
+},
+"#info" : {
+    color: '#D7DF23',
+    font: { fontFamily:'Arial', fontSize: '12dp', fontWeight:'normal' },
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	touchEnabled: false,
+	horizontalWrap: true,
+	ellipsize: false,
+    left: '5dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
+},
 "#icon" : {
 	touchEnabled: false,
     left: 10, width: Ti.UI.SIZE, height: Ti.UI.SIZE
+},
+"#iconDocument" : {
+	touchEnabled: false,
+    left: 10, width: '100dp', height: Ti.UI.SIZE
 },
 "#icon[platform=android]" : {
 	touchEnabled: false,
     left: '10dp', width: '58dp', height: Ti.UI.SIZE
 },
-// "#title[platform=ios]" : {
-    // color: 'white',
-    // font: { fontFamily:'Arial', fontSize: 20, fontWeight:'bold' },
-	// textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	// verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
-	// touchEnabled: false,
-	// horizontalWrap: false,
-    // left: 80, top: 0
-// },
+"#iconDocument[platform=android]" : {
+	touchEnabled: false,
+    left: 10, width: '100dp', height: Ti.UI.SIZE
+},
+"#infoItemTitle" : {
+    color: '#D7DF23',
+    font: { fontFamily:'Arial', fontSize: '14dp', fontWeight:'bold' },
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	touchEnabled: false,
+	horizontalWrap: true,
+	ellipsize: false,
+    left: '70dp', top: '2dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
+},
 "#title" : {
     color: '#D7DF23',
-    font: { fontFamily:'Arial', fontSize: '20dp', fontWeight:'bold' },
+    font: { fontFamily:'Arial', fontSize: '16dp', fontWeight:'bold' },
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
 	touchEnabled: false,
@@ -409,11 +439,37 @@ textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
     left: '70dp', top: '2dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
 },
 "#subtitle" : {
-    color: 'gray',
-    font: { fontFamily:'Arial', fontSize: '12dp' },
+    color: '#0A0A0A',
+    font: { fontFamily:'Arial', fontSize: '10dp' },
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
 	touchEnabled: false,
     left: '70dp', bottom: '5dp', width: Ti.UI.FILL, height: Ti.UI.SIZE, right: '5dp'
+}
+"#titleDocument" : {
+    color: '#D7DF23',
+    font: { fontFamily:'Arial', fontSize: '16dp', fontWeight:'bold' },
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	touchEnabled: false,
+	horizontalWrap: false,
+	ellipsize: true,
+    left: '110dp', top: '2dp', width: Ti.UI.SIZE, height: Ti.UI.SIZE, right: '5dp'
+},
+"#subtitleDocument" : {
+    color: '#0A0A0A',
+    font: { fontFamily:'Arial', fontSize: '10dp' },
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
+	touchEnabled: false,
+    left: '110dp', bottom: '5dp', width: Ti.UI.SIZE, height: Ti.UI.SIZE, right: '5dp'
+},
+"#deleteDocument": {
+	color: '#FFF',
+	tintColor: '#FFF',
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
+	verticalAlign: Titanium.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+	touchEnabled: true,
+	right: '5dp'
 }
 
