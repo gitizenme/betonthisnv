@@ -1,5 +1,7 @@
 var androidBackButtonClicked = false;
 
+
+
 function open() {
 	Ti.API.trace('BetOnThisNVWebView.' + arguments.callee.name);
 

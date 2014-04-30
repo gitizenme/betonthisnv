@@ -1,13 +1,36 @@
 
 
+function showLeavingAppAlert(targetUrl) {
+	if (OS_ANDROID) {
+		var msg = "You are now leaving the SexSafe app and visiting " + targetUrl + ". To return to the app, press the back button on your phone.";
+	}
+	if (OS_IOS) {
+		var msg = "You are now leaving the SexSafe app and visiting " + targetUrl + ". To return to the app, double tap the home button on your phone.";
+	}
+
+	var dialog = Ti.UI.createAlertDialog({
+    	cancel: 1,
+    	buttonNames : ['Continue', 'Cancel'],
+		message : msg,
+		title : Ti.App.name
+	});
+	dialog.addEventListener('click', function(e) {
+		if (e.index !== e.source.cancel){
+			Ti.Platform.openURL(targetUrl);
+		}
+	});
+	dialog.show();
+
+}
+
 function onTheWebClick(e) {
 	Ti.API.debug('About.' + arguments.callee.name + ': ' + JSON.stringify(e));
-	Ti.Platform.openURL(Ti.App.url);
+	showLeavingAppAlert(Ti.App.url);
 }
 
 function onTheWebIzenMeClick(e) {
 	Ti.API.debug('About.' + arguments.callee.name + ': ' + JSON.stringify(e));
-	Ti.Platform.openURL("http://www.izen.me");
+	showLeavingAppAlert("http://www.izen.me");
 }
 
 var androidBackButtonClicked = false;
@@ -64,5 +87,4 @@ if (OS_IOS) {
 	$.navGroupWidget.init($.navGroup, {});
 	$.navGroupWidget.open($.navWin, {});
 }
-
 

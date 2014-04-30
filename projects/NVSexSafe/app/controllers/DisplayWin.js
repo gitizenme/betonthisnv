@@ -49,69 +49,50 @@ function open() {
 		$.riskBody.text = win.risk;
 
 		if (win.safety != "") {
-
-			if (OS_IOS) {
-
-				var text = win.safety;
-
-				if (Alloy.Globals.isIOS7) {
-					var attr = Titanium.UI.iOS.createAttributedString({
-						text : text,
-						attributes : [
-						// Underlines text
-						{
-							type : Titanium.UI.iOS.ATTRIBUTE_UNDERLINES_STYLE,
-							value : Titanium.UI.iOS.ATTRIBUTE_UNDERLINE_STYLE_SINGLE,
-							range : [text.indexOf("http://"), 51]
-						},
-						// Sets a foreground color
-						{
-							type : Titanium.UI.iOS.ATTRIBUTE_FOREGROUND_COLOR,
-							value : "blue",
-							range : [text.indexOf("http://"), 51]
-						}]
-					});
-					$.safetyBody.attributedString = attr;
-				} else {
-					$.safetyBody.text = text;
-				}
-			}
-			if (OS_ANDROID) {
-				$.safetyBody.text = win.safety;
-			}
-
+			$.safetyBody.text = win.safety;
 		} else {
 			var text = "There is not safety information for this SexSafe activity. Checkout ☞ http://www.betonthisnv.org for more information.";
-
-			if (OS_IOS) {
-
-			}
-			if (OS_ANDROID) {
-				$.safetyBody.text = text;
-			}
-
+			$.safetyBody.text = text;
 		}
 	}
 }
 
+function showLeavingAppAlert(targetUrl) {
+	if (OS_ANDROID) {
+		var msg = "You are now leaving the SexSafe app and visiting " + targetUrl + ". To return to the app, press the back button on your phone.";
+	}
+	if (OS_IOS) {
+		var msg = "You are now leaving the SexSafe app and visiting " + targetUrl + ". To return to the app, double tap the home button on your phone.";
+	}
+
+	var dialog = Ti.UI.createAlertDialog({
+		cancel : 1,
+		buttonNames : ['Continue', 'Cancel'],
+		message : msg,
+		title : Ti.App.name
+	});
+	dialog.addEventListener('click', function(e) {
+		if (e.index !== e.source.cancel) {
+			Ti.Platform.openURL(targetUrl);
+		}
+	});
+	dialog.show();
+
+}
+
 if (OS_ANDROID) {
+	$.safetyBody.addEventListener('click', function() {
+		showLeavingAppAlert("http://betonthisnv.org/Protect/How_to_Use_a_Condom/");
+	});
 	$.navGroupWidget.open($.navWin, {});
 }
 
 if (OS_IOS) {
 
 	function openUrl(e) {
-		if (Alloy.Globals.isIOS7) {
-			if ($.safetyBody.attributedString.text.indexOf("http://") != -1) {
-				Ti.API.debug('DisplayWin.' + arguments.callee.name + ': ' + JSON.stringify(e));
-				Ti.Platform.openURL("http://betonthisnv.org/Protect/How_to_Use_a_Condom/");
-			}
-		}
-		else {
-			if ($.safetyBody.text.indexOf("http://") != -1) {
-				Ti.API.debug('DisplayWin.' + arguments.callee.name + ': ' + JSON.stringify(e));
-				Ti.Platform.openURL("http://betonthisnv.org/Protect/How_to_Use_a_Condom/");
-			}
+		if ($.safetyBody.text.indexOf("http://") != -1) {
+			Ti.API.debug('DisplayWin.' + arguments.callee.name + ': ' + JSON.stringify(e));
+			showLeavingAppAlert("http://betonthisnv.org/Protect/How_to_Use_a_Condom/");
 		}
 	}
 
@@ -120,7 +101,6 @@ if (OS_IOS) {
 	};
 	$.navWin.titleControl = Alloy.createController('NavTitleControl', args).getView();
 	$.navWin.leftNavButton = leftNavButton;
-	// $.contactWin.rightNavButton = rightNavButton;
 	$.navGroupWidget.init($.navGroup, {});
 	$.navGroupWidget.open($.navWin, {});
 
