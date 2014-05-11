@@ -12,6 +12,7 @@
 						</View>
 						<Label left="10" right="10" class="H2LEFT" id="descriptionLabel" text=""/>
 						<Label left="10" right="10" class="H2LEFT" id="versionLabel" text="Version:"/>
+						<Label left="10" right="10" class="H2LEFT" id="disclaimerLabel" text=""/>
 						<Label left="10" right="10" class="H2LEFT" id="copyrightLabel" text="Copyright: "/>
 						<Label left="10" right="10" class="H2LEFT" id="publisherLabel" text="Published by: "/>
 						<Label left="10" right="10" class="H2LEFT" id="urlLabel" text="On the Web: " onClick="onTheWebClick" />
