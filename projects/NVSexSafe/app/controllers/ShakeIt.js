@@ -2126,7 +2126,7 @@ function initGameScene() {
 
 	armFrame = platino.createSpriteSheet({
 		asset : 'graphics/Reels_ArmFrame' + suffix + '.xml',
-		x : 580 / positionFactor,
+		x : 520 / positionFactor,
 		y : 480 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
@@ -2195,8 +2195,8 @@ function initGameScene() {
 	touchToSpinButton = platino.createSpriteSheet({
 		asset : 'graphics/Reels_PullHandle' + suffix + '.xml',
 		tag : "touchToSpinButton",
-		x : 100 / positionFactor,
-		y : 532 / positionFactor,
+		x : 160 / positionFactor,
+		y : 523 / positionFactor,
 		scaleX : 1 / scaleFactor,
 		scaleY : 1 / scaleFactor
 	});
@@ -2220,9 +2220,9 @@ function initGameScene() {
 	resultsNewButton = platino.createSprite({
 		image : "images/ResultsNewButton.png",
 		tag : "resultsNewButton",
-		x : 120 / positionFactor,
+		x : 145 / positionFactor,
 		y : 540 / positionFactor,
-		width : 400 / imageScaleFactor,
+		width : 344 / imageScaleFactor,
 		height : 76 / imageScaleFactor,
 		alpha : 0
 	});
@@ -2232,9 +2232,9 @@ function initGameScene() {
 	tryAgainButton = platino.createSprite({
 		image : "images/TryAgainButton.png",
 		tag : "tryAgainButton",
-		x : 120 / positionFactor,
+		x : 145 / positionFactor,
 		y : 540 / positionFactor,
-		width : 400 / imageScaleFactor,
+		width : 344 / imageScaleFactor,
 		height : 76 / imageScaleFactor,
 		alpha : 0
 	});

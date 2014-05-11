@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This atlas was generated using SpriteHelper 2 -->
 <!-- http://www.gamedevhelper.com -->
-<Imageset Name="ArmFrame" Imagefile="Reels_ArmFrame.png" NativeHorzRes="129" NativeVertRes="195" AutoScaled="false">
-	<Image Name="ArmFrame01@2x.png" XPos="1" YPos="1" Width="30" Height="95"/>
-	<Image Name="ArmFrame02@2x.png" XPos="33" YPos="1" Width="30" Height="95"/>
-	<Image Name="ArmFrame03@2x.png" XPos="65" YPos="1" Width="30" Height="95"/>
-	<Image Name="ArmFrame04@2x.png" XPos="97" YPos="1" Width="30" Height="95"/>
-	<Image Name="ArmFrame05@2x.png" XPos="1" YPos="98" Width="30" Height="95"/>
-	<Image Name="ArmFrame06@2x.png" XPos="33" YPos="98" Width="30" Height="95"/>
-	<Image Name="ArmFrame07@2x.png" XPos="65" YPos="98" Width="30" Height="95"/>
-	<Image Name="ArmFrame08@2x.png" XPos="97" YPos="98" Width="30" Height="95"/>
+<Imageset Name="ArmFrame" Imagefile="Reels_ArmFrame.png" NativeHorzRes="241" NativeVertRes="221" AutoScaled="false">
+	<Image Name="ArmFrame01@2x.png" XPos="1" YPos="1" Width="58" Height="108"/>
+	<Image Name="ArmFrame02@2x.png" XPos="1" YPos="111" Width="58" Height="108"/>
+	<Image Name="ArmFrame03@2x.png" XPos="61" YPos="1" Width="58" Height="108"/>
+	<Image Name="ArmFrame04@2x.png" XPos="61" YPos="111" Width="58" Height="108"/>
+	<Image Name="ArmFrame05@2x.png" XPos="121" YPos="1" Width="58" Height="108"/>
+	<Image Name="ArmFrame06@2x.png" XPos="121" YPos="111" Width="58" Height="108"/>
+	<Image Name="ArmFrame07@2x.png" XPos="181" YPos="1" Width="58" Height="108"/>
+	<Image Name="ArmFrame08@2x.png" XPos="181" YPos="111" Width="58" Height="108"/>
 </Imageset>
