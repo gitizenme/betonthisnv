@@ -29,9 +29,21 @@ function open() {
 
 	if (existingJournalModel.length == 1) {
 		var entry = existingJournalModel[0].attributes;
-		Ti.API.debug('HadSex.' + arguments.callee.name + ": model = " + JSON.stringify(entry));
-		var textAreaComment = $.hadSexCommonView.getView('textArea');
-		textAreaComment.value = entry.data;
+		Ti.API.debug('AlcoholTobacco.' + arguments.callee.name + ": model = " + JSON.stringify(entry));
+
+		var apptData = null;
+		try {
+			var apptData = JSON.parse(entry.data);
+		} catch(e) {
+			Ti.API.error(e);
+		}
+
+		if (apptData) {
+			var textAreaComment = $.hadSexCommonView.getView('textArea');
+			textAreaComment.value = apptData.comment;
+			var switchYesNo = $.hadSexCommonView.getView('switchYesNo');
+			switchYesNo.value = apptData.yesNo;
+		}
 	}
 
 	if (OS_ANDROID) {
@@ -43,7 +55,13 @@ function save() {
 	Ti.API.debug('HadSex.' + arguments.callee.name);
 
 	var textAreaComment = $.hadSexCommonView.getView('textArea');
+	var switchYesNo = $.hadSexCommonView.getView('switchYesNo');
 	var modelDate = moment();
+
+	var dataToStore = {
+		comment : textAreaComment.value,
+		yesNo : switchYesNo.value
+	};
 
 	var existingJournalModel = journal.where({
 		sortDate : sortDate.format("YYYY/MM/DD"),
@@ -54,14 +72,14 @@ function save() {
 		existingJournalModel[0].save({
 			editDate : modelDate.toISOString(),
 			displayData : textAreaComment.value,
-			data : textAreaComment.value
+			data : JSON.stringify(dataToStore)
 		});
 	} else if (existingJournalModel.length == 0) {
 		var entry = Alloy.createModel('journal', {
 			editDate : modelDate.toISOString(),
 			sortDate : sortDate.format("YYYY/MM/DD"),
 			displayData : textAreaComment.value,
-			data : textAreaComment.value,
+			data : JSON.stringify(dataToStore),
 			section : types.SECTION_ACTIVITY,
 			type : types.SECTION_ACTIVITY_HAD_SEX
 		});

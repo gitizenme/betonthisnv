@@ -13,7 +13,7 @@ function configureUI() {
 	clearHintLabel();
 	updateButtonState("#fff");
 	if (userExists) {
-		updateHintLabel('Enter your user name and password to login.', 750);
+		updateHintLabel('Enter your user name and password to login', 750);
 		$.loginButtonLabel.visible = true;
 		$.loginButtonView.visible = true;
 		$.createButtonLabel.visible = false;
@@ -21,7 +21,8 @@ function configureUI() {
 		$.resetButton.visible = true;
 		$.rightTitle.text = "ACCOUNT\nLOGIN";
 	} else {
-		updateHintLabel('Enter a user name and password to create an account. If you forget your user name or password your information will be lost.', 750);
+		alert('FOR YOUR SECURITY, PASSWORDS CANNOT BE RETRIEVED AND INFORMATION IS ONLY STORED ON YOUR PHONE. Please choose a password that is easy to remember. If you need to reset your account, please delete it and start over.', 750);
+		updateHintLabel('Create a user name', 750);
 		$.createButtonLabel.visible = true;
 		$.createButtonView.visible = true;
 		$.loginButtonLabel.visible = false;
@@ -76,9 +77,9 @@ function open() {
 function focusUsername() {
 	Ti.API.debug('login.' + arguments.callee.name);
 	if (!userExists) {
-		updateHintLabel('Create a user name.', 750);
+		updateHintLabel('Create a user name', 750);
 	} else {
-		updateHintLabel('Enter your user name.', 750);
+		updateHintLabel('Enter your user name', 750);
 	}
 	updateButtonState("#fff");
 }
@@ -103,7 +104,11 @@ function checkPassword() {
 function focusPassword() {
 	Ti.API.debug('login.' + arguments.callee.name);
 	$.password.focus();
-	updateHintLabel('8 to 16 characters with at least one capital letter, number and special character.', 750);
+	if (!userExists) {
+		updateHintLabel('Choose a password of 8 to 16 characters with at least one capital letter, number and special character', 750);
+	} else {
+		updateHintLabel('Enter your password', 750);
+	}
 	updateButtonState("#fff");
 	passwordValid = false;
 }
@@ -111,7 +116,7 @@ function focusPassword() {
 function focusButton() {
 	Ti.API.debug('login.' + arguments.callee.name);
 	if ($.password.length == 0) {
-		updateHintLabel('Enter a password to login.', 750);
+		updateHintLabel('Enter a password to login', 750);
 	} else {
 		if (!userExists) {
 			checkPassword();

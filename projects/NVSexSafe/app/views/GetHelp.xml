@@ -9,12 +9,12 @@
 					<TextField top="2" left="5" id="name" hintText="enter your name" onFocus="focusName" onReturn="focusPhoneNumber"/>
 					<Label top="6" text="Phone #:" left="5"/>
 					<TextField top="2" left="5" id="phone" hintText="enter your phone number" keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD" onFocus="focusPhoneNumber" onReturn="focusMessage"/>
-					<Label top="6" text="Message:" left="5"/>
-					<TextField top="2" left="5" id="message" hintText="enter a brief message" onFocus="focusMessage" onReturn="focusSendButton"/>
+					<Label top="6" text="Message: *" left="5"/>
+					<TextField top="2" left="5" id="message" hintText="enter a brief message (required)" onFocus="focusMessage" onReturn="focusSendButton"/>
 					<View top="20" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE" >
 						<Label top="10" left="13" right="10" bottom="5" class="oldpressLabelXLarge" text="SEND" onClick="clickSend">
 					</View>
-					<!-- <Label top="20" bottom="5" text="Need link to privacy policy."/> -->
+					<Label top="20" text="Your information will be sent via email to a representative of the Nevada Coalition for Safe Sex and, if necessary, transferred to a local expert who can answer your question."/>
 				</View>
 			</ScrollView>
 		</Window>

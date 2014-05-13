@@ -26,7 +26,7 @@ doClick = function(e) {
 	if (e.source.date != null) {
 		if ($.selected != null) {
 			if (( _ref = $.selected.children[0]) != null) {
-				_ref.backgroundColor = '#9CA219';
+				_ref.backgroundColor = '#fff'; // 9CA219
 			}
 		}
 		$.selected = e.source;
@@ -213,7 +213,7 @@ exports.setImage = function(day, image, row, column, options) {
 	if ((tile != null ? tile.date :
 	void 0) != null) {
 		// tile.remove(tile.children[0]);
-		tile.children[0].backgroundColor = '#9CA219';
+		tile.children[0].backgroundColor = '#fff'; // 9CA219
 		_.extend(tile, {
 			_isEntry : true
 		}, options);

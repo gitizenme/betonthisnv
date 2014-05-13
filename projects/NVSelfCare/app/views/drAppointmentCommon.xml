@@ -1,11 +1,12 @@
 <Alloy>
 	<ScrollView id="scrollView" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE" backgroundColor="#2399A3">
 		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
-			<Label class="H2CENTER" color="#0A0A0A">Select a date and time below or type in your appointment date and time.\nTouch Save when finished.</Label>
+			<Label class="H2CENTER" color="#0A0A0A">Touch Save when finished.</Label>
 			<View top="10" layout="vertical" borderColor="#cccccc" borderRadius="8" borderWidth="2" height="Ti.UI.SIZE" backgroundColor="#2399A3" >
 				<Label class="H3CENTER" top="4" color="#0A0A0A">Appointment Time</Label>
 				<TextField class="dateTimeField" id="dateTimeField" bottom="5" onChange="dateTimeFieldChanged" />
 			</View>
+			<Label class="H2CENTER" color="#0A0A0A">Type in your appointment date and time above\nor\nselect a date and time below.</Label>
 			<View top="10" layout="vertical" borderColor="#cccccc" borderRadius="8" borderWidth="2" height="Ti.UI.SIZE" backgroundColor="#2399A3" >
 				<Label class="H3CENTER" color="#0A0A0A">Date</Label>
 				<Slider id="dateSlider" min="0" max="300" width="75%" top="5" bottom="5" height="Ti.UI.SIZE" value="150" onChange="updateDate"/>

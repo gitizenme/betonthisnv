@@ -13,22 +13,22 @@ function updateCalendarIconForActivity(entry) {
 
 	if (currentMonth.isSame(selectedDate, 'year') && currentMonth.isSame(selectedDate, 'month')) {
 		if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_COMMENT) {
-			$.current.setImage(selectedDate, '/images/CommentIconSmall.png', 1, 1);
+			$.current.setImage(selectedDate, '/images/Black-CommentIconSmall.png', 1, 1);
 		}
 		if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_HAD_SEX) {
-			$.current.setImage(selectedDate, '/images/SexIconSmall.png', 1, 2);
+			$.current.setImage(selectedDate, '/images/Black-SexIconSmall.png', 1, 2);
 		}
 		if (entry.section == types.SECTION_DIARY && entry.type == types.SECTION_DIARY_MOOD) {
 			$.current.setImage(selectedDate, types.moodImagesSmall[parseInt(entry.data)], 1, 3);
 		}
 		if (entry.section == types.SECTION_ALERTS && entry.type == types.SECTION_ALERTS_DR_APPT) {
-			$.current.setImage(selectedDate, '/images/DrAppointmentIconSmall.png', 2, 1);
+			$.current.setImage(selectedDate, '/images/Black-DrAppointmentIconSmall.png', 2, 1);
 		}
 		if (entry.section == types.SECTION_HEALTH && entry.type == types.SECTION_HEALTH_TCELL) {
-			$.current.setImage(selectedDate, '/images/TCellIconSmall.png', 2, 2);
+			$.current.setImage(selectedDate, '/images/Black-TCellIconSmall.png', 2, 2);
 		}
 		if (entry.section == types.SECTION_ACTIVITY && entry.type == types.SECTION_ACTIVITY_ALCOHOL_TOBACCO) {
-			$.current.setImage(selectedDate, '/images/AlcoholTobaccoIconSmall.png', 2, 3);
+			$.current.setImage(selectedDate, '/images/Black-AlcoholTobaccoIconSmall.png', 2, 3);
 		}
 	}
 
@@ -97,6 +97,105 @@ function animateCalendarMonthChange(current) {
 	});
 
 }
+
+function changeCurrentMonth() {
+	$.current = null;
+	$.current = Alloy.createWidget('jp.co.mountposition.calendar', 'widget', {
+		period : currentMonth
+	});
+
+	loadModelIntoCalendar();
+
+	animateCalendarMonthChange(currentMonth);
+}
+
+function selectDate(e) {
+
+	if (OS_ANDROID) {
+		var picker = Ti.UI.createPicker({
+			type : Ti.UI.PICKER_TYPE_DATE,
+			value : new Date()
+		});
+		picker.showDatePickerDialog({
+			title: 'Select Date',
+			okButtonTitle: 'Select',
+			value : new Date(),
+			callback : function(e) {
+				if (e.cancel) {
+					Ti.API.info('User canceled dialog');
+				} else {
+					Ti.API.info('User selected date: ' + e.value);
+					currentMonth = moment(e.value);
+					changeCurrentMonth();
+				}
+			}
+		});
+	}
+
+	if (OS_IOS) {
+		var win = Ti.UI.createWindow({
+			exitOnClose : true,
+			title: 'Select Date',
+			backgroundColor : '#fff',
+			height : '80%',
+			layout : 'vertical'
+		});
+
+		var doneButton = Ti.UI.createButton({
+			title : 'Select',
+			left : '25%'
+		});
+
+		var cancelButton = Ti.UI.createButton({
+			title : 'Cancel',
+			left : '25%'
+		});
+
+		var picker = Ti.UI.createPicker({
+			type : Ti.UI.PICKER_TYPE_DATE,
+			useSpinner : true,
+			value : new Date(),
+			top : 75,
+			exitOnClose : false
+		});
+
+		var toolbar = Ti.UI.createView({
+			layout : 'horizontal',
+			horizontalWrap : false
+		});
+
+		toolbar.add(doneButton);
+		toolbar.add(cancelButton);
+
+		win.add(picker);
+		win.add(toolbar);
+		win.open();
+
+		var pickerDate = null;
+
+		picker.addEventListener('change', function(e) {
+			Ti.API.info("User selected date: " + e.value.toLocaleString());
+			pickerDate = e.value;
+		});
+
+		doneButton.addEventListener('click', function(e) {
+			Ti.API.info("doneButton");
+			if (pickerDate != null) {
+				Ti.API.info("pickerDate: " + pickerDate.toLocaleString());
+				currentMonth = moment(pickerDate);
+				changeCurrentMonth();
+			}
+			win.close();
+		});
+		cancelButton.addEventListener('click', function(e) {
+			Ti.API.info("cancelButton");
+			win.close();
+		});
+
+	}
+
+}
+
 
 function doPrevMonth() {
 	Ti.API.debug('calendar.' + arguments.callee.name);

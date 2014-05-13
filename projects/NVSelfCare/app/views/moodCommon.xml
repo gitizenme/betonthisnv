@@ -39,10 +39,14 @@
 			defined as <bindId>:<Ti.UI.Component.property> -->
 
 			<ListItem info:text="Happy" subinfo:text="" pic:image="/images/MoodHappyIcon.png" />
+			<ListItem info:text="Energetic" subinfo:text="" pic:image="/images/MoodHappyIcon.png" />
+			<ListItem info:text="Hyper" subinfo:text="" pic:image="/images/MoodHappyIcon.png" />
 			<ListItem info:text="Sad" subinfo:text="" pic:image="/images/MoodSadIcon.png" />
+			<ListItem info:text="Angry" subinfo:text="" pic:image="/images/MoodSadIcon.png" />
+			<ListItem info:text="Upset" subinfo:text="" pic:image="/images/MoodSadIcon.png" />
 			<ListItem info:text="Sleepy" subinfo:text="" pic:image="/images/MoodSleepyIcon.png" />
 			<ListItem info:text="Satisfied" subinfo:text="" pic:image="/images/MoodSatisfiedIcon.png" />
-			<ListItem info:text="Ambivalent" subinfo:text="" pic:image="/images/MoodNoneIcon.png" />
+			<ListItem info:text="So-So" subinfo:text="" pic:image="/images/MoodNoneIcon.png" />
 		</ListSection>
 	</ListView>
 </Alloy>

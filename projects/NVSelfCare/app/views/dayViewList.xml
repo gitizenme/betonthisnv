@@ -33,7 +33,7 @@
 			<!-- <ListItem info:text="Alarm" subinfo:text="" pic:image="/images/AlarmIcon.png" /> -->
 		</ListSection>
 		<ListSection headerTitle="Health">
-			<ListItem info:text="T-Cell Count" subinfo:text="(tap to edit)" pic:image="/images/TCellIcon.png" />
+			<ListItem info:text="Viral Load and CD4 Count" subinfo:text="(tap to edit)" pic:image="/images/TCellIcon.png" />
 			<ListItem info:text="Weight" subinfo:text="(tap to edit)" pic:image="/images/WeightIcon.png" />
 			<ListItem info:text="Hours of Sleep" subinfo:text="(tap to edit)" pic:image="/images/SleepIcon.png" />
 			<ListItem info:text="Fatigue Level" subinfo:text="(tap to edit)" pic:image="/images/FatigueIcon.png" />
@@ -42,7 +42,7 @@
 		</ListSection>
 		<ListSection headerTitle="Activity">
 			<ListItem info:text="Had Sex" subinfo:text="(tap to edit)" pic:image="/images/SexIcon.png" />
-			<ListItem info:text="Alchohol/Tobacco" subinfo:text="(tap to edit)" pic:image="/images/AlcoholTobaccoIcon.png" />
+			<ListItem info:text="Alcohol/Tobacco" subinfo:text="(tap to edit)" pic:image="/images/AlcoholTobaccoIcon.png" />
 			<ListItem info:text="Other Use" subinfo:text="(tap to edit)" pic:image="/images/OtherSubstanceIcon.png" />
 		</ListSection>
 	</ListView>

@@ -166,6 +166,9 @@ function sendMessage(password) {
 	emailDialog.toRecipients = ['bdhansen@health.nv.gov'];
 	emailDialog.html = true;
 	emailDialog.messageBody = 'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;
+	emailDialog.addEventListener("complete", function() {
+		alert("Thank you for contacting us. You will receive a response in 72 hours, often less.");
+	});
 
 	var writeToZip = outputDirectory + '/' + zipFileName;
 

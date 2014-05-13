@@ -157,7 +157,7 @@ function sectionHealthClick(e) {
 			var openArgs = {
 				navGroup : $.navGroupWidget,
 				modelDate : selectedDate,
-				title : "T-CELL COUNT"
+				title : "Viral Load and CD4"
 			};
 			var controller = Alloy.createController('TCell', openArgs);
 			if (OS_IOS) {

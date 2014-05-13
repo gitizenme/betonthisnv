@@ -1,11 +1,18 @@
 <Alloy>
 	<ScrollView id="scrollView" top="5" contentHeight="Ti.UI.SIZE" contentWidth="Ti.UI.SIZE" backgroundColor="#fff">
 		<View top="5" id="mainView" layout="vertical" height="Ti.UI.FILL" width="Ti.UI.FILL">
-			<Label top="5" color="#000">Write a brief description of your alcohol and/or tobacco use\nTouch Save to keep it.</Label>
-			<TextArea id="textArea" left="10" right="10" bottom="10" width="Ti.UI.FILL" height="Ti.UI.FILL"
-			borderWidth="2" borderColor="#bbb" borderRadius="5"
-			color="#888" textAlign="left" value="" backgroundColor="#fff"
-			top="5" suppressReturn="false" />
+			<View top="0" layout="horizontal" height="Ti.UI.SIZE" backgroundColor="#2399A3">
+				<Switch top="5" platform="ios" id="switchYesNo" left="5" value="false"></Switch>
+				<Switch top="5" platform="android" style="Ti.UI.Android.SWITCH_STYLE_CHECKBOX" id="switchYesNo" left="5" value="false"></Switch>
+				<Label class="H4LEFT" top="10" left="5" right="5" color="#0A0A0A">Yes or no?</Label>
+			</View>
+			<View top="0" layout="vertical" height="Ti.UI.FILL" backgroundColor="#2399A3" >
+				<Label top="5" width="Ti.UI.FILL" color="#000">Write a brief description of your alcohol and/or tobacco use\nTouch Save to keep it.</Label>
+				<TextArea id="textArea" left="10" right="10" bottom="10" width="Ti.UI.FILL" height="Ti.UI.FILL"
+				borderWidth="2" borderColor="#bbb" borderRadius="5"
+				color="#888" textAlign="left" value="" backgroundColor="#fff"
+				top="5" suppressReturn="false" />
+			</View>
 		</View>
 	</ScrollView>
 </Alloy>

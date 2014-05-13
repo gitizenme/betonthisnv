@@ -28,10 +28,24 @@ function open() {
 	});
 
 	if (existingJournalModel.length == 1) {
+
 		var entry = existingJournalModel[0].attributes;
 		Ti.API.debug('AlcoholTobacco.' + arguments.callee.name + ": model = " + JSON.stringify(entry));
-		var textAreaComment = $.alcoholTobaccoCommonView.getView('textArea');
-		textAreaComment.value = entry.data;
+
+		var apptData = null;
+		try {
+			var apptData = JSON.parse(entry.data);
+		} catch(e) {
+			Ti.API.error(e);
+		}
+
+		if (apptData) {
+			var textAreaComment = $.alcoholTobaccoCommonView.getView('textArea');
+			textAreaComment.value = apptData.comment;
+			var switchYesNo = $.alcoholTobaccoCommonView.getView('switchYesNo');
+			switchYesNo.value = apptData.yesNo;
+		}
+
 	}
 
 	if (OS_ANDROID) {
@@ -43,7 +57,13 @@ function save() {
 	Ti.API.debug('AlcoholTobacco.' + arguments.callee.name);
 
 	var textAreaComment = $.alcoholTobaccoCommonView.getView('textArea');
+	var switchYesNo = $.alcoholTobaccoCommonView.getView('switchYesNo');
 	var modelDate = moment();
+
+	var dataToStore = {
+		comment : textAreaComment.value,
+		yesNo : switchYesNo.value
+	};
 
 	var existingJournalModel = journal.where({
 		sortDate : sortDate.format("YYYY/MM/DD"),
@@ -54,14 +74,14 @@ function save() {
 		existingJournalModel[0].save({
 			editDate : modelDate.toISOString(),
 			displayData : textAreaComment.value,
-			data : textAreaComment.value
+			data : JSON.stringify(dataToStore)
 		});
 	} else if (existingJournalModel.length == 0) {
 		var entry = Alloy.createModel('journal', {
 			editDate : modelDate.toISOString(),
 			sortDate : sortDate.format("YYYY/MM/DD"),
 			displayData : textAreaComment.value,
-			data : textAreaComment.value,
+			data : JSON.stringify(dataToStore),
 			section : types.SECTION_ACTIVITY,
 			type : types.SECTION_ACTIVITY_ALCOHOL_TOBACCO
 		});

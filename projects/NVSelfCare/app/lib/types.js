@@ -67,9 +67,9 @@ exports.activityTypes = {
 	},
 	2 : {
 		0 : {
-			type: "T-Cell Count",
+			type: "Viral Load and CD4",
 			image : "/images/TCellIcon.png",
-			title: "T-CELL COUNT",
+			title: "Viral Load and CD4",
 			controllerName : "TCell"
 		},
 		1 : {

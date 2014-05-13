@@ -74,12 +74,20 @@ if (OS_IOS) {
 function clickSend(e) {
 	Ti.API.trace('GetHelp.' + arguments.callee.name + ": " + JSON.stringify(e));
 
+	if($.message.value === null || $.message.value == '') {
+		alert("Please enter a message, this information is required.");
+		return;
+	}
+
 	var emailDialog = Ti.UI.createEmailDialog();
 	emailDialog.subject = "[BetOnThisNV - NV SelfCare] Get Help";
 	// TODO change this
 	emailDialog.html = true;
 	emailDialog.toRecipients = ['bdhansen@health.nv.gov'];
 	emailDialog.messageBody = 'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;
+	emailDialog.addEventListener("complete", function() {
+		alert("Thank you for contacting us. You will receive a response in 72 hours, often less.");
+	});
 	emailDialog.open();
 
 }

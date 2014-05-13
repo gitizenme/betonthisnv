@@ -7,6 +7,7 @@
 					<ImageView image="/images/appicon.png"></ImageView>
 					<Label left="5" id="rightTitle" color="#fff">ACCOUNT</Label>
 				</View>
+				<Label id="hintLabel" top="10"/>
 				<TextField id="username" hintText="enter user name" autocorrect="false" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" onFocus="focusUsername" onReturn="focusPassword"/>
 				<TextField id="password" hintText="enter password" autocorrect="false" autocapitalization="Ti.UI.TEXT_AUTOCAPITALIZATION_NONE" onFocus="focusPassword" onReturn="focusButton"/>
 				<View id="loginButtonView" visible="false" top="10" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
@@ -15,7 +16,6 @@
 				<View id="createButtonView" visible="false" top="-55" borderColor="#fff"  borderRadius="8" borderWidth="2" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
 					<Label id="createButtonLabel" visible="false" top="10" left="13" right="10" bottom="5" class="oldpressLabelLarge" text="CREATE" onClick="createNewAccount"/>
 				</View>
-				<Label id="hintLabel" top="10"/>
 				<Label id="resetButton" visible="false" class="H3CENTER" top="20" text="Delete Account?" onClick="deleteAccount"/>
 			</View>
 		</ScrollView>

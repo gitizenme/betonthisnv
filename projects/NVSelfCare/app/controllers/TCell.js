@@ -68,7 +68,7 @@ function save() {
 		journal.add(entry);
 		entry.save();
 	} else {
-		Ti.API.warn('TCell.' + arguments.callee.name + ": more than one entry for section/type ");
+		Ti.API.warn('T-CELL.' + arguments.callee.name + ": more than one entry for section/type ");
 	}
 	if (OS_ANDROID) {
 		onAndroidBack();
@@ -101,7 +101,7 @@ if (OS_ANDROID) {
 
 if (OS_IOS) {
 	var titleArgs = {
-		title : winTitle || "T-CELL COUNT"
+		title : winTitle || "Viral Load and CD4"
 	};
 
 	function clickSave(e) {

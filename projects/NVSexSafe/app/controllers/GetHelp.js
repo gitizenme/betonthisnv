@@ -33,7 +33,7 @@ function focusPhoneNumber() {
 }
 
 function focusMessage() {
-	$.message.focus();	
+	$.message.focus();
 	updateHintLabel('Enter a brief message', 750);
 }
 
@@ -49,10 +49,18 @@ function onTouchStart() {
 function clickSend(e) {
 	Ti.API.trace('GetHelp.' + arguments.callee.name + ": " + JSON.stringify(e));
 
+	if($.message.value === null || $.message.value == '') {
+		alert("Please enter a message, this information is required.");
+		return;
+	}
+
     var emailDialog = Ti.UI.createEmailDialog();
     emailDialog.subject = "[BetOnThisNV - NV SexSafe] Get Help";
     emailDialog.toRecipients = ['bdhansen@health.nv.gov']; // TODO change this
     emailDialog.html = true;
     emailDialog.messageBody = 'Name: ' + $.name.value + '<br/>Phone #:' + $.phone.value + '<br/>Message:' + $.message.value;
+	emailDialog.addEventListener("complete", function() {
+		alert("Thank you for contacting us. You will receive a response in 72 hours, often less.");
+	});
     emailDialog.open();
 }
