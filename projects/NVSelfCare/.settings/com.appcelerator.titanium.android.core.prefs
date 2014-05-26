@@ -1,0 +1,11 @@
+android/ATTR_MINIFY=true
+android/ATTR_PROJECT_NAME=NVSelfCare
+android/abi=armeabi
+android/distribute_path=/Users/joe/Projects/izenme/NVHealth/github/betonthisnv/dist/android/NV SelfCare
+android/key_password=asdf1234
+android/keystore_alias=nvselfcare
+android/keystore_password=asdf1234
+android/keystore_path=/Users/joe/Projects/izenme/NVHealth/github/betonthisnv/dist/android/NV SelfCare/NVSelfCare-Keystore
+android/recent_output=/Users/joe/Projects/izenme/NVHealth/github/betonthisnv/dist/android/NV SelfCare
+android/sdk_version=2.3.3
+eclipse.preferences.version=1
